@@ -1,8 +1,8 @@
-/
-/ Mixins: Accent
-/
+//
+// Mixins: Accent
+//
 
-/ Accent Variant
+// Accent Variant
 @mixin accent-variant($name, $color) {
   $link-color: $color;
   .accent-#{$name} {

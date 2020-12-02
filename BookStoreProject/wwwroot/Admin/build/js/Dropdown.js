@@ -24,7 +24,7 @@ const SELECTOR_DROPDOWN_TOGGLE = '[data-toggle="dropdown"]'
 const CLASS_NAME_DROPDOWN_RIGHT = 'dropdown-menu-right'
 const CLASS_NAME_DROPDOWN_SUBMENU = 'dropdown-submenu'
 
-/ TODO: this is unused; should be removed along with the extend?
+// TODO: this is unused; should be removed along with the extend?
 const Default = {
 }
 
@@ -39,7 +39,7 @@ class Dropdown {
     this._element = element
   }
 
-  / Public
+  // Public
 
   toggleSubmenu() {
     this._element.siblings().show().toggleClass('show')
@@ -89,7 +89,7 @@ class Dropdown {
     }
   }
 
-  / Static
+  // Static
 
   static _jQueryInterface(config) {
     return this.each(function () {

@@ -1,6 +1,6 @@
-/
-/ Component: Forms
-/
+//
+// Component: Forms
+//
 
 .form-group {
   &.has-icon {
@@ -15,7 +15,7 @@
       border: 0;
       cursor: pointer;
       font-size: 1rem;
-      / margin-top: -3px;
+      // margin-top: -3px;
       padding: $input-btn-padding-y $input-btn-padding-x;
       position: absolute;
       right: 3px;
@@ -24,7 +24,7 @@
   }
 }
 
-/ Button groups
+// Button groups
 .btn-group-vertical {
   .btn {
     &.btn-flat:first-of-type,
@@ -34,7 +34,7 @@
   }
 }
 
-/ Support icons in form-control
+// Support icons in form-control
 .form-control-feedback {
   &.fa,
   &.fas,
@@ -126,7 +126,7 @@ label:not(.form-check-label):not(.custom-file-label) {
   display: none;
   line-height: $form-feedback-tooltip-line-height;
   margin-top: .1rem;
-  max-width: 100%; / Contain to parent when possible
+  max-width: 100%; // Contain to parent when possible
   padding: $form-feedback-tooltip-padding-y $form-feedback-tooltip-padding-x;
   position: absolute;
   top: 100%;
@@ -138,11 +138,11 @@ label:not(.form-check-label):not(.custom-file-label) {
     border-color: theme-color("warning");
 
     @if $enable-validation-icons {
-      / padding-right: $input-height-inner;
-      / background-image: none;
-      / background-repeat: no-repeat;
-      / background-position: center right $input-height-inner-quarter;
-      / background-size: $input-height-inner-half $input-height-inner-half;
+      // padding-right: $input-height-inner;
+      // background-image: none;
+      // background-repeat: no-repeat;
+      // background-position: center right $input-height-inner-quarter;
+      // background-size: $input-height-inner-half $input-height-inner-half;
     }
 
     &:focus {
@@ -157,7 +157,7 @@ label:not(.form-check-label):not(.custom-file-label) {
   }
 }
 
-/ stylelint-disable-next-line selector-no-qualifying-type
+// stylelint-disable-next-line selector-no-qualifying-type
 textarea.form-control {
   &.is-warning {
     @if $enable-validation-icons {
@@ -172,8 +172,8 @@ textarea.form-control {
     border-color: theme-color("warning");
 
     @if $enable-validation-icons {
-      / padding-right: $custom-select-feedback-icon-padding-right;
-      / background: $custom-select-background, none $custom-select-bg no-repeat $custom-select-feedback-icon-position / $custom-select-feedback-icon-size;
+      // padding-right: $custom-select-feedback-icon-padding-right;
+      // background: $custom-select-background, none $custom-select-bg no-repeat $custom-select-feedback-icon-position / $custom-select-feedback-icon-size;
     }
 
     &:focus {
@@ -243,7 +243,7 @@ textarea.form-control {
   }
 }
 
-/ custom file
+// custom file
 .custom-file-input {
   &.is-warning {
     ~ .custom-file-label {
@@ -264,14 +264,14 @@ textarea.form-control {
   }
 }
 
-/ body.text-sm support
+// body.text-sm support
 body.text-sm {
   .input-group-text {
     font-size: $font-size-sm;
   }
 }
 
-/ custom .form-control styles
+// custom .form-control styles
 .form-control,
 .custom-select {
   &.form-control-border {
@@ -290,7 +290,7 @@ body.text-sm {
   }
 }
 
-/ custom switch color variations
+// custom switch color variations
 .custom-switch {
   @each $name, $color in $theme-colors {
     @include custom-switch-variant($name, $color);
@@ -301,7 +301,7 @@ body.text-sm {
   }
 }
 
-/ custom range color variations
+// custom range color variations
 .custom-range {
   @each $name, $color in $theme-colors {
     @include custom-range-variant($name, $color);
@@ -312,7 +312,7 @@ body.text-sm {
   }
 }
 
-/ custom control input variations
+// custom control input variations
 @each $name, $color in $theme-colors {
   @include custom-control-input-variant($name, $color);
 }

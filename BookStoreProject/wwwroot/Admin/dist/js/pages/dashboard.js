@@ -10,7 +10,7 @@
 $(function () {
   'use strict'
 
-  / Make the dashboard widgets sortable Using jquery UI
+  // Make the dashboard widgets sortable Using jquery UI
   $('.connectedSortable').sortable({
     placeholder: 'sort-highlight',
     connectWith: '.connectedSortable',
@@ -20,7 +20,7 @@ $(function () {
   })
   $('.connectedSortable .card-header').css('cursor', 'move')
 
-  / jQuery UI sortable for the todo list
+  // jQuery UI sortable for the todo list
   $('.todo-list').sortable({
     placeholder: 'sort-highlight',
     handle: '.handle',
@@ -28,7 +28,7 @@ $(function () {
     zIndex: 999999
   })
 
-  / bootstrap WYSIHTML5 - text editor
+  // bootstrap WYSIHTML5 - text editor
   $('.textarea').summernote()
 
   $('.daterange').daterangepicker({
@@ -43,28 +43,28 @@ $(function () {
     startDate: moment().subtract(29, 'days'),
     endDate: moment()
   }, function (start, end) {
-    / eslint-disable-next-line no-alert
+    // eslint-disable-next-line no-alert
     alert('You chose: ' + start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
   })
 
   /* jQueryKnob */
   $('.knob').knob()
 
-  / jvectormap data
+  // jvectormap data
   var visitorsData = {
-    US: 398, / USA
-    SA: 400, / Saudi Arabia
-    CA: 1000, / Canada
-    DE: 500, / Germany
-    FR: 760, / France
-    CN: 300, / China
-    AU: 700, / Australia
-    BR: 600, / Brazil
-    IN: 800, / India
-    GB: 320, / Great Britain
-    RU: 3000 / Russia
+    US: 398, // USA
+    SA: 400, // Saudi Arabia
+    CA: 1000, // Canada
+    DE: 500, // Germany
+    FR: 760, // France
+    CN: 300, // China
+    AU: 700, // Australia
+    BR: 600, // Brazil
+    IN: 800, // India
+    GB: 320, // Great Britain
+    RU: 3000 // Russia
   }
-  / World map by jvectormap
+  // World map by jvectormap
   $('#world-map').vectorMap({
     map: 'usa_en',
     backgroundColor: 'transparent',
@@ -91,7 +91,7 @@ $(function () {
     }
   })
 
-  / Sparkline charts
+  // Sparkline charts
   var sparkline1 = new Sparkline($('#sparkline-1')[0], { width: 80, height: 50, lineColor: '#92c1dc', endColor: '#ebf4f9' })
   var sparkline2 = new Sparkline($('#sparkline-2')[0], { width: 80, height: 50, lineColor: '#92c1dc', endColor: '#ebf4f9' })
   var sparkline3 = new Sparkline($('#sparkline-3')[0], { width: 80, height: 50, lineColor: '#92c1dc', endColor: '#ebf4f9' })
@@ -100,21 +100,21 @@ $(function () {
   sparkline2.draw([515, 519, 520, 522, 652, 810, 370, 627, 319, 630, 921])
   sparkline3.draw([15, 19, 20, 22, 33, 27, 31, 27, 19, 30, 21])
 
-  / The Calender
+  // The Calender
   $('#calendar').datetimepicker({
     format: 'L',
     inline: true
   })
 
-  / SLIMSCROLL FOR CHAT WIDGET
+  // SLIMSCROLL FOR CHAT WIDGET
   $('#chat-box').overlayScrollbars({
     height: '250px'
   })
 
   /* Chart.js Charts */
-  / Sales chart
+  // Sales chart
   var salesChartCanvas = document.getElementById('revenue-chart-canvas').getContext('2d')
-  / $('#revenue-chart').get(0).getContext('2d');
+  // $('#revenue-chart').get(0).getContext('2d');
 
   var salesChartData = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -164,15 +164,15 @@ $(function () {
     }
   }
 
-  / This will get the first returned node in the jQuery collection.
-  / eslint-disable-next-line no-unused-vars
+  // This will get the first returned node in the jQuery collection.
+  // eslint-disable-next-line no-unused-vars
   var salesChart = new Chart(salesChartCanvas, {
     type: 'line',
     data: salesChartData,
     options: salesChartOptions
   })
 
-  / Donut Chart
+  // Donut Chart
   var pieChartCanvas = $('#sales-chart-canvas').get(0).getContext('2d')
   var pieData = {
     labels: [
@@ -194,18 +194,18 @@ $(function () {
     maintainAspectRatio: false,
     responsive: true
   }
-  / Create pie or douhnut chart
-  / You can switch between pie and douhnut using the method below.
-  / eslint-disable-next-line no-unused-vars
+  // Create pie or douhnut chart
+  // You can switch between pie and douhnut using the method below.
+  // eslint-disable-next-line no-unused-vars
   var pieChart = new Chart(pieChartCanvas, {
     type: 'doughnut',
     data: pieData,
     options: pieOptions
   })
 
-  / Sales graph chart
+  // Sales graph chart
   var salesGraphChartCanvas = $('#line-chart').get(0).getContext('2d')
-  / $('#revenue-chart').get(0).getContext('2d');
+  // $('#revenue-chart').get(0).getContext('2d');
 
   var salesGraphChartData = {
     labels: ['2011 Q1', '2011 Q2', '2011 Q3', '2011 Q4', '2012 Q1', '2012 Q2', '2012 Q3', '2012 Q4', '2013 Q1', '2013 Q2'],
@@ -257,8 +257,8 @@ $(function () {
     }
   }
 
-  / This will get the first returned node in the jQuery collection.
-  / eslint-disable-next-line no-unused-vars
+  // This will get the first returned node in the jQuery collection.
+  // eslint-disable-next-line no-unused-vars
   var salesGraphChart = new Chart(salesGraphChartCanvas, {
     type: 'line',
     data: salesGraphChartData,

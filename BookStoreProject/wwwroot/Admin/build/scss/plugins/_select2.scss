@@ -1,21 +1,21 @@
-/
-/ Plugin: Select2
-/
+//
+// Plugin: Select2
+//
 
-/Signle select
-/ .select2-container--default,
-/ .select2-selection {
-/   &.select2-container--focus,
-/   &:focus,
-/   &:active {
-/     outline: none;
-/   }
-/ }
+//Signle select
+// .select2-container--default,
+// .select2-selection {
+//   &.select2-container--focus,
+//   &:focus,
+//   &:active {
+//     outline: none;
+//   }
+// }
 
 .select2-container--default {
   .select2-selection--single {
     border: $input-border-width solid $input-border-color;
-    /border-radius: $input-radius;
+    //border-radius: $input-radius;
     padding: ($input-padding-y * 1.25) $input-padding-x;
     height: $input-height;
   }
@@ -28,7 +28,7 @@
 
   & .select2-dropdown {
     border: $input-border-width solid $input-border-color;
-    /border-radius: $input-radius;
+    //border-radius: $input-radius;
   }
 
   & .select2-results__option {
@@ -38,7 +38,7 @@
 
   & .select2-selection--single .select2-selection__rendered {
     padding-left: 0;
-    /padding-right: 0;
+    //padding-right: 0;
     height: auto;
     margin-top: -3px;
   }
@@ -112,7 +112,7 @@
     }
   }
 
-  /Multiple select
+  //Multiple select
   & {
     .select2-selection--multiple {
       border: $input-border-width solid $input-border-color;
@@ -208,14 +208,14 @@
   }
 }
 
-/ Select2 Bootstrap4 Theme overrides
+// Select2 Bootstrap4 Theme overrides
 .select2-container--bootstrap4 {
   &.select2-container--focus .select2-selection {
     box-shadow: none;
   }
 }
 
-/ text-sm / form-control-sm override
+// text-sm / form-control-sm override
 select.form-control-sm ~ {
   .select2-container--default {
     font-size: $font-size-sm;
@@ -258,17 +258,17 @@ select.form-control-sm ~ {
   }
 }
 
-/ Dropdown Fix inside maximized card
+// Dropdown Fix inside maximized card
 .maximized-card .select2-dropdown {
   z-index: 9999;
 }
 
-/ Background colors (theme colors)
+// Background colors (theme colors)
 @each $name, $color in $theme-colors {
   @include select2-variant($name, $color);
 }
 
-/ Background colors (colors)
+// Background colors (colors)
 @each $name, $color in $colors {
   @include select2-variant($name, $color);
 }

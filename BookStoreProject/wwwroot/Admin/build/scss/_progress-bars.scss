@@ -1,13 +1,13 @@
-/
-/ Component: Progress Bar
-/
+//
+// Component: Progress Bar
+//
 
-/General CSS
+//General CSS
 .progress {
   @include box-shadow(none);
   @include border-radius($progress-bar-border-radius);
 
-  / Vertical bars
+  // Vertical bars
   &.vertical {
     display: inline-block;
     height: 200px;
@@ -21,7 +21,7 @@
       width: 100%;
     }
 
-    /Sizes
+    //Sizes
     &.sm,
     &.progress-sm {
       width: 20px;
@@ -43,7 +43,7 @@
   margin-bottom: map-get($spacers, 2);
 }
 
-/ size variation
+// size variation
 .progress-sm {
   height: 10px;
 }
@@ -56,7 +56,7 @@
   height: 3px;
 }
 
-/ Remove margins from progress bars when put in a table
+// Remove margins from progress bars when put in a table
 .table {
   tr > td {
     .progress {

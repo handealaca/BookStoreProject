@@ -1,6 +1,6 @@
-/
-/ Component: Main Header
-/
+//
+// Component: Main Header
+//
 
 .main-header {
   border-bottom: $main-header-bottom-border;
@@ -56,13 +56,13 @@
   }
 }
 
-/ Add this class to images within a nav-link
+// Add this class to images within a nav-link
 .navbar-img {
   height: $main-header-height / 2;
   width: auto;
 }
 
-/ Navbar badge
+// Navbar badge
 .navbar-badge {
   font-size: .6rem;
   font-weight: 300;

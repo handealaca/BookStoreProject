@@ -157,7 +157,7 @@ class CardWidget {
     this.maximize()
   }
 
-  / Private
+  // Private
 
   _init(card) {
     this._parent = card
@@ -175,7 +175,7 @@ class CardWidget {
     })
   }
 
-  / Static
+  // Static
 
   static _jQueryInterface(config) {
     let data = $(this).data(DATA_KEY)

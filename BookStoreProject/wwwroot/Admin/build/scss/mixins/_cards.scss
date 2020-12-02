@@ -1,6 +1,6 @@
-/
-/ Mixins: Cards Variant
-/
+//
+// Mixins: Cards Variant
+//
 
 @mixin cards-variant($name, $color) {
   .card-#{$name} {

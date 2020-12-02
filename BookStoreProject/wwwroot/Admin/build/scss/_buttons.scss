@@ -1,6 +1,6 @@
-/
-/ Component: Button
-/
+//
+// Component: Button
+//
 
 .btn {
   &.disabled,
@@ -8,14 +8,14 @@
     cursor: not-allowed;
   }
 
-  / Flat buttons
+  // Flat buttons
   &.btn-flat {
     @include border-radius(0);
     border-width: 1px;
     box-shadow: none;
   }
 
-  / input file btn
+  // input file btn
   &.btn-file {
     overflow: hidden;
     position: relative;
@@ -41,7 +41,7 @@
   }
 }
 
-/ Button color variations
+// Button color variations
 .btn-default {
   background-color: $button-default-background-color;
   border-color: $button-default-border-color;
@@ -55,7 +55,7 @@
   }
 }
 
-/ Application buttons
+// Application buttons
 .btn-app {
   @include border-radius(3px);
   background-color: $button-default-background-color;
@@ -69,7 +69,7 @@
   position: relative;
   text-align: center;
 
-  / Icons within the btn
+  // Icons within the btn
   > .fa,
   > .fas,
   > .far,
@@ -97,7 +97,7 @@
     @include box-shadow(inset 0 3px 5px rgba($black, .125));
   }
 
-  / The badge
+  // The badge
   > .badge {
     font-size: 10px;
     font-weight: 400;
@@ -107,7 +107,7 @@
   }
 }
 
-/ Extra Button Size
+// Extra Button Size
 
 .btn-xs {
   @include button-size($button-padding-y-xs, $button-padding-x-xs, $button-font-size-xs, $button-line-height-xs, $button-border-radius-xs);

@@ -1,6 +1,6 @@
-/
-/ Plugin: Pace
-/
+//
+// Plugin: Pace
+//
 
 .pace {
   z-index: $zindex-main-sidebar + 10;
@@ -14,7 +14,7 @@
   }
 }
 
-/ Mixin
+// Mixin
 @mixin pace-variant($name, $color) {
   .pace-#{$name} {
     .pace {

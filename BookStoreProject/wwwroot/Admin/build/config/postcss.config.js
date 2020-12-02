@@ -6,7 +6,7 @@ module.exports = () => ({
     annotation: true,
     sourcesContent: true
   },
-  /Admin/plugins: {
+  plugins: {
     autoprefixer: {
       cascade: false
     }

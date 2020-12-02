@@ -1,8 +1,8 @@
-/
-/ General: Mixins
-/
+//
+// General: Mixins
+//
 
-/ Select2 Variant
+// Select2 Variant
 @mixin select2-variant($name, $color) {
   .select2-#{$name} {
 
@@ -43,7 +43,7 @@
         }
       }
 
-      /Multiple select
+      //Multiple select
       & {
         .select2-selection--multiple {
           &:focus {

@@ -1,8 +1,8 @@
-/
-/ Component: Modals
-/
+//
+// Component: Modals
+//
 
-/ Overlay
+// Overlay
 .modal-dialog {
   .overlay {
     background-color: $black;
@@ -18,7 +18,7 @@
 }
 
 
-/ BG Color Variations Fixes
+// BG Color Variations Fixes
 .modal-content {
   &.bg-warning {
     .modal-header,

@@ -1,16 +1,16 @@
-/
-/ /Admin/plugins: Miscellaneous
-/ Old plugin codes
-/
+//
+// Plugins: Miscellaneous
+// Old plugin codes
+//
 
-/ _fix for sparkline tooltip
+// _fix for sparkline tooltip
 .jqstooltip {
   height: auto !important;
   padding: 5px !important;
   width: auto !important;
 }
 
-/ jQueryUI
+// jQueryUI
 .connectedSortable {
   min-height: 100px;
 }
@@ -32,7 +32,7 @@
   margin-bottom: 10px;
 }
 
-/ Charts
+// Charts
 .chart {
   overflow: hidden;
   position: relative;

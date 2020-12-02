@@ -41,7 +41,7 @@ class TodoList {
     this._init()
   }
 
-  / Public
+  // Public
 
   toggle(item) {
     item.parents('li').toggleClass(CLASS_NAME_TODO_LIST_DONE)
@@ -61,7 +61,7 @@ class TodoList {
     this._config.onUnCheck.call(item)
   }
 
-  / Private
+  // Private
 
   _init() {
     const $toggleSelector = this._element
@@ -72,7 +72,7 @@ class TodoList {
     })
   }
 
-  / Static
+  // Static
 
   static _jQueryInterface(config) {
     return this.each(function () {

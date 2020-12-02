@@ -1,8 +1,8 @@
-/
-/ Mixins: Backgrounds
-/
+//
+// Mixins: Backgrounds
+//
 
-/ Background Variant
+// Background Variant
 @mixin background-variant($name, $color) {
   .bg-#{$name} {
     background-color: #{$color} !important;
@@ -30,7 +30,7 @@
   }
 }
 
-/ Background Gradient Variant
+// Background Gradient Variant
 @mixin background-gradient-variant($name, $color) {
   .bg-gradient-#{$name} {
     background: $color linear-gradient(180deg, mix($body-bg, $color, 15%), $color) repeat-x !important;

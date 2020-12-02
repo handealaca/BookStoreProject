@@ -35,7 +35,7 @@ class Fullscreen {
     this.options = $.extend({}, Default, _options)
   }
 
-  / Public
+  // Public
 
   toggle() {
     if (document.fullscreenElement ||
@@ -72,7 +72,7 @@ class Fullscreen {
     $(SELECTOR_ICON).removeClass(this.options.minimizeIcon).addClass(this.options.maximizeIcon)
   }
 
-  / Static
+  // Static
 
   static _jQueryInterface(config) {
     let data = $(this).data(DATA_KEY)

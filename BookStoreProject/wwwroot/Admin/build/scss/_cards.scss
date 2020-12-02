@@ -1,8 +1,8 @@
-/
-/ Component: Cards
-/
+//
+// Component: Cards
+//
 
-/ Color variants
+// Color variants
 @each $name, $color in $theme-colors {
   @include cards-variant($name, $color);
 }
@@ -54,7 +54,7 @@
     }
   }
 
-  / collapsed mode
+  // collapsed mode
   &.collapsed-card {
     .card-body,
     .card-footer {
@@ -73,7 +73,7 @@
     }
   }
 
-  / fixed height to 300px
+  // fixed height to 300px
   &.height-control {
     .card-body {
       max-height: 300px;
@@ -197,19 +197,19 @@
 
 }
 
-/ Maximized Card Body Scroll fix
+// Maximized Card Body Scroll fix
 html.maximized-card {
   overflow: hidden;
 }
 
-/ Add clearfix to header, body and footer
+// Add clearfix to header, body and footer
 .card-header,
 .card-body,
 .card-footer {
   @include clearfix ();
 }
 
-/ Box header
+// Box header
 .card-header {
   background-color: transparent;
   border-bottom: 1px solid $card-border-color;
@@ -253,7 +253,7 @@ html.maximized-card {
 }
 
 
-/ Box Tools Buttons
+// Box Tools Buttons
 .btn-tool {
   background-color: transparent;
   color: $gray-500;
@@ -282,14 +282,14 @@ html.maximized-card {
   }
 }
 
-/ Box Body
+// Box Body
 .card-body {
-  / @include border-radius-sides(0, 0, $border-radius, $border-radius);
-  / .no-header & {
-  /   @include border-top-radius($border-radius);
-  / }
+  // @include border-radius-sides(0, 0, $border-radius, $border-radius);
+  // .no-header & {
+  //   @include border-top-radius($border-radius);
+  // }
 
-  / Tables within the box body
+  // Tables within the box body
   > .table {
     margin-bottom: 0;
 
@@ -299,7 +299,7 @@ html.maximized-card {
     }
   }
 
-  / Calendar within the box body
+  // Calendar within the box body
   .fc {
     margin-top: 5px;
   }
@@ -325,7 +325,7 @@ html.maximized-card {
   }
 }
 
-/ Comment Box
+// Comment Box
 .card-comments {
   background-color: $gray-100;
 
@@ -366,17 +366,17 @@ html.maximized-card {
   }
 }
 
-/ Widgets
-/-----------
+// Widgets
+//-----------
 
-/ Widget: TODO LIST
+// Widget: TODO LIST
 .todo-list {
   list-style: none;
   margin: 0;
   overflow: auto;
   padding: 0;
 
-  / Todo list element
+  // Todo list element
   > li {
     @include border-radius(2px);
     background-color: $gray-100;
@@ -399,19 +399,19 @@ html.maximized-card {
       margin-left: 5px;
     }
 
-    / Time labels
+    // Time labels
     .badge {
       font-size: .7rem;
       margin-left: 10px;
     }
 
-    / Tools and options box
+    // Tools and options box
     .tools {
       color: theme-color("danger");
       display: none;
       float: right;
 
-      / icons
+      // icons
       > .fa,
       > .fas,
       > .far,
@@ -443,7 +443,7 @@ html.maximized-card {
     }
   }
 
-  / Color variants
+  // Color variants
   @each $name, $color in $theme-colors {
     .#{$name} {
       border-left-color: $color;
@@ -463,14 +463,14 @@ html.maximized-card {
   }
 }
 
-/ END TODO WIDGET
+// END TODO WIDGET
 
-/ Input in box
+// Input in box
 .card-input {
   max-width: 200px;
 }
 
-/ Nav Tabs override
+// Nav Tabs override
 .card-default {
   .nav-item {
     &:first-child .nav-link {

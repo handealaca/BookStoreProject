@@ -1,6 +1,6 @@
-/
-/ Component: Direct Chat
-/
+//
+// Component: Direct Chat
+//
 
 .direct-chat {
   .card-body {
@@ -63,7 +63,7 @@
   padding: 5px 10px;
   position: relative;
 
-  /Create the arrow
+  //Create the arrow
   &::after,
   &::before {
     border: solid transparent;
@@ -126,7 +126,7 @@
   color: darken($gray-500, 25%);
 }
 
-/Direct chat contacts pane
+//Direct chat contacts pane
 .direct-chat-contacts-open {
   .direct-chat-contacts {
     @include translate(0, 0);
@@ -161,7 +161,7 @@
   }
 }
 
-/Contacts list -- for displaying contacts in direct chat contacts pane
+//Contacts list -- for displaying contacts in direct chat contacts pane
 .contacts-list {
   @include list-unstyled ();
 
@@ -210,7 +210,7 @@
   color: darken($gray-400, 10%);
 }
 
-/ Color variants
+// Color variants
 @each $name, $color in $theme-colors {
   .direct-chat-#{$name} {
     @include direct-chat-variant($color);

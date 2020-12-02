@@ -1,6 +1,6 @@
-/
-/ Core: Layout
-/
+//
+// Core: Layout
+//
 
 html.scroll-smooth {
   scroll-behavior: smooth;
@@ -91,11 +91,11 @@ body,
 
   body:not(.layout-fixed).layout-navbar-fixed & {
     .main-sidebar {
-      / margin-top: calc(#{$main-header-height} / -1);
+      // margin-top: calc(#{$main-header-height} / -1);
 
-      / .sidebar {
-      /   margin-top: $main-header-height;
-      / }
+      // .sidebar {
+      //   margin-top: $main-header-height;
+      // }
     }
   }
 
@@ -136,7 +136,7 @@ body,
       z-index: $zindex-main-header + 1;
     }
 
-    / Sidebar variants brand-link fix
+    // Sidebar variants brand-link fix
     @each $name, $color in $theme-colors {
       .sidebar-dark-#{$name} .brand-link:not([class*="navbar"]) {
         background-color: $sidebar-dark-bg;
@@ -265,7 +265,7 @@ body,
           z-index: $zindex-main-header + 1;
         }
 
-        / Sidebar variants brand-link fix
+        // Sidebar variants brand-link fix
         @each $name, $color in $theme-colors {
           .sidebar-dark-#{$name} .brand-link:not([class*="navbar"]) {
             background-color: $sidebar-dark-bg;
@@ -301,13 +301,13 @@ body,
       }
 
       body:not(.layout-fixed).layout#{$infix}-navbar-fixed & {
-        / .main-sidebar {
-        /   margin-top: calc(#{$main-header-height} / -1);
+        // .main-sidebar {
+        //   margin-top: calc(#{$main-header-height} / -1);
 
-        /   .sidebar {
-        /     margin-top: $main-header-height;
-        /   }
-        / }
+        //   .sidebar {
+        //     margin-top: $main-header-height;
+        //   }
+        // }
       }
 
       body:not(.layout-fixed).layout#{$infix}-navbar-fixed.text-sm & {

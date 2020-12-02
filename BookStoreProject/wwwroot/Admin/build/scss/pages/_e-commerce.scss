@@ -1,21 +1,21 @@
-/
-/ Pages: E-commerce
-/
+//
+// Pages: E-commerce
+//
 
-/ product image
+// product image
 .product-image {
   @include img-fluid ();
   width: 100%;
 }
 
-/ product image thumbnails list
+// product image thumbnails list
 .product-image-thumbs {
   align-items: stretch;
   display: flex;
   margin-top: 2rem;
 }
 
-/ product image thumbnail
+// product image thumbnail
 .product-image-thumb {
   @include box-shadow($thumbnail-box-shadow);
   @include border-radius($thumbnail-border-radius);
@@ -37,7 +37,7 @@
   }
 }
 
-/ product share
+// product share
 .product-share {
   a {
     margin-right: .5rem;

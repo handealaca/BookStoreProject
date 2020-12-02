@@ -1,6 +1,6 @@
-/
-/ Component: Control Sidebar
-/
+//
+// Component: Control Sidebar
+//
 
 html.control-sidebar-animate {
   overflow-x: hidden;
@@ -52,7 +52,7 @@ body.text-sm {
   }
 }
 
-/ Control sidebar open state
+// Control sidebar open state
 .control-sidebar-open {
   .control-sidebar {
     display: block;
@@ -72,7 +72,7 @@ body.text-sm {
   }
 }
 
-/ Control sidebar slide over content state
+// Control sidebar slide over content state
 .control-sidebar-slide-open {
   .control-sidebar {
     display: block;
@@ -93,7 +93,7 @@ body.text-sm {
   }
 }
 
-/ Dark skin
+// Dark skin
 .control-sidebar-dark {
   background-color: $sidebar-dark-bg;
 
@@ -107,7 +107,7 @@ body.text-sm {
     color: $sidebar-dark-hover-color;
   }
 
-  / Headers and labels
+  // Headers and labels
   h1,
   h2,
   h3,
@@ -118,7 +118,7 @@ body.text-sm {
     color: $sidebar-dark-hover-color;
   }
 
-  / Tabs
+  // Tabs
   .nav-tabs {
     background-color: $sidebar-dark-hover-bg;
     border-bottom: 0;
@@ -163,11 +163,11 @@ body.text-sm {
   }
 }
 
-/ Light skin
+// Light skin
 .control-sidebar-light {
   color: lighten($sidebar-light-color, 10%);
 
-  /  Background
+  //  Background
   background-color: $sidebar-light-bg;
   border-left: $main-header-bottom-border;
 }

@@ -38,7 +38,7 @@ class SiteSearch {
     this.options = $.extend({}, Default, _options)
   }
 
-  / Public
+  // Public
 
   open() {
     $(SELECTOR_SEARCH_BLOCK).slideDown(this.options.transitionSpeed)
@@ -61,7 +61,7 @@ class SiteSearch {
     }
   }
 
-  / Static
+  // Static
 
   static _jQueryInterface(options) {
     return this.each(function () {

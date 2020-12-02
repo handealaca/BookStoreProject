@@ -1,8 +1,8 @@
-/
-/ Component: Sidebar Mini
-/
+//
+// Component: Sidebar Mini
+//
 
-/ Logo style
+// Logo style
 .logo-xs,
 .logo-xl {
   opacity: 1;
@@ -38,7 +38,7 @@
   }
 }
 
-/ Add sidebar-mini class to the body tag to activate this feature
+// Add sidebar-mini class to the body tag to activate this feature
 .sidebar-mini {
   @include media-breakpoint-up(lg) {
     @include sidebar-mini-breakpoint ();

@@ -53,7 +53,7 @@ class PushMenu {
     this._init()
   }
 
-  / Public
+  // Public
 
   expand() {
     const $bodySelector = $(SELECTOR_BODY)
@@ -149,7 +149,7 @@ class PushMenu {
     }
   }
 
-  / Private
+  // Private
 
   _init() {
     this.remember()
@@ -172,7 +172,7 @@ class PushMenu {
     $(SELECTOR_WRAPPER).append(overlay)
   }
 
-  / Static
+  // Static
 
   static _jQueryInterface(operation) {
     return this.each(function () {

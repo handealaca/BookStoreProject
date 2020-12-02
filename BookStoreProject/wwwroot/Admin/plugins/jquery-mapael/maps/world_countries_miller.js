@@ -6,7 +6,7 @@
  * Map of World by country
  * Miller projection
  *
- * @source  http:///code.highcharts.com/mapdata/
+ * @source http://code.highcharts.com/mapdata/
  *
  * @deprecated : this map will be definitely moved to 'mapael-maps' repository starting from the next major release (3.0.0).
  * You can use instead https://github.com/neveldo/mapael-maps/blob/master/world/world_countries_miller.js
@@ -76,7 +76,7 @@
                  *      Projection(lat, lon) = (x', y')
                  *      Transformation(x', y') = (x, y)
                  *
-                 * Source:  http:///jkwiens.com/2009/01/23/miller-projection/
+                 * Source: http://jkwiens.com/2009/01/23/miller-projection/
                  *
                  * @param lat latitude value in degree
                  * @param lon longitude value in degree

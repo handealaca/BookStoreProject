@@ -66,7 +66,7 @@ class Toasts {
     $('body').trigger($.Event(EVENT_INIT))
   }
 
-  / Public
+  // Public
 
   create() {
     const toast = $('<div class="toast" role="alert" aria-live="assertive" aria-atomic="true"/>')
@@ -137,7 +137,7 @@ class Toasts {
     }
   }
 
-  / Static
+  // Static
 
   _getContainerId() {
     if (this._config.position == POSITION_TOP_RIGHT) {
@@ -180,7 +180,7 @@ class Toasts {
     }
   }
 
-  / Static
+  // Static
 
   static _jQueryInterface(option, config) {
     return this.each(function () {

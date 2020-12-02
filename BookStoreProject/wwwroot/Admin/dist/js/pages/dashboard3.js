@@ -12,7 +12,7 @@ $(function () {
   var intersect = true
 
   var $salesChart = $('#sales-chart')
-  / eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line no-unused-vars
   var salesChart = new Chart($salesChart, {
     type: 'bar',
     data: {
@@ -45,7 +45,7 @@ $(function () {
       },
       scales: {
         yAxes: [{
-          / display: false,
+          // display: false,
           gridLines: {
             display: true,
             lineWidth: '4px',
@@ -55,7 +55,7 @@ $(function () {
           ticks: $.extend({
             beginAtZero: true,
 
-            / Include a dollar sign in the ticks
+            // Include a dollar sign in the ticks
             callback: function (value) {
               if (value >= 1000) {
                 value /= 1000
@@ -78,7 +78,7 @@ $(function () {
   })
 
   var $visitorsChart = $('#visitors-chart')
-  / eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line no-unused-vars
   var visitorsChart = new Chart($visitorsChart, {
     data: {
       labels: ['18th', '20th', '22nd', '24th', '26th', '28th', '30th'],
@@ -90,8 +90,8 @@ $(function () {
         pointBorderColor: '#007bff',
         pointBackgroundColor: '#007bff',
         fill: false
-        / pointHoverBackgroundColor: '#007bff',
-        / pointHoverBorderColor    : '#007bff'
+        // pointHoverBackgroundColor: '#007bff',
+        // pointHoverBorderColor    : '#007bff'
       },
       {
         type: 'line',
@@ -101,8 +101,8 @@ $(function () {
         pointBorderColor: '#ced4da',
         pointBackgroundColor: '#ced4da',
         fill: false
-        / pointHoverBackgroundColor: '#ced4da',
-        / pointHoverBorderColor    : '#ced4da'
+        // pointHoverBackgroundColor: '#ced4da',
+        // pointHoverBorderColor    : '#ced4da'
       }]
     },
     options: {
@@ -120,7 +120,7 @@ $(function () {
       },
       scales: {
         yAxes: [{
-          / display: false,
+          // display: false,
           gridLines: {
             display: true,
             lineWidth: '4px',

@@ -1,13 +1,13 @@
-/
-/ Misc: Colors
-/
+//
+// Misc: Colors
+//
 
-/ Background colors (theme colors)
+// Background colors (theme colors)
 @each $name, $color in $theme-colors {
   @include background-variant($name, $color);
 }
 
-/ Background colors (colors)
+// Background colors (colors)
 @each $name, $color in $colors {
   @include background-variant($name, $color);
 }
@@ -32,27 +32,27 @@
   color: color-yiq($white) !important;
 }
 
-/ Gradient Background colors (theme colors)
+// Gradient Background colors (theme colors)
 @each $name, $color in $theme-colors {
   @include background-gradient-variant($name, $color);
 }
 
-/ Gradient Background colors (colors)
+// Gradient Background colors (colors)
 @each $name, $color in $colors {
   @include background-gradient-variant($name, $color);
 }
 
-/ Backgrund Color Disabled
+// Backgrund Color Disabled
 [class^="bg-"].disabled {
   opacity: .65;
 }
 
-/ Text muted hover
+// Text muted hover
 a.text-muted:hover {
   color: theme-color(primary) !important;
 }
 
-/ Link Styles
+// Link Styles
 .link-muted {
   color: darken($gray-500, 30%);
 
@@ -71,17 +71,17 @@ a.text-muted:hover {
   }
 }
 
-/ Accent colors (theme colors)
+// Accent colors (theme colors)
 @each $name, $color in $theme-colors {
   @include accent-variant($name, $color);
 }
 
-/ Accent colors (colors)
+// Accent colors (colors)
 @each $name, $color in $colors {
   @include accent-variant($name, $color);
 }
 
-/ Accent button override fix
+// Accent button override fix
 [class*="accent-"] {
   @each $name, $color in $theme-colors {
     a.btn-#{$name} {

@@ -4,7 +4,7 @@
 
 const path = require('path')
 const fse = require('fs-extra')
-const /Admin/plugins = require('./Docs/Admin/plugins')
+const Plugins = require('./DocsPlugins')
 
 class Publish {
   constructor() {
@@ -30,11 +30,11 @@ class Publish {
   }
 
   run() {
-    / Publish files
-    /Admin/plugins.forEach(module => {
+    // Publish files
+    Plugins.forEach(module => {
       try {
         fse.copySync(module.from, module.to, {
-          / Skip copying dot files
+          // Skip copying dot files
           filter(src) {
             return !path.basename(src).startsWith('.')
           }

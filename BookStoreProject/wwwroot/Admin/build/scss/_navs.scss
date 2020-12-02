@@ -1,6 +1,6 @@
-/
-/ Component: Nav
-/
+//
+// Component: Nav
+//
 
 .nav-pills {
   .nav-link {
@@ -20,7 +20,7 @@
   }
 }
 
-/ Vertical Tabs
+// Vertical Tabs
 .nav-tabs.flex-column {
   border-bottom: 0;
   border-right: $nav-tabs-border-width solid $nav-tabs-border-color;
@@ -76,7 +76,7 @@
   }
 }
 
-/ Color variants
+// Color variants
 @each $color, $value in $theme-colors {
   @if $color == dark or $color == light {
     .navbar-#{$color} {

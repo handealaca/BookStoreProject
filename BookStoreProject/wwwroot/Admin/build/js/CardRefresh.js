@@ -89,7 +89,7 @@ class CardRefresh {
     $(this._element).trigger($.Event(EVENT_OVERLAY_REMOVED))
   }
 
-  / Private
+  // Private
 
   _init() {
     $(this).find(this._settings.trigger).on('click', () => {
@@ -101,7 +101,7 @@ class CardRefresh {
     }
   }
 
-  / Static
+  // Static
 
   static _jQueryInterface(config) {
     let data = $(this).data(DATA_KEY)

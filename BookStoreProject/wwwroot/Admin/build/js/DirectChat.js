@@ -39,7 +39,7 @@ class DirectChat {
     $(this._element).trigger($.Event(EVENT_TOGGLED))
   }
 
-  / Static
+  // Static
 
   static _jQueryInterface(config) {
     return this.each(function () {

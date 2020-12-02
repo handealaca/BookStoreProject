@@ -1,12 +1,12 @@
-/
-/ Component: Timeline
-/
+//
+// Component: Timeline
+//
 
 .timeline {
   margin: 0 0 45px;
   padding: 0;
   position: relative;
-  / The line
+  // The line
   &::before {
     @include border-radius($border-radius);
     background-color: $gray-300;
@@ -18,7 +18,7 @@
     top: 0;
     width: 4px;
   }
-  / Element
+  // Element
   > div {
     &::before,
     &::after {
@@ -29,7 +29,7 @@
     margin-bottom: 15px;
     margin-right: 10px;
     position: relative;
-    / The content
+    // The content
     > .timeline-item {
       @include box-shadow($card-shadow);
       @include border-radius($border-radius);
@@ -40,14 +40,14 @@
       margin-top: 0;
       padding: 0;
       position: relative;
-      / The time and header
+      // The time and header
       > .time {
         color: #999;
         float: right;
         font-size: 12px;
         padding: 10px;
       }
-      / Header
+      // Header
       > .timeline-header {
         border-bottom: 1px solid $card-border-color;
         color: $gray-700;
@@ -55,12 +55,12 @@
         line-height: 1.1;
         margin: 0;
         padding: 10px;
-        / Link in header
+        // Link in header
         > a {
           font-weight: 600;
         }
       }
-      / Item body and footer
+      // Item body and footer
       > .timeline-body,
       > .timeline-footer {
         padding: 10px;
@@ -83,7 +83,7 @@
         }
       }
     }
-    / The icons at line
+    // The icons at line
     > .fa,
     > .fas,
     > .far,
@@ -107,7 +107,7 @@
       padding: 7px;
     }
   }
-  / Time label
+  // Time label
   > .time-label {
     > span {
       @include border-radius(4px);

@@ -1,13 +1,13 @@
-/
-/ Component: Table
-/
+//
+// Component: Table
+//
 
 .table {
   &:not(.table-dark) {
     color: inherit;
   }
 
-  / fixed table head
+  // fixed table head
   &.table-head-fixed {
     thead tr:nth-child(1) th {
       background-color: $white;
@@ -28,7 +28,7 @@
     }
   }
 
-  / no border
+  // no border
   &.no-border {
     &,
     td,
@@ -37,7 +37,7 @@
     }
   }
 
-  / .text-center in tables
+  // .text-center in tables
   &.text-center {
     &,
     td,
@@ -73,7 +73,7 @@
   }
 }
 
-/ Expandable Table
+// Expandable Table
 
 .table-hover tbody tr.expandable-body:hover {
   background-color: inherit !important;
@@ -87,14 +87,14 @@
   }
   &[aria-expanded="true"] {
     td > i {
-      / stylelint-disable selector-max-attribute
+      // stylelint-disable selector-max-attribute
       &[class*="right"] {
         transform: rotate(90deg);
       }
       &[class*="left"] {
         transform: rotate(-90deg);
       }
-      / stylelint-enable selector-max-attribute
+      // stylelint-enable selector-max-attribute
     }
   }
 }

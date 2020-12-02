@@ -1,16 +1,16 @@
-/
-/ Component: Dropdown
-/
+//
+// Component: Dropdown
+//
 
-/ General Dropdown Rules
-/.dropdown-item {
-/  &:first-of-type {
-/    @include border-top-radius($border-radius);
-/  }
-/  &:last-of-type {
-/    @include border-bottom-radius($border-radius);
-/  }
-/}
+// General Dropdown Rules
+//.dropdown-item {
+//  &:first-of-type {
+//    @include border-top-radius($border-radius);
+//  }
+//  &:last-of-type {
+//    @include border-bottom-radius($border-radius);
+//  }
+//}
 
 .text-sm {
   .dropdown-menu {
@@ -33,7 +33,7 @@
   }
 }
 
-/ Dropdown Sizes
+// Dropdown Sizes
 .dropdown-menu-lg {
   max-width: 300px;
   min-width: 280px;
@@ -53,7 +53,7 @@
   }
 }
 
-/ Dropdown Submenu
+// Dropdown Submenu
 .dropdown-submenu {
   position: relative;
 
@@ -72,7 +72,7 @@
   }
 }
 
-/ Dropdown Hover
+// Dropdown Hover
 .dropdown-hover {
   &:hover,
   &.nav-item.dropdown:hover,
@@ -85,7 +85,7 @@
 }
 
 
-/ Dropdown Sizes
+// Dropdown Sizes
 .dropdown-menu-xl {
   max-width: 420px;
   min-width: 360px;
@@ -105,7 +105,7 @@
   }
 }
 
-/ Dropdown header and footer
+// Dropdown header and footer
 .dropdown-footer,
 .dropdown-header {
   display: block;
@@ -114,8 +114,8 @@
   text-align: center;
 }
 
-/ Add fade animation to dropdown menus by appending
-/ the class .animated-dropdown-menu to the .dropdown-menu ul (or ol)
+// Add fade animation to dropdown menus by appending
+// the class .animated-dropdown-menu to the .dropdown-menu ul (or ol)
 .open:not(.dropup) > .animated-dropdown-menu {
   @include animation(flipInX .7s both);
   backface-visibility: visible !important;
@@ -147,7 +147,7 @@
   }
 }
 
-/ Fix dropdown menu in navbars
+// Fix dropdown menu in navbars
 .navbar-custom-menu > .navbar-nav {
   > li {
     position: relative;
@@ -175,7 +175,7 @@
   }
 }
 
-/ User Menu
+// User Menu
 .navbar-nav > .user-menu {
   > .nav-link::after {
     content: none;
@@ -191,13 +191,13 @@
       @include border-bottom-radius(4px);
     }
 
-    / Header menu
+    // Header menu
     > li.user-header {
       height: 175px;
       padding: 10px;
       text-align: center;
 
-      / User image
+      // User image
       > img {
         z-index: 5;
         height: 90px;
@@ -210,7 +210,7 @@
       > p {
         z-index: 5;
         font-size: 17px;
-        /text-shadow: 2px 2px 3px #333333;
+        //text-shadow: 2px 2px 3px #333333;
         margin-top: 10px;
 
         > small {
@@ -220,7 +220,7 @@
       }
     }
 
-    / Menu Body
+    // Menu Body
     > .user-body {
       @include clearfix ();
       border-bottom: 1px solid $gray-700;
@@ -235,7 +235,7 @@
       }
     }
 
-    / Menu Footer
+    // Menu Footer
     > .user-footer {
       @include clearfix ();
       background-color: $gray-100;

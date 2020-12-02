@@ -54,7 +54,7 @@ class Layout {
     this._init()
   }
 
-  / Public
+  // Public
 
   fixLayoutHeight(extra = null) {
     const $body = $('body')
@@ -135,10 +135,10 @@ class Layout {
     }
   }
 
-  / Private
+  // Private
 
   _init() {
-    / Activate layout height watcher
+    // Activate layout height watcher
     this.fixLayoutHeight()
 
     if (this._config.loginRegisterAutoHeight === true) {
@@ -179,7 +179,7 @@ class Layout {
   }
 
   _max(numbers) {
-    / Calculate the maximum number in a list
+    // Calculate the maximum number in a list
     let max = 0
 
     Object.keys(numbers).forEach(key => {
@@ -195,7 +195,7 @@ class Layout {
     return $(SELECTOR_FOOTER).css('position') === 'fixed'
   }
 
-  / Static
+  // Static
 
   static _jQueryInterface(config = '') {
     return this.each(function () {

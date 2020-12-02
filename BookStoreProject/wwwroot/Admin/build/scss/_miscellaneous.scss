@@ -1,12 +1,12 @@
-/
-/ Misc: Miscellaneous
-/
+//
+// Misc: Miscellaneous
+//
 
 .border-transparent {
   border-color: transparent !important;
 }
 
-/ Description Blocks
+// Description Blocks
 .description-block {
   display: block;
   margin: 10px 0;
@@ -27,13 +27,13 @@
     text-transform: uppercase;
   }
 
-  / Description Block Extension
+  // Description Block Extension
   .description-icon {
     font-size: 16px;
   }
 }
 
-/ List utility classes
+// List utility classes
 .list-group-unbordered {
   > .list-group-item {
     border-left: 0;
@@ -68,7 +68,7 @@
   }
 }
 
-/ User block
+// User block
 .user-block {
   float: left;
 
@@ -115,7 +115,7 @@
   }
 }
 
-/ Image sizes
+// Image sizes
 .img-sm,
 .img-md,
 .img-lg {
@@ -149,7 +149,7 @@
   }
 }
 
-/ Image bordered
+// Image bordered
 .img-bordered {
   border: 3px solid $gray-500;
   padding: 3px;
@@ -160,7 +160,7 @@
   padding: 2px;
 }
 
-/ Rounded and Circle Images
+// Rounded and Circle Images
 .img-rounded {
   @include border-radius($border-radius);
 }
@@ -169,7 +169,7 @@
   @include border-radius(50%);
 }
 
-/ Image sizes
+// Image sizes
 .img-size-64,
 .img-size-50,
 .img-size-32 {
@@ -188,7 +188,7 @@
   width: 32px;
 }
 
-/ Block sizes
+// Block sizes
 .size-32,
 .size-40,
 .size-50 {
@@ -214,7 +214,7 @@
   width: 50px;
 }
 
-/ General attachemnt block
+// General attachemnt block
 .attachment-block {
   background-color: $gray-100;
   border: 1px solid $card-border-color;
@@ -241,12 +241,12 @@
   }
 }
 
-/ Overlays for Card, InfoBox & SmallBox
+// Overlays for Card, InfoBox & SmallBox
 .card,
 .overlay-wrapper,
 .info-box,
 .small-box {
-  / Box overlay for LOADING STATE effect
+  // Box overlay for LOADING STATE effect
   > .overlay,
   > .loading-img {
     height: 100%;
@@ -293,7 +293,7 @@
 }
 
 .tab-pane {
-  / Box overlay for LOADING STATE effect on Tab Panels
+  // Box overlay for LOADING STATE effect on Tab Panels
   > .overlay-wrapper {
     position: relative;
     > .overlay {
@@ -312,7 +312,7 @@
   }
 }
 
-/ Ribbon
+// Ribbon
 .ribbon-wrapper {
   height: $ribbon-wrapper-size;
   overflow: hidden;
@@ -378,7 +378,7 @@
   }
 }
 
-/ Scroll To Top
+// Scroll To Top
 .back-to-top {
   bottom: 1.25rem;
   position: fixed;
@@ -390,12 +390,12 @@
   }
 }
 
-/ Pre
+// Pre
 pre {
   padding: .75rem;
 }
 
-/ Blockquotes styles
+// Blockquotes styles
 blockquote {
   background-color: $white;
   border-left: .7rem solid $primary;
@@ -453,7 +453,7 @@ blockquote {
 }
 
 
-/ Tab Custom Content
+// Tab Custom Content
 
 .tab-custom-content {
   border-top: $nav-tabs-border-width solid $nav-tabs-border-color;
@@ -470,7 +470,7 @@ blockquote {
 }
 
 
-/ Badge BTN Style
+// Badge BTN Style
 .badge-btn {
   border-radius: $button-border-radius-xs;
   font-size: $button-font-size-xs;

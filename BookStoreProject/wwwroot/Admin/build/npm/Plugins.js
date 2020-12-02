@@ -1,437 +1,437 @@
 'use strict'
 
-const /Admin/plugins = [
-  / jQuery
+const Plugins = [
+  // jQuery
   {
     from: 'node_modules/jquery/dist',
-    to: '/Admin/plugins/jquery'
+    to: 'plugins/jquery'
   },
-  / Popper
+  // Popper
   {
     from: 'node_modules/popper.js/dist',
-    to: '/Admin/plugins/popper'
+    to: 'plugins/popper'
   },
-  / Bootstrap
+  // Bootstrap
   {
-    from: 'node_modules/bootstrap/Admin/dist/js',
-    to: '/Admin/plugins/bootstrap/js'
+    from: 'node_modules/bootstrap/dist/js',
+    to: 'plugins/bootstrap/js'
   },
-  / Font Awesome
+  // Font Awesome
   {
     from: 'node_modules/@fortawesome/fontawesome-free/css',
-    to: '/Admin/plugins/fontawesome-free/css'
+    to: 'plugins/fontawesome-free/css'
   },
   {
     from: 'node_modules/@fortawesome/fontawesome-free/webfonts',
-    to: '/Admin/plugins/fontawesome-free/webfonts'
+    to: 'plugins/fontawesome-free/webfonts'
   },
-  / overlayScrollbars
+  // overlayScrollbars
   {
     from: 'node_modules/overlayscrollbars/js',
-    to: '/Admin/plugins/overlayScrollbars/js'
+    to: 'plugins/overlayScrollbars/js'
   },
   {
     from: 'node_modules/overlayscrollbars/css',
-    to: '/Admin/plugins/overlayScrollbars/css'
+    to: 'plugins/overlayScrollbars/css'
   },
-  / Chart.js
+  // Chart.js
   {
-    from: 'node_modules/chart.js/Admin/dist/',
-    to: '/Admin/plugins/chart.js'
+    from: 'node_modules/chart.js/dist/',
+    to: 'plugins/chart.js'
   },
-  / jQuery UI
+  // jQuery UI
   {
-    from: 'node_modules/jquery-ui-/Admin/dist/',
-    to: '/Admin/plugins/jquery-ui'
+    from: 'node_modules/jquery-ui-dist/',
+    to: 'plugins/jquery-ui'
   },
-  / Flot
+  // Flot
   {
-    from: 'node_modules/flot/Admin/dist/es5/',
-    to: '/Admin/plugins/flot'
+    from: 'node_modules/flot/dist/es5/',
+    to: 'plugins/flot'
   },
   {
     from: 'node_modules/flot/source/',
-    to: '/Admin/plugins/flot/Admin/plugins'
+    to: 'plugins/flot/plugins'
   },
-  / Summernote
+  // Summernote
   {
-    from: 'node_modules/summernote/Admin/dist/',
-    to: '/Admin/plugins/summernote'
+    from: 'node_modules/summernote/dist/',
+    to: 'plugins/summernote'
   },
-  / Bootstrap Slider
+  // Bootstrap Slider
   {
-    from: 'node_modules/bootstrap-slider/Admin/dist/',
-    to: '/Admin/plugins/bootstrap-slider'
-  },
-  {
-    from: 'node_modules/bootstrap-slider/Admin/dist/css',
-    to: '/Admin/plugins/bootstrap-slider/css'
-  },
-  / Bootstrap Colorpicker
-  {
-    from: 'node_modules/bootstrap-colorpicker/Admin/dist/js',
-    to: '/Admin/plugins/bootstrap-colorpicker/js'
+    from: 'node_modules/bootstrap-slider/dist/',
+    to: 'plugins/bootstrap-slider'
   },
   {
-    from: 'node_modules/bootstrap-colorpicker/Admin/dist/css',
-    to: '/Admin/plugins/bootstrap-colorpicker/css'
+    from: 'node_modules/bootstrap-slider/dist/css',
+    to: 'plugins/bootstrap-slider/css'
   },
-  / Tempusdominus Bootstrap 4
+  // Bootstrap Colorpicker
   {
-    from: 'node_modules/tempusdominus-bootstrap-4/Admin/build/js',
-    to: '/Admin/plugins/tempusdominus-bootstrap-4/js'
+    from: 'node_modules/bootstrap-colorpicker/dist/js',
+    to: 'plugins/bootstrap-colorpicker/js'
   },
   {
-    from: 'node_modules/tempusdominus-bootstrap-4/Admin/build/css',
-    to: '/Admin/plugins/tempusdominus-bootstrap-4/css'
+    from: 'node_modules/bootstrap-colorpicker/dist/css',
+    to: 'plugins/bootstrap-colorpicker/css'
   },
-  / Moment
+  // Tempusdominus Bootstrap 4
+  {
+    from: 'node_modules/tempusdominus-bootstrap-4/build/js',
+    to: 'plugins/tempusdominus-bootstrap-4/js'
+  },
+  {
+    from: 'node_modules/tempusdominus-bootstrap-4/build/css',
+    to: 'plugins/tempusdominus-bootstrap-4/css'
+  },
+  // Moment
   {
     from: 'node_modules/moment/min',
-    to: '/Admin/plugins/moment'
+    to: 'plugins/moment'
   },
   {
     from: 'node_modules/moment/locale',
-    to: '/Admin/plugins/moment/locale'
+    to: 'plugins/moment/locale'
   },
-  / FastClick
+  // FastClick
   {
     from: 'node_modules/fastclick/lib',
-    to: '/Admin/plugins/fastclick'
+    to: 'plugins/fastclick'
   },
-  / Date Range Picker
+  // Date Range Picker
   {
     from: 'node_modules/daterangepicker/',
-    to: '/Admin/plugins/daterangepicker'
+    to: 'plugins/daterangepicker'
   },
-  / DataTables
+  // DataTables
   {
     from: 'node_modules/pdfmake/build',
-    to: '/Admin/plugins/pdfmake'
+    to: 'plugins/pdfmake'
   },
   {
     from: 'node_modules/jszip/dist',
-    to: '/Admin/plugins/jszip'
+    to: 'plugins/jszip'
   },
   {
     from: 'node_modules/datatables.net/js',
-    to: '/Admin/plugins/datatables'
+    to: 'plugins/datatables'
   },
   {
     from: 'node_modules/datatables.net-bs4/js',
-    to: '/Admin/plugins/datatables-bs4/js'
+    to: 'plugins/datatables-bs4/js'
   },
   {
     from: 'node_modules/datatables.net-bs4/css',
-    to: '/Admin/plugins/datatables-bs4/css'
+    to: 'plugins/datatables-bs4/css'
   },
   {
     from: 'node_modules/datatables.net-autofill/js',
-    to: '/Admin/plugins/datatables-autofill/js'
+    to: 'plugins/datatables-autofill/js'
   },
   {
     from: 'node_modules/datatables.net-autofill-bs4/js',
-    to: '/Admin/plugins/datatables-autofill/js'
+    to: 'plugins/datatables-autofill/js'
   },
   {
     from: 'node_modules/datatables.net-autofill-bs4/css',
-    to: '/Admin/plugins/datatables-autofill/css'
+    to: 'plugins/datatables-autofill/css'
   },
   {
     from: 'node_modules/datatables.net-buttons/js',
-    to: '/Admin/plugins/datatables-buttons/js'
+    to: 'plugins/datatables-buttons/js'
   },
   {
     from: 'node_modules/datatables.net-buttons-bs4/js',
-    to: '/Admin/plugins/datatables-buttons/js'
+    to: 'plugins/datatables-buttons/js'
   },
   {
     from: 'node_modules/datatables.net-buttons-bs4/css',
-    to: '/Admin/plugins/datatables-buttons/css'
+    to: 'plugins/datatables-buttons/css'
   },
   {
     from: 'node_modules/datatables.net-colreorder/js',
-    to: '/Admin/plugins/datatables-colreorder/js'
+    to: 'plugins/datatables-colreorder/js'
   },
   {
     from: 'node_modules/datatables.net-colreorder-bs4/js',
-    to: '/Admin/plugins/datatables-colreorder/js'
+    to: 'plugins/datatables-colreorder/js'
   },
   {
     from: 'node_modules/datatables.net-colreorder-bs4/css',
-    to: '/Admin/plugins/datatables-colreorder/css'
+    to: 'plugins/datatables-colreorder/css'
   },
   {
     from: 'node_modules/datatables.net-fixedcolumns/js',
-    to: '/Admin/plugins/datatables-fixedcolumns/js'
+    to: 'plugins/datatables-fixedcolumns/js'
   },
   {
     from: 'node_modules/datatables.net-fixedcolumns-bs4/js',
-    to: '/Admin/plugins/datatables-fixedcolumns/js'
+    to: 'plugins/datatables-fixedcolumns/js'
   },
   {
     from: 'node_modules/datatables.net-fixedcolumns-bs4/css',
-    to: '/Admin/plugins/datatables-fixedcolumns/css'
+    to: 'plugins/datatables-fixedcolumns/css'
   },
   {
     from: 'node_modules/datatables.net-fixedheader/js',
-    to: '/Admin/plugins/datatables-fixedheader/js'
+    to: 'plugins/datatables-fixedheader/js'
   },
   {
     from: 'node_modules/datatables.net-fixedheader-bs4/js',
-    to: '/Admin/plugins/datatables-fixedheader/js'
+    to: 'plugins/datatables-fixedheader/js'
   },
   {
     from: 'node_modules/datatables.net-fixedheader-bs4/css',
-    to: '/Admin/plugins/datatables-fixedheader/css'
+    to: 'plugins/datatables-fixedheader/css'
   },
   {
     from: 'node_modules/datatables.net-keytable/js',
-    to: '/Admin/plugins/datatables-keytable/js'
+    to: 'plugins/datatables-keytable/js'
   },
   {
     from: 'node_modules/datatables.net-keytable-bs4/js',
-    to: '/Admin/plugins/datatables-keytable/js'
+    to: 'plugins/datatables-keytable/js'
   },
   {
     from: 'node_modules/datatables.net-keytable-bs4/css',
-    to: '/Admin/plugins/datatables-keytable/css'
+    to: 'plugins/datatables-keytable/css'
   },
   {
     from: 'node_modules/datatables.net-responsive/js',
-    to: '/Admin/plugins/datatables-responsive/js'
+    to: 'plugins/datatables-responsive/js'
   },
   {
     from: 'node_modules/datatables.net-responsive-bs4/js',
-    to: '/Admin/plugins/datatables-responsive/js'
+    to: 'plugins/datatables-responsive/js'
   },
   {
     from: 'node_modules/datatables.net-responsive-bs4/css',
-    to: '/Admin/plugins/datatables-responsive/css'
+    to: 'plugins/datatables-responsive/css'
   },
   {
     from: 'node_modules/datatables.net-rowgroup/js',
-    to: '/Admin/plugins/datatables-rowgroup/js'
+    to: 'plugins/datatables-rowgroup/js'
   },
   {
     from: 'node_modules/datatables.net-rowgroup-bs4/js',
-    to: '/Admin/plugins/datatables-rowgroup/js'
+    to: 'plugins/datatables-rowgroup/js'
   },
   {
     from: 'node_modules/datatables.net-rowgroup-bs4/css',
-    to: '/Admin/plugins/datatables-rowgroup/css'
+    to: 'plugins/datatables-rowgroup/css'
   },
   {
     from: 'node_modules/datatables.net-rowreorder/js',
-    to: '/Admin/plugins/datatables-rowreorder/js'
+    to: 'plugins/datatables-rowreorder/js'
   },
   {
     from: 'node_modules/datatables.net-rowreorder-bs4/js',
-    to: '/Admin/plugins/datatables-rowreorder/js'
+    to: 'plugins/datatables-rowreorder/js'
   },
   {
     from: 'node_modules/datatables.net-rowreorder-bs4/css',
-    to: '/Admin/plugins/datatables-rowreorder/css'
+    to: 'plugins/datatables-rowreorder/css'
   },
   {
     from: 'node_modules/datatables.net-scroller/js',
-    to: '/Admin/plugins/datatables-scroller/js'
+    to: 'plugins/datatables-scroller/js'
   },
   {
     from: 'node_modules/datatables.net-scroller-bs4/js',
-    to: '/Admin/plugins/datatables-scroller/js'
+    to: 'plugins/datatables-scroller/js'
   },
   {
     from: 'node_modules/datatables.net-scroller-bs4/css',
-    to: '/Admin/plugins/datatables-scroller/css'
+    to: 'plugins/datatables-scroller/css'
   },
   {
     from: 'node_modules/datatables.net-searchpanes/js',
-    to: '/Admin/plugins/datatables-searchpanes/js'
+    to: 'plugins/datatables-searchpanes/js'
   },
   {
     from: 'node_modules/datatables.net-searchpanes-bs4/js',
-    to: '/Admin/plugins/datatables-searchpanes/js'
+    to: 'plugins/datatables-searchpanes/js'
   },
   {
     from: 'node_modules/datatables.net-searchpanes-bs4/css',
-    to: '/Admin/plugins/datatables-searchpanes/css'
+    to: 'plugins/datatables-searchpanes/css'
   },
   {
     from: 'node_modules/datatables.net-select/js',
-    to: '/Admin/plugins/datatables-select/js'
+    to: 'plugins/datatables-select/js'
   },
   {
     from: 'node_modules/datatables.net-select-bs4/js',
-    to: '/Admin/plugins/datatables-select/js'
+    to: 'plugins/datatables-select/js'
   },
   {
     from: 'node_modules/datatables.net-select-bs4/css',
-    to: '/Admin/plugins/datatables-select/css'
+    to: 'plugins/datatables-select/css'
   },
 
-  / Fullcalendar
+  // Fullcalendar
   {
     from: 'node_modules/fullcalendar/',
-    to: '/Admin/plugins/fullcalendar'
+    to: 'plugins/fullcalendar'
   },
-  / icheck bootstrap
+  // icheck bootstrap
   {
     from: 'node_modules/icheck-bootstrap/',
-    to: '/Admin/plugins/icheck-bootstrap'
+    to: 'plugins/icheck-bootstrap'
   },
-  / inputmask
+  // inputmask
   {
-    from: 'node_modules/inputmask/Admin/dist/',
-    to: '/Admin/plugins/inputmask'
+    from: 'node_modules/inputmask/dist/',
+    to: 'plugins/inputmask'
   },
-  / ion-rangeslider
+  // ion-rangeslider
   {
     from: 'node_modules/ion-rangeslider/',
-    to: '/Admin/plugins/ion-rangeslider'
+    to: 'plugins/ion-rangeslider'
   },
-  / JQVMap (jqvmap-novulnerability)
+  // JQVMap (jqvmap-novulnerability)
   {
-    from: 'node_modules/jqvmap-novulnerability/Admin/dist/',
-    to: '/Admin/plugins/jqvmap'
+    from: 'node_modules/jqvmap-novulnerability/dist/',
+    to: 'plugins/jqvmap'
   },
-  / jQuery Mapael
+  // jQuery Mapael
   {
     from: 'node_modules/jquery-mapael/js/',
-    to: '/Admin/plugins/jquery-mapael'
+    to: 'plugins/jquery-mapael'
   },
-  / Raphael
+  // Raphael
   {
     from: 'node_modules/raphael/',
-    to: '/Admin/plugins/raphael'
+    to: 'plugins/raphael'
   },
-  / jQuery Mousewheel
+  // jQuery Mousewheel
   {
     from: 'node_modules/jquery-mousewheel/',
-    to: '/Admin/plugins/jquery-mousewheel'
+    to: 'plugins/jquery-mousewheel'
   },
-  / jQuery Knob
+  // jQuery Knob
   {
-    from: 'node_modules/jquery-knob-chif/Admin/dist/',
-    to: '/Admin/plugins/jquery-knob'
+    from: 'node_modules/jquery-knob-chif/dist/',
+    to: 'plugins/jquery-knob'
   },
-  / pace-progress
+  // pace-progress
   {
-    from: 'node_modules/@lgaitan/pace-progress/Admin/dist/',
-    to: '/Admin/plugins/pace-progress'
+    from: 'node_modules/@lgaitan/pace-progress/dist/',
+    to: 'plugins/pace-progress'
   },
-  / Select2
+  // Select2
   {
-    from: 'node_modules/select2/Admin/dist/',
-    to: '/Admin/plugins/select2'
+    from: 'node_modules/select2/dist/',
+    to: 'plugins/select2'
   },
   {
-    from: 'node_modules/@ttskch/select2-bootstrap4-theme/Admin/dist/',
-    to: '/Admin/plugins/select2-bootstrap4-theme'
+    from: 'node_modules/@ttskch/select2-bootstrap4-theme/dist/',
+    to: 'plugins/select2-bootstrap4-theme'
   },
-  / Sparklines
+  // Sparklines
   {
     from: 'node_modules/sparklines/source/',
-    to: '/Admin/plugins/sparklines'
+    to: 'plugins/sparklines'
   },
-  / SweetAlert2
+  // SweetAlert2
   {
-    from: 'node_modules/sweetalert2/Admin/dist/',
-    to: '/Admin/plugins/sweetalert2'
+    from: 'node_modules/sweetalert2/dist/',
+    to: 'plugins/sweetalert2'
   },
   {
     from: 'node_modules/@sweetalert2/theme-bootstrap-4/',
-    to: '/Admin/plugins/sweetalert2-theme-bootstrap-4'
+    to: 'plugins/sweetalert2-theme-bootstrap-4'
   },
-  / Toastr
+  // Toastr
   {
-    from: 'node_modules/toastr/Admin/build/',
-    to: '/Admin/plugins/toastr'
+    from: 'node_modules/toastr/build/',
+    to: 'plugins/toastr'
   },
-  / jsGrid
+  // jsGrid
   {
     from: 'node_modules/jsgrid/dist',
-    to: '/Admin/plugins/jsgrid'
+    to: 'plugins/jsgrid'
   },
   {
     from: 'node_modules/jsgrid/demos/db.js',
-    to: '/Admin/plugins/jsgrid/demos/db.js'
+    to: 'plugins/jsgrid/demos/db.js'
   },
-  / flag-icon-css
+  // flag-icon-css
   {
     from: 'node_modules/flag-icon-css/css',
-    to: '/Admin/plugins/flag-icon-css/css'
+    to: 'plugins/flag-icon-css/css'
   },
   {
     from: 'node_modules/flag-icon-css/flags',
-    to: '/Admin/plugins/flag-icon-css/flags'
+    to: 'plugins/flag-icon-css/flags'
   },
-  / bootstrap4-duallistbox
+  // bootstrap4-duallistbox
   {
     from: 'node_modules/bootstrap4-duallistbox/dist',
-    to: '/Admin/plugins/bootstrap4-duallistbox/'
+    to: 'plugins/bootstrap4-duallistbox/'
   },
-  / filterizr
+  // filterizr
   {
     from: 'node_modules/filterizr/dist',
-    to: '/Admin/plugins/filterizr/'
+    to: 'plugins/filterizr/'
   },
-  / ekko-lightbox
+  // ekko-lightbox
   {
     from: 'node_modules/ekko-lightbox/dist',
-    to: '/Admin/plugins/ekko-lightbox/'
+    to: 'plugins/ekko-lightbox/'
   },
-  / bootstrap-switch
+  // bootstrap-switch
   {
     from: 'node_modules/bootstrap-switch/dist',
-    to: '/Admin/plugins/bootstrap-switch/'
+    to: 'plugins/bootstrap-switch/'
   },
-  / jQuery Validate
+  // jQuery Validate
   {
-    from: 'node_modules/jquery-validation/Admin/dist/',
-    to: '/Admin/plugins/jquery-validation'
+    from: 'node_modules/jquery-validation/dist/',
+    to: 'plugins/jquery-validation'
   },
-  / bs-custom-file-input
+  // bs-custom-file-input
   {
-    from: 'node_modules/bs-custom-file-input/Admin/dist/',
-    to: '/Admin/plugins/bs-custom-file-input'
+    from: 'node_modules/bs-custom-file-input/dist/',
+    to: 'plugins/bs-custom-file-input'
   },
-  / bs-stepper
+  // bs-stepper
   {
-    from: 'node_modules/bs-stepper/Admin/dist/',
-    to: '/Admin/plugins/bs-stepper'
+    from: 'node_modules/bs-stepper/dist/',
+    to: 'plugins/bs-stepper'
   },
-  / CodeMirror
+  // CodeMirror
   {
     from: 'node_modules/codemirror/lib/',
-    to: '/Admin/plugins/codemirror'
+    to: 'plugins/codemirror'
   },
   {
     from: 'node_modules/codemirror/addon/',
-    to: '/Admin/plugins/codemirror/addon'
+    to: 'plugins/codemirror/addon'
   },
   {
     from: 'node_modules/codemirror/keymap/',
-    to: '/Admin/plugins/codemirror/keymap'
+    to: 'plugins/codemirror/keymap'
   },
   {
     from: 'node_modules/codemirror/mode/',
-    to: '/Admin/plugins/codemirror/mode'
+    to: 'plugins/codemirror/mode'
   },
   {
     from: 'node_modules/codemirror/theme/',
-    to: '/Admin/plugins/codemirror/theme'
+    to: 'plugins/codemirror/theme'
   },
-  / dropzonejs
+  // dropzonejs
   {
-    from: 'node_modules/dropzone/Admin/dist/',
-    to: '/Admin/plugins/dropzone'
+    from: 'node_modules/dropzone/dist/',
+    to: 'plugins/dropzone'
   },
-  / uPlot
+  // uPlot
   {
-    from: 'node_modules/uplot/Admin/dist/',
-    to: '/Admin/plugins/uplot'
+    from: 'node_modules/uplot/dist/',
+    to: 'plugins/uplot'
   }
 ]
 
-module.exports = /Admin/plugins
+module.exports = Plugins

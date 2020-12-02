@@ -1,8 +1,8 @@
 // ┌───────────────────────────────────────────────────────────────────────────────────────────────────────┐ \\
 // │ Raphaël 2.3.0 - JavaScript Vector Library                                                             │ \\
 // ├───────────────────────────────────────────────────────────────────────────────────────────────────────┤ \\
-// │ Copyright © 2008-2016 Dmitry Baranovskiy ( http:///raphaeljs.com)                                       │ \\
-// │ Copyright © 2008-2016 Sencha Labs ( http:///sencha.com)                                                 │ \\
+// │ Copyright © 2008-2016 Dmitry Baranovskiy (http://raphaeljs.com)                                       │ \\
+// │ Copyright © 2008-2016 Sencha Labs (http://sencha.com)                                                 │ \\
 // ├───────────────────────────────────────────────────────────────────────────────────────────────────────┤ \\
 // │ Licensed under the MIT (https://github.com/DmitryBaranovskiy/raphael/blob/master/license.txt) license.│ \\
 // └───────────────────────────────────────────────────────────────────────────────────────────────────────┘ \\
@@ -305,7 +305,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
             "font-weight": 400,
             gradient: 0,
             height: 0,
-            href: " http:///raphaeljs.com/",
+            href: "http://raphaeljs.com/",
             "letter-spacing": 0,
             opacity: 1,
             path: "M0,0",
@@ -446,7 +446,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      **
      * Can be “SVG”, “VML” or empty, depending on browser support.
     \*/
-    R.type = (g.win.SVGAngle || g.doc.implementation.hasFeature(" http:///www.w3.org/TR/SVG11/feature#BasicStructure", "1.1") ? "SVG" : "VML");
+    R.type = (g.win.SVGAngle || g.doc.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#BasicStructure", "1.1") ? "SVG" : "VML");
     if (R.type == "VML") {
         var d = g.doc.createElement("div"),
             b;
@@ -651,7 +651,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
     };
     var toHex = function (color) {
         if (R.vml) {
-            //  http:///dean.edwards.name/weblog/2009/10/convert-any-colour-value-to-hex-in-msie/
+            // http://dean.edwards.name/weblog/2009/10/convert-any-colour-value-to-hex-in-msie/
             var trim = /^\s+|\s+$/g;
             var bod;
             try {
@@ -1147,7 +1147,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         delete this.start;
     };
 
-    //  http:///schepers.cc/getting-to-the-point
+    // http://schepers.cc/getting-to-the-point
     function catmullRom2bezier(crp, z) {
         var d = [];
         for (var i = 0, iLen = crp.length; iLen - 2 * !z > i; i += 2) {
@@ -1959,7 +1959,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         },
         a2c = function (x1, y1, rx, ry, angle, large_arc_flag, sweep_flag, x2, y2, recursive) {
             // for more information of where this math came from visit:
-            //  http:///www.w3.org/TR/SVG11/implnote.html#ArcImplementationNotes
+            // http://www.w3.org/TR/SVG11/implnote.html#ArcImplementationNotes
             var _120 = PI * 120 / 180,
                 rad = PI / 180 * (+angle || 0),
                 res = [],
@@ -3477,7 +3477,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      | "M10,20L30,40"
      * Here we can see two commands: “M”, with arguments `(10, 20)` and “L” with arguments `(30, 40)`. Upper case letter mean command is absolute, lower case—relative.
      *
-     # <p>Here is short list of commands available, for more details see <a href=" http:///www.w3.org/TR/SVG/paths.html#PathData" title="Details of a path's data attribute's format are described in the SVG specification.">SVG path string format</a>.</p>
+     # <p>Here is short list of commands available, for more details see <a href="http://www.w3.org/TR/SVG/paths.html#PathData" title="Details of a path's data attribute's format are described in the SVG specification.">SVG path string format</a>.</p>
      # <table><thead><tr><th>Command</th><th>Name</th><th>Parameters</th></tr></thead><tbody>
      # <tr><td>M</td><td>moveto</td><td>(x y)+</td></tr>
      # <tr><td>Z</td><td>closepath</td><td>(none)</td></tr>
@@ -3489,14 +3489,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      # <tr><td>Q</td><td>quadratic Bézier curveto</td><td>(x1 y1 x y)+</td></tr>
      # <tr><td>T</td><td>smooth quadratic Bézier curveto</td><td>(x y)+</td></tr>
      # <tr><td>A</td><td>elliptical arc</td><td>(rx ry x-axis-rotation large-arc-flag sweep-flag x y)+</td></tr>
-     # <tr><td>R</td><td><a href=" http:///en.wikipedia.org/wiki/Catmull–Rom_spline#Catmull.E2.80.93Rom_spline">Catmull-Rom curveto</a>*</td><td>x1 y1 (x y)+</td></tr></tbody></table>
+     # <tr><td>R</td><td><a href="http://en.wikipedia.org/wiki/Catmull–Rom_spline#Catmull.E2.80.93Rom_spline">Catmull-Rom curveto</a>*</td><td>x1 y1 (x y)+</td></tr></tbody></table>
      * * “Catmull-Rom curveto” is a not standard SVG command and added in 2.0 to make life easier.
      * Note: there is a special case when path consist of just three commands: “M10,10R…z”. In this case path will smoothly connects to its beginning.
      > Usage
      | var c = paper.path("M10 10L90 90");
      | // draw a diagonal line:
      | // move to 10,10, line to 90,90
-     * For example of path strings, check out these icons:  http:///raphaeljs.com/icons/
+     * For example of path strings, check out these icons: http://raphaeljs.com/icons/
     \*/
     paperproto.path = function (pathString) {
         pathString && !R.is(pathString, string) && !R.is(pathString[0], array) && (pathString += E);
@@ -4156,7 +4156,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      #     <li>“elastic”</li>
      #     <li>“bounce”</li>
      # </ul>
-     # <p>See also <a href=" http:///raphaeljs.com/easing.html">Easing demo</a>.</p>
+     # <p>See also <a href="http://raphaeljs.com/easing.html">Easing demo</a>.</p>
     \*/
     var ef = R.easing_formulas = {
         linear: function (n) {
@@ -5208,7 +5208,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      **
      * Adds given font to the registered set of fonts for Raphaël. Should be used as an internal call from within Cufón’s font file.
      * Returns original parameter, so it could be used with chaining.
-     # <a href=" http:///wiki.github.com/sorccu/cufon/about">More about Cufón and how to convert your font form TTF, OTF, etc to JavaScript file.</a>
+     # <a href="http://wiki.github.com/sorccu/cufon/about">More about Cufón and how to convert your font form TTF, OTF, etc to JavaScript file.</a>
      **
      > Parameters
      **
@@ -5527,7 +5527,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         loaded = true;
     });
 
-    // Firefox <3.6 fix:  http:///webreflection.blogspot.com/2009/11/195-chars-to-help-lazy-loading.html
+    // Firefox <3.6 fix: http://webreflection.blogspot.com/2009/11/195-chars-to-help-lazy-loading.html
     (function (doc, loaded, f) {
         if (doc.readyState == null && doc.addEventListener){
             doc.addEventListener(loaded, f = function () {
@@ -5573,7 +5573,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         eve = R.eve,
         E = "",
         S = " ";
-    var xlink = " http:///www.w3.org/1999/xlink",
+    var xlink = "http://www.w3.org/1999/xlink",
         markers = {
             block: "M5,0 0,2.5 5,5z",
             classic: "M5,0 0,2.5 5,5 3.5,3 3.5,2z",
@@ -5598,7 +5598,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                 }
             }
         } else {
-            el = R._g.doc.createElementNS(" http:///www.w3.org/2000/svg", el);
+            el = R._g.doc.createElementNS("http://www.w3.org/2000/svg", el);
             el.style && (el.style.webkitTapHighlightColor = "rgba(0,0,0,0)");
         }
         return el;
@@ -6543,7 +6543,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      = (array) array of values of the attribute if attrsNames is passed in.
      = (object) object of attributes if nothing is passed in.
      > Possible parameters
-     # <p>Please refer to the <a href=" http:///www.w3.org/TR/SVG/" title="The W3C Recommendation for the SVG language describes these properties in detail.">SVG specification</a> for an explanation of these parameters.</p>
+     # <p>Please refer to the <a href="http://www.w3.org/TR/SVG/" title="The W3C Recommendation for the SVG language describes these properties in detail.">SVG specification</a> for an explanation of these parameters.</p>
      o arrow-end (string) arrowhead on the end of the path. The format for string is `<type>[-<width>[-<length>]]`. Possible types: `classic`, `block`, `open`, `oval`, `diamond`, `none`, width: `wide`, `narrow`, `medium`, length: `long`, `short`, `midium`.
      o clip-rect (string) comma or space separated values: x, y, width and height
      o cursor (string) CSS type of the cursor
@@ -6586,7 +6586,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      * gradient from white to black or “`r(0.25, 0.75)#fff-#000`” – gradient from white to black with focus point
      * at 0.25, 0.75. Focus point coordinates are in 0..1 range. Radial gradients can only be applied to circles and ellipses.
      > Path String
-     # <p>Please refer to <a href=" http:///www.w3.org/TR/SVG/paths.html#PathData" title="Details of a path’s data attribute’s format are described in the SVG specification.">SVG documentation regarding path string</a>. Raphaël fully supports it.</p>
+     # <p>Please refer to <a href="http://www.w3.org/TR/SVG/paths.html#PathData" title="Details of a path’s data attribute’s format are described in the SVG specification.">SVG documentation regarding path string</a>. Raphaël fully supports it.</p>
      > Colour Parsing
      # <ul>
      #     <li>Colour name (“<code>red</code>”, “<code>green</code>”, “<code>cornflowerblue</code>”, etc)</li>
@@ -6599,7 +6599,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      #     <li>hsb(•••, •••, •••) — hue, saturation and brightness values: (“<code>hsb(0.5,&nbsp;0.25,&nbsp;1)</code>”)</li>
      #     <li>hsb(•••%, •••%, •••%) — same as above, but in %</li>
      #     <li>hsba(•••, •••, •••, •••) — same as above, but with opacity</li>
-     #     <li>hsl(•••, •••, •••) — almost the same as hsb, see <a href=" http:///en.wikipedia.org/wiki/HSL_and_HSV" title="HSL and HSV - Wikipedia, the free encyclopedia">Wikipedia page</a></li>
+     #     <li>hsl(•••, •••, •••) — almost the same as hsb, see <a href="http://en.wikipedia.org/wiki/HSL_and_HSV" title="HSL and HSV - Wikipedia, the free encyclopedia">Wikipedia page</a></li>
      #     <li>hsl(•••%, •••%, •••%) — same as above, but in %</li>
      #     <li>hsla(•••, •••, •••, •••) — same as above, but with opacity</li>
      #     <li>Optionally for hsb and hsl you could specify hue as a degree: “<code>hsl(240deg,&nbsp;1,&nbsp;.5)</code>” or, if you want to go fancy, “<code>hsl(240°,&nbsp;1,&nbsp;.5)</code>”</li>
@@ -6849,8 +6849,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
             height: height,
             version: 1.1,
             width: width,
-            xmlns: " http:///www.w3.org/2000/svg",
-            "xmlns:xlink": " http:///www.w3.org/1999/xlink"
+            xmlns: "http://www.w3.org/2000/svg",
+            "xmlns:xlink": "http://www.w3.org/1999/xlink"
         });
         if (container == 1) {
             cnvs.style.cssText = css + "position:absolute;left:" + x + "px;top:" + y + "px";
@@ -6914,7 +6914,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      * on other elements after reflow it could shift half pixel which cause for lines to lost their crispness.
      * This method fixes the issue.
      **
-       Special thanks to Mariusz Nowak ( http:///www.medikoo.com/) for this method.
+       Special thanks to Mariusz Nowak (http://www.medikoo.com/) for this method.
     \*/
     R.prototype.renderfix = function () {
         var cnvs = this.canvas,
@@ -7904,7 +7904,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
                 doc.createStyleSheet().addRule(".rvml", "behavior:url(#default#VML)");
             } else {
                 // no more room, add to the existing one
-                //  http:///msdn.microsoft.com/en-us/library/ms531194%28VS.85%29.aspx
+                // http://msdn.microsoft.com/en-us/library/ms531194%28VS.85%29.aspx
                 doc.styleSheets[0].addRule(".rvml", "behavior:url(#default#VML)");
             }
             try {
@@ -8009,7 +8009,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// Copyright (c)
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 // 
-//  http:///www.apache.org/licenses/LICENSE-2.0
+// http://www.apache.org/licenses/LICENSE-2.0
 // 
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
@@ -8019,7 +8019,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// Copyright (c)
 // ┌────────────────────────────────────────────────────────────┐ \\
 // │ Eve 0.5.0 - JavaScript Events Library                      │ \\
 // ├────────────────────────────────────────────────────────────┤ \\
-// │ Author Dmitry Baranovskiy ( http:///dmitry.baranovskiy.com/) │ \\
+// │ Author Dmitry Baranovskiy (http://dmitry.baranovskiy.com/) │ \\
 // └────────────────────────────────────────────────────────────┘ \\
 
 (function (glob) {

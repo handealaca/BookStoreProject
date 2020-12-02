@@ -7,14 +7,14 @@ const year = new Date().getFullYear()
 const banner = `/*!
  * AdminLTE v${pkg.version} (${pkg.homepage})
  * Copyright 2014-${year} ${pkg.author}
- * Licensed under MIT (https:/github.com/ColorlibHQ/AdminLTE/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/ColorlibHQ/AdminLTE/blob/master/LICENSE)
  */`
 
 module.exports = {
-  input: '/Admin/build/js/AdminLTE.js',
+  input: 'build/js/AdminLTE.js',
   output: {
     banner,
-    file: '/Admin/dist/js/adminlte.js',
+    file: 'dist/js/adminlte.js',
     format: 'umd',
     globals: {
       jquery: 'jQuery'
@@ -22,10 +22,10 @@ module.exports = {
     name: 'adminlte'
   },
   external: ['jquery'],
-  /Admin/plugins: [
+  plugins: [
     babel({
       exclude: 'node_modules/**',
-      / Include the helpers in the bundle, at most one copy of each
+      // Include the helpers in the bundle, at most one copy of each
       babelHelpers: 'bundled'
     })
   ]

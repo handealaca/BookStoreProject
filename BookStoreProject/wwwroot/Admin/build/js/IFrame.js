@@ -69,7 +69,7 @@ class IFrame {
     this._init()
   }
 
-  / Public
+  // Public
 
   onTabClick(item) {
     this._config.onTabClick(item)
@@ -184,7 +184,7 @@ class IFrame {
     this._fixHeight(true)
   }
 
-  / Private
+  // Private
 
   _init() {
     if (window.frameElement && this._config.autoIframeMode) {
@@ -315,7 +315,7 @@ class IFrame {
     }
   }
 
-  / Static
+  // Static
 
   static _jQueryInterface(operation, ...args) {
     let data = $(this).data(DATA_KEY)

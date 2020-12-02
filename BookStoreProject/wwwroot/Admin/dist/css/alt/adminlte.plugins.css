@@ -1,9 +1,9 @@
 /*!
  *   AdminLTE v3.1.0-rc
- *     Only /Admin/plugins
+ *     Only Plugins
  *   Author: Colorlib
- *   Website: AdminLTE.io <https:/adminlte.io>
- *   License: Open source - MIT <https:/opensource.org/licenses/MIT>
+ *   Website: AdminLTE.io <https://adminlte.io>
+ *   License: Open source - MIT <https://opensource.org/licenses/MIT>
  */
 .fc-button {
   background: #f8f9fa;
@@ -6209,8 +6209,8 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
   * bootstrap-switch - Turn checkboxes and radio buttons into toggle switches.
   *
   * @version v3.4 (MODDED)
-  * @homepage https:/bttstrp.github.io/bootstrap-switch
-  * @author Mattia Larentis <mattia@larentis.eu> ( http://larentis.eu)
+  * @homepage https://bttstrp.github.io/bootstrap-switch
+  * @author Mattia Larentis <mattia@larentis.eu> (http://larentis.eu)
   * @license MIT
   */
 .bootstrap-switch {
@@ -6585,4 +6585,4 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
 .dark-mode .jsgrid-selected-row > .jsgrid-cell {
   background-color: #3f474e;
 }
-/*# sourceMappingURL=adminlte./Admin/plugins.css.map */
+/*# sourceMappingURL=adminlte.plugins.css.map */

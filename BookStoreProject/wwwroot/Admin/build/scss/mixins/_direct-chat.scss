@@ -1,8 +1,8 @@
-/
-/ Mixins: Direct Chat
-/
+//
+// Mixins: Direct Chat
+//
 
-/ Direct Chat Variant
+// Direct Chat Variant
 @mixin direct-chat-variant($bg-color, $color: $white) {
   .right > .direct-chat-text {
     background-color: $bg-color;

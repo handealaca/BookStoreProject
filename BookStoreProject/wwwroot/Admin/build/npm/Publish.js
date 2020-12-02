@@ -4,7 +4,7 @@
 
 const path = require('path')
 const fse = require('fs-extra')
-const /Admin/plugins = require('./Admin/plugins')
+const Plugins = require('./Plugins')
 
 class Publish {
   constructor() {
@@ -30,10 +30,10 @@ class Publish {
   }
 
   run() {
-    / Publish files
-    /Admin/plugins.forEach(module => {
+    // Publish files
+    Plugins.forEach(module => {
       const fseOptions = {
-        / Skip copying dot files
+        // Skip copying dot files
         filter(src) {
           return !path.basename(src).startsWith('.')
         }

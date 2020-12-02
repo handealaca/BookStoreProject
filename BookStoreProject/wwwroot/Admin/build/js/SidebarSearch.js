@@ -58,7 +58,7 @@ class SidebarSearch {
     this.items = []
   }
 
-  / Public
+  // Public
 
   init() {
     if ($(SELECTOR_DATA_WIDGET).length == 0) {
@@ -126,7 +126,7 @@ class SidebarSearch {
     }
   }
 
-  / Private
+  // Private
 
   _parseItem(item, path = []) {
     if ($(item).hasClass(CLASS_NAME_HEADER)) {
@@ -198,7 +198,7 @@ class SidebarSearch {
     $(SELECTOR_SEARCH_RESULTS_GROUP).append(this._renderItem(this.options.notFoundText, '#', []))
   }
 
-  / Static
+  // Static
 
   static _jQueryInterface(config) {
     let data = $(this).data(DATA_KEY)

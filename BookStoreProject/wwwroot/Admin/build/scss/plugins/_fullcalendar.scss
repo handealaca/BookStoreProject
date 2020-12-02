@@ -1,8 +1,8 @@
-/
-/ Plugin: Full Calendar
-/
+//
+// Plugin: Full Calendar
+//
 
-/ Buttons
+// Buttons
 .fc-button {
   background: $gray-100;
   background-image: none;
@@ -17,7 +17,7 @@
   }
 }
 
-/ Calendar title
+// Calendar title
 .fc-header-title h2 {
   color: #666;
   font-size: 15px;
@@ -33,7 +33,7 @@
   padding-left: 10px;
 }
 
-/ Calendar table header cells
+// Calendar table header cells
 .fc-widget-header {
   background: #fafafa;
 }

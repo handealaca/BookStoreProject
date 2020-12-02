@@ -1,8 +1,8 @@
-/
-/ Component: Callout
-/
+//
+// Component: Callout
+//
 
-/ Base styles (regardless of theme)
+// Base styles (regardless of theme)
 .callout {
   @if $enable-rounded {
     @include border-radius($border-radius);
@@ -32,7 +32,7 @@
     margin-bottom: 0;
   }
 
-  / Themes for different contexts
+  // Themes for different contexts
   &.callout-danger {
     border-left-color: darken(theme-color("danger"), 10%);
   }

@@ -49,7 +49,7 @@ class Treeview {
     this._element = element
   }
 
-  / Public
+  // Public
 
   init() {
     $(`${SELECTOR_LI}${SELECTOR_OPEN} ${SELECTOR_TREEVIEW_MENU}`).css('display', 'block')
@@ -115,7 +115,7 @@ class Treeview {
     }
   }
 
-  / Private
+  // Private
 
   _setupListeners() {
     const elementId = this._element.attr('id') !== undefined ? `#${this._element.attr('id')}` : ''
@@ -130,7 +130,7 @@ class Treeview {
     }
   }
 
-  / Static
+  // Static
 
   static _jQueryInterface(config) {
     return this.each(function () {

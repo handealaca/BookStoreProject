@@ -1,8 +1,8 @@
-/
-/ Component: Text
-/
+//
+// Component: Text
+//
 
-/ text modification
+// text modification
 .text-bold {
   &,
   &.table td,
@@ -31,7 +31,7 @@
   font-size: $font-size-xl !important;
 }
 
-/ text color variations
+// text color variations
 @each $name, $color in $colors {
   .text-#{$name} {
     color: #{$color} !important;

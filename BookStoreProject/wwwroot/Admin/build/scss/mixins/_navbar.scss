@@ -1,8 +1,8 @@
-/
-/ Mixins: Navbar
-/
+//
+// Mixins: Navbar
+//
 
-/ Navbar Variant
+// Navbar Variant
 @mixin navbar-variant($color, $font-color: rgba(255, 255, 255, .8), $hover-color: #f6f6f6, $hover-bg: rgba(0, 0, 0, .1)) {
   background-color: $color;
 
@@ -21,7 +21,7 @@
     color: $hover-color;
   }
 
-  / Add color to the sidebar toggle button
+  // Add color to the sidebar toggle button
   .sidebar-toggle {
     color: $font-color;
 

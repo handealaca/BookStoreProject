@@ -2,8 +2,8 @@
   * bootstrap-switch - Turn checkboxes and radio buttons into toggle switches.
   *
   * @version v3.4 (MODDED)
-  * @homepage https:/bttstrp.github.io/bootstrap-switch
-  * @author Mattia Larentis <mattia@larentis.eu> ( http://larentis.eu)
+  * @homepage https://bttstrp.github.io/bootstrap-switch
+  * @author Mattia Larentis <mattia@larentis.eu> (http://larentis.eu)
   * @license MIT
   */
 
@@ -155,11 +155,11 @@ $bootstrap-switch-handle-border-radius: .1rem;
     }
   }
 
-  / &.bootstrap-switch-focused {
-  /   border-color: $input-btn-focus-color;
-  /   box-shadow: $input-btn-focus-box-shadow;
-  /   outline: 0;
-  / }
+  // &.bootstrap-switch-focused {
+  //   border-color: $input-btn-focus-color;
+  //   box-shadow: $input-btn-focus-box-shadow;
+  //   outline: 0;
+  // }
 
   &.bootstrap-switch-on .bootstrap-switch-label,
   &.bootstrap-switch-inverse.bootstrap-switch-off .bootstrap-switch-label {

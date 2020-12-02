@@ -1,6 +1,6 @@
-/
-/ Component: Small Box
-/
+//
+// Component: Small Box
+//
 
 .small-box {
   @include border-radius($border-radius);
@@ -10,7 +10,7 @@
   margin-bottom: 20px;
   position: relative;
 
-  / content wrapper
+  // content wrapper
   > .inner {
     padding: 10px;
   }
@@ -91,7 +91,7 @@
     z-index: 5;
   }
 
-  / the icon
+  // the icon
   .icon {
     color: rgba($black, .15);
     z-index: 0;
@@ -124,11 +124,11 @@
     }
   }
 
-  / Small box hover state
+  // Small box hover state
   &:hover {
     text-decoration: none;
 
-    / Animate icons on small box hover
+    // Animate icons on small box hover
     .icon {
       > i {
         &,
@@ -150,7 +150,7 @@
 }
 
 @include media-breakpoint-down(sm) {
-  / No need for icons on very small devices
+  // No need for icons on very small devices
   .small-box {
     text-align: center;
 

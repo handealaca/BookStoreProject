@@ -60,13 +60,13 @@ class ControlSidebar {
     this._init()
   }
 
-  / Public
+  // Public
 
   collapse() {
     const $body = $('body')
     const $html = $('html')
 
-    / Show the control sidebar
+    // Show the control sidebar
     if (this._config.controlsidebarSlide) {
       $html.addClass(CLASS_NAME_CONTROL_SIDEBAR_ANIMATE)
       $body.removeClass(CLASS_NAME_CONTROL_SIDEBAR_SLIDE).delay(300).queue(function () {
@@ -85,7 +85,7 @@ class ControlSidebar {
     const $body = $('body')
     const $html = $('html')
 
-    / Collapse the control sidebar
+    // Collapse the control sidebar
     if (this._config.controlsidebarSlide) {
       $html.addClass(CLASS_NAME_CONTROL_SIDEBAR_ANIMATE)
       $(SELECTOR_CONTROL_SIDEBAR).show().delay(10).queue(function () {
@@ -111,15 +111,15 @@ class ControlSidebar {
         $body.hasClass(CLASS_NAME_CONTROL_SIDEBAR_SLIDE)
 
     if (shouldClose) {
-      / Close the control sidebar
+      // Close the control sidebar
       this.collapse()
     } else {
-      / Open the control sidebar
+      // Open the control sidebar
       this.show()
     }
   }
 
-  / Private
+  // Private
 
   _init() {
     this._fixHeight()
@@ -249,7 +249,7 @@ class ControlSidebar {
     }
   }
 
-  / Static
+  // Static
 
   static _jQueryInterface(operation) {
     return this.each(function () {

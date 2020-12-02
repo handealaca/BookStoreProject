@@ -6,7 +6,7 @@
  * Version: 2.2.0
  *
  * Copyright (c) 2017 Vincent Brouté (https://www.vincentbroute.fr/mapael)
- * Licensed under the MIT license ( http:///www.opensource.org/licenses/mit-license.php).
+ * Licensed under the MIT license (http://www.opensource.org/licenses/mit-license.php).
  *
  * Thanks to Indigo744
  *
@@ -29,7 +29,7 @@
     // The plugin name (used on several places)
     var pluginName = "mapael";
 
-    // Version number of jQuery Mapael. See  http:///semver.org/ for more information.
+    // Version number of jQuery Mapael. See http://semver.org/ for more information.
     var version = "2.2.0";
 
     /*
@@ -2265,7 +2265,7 @@
 
         /*
          * Animated view box changes
-         * As from  http:///code.voidblossom.com/animating-viewbox-easing-formulas/,
+         * As from http://code.voidblossom.com/animating-viewbox-easing-formulas/,
          * (from https://github.com/theshaun works on mapael)
          * @param x coordinate of the point to focus on
          * @param y coordinate of the point to focus on

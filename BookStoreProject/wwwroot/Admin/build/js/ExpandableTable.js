@@ -34,7 +34,7 @@ class ExpandableTable {
     this._element = element
   }
 
-  / Public
+  // Public
 
   init() {
     $(SELECTOR_DATA_TOGGLE).each((_, $header) => {
@@ -70,7 +70,7 @@ class ExpandableTable {
     }
   }
 
-  / Static
+  // Static
 
   static _jQueryInterface(operation) {
     return this.each(function () {

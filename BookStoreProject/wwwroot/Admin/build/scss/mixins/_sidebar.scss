@@ -1,8 +1,8 @@
-/
-/ Mixins: Sidebar
-/
+//
+// Mixins: Sidebar
+//
 
-/ Sidebar Color
+// Sidebar Color
 @mixin sidebar-color($color) {
   .nav-sidebar > .nav-item {
     > .nav-link.active {
@@ -18,9 +18,9 @@
   }
 }
 
-/ Sidebar Mini Breakpoints
+// Sidebar Mini Breakpoints
 @mixin sidebar-mini-breakpoint() {
-  / A fix for text overflow while transitioning from sidebar mini to full sidebar
+  // A fix for text overflow while transitioning from sidebar mini to full sidebar
   .nav-sidebar,
   .nav-sidebar > .nav-header,
   .nav-sidebar .nav-link {
@@ -28,20 +28,20 @@
     overflow: hidden;
   }
 
-  / When the sidebar is collapsed...
+  // When the sidebar is collapsed...
   &.sidebar-collapse {
     .d-hidden-mini {
       display: none;
     }
 
-    / Apply the new margins to the main content and footer
+    // Apply the new margins to the main content and footer
     .content-wrapper,
     .main-footer,
     .main-header {
       margin-left: $sidebar-mini-width !important;
     }
 
-    / Make the sidebar headers
+    // Make the sidebar headers
     .nav-sidebar .nav-header {
       display: none;
     }
@@ -75,13 +75,13 @@
       visibility: visible;
     }
 
-    / Modify the sidebar to shrink instead of disappearing
+    // Modify the sidebar to shrink instead of disappearing
     .main-sidebar {
       overflow-x: hidden;
 
       &,
       &::before {
-        / Don't go away! Just shrink
+        // Don't go away! Just shrink
         margin-left: 0;
         width: $sidebar-mini-width;
       }
@@ -131,8 +131,8 @@
           margin-right: .5rem;
         }
 
-        / Make the sidebar links, menus, labels, badges
-        / and angle icons disappear
+        // Make the sidebar links, menus, labels, badges
+        // and angle icons disappear
         .sidebar-form,
         .user-panel > .info {
           display: block !important;
@@ -145,7 +145,7 @@
       }
     }
 
-    / Make an element visible only when sidebar mini is active
+    // Make an element visible only when sidebar mini is active
     .visible-sidebar-mini {
       display: block !important;
     }
