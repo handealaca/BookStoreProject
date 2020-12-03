@@ -17,15 +17,15 @@ namespace BookStoreProject.Controllers
         }
         public IActionResult Index()
         {
-            List<BookVM> books = _bookcontext.Books.Where(q => q.IsDeleted == false).Select(w => new BookVM()
+            List<BookVM> books = _bookcontext.Books.Where(q => q.IsDeleted == false).Select(q => new BookVM()
             {
-                BookID = w.ID,
-                Name  = w.Name,
-                Publisher = w.Publisher,
-                PublishDate = w.PublishDate,
-                AddDate = w.AddDate,
-                Edition = w.Edition,
-                IsDeleted = w.IsDeleted
+                BookID = q.ID,
+                Name  = q.Name,
+                Publisher = q.Publisher,
+                PublishDate = q.PublishDate,
+                AddDate = q.AddDate,
+                Edition = q.Edition,
+                IsDeleted = q.IsDeleted
                
             }).ToList();
             return View(books);

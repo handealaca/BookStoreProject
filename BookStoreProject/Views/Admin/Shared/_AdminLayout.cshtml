@@ -23,19 +23,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- AdminLTE App -->
     <script src="/Admin/dist/js/adminlte.min.js"></script>
 
-    <!-- DataTables  & Plugins -->
-    <script src="/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="/Admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="/Admin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="/Admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="/Admin/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="/Admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="/Admin/plugins/jszip/jszip.min.js"></script>
-    <script src="/Admin/plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="/Admin/plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="/Admin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="/Admin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="/Admin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+  
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -204,7 +192,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-         with font-awesome or any other icon font library -->
+                        with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -296,7 +284,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </footer>
     </div>
     <!-- ./wrapper -->
-
+    <!-- DataTables  & Plugins -->
+    <script src="/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/Admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/Admin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="/Admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="/Admin/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/Admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="/Admin/plugins/jszip/jszip.min.js"></script>
+    <script src="/Admin/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="/Admin/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="/Admin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="/Admin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="/Admin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true, "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"], "lengthChange": true
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            //$('#example2').DataTable({
+            //    "paging": true,
+            //    "lengthChange": false,
+            //    "searching": false,
+            //    "ordering": true,
+            //    "info": true,
+            //    "autoWidth": false,
+            //    "responsive": true,
+            //});
+        });</script>
 </body>
 </html>
 
