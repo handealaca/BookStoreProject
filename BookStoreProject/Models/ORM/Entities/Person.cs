@@ -14,7 +14,7 @@ namespace BookStoreProject.Models.ORM.Entities
 
         public List<Book> Books { get; set; }
 
-        public string Duty { get; set; }
-        public List<BookPerson> BookPersons { get; set; }
+        public enum Duty { Writer = 1, Interpreter = 2 };
+        public List<BookPerson> BookPeople { get; set; }
     }
 }
