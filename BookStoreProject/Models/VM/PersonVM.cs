@@ -22,9 +22,7 @@ namespace BookStoreProject.Models.VM
         public string Biography { get; set; }
         public DateTime? BirthDate { get; set; }
 
-        //[Required(ErrorMessage = "Duty alanı boş geçilemez")]
-        //public enum Duty { Writer = 1, Interpreter = 2 };
-        public Duty duty { get; set; }
+        public string Duty { get; set; }
         public DateTime? AddDate { get; set; }
         public bool IsDeleted { get; set; }
 

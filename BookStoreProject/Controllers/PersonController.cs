@@ -1,5 +1,6 @@
 ﻿using BookStoreProject.Models.ORM.Context;
 using BookStoreProject.Models.ORM.Entities;
+using BookStoreProject.Models.Types;
 using BookStoreProject.Models.VM;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -24,7 +25,7 @@ namespace BookStoreProject.Controllers
         public IActionResult Index()
         {
 
-            List<PersonVM> books = _bookcontext.People.Where(q => q.IsDeleted == false).Select(q => new PersonVM()
+            List<PersonVM> books = _bookcontext.People.Where(q => q.IsDeleted == false ).Select(q => new PersonVM()
             {
                 PersonID = q.ID,
                 Name = q.Name,
@@ -33,6 +34,7 @@ namespace BookStoreProject.Controllers
                 BirthDate = q.BirthDate,
                 AddDate = q.AddDate,
                 IsDeleted = q.IsDeleted,
+                Duty = q.Duty == Convert.ToInt32(EnumDuty.Writer) ? EnumDuty.Writer.ToString() : EnumDuty.Interpreter.ToString()
                 //duty=q.Duty.Interpreter|Duty.Writer,
             }).ToList();
 
