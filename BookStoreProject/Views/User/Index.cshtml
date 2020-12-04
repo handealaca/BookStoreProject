@@ -67,11 +67,11 @@
                                             <td>@item.BirthDate.ToString("dd.MM.yyyy")</td>
                                             <td>@item.AddDate.ToString("dd.MM.yyyy")</td>
                                             <td>
-                                                <a class="btn btn-block btn-outline-primary"
-                                                   href="/User/Comment/@item.UserID">
+                                                <a class="btn btn-outline-primary"
+                                                   href="/User/Comment/@item.UserID" role="button">
                                                     <i class="fas fa-folder"></i>Comments
-                                                </a> <a class="btn btn-block btn-outline-danger"
-                                                        href="/User/Delete/@item.UserID">
+                                                </a> <a class="btn btn btn-outline-danger"
+                                                        href="/User/Delete/@item.UserID" role="button">
                                                     <i class="fas fa-trash"></i>Delete
                                                 </a>
                                             </td>
