@@ -3,6 +3,7 @@ using BookStoreProject.Models.ORM.Entities;
 using BookStoreProject.Models.Types;
 using BookStoreProject.Models.VM;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,12 +21,10 @@ namespace BookStoreProject.Controllers
             _bookcontext = bookContext;
         }
 
-       
-
         public IActionResult Index()
         {
 
-            List<PersonVM> books = _bookcontext.People.Where(q => q.IsDeleted == false ).Select(q => new PersonVM()
+            List<PersonVM> people = _bookcontext.People.Where(q => q.IsDeleted == false).Select(q => new PersonVM()
             {
                 PersonID = q.ID,
                 Name = q.Name,
@@ -34,18 +33,42 @@ namespace BookStoreProject.Controllers
                 BirthDate = q.BirthDate,
                 AddDate = q.AddDate,
                 IsDeleted = q.IsDeleted,
+                UpdateDate = q.UpdateDate,
                 Duty = q.Duty == Convert.ToInt32(EnumDuty.Writer) ? EnumDuty.Writer.ToString() : EnumDuty.Interpreter.ToString()
-                //duty=q.Duty.Interpreter|Duty.Writer,
             }).ToList();
+        
+                return View(people);
+            
+                //duty=q.Duty.Interpreter|Duty.Writer,
+           
+                //var duties = from Duty duty in Enum.GetValues(typeof(Duty))
+                //                 select new { ID = duty, Name = duty.ToString() };
 
-            //var duties = from Duty duty in Enum.GetValues(typeof(Duty))
-            //                 select new { ID = duty, Name = duty.ToString() };
+                //ViewBag.Duties = duties;
+                
+        }
 
-            //ViewBag.Duties = duties;
+        public IActionResult Add()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Add(PersonVM model)
+        {
+            Person person = new Person();
+            person.Name = model.Name;
+            person.SurName = model.SurName;
+            person.Biography = model.Biography;
+            person.BirthDate = model.BirthDate;
+            person.UpdateDate = model.UpdateDate;
+            person.IsDeleted = model.IsDeleted;
 
+            _bookcontext.People.Add(person);
+            _bookcontext.SaveChanges();
 
+            return RedirectToAction("Add", "Person");
 
-            return View(books);
+           
         }
     }
 }
