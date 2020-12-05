@@ -10,7 +10,7 @@ namespace BookStoreProject.Models.ORM.Entities
     {
         public string Name { get; set; }
         public string Publisher { get; set; }
-        public DateTime PublishDate { get; set; }
+        public string PublishDate { get; set; }
         public string Edition { get; set; }
         public List<Comment> Comments { get; set; }
         public List<BookCategory> BookCategories { get; set; }
