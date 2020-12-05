@@ -1,8 +1,15 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Add";
     Layout = "~/Views/Admin/Shared/_AdminLayout.cshtml";
 }
+
+@model BookStoreProject.Models.VM.PersonVM
+
+<style>
+    .validation-summary-errors {
+        color: red
+    }
+</style>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -11,7 +18,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Book Add Form</h1>
+                    <h1>Person Add Form</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -38,51 +45,59 @@
                         <!-- form start -->
                         <form>
                             <div class="card-body">
+                                @Html.ValidationSummary()
                                 <div class="form-group">
-                                    <label for="PersonName">Name</label>
-                                    <input type="text" class="form-control form-control-border border-width-2" id="exampleInputName" placeholder="Enter name">
+                                    @*<label for="PersonName">Name</label>*@
+                                    @Html.LabelFor(q => q.Name)
+                                    @*<input type="text" class="form-control form-control-border border-width-2" id="exampleInputName" placeholder="Enter name">*@
+                                    @Html.TextBoxFor(q => q.Name, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter name" })
                                 </div>
                                 <div class="form-group">
-                                    <label for="PersonSurName">Surname</label>
-                                    <input type="text" class="form-control form-control-border border-width-2" id="exampleInputSurName" placeholder="Enter surname">
+                                    @Html.LabelFor(q => q.SurName)
+                                    @Html.TextBoxFor(q => q.SurName, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter surname" })
                                 </div>
+                                @*<div class="form-group">
+                                        <label for="PersonSurName">Surname</label>
+                                        <input type="text" class="form-control form-control-border border-width-2" id="exampleInputSurName" placeholder="Enter surname">
+                                    </div>*@
                                 <div class="form-group">
-                                    <label for="PersonBiography">Biography</label>
-                                    <input type="file" class="form-control form-control-border border-width-2" id="exampleInputBiography" placeholder="Enter surname">
+                                    @Html.LabelFor(q => q.Biography)
+                                    @Html.TextAreaFor(q => q.Biography, new { @class = "form-control form-control-border border-width-2", @placeholder = "Write Something" })
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputFile">File input</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="exampleInputFile">
-                                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                        </div>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">Upload</span>
-                                        </div>
+                                <div class="form-row">
+                                    <div class="form-group col-lg-6 ">
+                                        @Html.LabelFor(q => q.BirthDate)
+                                        @Html.TextBoxFor(q => q.Biography, new { @type = "date", @class = "form-control form-control-border border-width-2", @placeholder = "mm/dd/yyyy" })
+                                    </div>
+                                    <div class="form-group col-lg-6 ">
+                                        @Html.LabelFor(q => q.Duty)
+                                        
+                                        @*@Html.DropDownList(q => q.Duty, new SelectList(Enum.GetValues(typeof(Duty))), "Select Gender")*@
+            
                                     </div>
                                 </div>
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                </div>
                             </div>
-                            <!-- /.card-body -->
-
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
                             </div>
-                        </form>
                     </div>
+                    <!-- /.card-body -->
 
-
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    </form>
                 </div>
-                <!--/.col (left) -->
+
 
             </div>
-            <!-- /.row -->
-        </div><!-- /.container-fluid -->
+            <!--/.col (left) -->
+
+        </div>
+        <!-- /.row -->
+                    </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
 </div>
-<!-- /.content-wrapper -->
+    <!-- /.content-wrapper -->

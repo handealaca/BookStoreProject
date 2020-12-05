@@ -33,5 +33,11 @@ namespace BookStoreProject.Models.VM
 
     }
 
+    //public enum Duty
+    //{
+    //    Writer = 1,
+    //    Interpreter = 2
+    //}
+
 
 }
