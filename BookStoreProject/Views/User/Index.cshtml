@@ -76,8 +76,8 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <a class="btn btn-sm btn-outline-danger"
-                                                   href="/User/Delete/@item.UserID" role="button">
+                                                <a class="btn btn-sm btn-outline-danger delete"
+                                                    role="button" id=@item.UserID>
                                                     <i class="fas fa-trash"></i>Delete
                                                 </a>
                                             </td>
@@ -134,5 +134,24 @@
         //    "autoWidth": false,
         //    "responsive": true,
         //});
-    });</script>
+    });
+
+    $(document).on("click", ".delete", function () {
+        let id = $(this).attr("id");
+        $.ajax({
+            url: "/User/Delete",
+            type: "POST",
+            data: { id: id },
+            success: function (msg) {
+                console.log("Deleted");
+                $("#" + id).fadeOut();
+                //window.location.href= "/Adminblog"
+            },
+            error: function (err) {
+                console.log("Failed");
+            }
+        })
+    })
+
+</script>
 

@@ -53,5 +53,20 @@ namespace BookStoreProject.Controllers
             return View(comments);
 
         }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            User user = _bookcontext.Users.FirstOrDefault(q => q.ID == id);
+           
+                user.IsDeleted = true;
+                _bookcontext.SaveChanges();
+
+            return RedirectToAction("Index");
+
+        }
     }
 }
+
+
+
