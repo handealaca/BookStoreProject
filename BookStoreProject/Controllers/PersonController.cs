@@ -36,16 +36,16 @@ namespace BookStoreProject.Controllers
                 UpdateDate = q.UpdateDate,
                 Duty = q.Duty == Convert.ToInt32(EnumDuty.Writer) ? EnumDuty.Writer.ToString() : EnumDuty.Interpreter.ToString()
             }).ToList();
-        
-                return View(people);
-            
-                //duty=q.Duty.Interpreter|Duty.Writer,
-           
-                //var duties = from Duty duty in Enum.GetValues(typeof(Duty))
-                //                 select new { ID = duty, Name = duty.ToString() };
 
-                //ViewBag.Duties = duties;
-                
+            return View(people);
+
+            //duty=q.Duty.Interpreter|Duty.Writer,
+
+            //var duties = from Duty duty in Enum.GetValues(typeof(Duty))
+            //                 select new { ID = duty, Name = duty.ToString() };
+
+            //ViewBag.Duties = duties;
+
         }
 
         public IActionResult Add()
@@ -68,7 +68,36 @@ namespace BookStoreProject.Controllers
 
             return RedirectToAction("Add", "Person");
 
-           
         }
+                
+        public IActionResult BookDetail(int id)
+        {
+            List<BookVM> books = _bookcontext.BookPeople.Include(q => q.Book).Include(q => q.Person).Where(q => q.PersonID == id).Select(q => new BookVM()
+            {
+                BookID = q.BookID,
+                Name = q.Book.Name,
+                Publisher = q.Book.Publisher,
+                PublishDate = q.Book.PublishDate,
+                WriterName = q.Person.Name + " " + q.Person.SurName,
+
+
+            }).ToList();
+
+            return View(books);
+
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            Person person = _bookcontext.People.FirstOrDefault(x => x.ID == id);
+            person.IsDeleted = true;
+
+            _bookcontext.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+
     }
 }

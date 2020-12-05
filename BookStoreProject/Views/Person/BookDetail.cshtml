@@ -1,10 +1,12 @@
 ﻿
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "BookDetail";
     Layout = "~/Views/Admin/Shared/_AdminLayout.cshtml";
 }
 
-@model List<BookStoreProject.Models.VM.PersonVM>
+
+
+@model List<BookStoreProject.Models.VM.BookVM>
 <!-- DataTables -->
 <link rel="stylesheet" href="/Admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="/Admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
@@ -45,19 +47,15 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <div class=" table-responsive" >
+                            <div class=" table-responsive">
                                 <table id="example1" class="table table-bordered table-striped" style="text-align : center">
                                     <thead>
                                         <tr>
-                                            <th>Person ID</th>
-                                            <th>Writer/Interpreter</th>
-                                            <th>Biograpy</th>
-                                            <th>Birth Date</th>
-                                            <th>Role</th>
-                                            <th>Add Date</th>
-                                            <th>Is Deleted</th>
-                                            <th>Books</th>
-                                            <th>Action</th>
+                                            <th>Writer/Interpreter Name</th>
+                                            <th>Book Name</th>
+                                            <th>Publisher</th>
+                                            <th>Publish Date</th>
+                                       
 
                                         </tr>
                                     </thead>
@@ -65,30 +63,13 @@
                                         @foreach (var item in Model)
                                         {
                                             <tr>
-                                                <td>@item.PersonID</td>
-                                                <td>@item.Name @item.SurName</td>
-                                                <td>@item.Biography</td>
-                                                <td>@item.BirthDate.Value.ToString("dd.MM.yyyy")</td>
-                                                <td>@item.Duty</td>
-                                                <td>@item.AddDate.ToString("dd.MM.yyyy")</td>
-                                                <td>@item.IsDeleted</td>
-                                                <td>
-                                                    <a class="btn btn-sm btn-outline-bg-orange color-palette" href="/Person/BookDetail/@item.PersonID">
-                                                        <i class="fas fa-book"></i>Books
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <div style="display : flex ; justify-content : center">
-                                                        <a class="btn btn-sm btn-outline-danger delete" id="@item.PersonID">
-                                                            <i class="fas fa-trash"></i>Delete
-                                                        </a>
-                                                        <a class="btn btn-sm btn-outline-warning edit" href="/Person/Edit/@item.PersonID">
-                                                            <i class="fas fa-pencil-alt"></i>Edit
-                                                        </a>
-                                                    </div>
-
-
-                                                </td>
+                                                <td>@item.WriterName</td>
+                                                <td>@item.Name</td>
+                                                <td>@item.Publisher</td>
+                                                <td>@item.PublishDate</td>
+                                              
+                                          
+                                 
                                             </tr>
                                         }
 
@@ -149,25 +130,7 @@
         //    "autoWidth": false,
         //    "responsive": true,
         //});
-
-        $(function () {
-            $('#zero_config').DataTable();
-
-            $(document).on("click", ".delete", function () {
-                let id = $(this).attr("id");
-                $.ajax({
-                    url: "/Person/Delete",
-                    type: "POST",
-                    data: { id: id },
-                    success: function (msg) {
-                        $("#" + id).fadeOut();
-                        alert("Deleted successfully!!!");
-                    },
-                    error: function (err) {
-                        alert("Failed")
-                    }
-                })
-            });
-        });
     });</script>
+
+
 
