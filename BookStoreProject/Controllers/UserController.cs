@@ -1,4 +1,5 @@
 ﻿using BookStoreProject.Models.ORM.Context;
+using BookStoreProject.Models.ORM.Entities;
 using BookStoreProject.Models.VM;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -24,14 +25,33 @@ namespace BookStoreProject.Controllers
                 Name = q.Name,
                 SurName = q.SurName,
                 Email = q.Email,
-                Password=q.Password,
-                Comments=q.Comments,
-                AddDate=q.AddDate,
+                Password = q.Password,
+                Comments = q.Comments,
+                AddDate = q.AddDate,
+                UpdateDate = q.UpdateDate,
                 IsDeleted = q.IsDeleted,
                 BirthDate = q.BirthDate
             }).ToList();
 
             return View(users);
+        }
+
+
+        public IActionResult CommentDetail(int id)
+        {
+            List<CommentVM> comments = _bookcontext.Comments.Include(q=>q.User).Include(q=>q.Book).Where(q => q.UserID == id).Select(q => new CommentVM()
+            {
+                CommentID=q.ID,
+                UserID = q.UserID,
+                BookName = q.Book.Name,
+                Content = q.Content,
+                UserName = q.User.Name+" "+q.User.SurName,
+                AddDate = q.AddDate,
+                UpdateDate = q.UpdateDate,
+            }).ToList();
+
+            return View(comments);
+
         }
     }
 }

@@ -63,32 +63,32 @@
                                     <tbody>
                                         @foreach (var item in Model)
                                         {
-                                            <tr>
-                                                <td>@item.PersonID</td>
-                                                <td>@item.Name @item.SurName</td>
-                                                <td>@item.Biography</td>
-                                                <td>@item.BirthDate.Value.ToString("dd.MM.yyyy")</td>
-                                                <td>@item.Duty</td>
-                                                <td>@item.AddDate.ToString("dd.MM.yyyy")</td>
-                                                <td>@item.IsDeleted</td>
-                                                <td>
-                                                    <div style="flex">
-                                                        <a class="btn-outline-danger" href="/Person/Delete/@item.PersonID">
-                                                            <i class="fas fa-trash"></i>Delete
-                                                        </a> 
-                                                        <a class="btn-outline-warning" href="/Person/Edit/@item.PersonID">
-                                                            <i class="fas fa-pencil-alt"></i>Edit
-                                                        </a>
-                                                    </div>
-                                                    
-                                                       
-                                                   
-                                                        
+                                        <tr>
+                                            <td>@item.PersonID</td>
+                                            <td>@item.Name @item.SurName</td>
+                                            <td>@item.Biography</td>
+                                            <td>@item.BirthDate.Value.ToString("dd.MM.yyyy")</td>
+                                            <td>@item.Duty</td>
+                                            <td>@item.AddDate.ToString("dd.MM.yyyy")</td>
+                                            <td>@item.IsDeleted</td>
+                                            <td>
+                                                <div style="flex">
+                                                    <a class="btn-outline-danger" href="/Person/Delete/@item.PersonID">
+                                                        <i class="fas fa-trash"></i>Delete
+                                                    </a>
+                                                    <a class="btn-outline-warning" href="/Person/Edit/@item.PersonID">
+                                                        <i class="fas fa-pencil-alt"></i>Edit
+                                                    </a>
+                                                </div>
 
-                                                    
 
-                                                </td>
-                                            </tr>
+
+
+
+
+
+                                            </td>
+                                        </tr>
                                         }
 
                                     </tbody>
