@@ -31,6 +31,7 @@ namespace BookStoreProject.Models.VM
 
         public DateTime BirthDate { get; set; }
         public DateTime AddDate { get; set; }
+        public DateTime UpdateDate { get; set; }
         public bool IsDeleted { get; set; }
         public List<Comment> Comments { get; set; }
     }

@@ -4,7 +4,7 @@
     Layout = "~/Views/Admin/Shared/_AdminLayout.cshtml";
 }
 
-@model List<BookStoreProject.Models.VM.UserVM>
+@model List<BookStoreProject.Models.VM.CommentVM>
 <!-- DataTables -->
 <link rel="stylesheet" href="/Admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="/Admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
@@ -19,12 +19,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Users</h1>
+                    <h1>User Comments</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Users</li>
+                        <li class="breadcrumb-item"><a href="/User/">Users</a></li>
+                        <li class="breadcrumb-item active">Comments</li>
                     </ol>
                 </div>
             </div>
@@ -46,41 +46,25 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div class=" table-responsive">
-                                <table id="example1" class="table table-bordered table-striped"  style="text-align:center">
+                                <table id="example1" class="table table-bordered table-striped" style="text-align:center">
                                     <thead>
                                         <tr>
-                                            <th>User</th>
                                             <th>User Name</th>
-                                            <th>Email</th>
-                                            <th>BirthDate</th>
                                             <th>Add Date</th>
                                             <th>Update Date</th>
-                                            <th>Comments</th>
-                                            <th>Action</th>
+                                            <th>Book Name</th>
+                                            <th>Comment</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach (var item in Model)
                                         {
                                         <tr>
-                                            <td>@item.Name @item.SurName</td>
                                             <td>@item.UserName</td>
-                                            <td>@item.Email</td>
-                                            <td>@item.BirthDate.ToString("dd.MM.yyyy")</td>
                                             <td>@item.AddDate.ToString("dd.MM.yyyy")</td>
                                             <td>@item.UpdateDate.ToString("dd.MM.yyyy")</td>
-                                            <td>
-                                                <a class="btn btn-sm btn-outline-primary"
-                                                   href="/User/CommentDetail/@item.UserID" role="button">
-                                                    <i class="fas fa-comment"></i>Comments
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-sm btn-outline-danger delete"
-                                                    role="button" id=@item.UserID>
-                                                    <i class="fas fa-trash"></i>Delete
-                                                </a>
-                                            </td>
+                                            <td>@item.BookName</td>
+                                            <td>@item.Content</td>
                                         </tr>
                                         }
 
@@ -134,24 +118,5 @@
         //    "autoWidth": false,
         //    "responsive": true,
         //});
-    });
-
-    $(document).on("click", ".delete", function () {
-        let id = $(this).attr("id");
-        $.ajax({
-            url: "/User/Delete",
-            type: "POST",
-            data: { id: id },
-            success: function (msg) {
-                console.log("Deleted");
-                $("#" + id).fadeOut();
-                //window.location.href= "/Adminblog"
-            },
-            error: function (err) {
-                console.log("Failed");
-            }
-        })
-    })
-
-</script>
+    });</script>
 
