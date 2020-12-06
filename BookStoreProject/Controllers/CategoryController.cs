@@ -17,6 +17,7 @@ namespace BookStoreProject.Controllers
         {
             _bookcontext = bookContext;
         }
+
         public IActionResult Index()
         {
 
@@ -31,20 +32,55 @@ namespace BookStoreProject.Controllers
             return View(categories);
         }
 
+
+
+        public IActionResult Add()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult Add(CategoryVM model)
         {
-            Category category = new Category();
+            if (ModelState.IsValid)
+            {
+                Category category = new Category();
 
-            category.CategoryName = model.CategoryName;
-            category.BookCategories = model.BookCategories;
+                category.CategoryName = model.CategoryName;
 
-            _bookcontext.Categories.Add(category);
-            _bookcontext.SaveChanges();
+                _bookcontext.Categories.Add(category);
+                _bookcontext.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+
+            return View();
+
+        }
 
 
-            return Json()
-            return RedirectToAction("Add", "Person");
+        public IActionResult Edit(int id)
+        {
+            Category category = _bookcontext.Categories.FirstOrDefault(q => q.ID == id);
+
+
+            CategoryVM model = new CategoryVM();
+            model.CategoryID = category.ID;
+            model.CategoryName = category.CategoryName;
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(CategoryVM model)
+        {
+            Category category = _bookcontext.Categories.FirstOrDefault(q => q.ID == model.CategoryID);
+
+            if (ModelState.IsValid)
+            {
+                model.CategoryName = category.CategoryName;
+                _bookcontext.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
     }
 }

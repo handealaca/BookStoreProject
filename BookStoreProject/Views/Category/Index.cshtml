@@ -68,6 +68,7 @@
                                             </td>
                                             <td>
                                                 <a class="btn btn-sm btn-outline-warning edit"
+                                                    href="/Category/Edit/@item.CategoryID"
                                                    role="button" id=@item.CategoryID>
                                                     <i class="fas fa-edit"></i>Edit
                                                 </a>
@@ -130,22 +131,22 @@
         //});
     });
 
-    //$(document).on("click", ".delete", function () {
-    //    let id = $(this).attr("id");
-    //    $.ajax({
-    //        url: "/User/Delete",
-    //        type: "POST",
-    //        data: { id: id },
-    //        success: function (msg) {
-    //            console.log("Deleted");
-    //            $("#" + id).fadeOut();
-    //            //window.location.href= "/Adminblog"
-    //        },
-    //        error: function (err) {
-    //            console.log("Failed");
-    //        }
-    //    })
-    //})
+    $(document).on("click", ".delete", function () {
+        let id = $(this).attr("id");
+        $.ajax({
+            url: "/Category/Delete",
+            type: "POST",
+            data: { id: id },
+            success: function (msg) {
+                console.log("Deleted");
+                $("#" + id).fadeOut();
+                //window.location.href= "/Adminblog"
+            },
+            error: function (err) {
+                console.log("Failed");
+            }
+        })
+    })
 
 </script>
 
