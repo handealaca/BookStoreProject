@@ -82,5 +82,20 @@ namespace BookStoreProject.Controllers
             }
             return RedirectToAction("Index");
         }
+
+
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            Category category = _bookcontext.Categories.FirstOrDefault(q => q.ID == id);
+
+            category.IsDeleted = true;
+            _bookcontext.SaveChanges();
+
+            return RedirectToAction("Index");
+
+        }
+
     }
 }
