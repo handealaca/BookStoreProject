@@ -47,42 +47,36 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <div class=" table-responsive">
-                                <table id="example1" class="table table-bordered table-striped" style="text-align : center">
-                                    <thead>
+
+                            <table id="example1" class="table table-bordered table-striped" style="text-align : center">
+                                <thead>
+                                    <tr>
+                                        <th>Writer/Interpreter Name</th>
+                                        <th>Book Name</th>
+                                        <th>Publisher</th>
+                                        <th>Publish Date</th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
                                         <tr>
-                                            <th>Writer/Interpreter Name</th>
-                                            <th>Book Name</th>
-                                            <th>Publisher</th>
-                                            <th>Publish Date</th>
-                                       
+                                            <td>@item.WriterName</td>
+                                            <td>@item.Name</td>
+                                            <td>@item.Publisher</td>
+                                            <td>@item.PublishDate</td>
+
+
 
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Model)
-                                        {
-                                            <tr>
-                                                <td>@item.WriterName</td>
-                                                <td>@item.Name</td>
-                                                <td>@item.Publisher</td>
-                                                <td>@item.PublishDate</td>
-                                              
-                                          
-                                 
-                                            </tr>
-                                        }
+                                    }
 
-                                    </tbody>
+                                </tbody>
 
-                                </table>
+                            </table>
 
-
-
-
-
-
-                            </div>
 
                         </div>
                         <!-- /.card-body -->

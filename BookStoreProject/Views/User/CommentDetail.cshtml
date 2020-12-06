@@ -45,20 +45,20 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <div class=" table-responsive">
-                                <table id="example1" class="table table-bordered table-striped" style="text-align:center">
-                                    <thead>
-                                        <tr>
-                                            <th>User Name</th>
-                                            <th>Add Date</th>
-                                            <th>Update Date</th>
-                                            <th>Book Name</th>
-                                            <th>Comment</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Model)
-                                        {
+
+                            <table id="example1" class="table table-bordered table-striped" style="text-align:center">
+                                <thead>
+                                    <tr>
+                                        <th>User Name</th>
+                                        <th>Add Date</th>
+                                        <th>Update Date</th>
+                                        <th>Book Name</th>
+                                        <th>Comment</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
                                         <tr>
                                             <td>@item.UserName</td>
                                             <td>@item.AddDate.ToString("dd.MM.yyyy")</td>
@@ -66,13 +66,13 @@
                                             <td>@item.BookName</td>
                                             <td>@item.Content</td>
                                         </tr>
-                                        }
+                                    }
 
-                                    </tbody>
+                                </tbody>
 
-                                </table>
-                            </div>
+                            </table>
                         </div>
+
                         <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
