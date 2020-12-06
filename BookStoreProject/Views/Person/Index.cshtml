@@ -68,7 +68,7 @@
                                                 <td>@item.PersonID</td>
                                                 <td>@item.Name @item.SurName</td>
                                                 <td>@item.Biography</td>
-                                                <td>@item.BirthDate.Value.ToString("dd.MM.yyyy")</td>
+                                                <td>@item.BirthDate.ToString("dd.MM.yyyy")</td>
                                                 <td>@item.Duty</td>
                                                 <td>@item.AddDate.ToString("dd.MM.yyyy")</td>
                                                 <td>@item.IsDeleted</td>
@@ -90,7 +90,7 @@
 
                                                 </td>
                                             </tr>
-                                        }
+                                         }
 
                                     </tbody>
 
@@ -150,24 +150,26 @@
         //    "responsive": true,
         //});
 
-        $(function () {
-            $('#zero_config').DataTable();
+        $(document).on("click", ".delete", function () {
+            let id = $(this).attr("id");
+            $.ajax({
+                url: "/Person/Delete",
+                type: "POST",
+                data: { id: id },
+                success: function (msg) {
+                    console.log(msg);
+                    $("#" + id).fadeOut();
+                    window.location.href= "/User/"
+                    alert("Deleted successfully!!!");
+                },
+                error: function (err) {
+                    alert("Failed!");
+                }
+            })
+        })
 
-            $(document).on("click", ".delete", function () {
-                let id = $(this).attr("id");
-                $.ajax({
-                    url: "/Person/Delete",
-                    type: "POST",
-                    data: { id: id },
-                    success: function (msg) {
-                        $("#" + id).fadeOut();
-                        alert("Deleted successfully!!!");
-                    },
-                    error: function (err) {
-                        alert("Failed")
-                    }
-                })
-            });
-        });
+        
+
+       
     });</script>
 
