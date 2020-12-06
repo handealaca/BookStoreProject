@@ -45,23 +45,23 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <div class=" table-responsive">
-                                <table id="example1" class="table table-bordered table-striped"  style="text-align:center">
-                                    <thead>
-                                        <tr>
-                                            <th>User</th>
-                                            <th>User Name</th>
-                                            <th>Email</th>
-                                            <th>BirthDate</th>
-                                            <th>Add Date</th>
-                                            <th>Update Date</th>
-                                            <th>Comments</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Model)
-                                        {
+
+                            <table id="example1" class="table table-bordered table-striped" style="text-align:center">
+                                <thead>
+                                    <tr>
+                                        <th>User</th>
+                                        <th>User Name</th>
+                                        <th>Email</th>
+                                        <th>BirthDate</th>
+                                        <th>Add Date</th>
+                                        <th>Update Date</th>
+                                        <th>Comments</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
                                         <tr>
                                             <td>@item.Name @item.SurName</td>
                                             <td>@item.UserName</td>
@@ -77,17 +77,17 @@
                                             </td>
                                             <td>
                                                 <a class="btn btn-sm btn-outline-danger delete"
-                                                    role="button" id=@item.UserID>
+                                                   role="button" id=@item.UserID>
                                                     <i class="fas fa-trash"></i>Delete
                                                 </a>
                                             </td>
                                         </tr>
-                                        }
+                                    }
 
-                                    </tbody>
+                                </tbody>
 
-                                </table>
-                            </div>
+                            </table>
+
                         </div>
                         <!-- /.card-body -->
                     </div>

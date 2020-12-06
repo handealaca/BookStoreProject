@@ -17,7 +17,7 @@ namespace BookStoreProject.Models.VM
         public string Publisher { get; set; }
 
         public string WriterName { get; set; }
-        public DateTime PublishDate { get; set; }
+        public string PublishDate { get; set; }
         public string Edition { get; set; }
         public DateTime AddDate { get; set; }
         public bool IsDeleted { get; set; }

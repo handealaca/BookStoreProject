@@ -4,7 +4,7 @@
     Layout = "~/Views/Admin/Shared/_AdminLayout.cshtml";
 }
 
-@model List<BookStoreProject.Models.VM.PersonVM>
+@model List<BookStoreProject.Models.VM.CategoryVM>
 <!-- DataTables -->
 <link rel="stylesheet" href="/Admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="/Admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
@@ -19,12 +19,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>DataTables</h1>
+                    <h1>Categories</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">DataTables</li>
+                        <li class="breadcrumb-item active">Categories</li>
                     </ol>
                 </div>
             </div>
@@ -41,53 +41,40 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Person List</h3>
+                            <h3 class="card-title">Categories</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-
-                            <table id="example1" class="table table-bordered table-striped" style="text-align : center">
+                            <table id="example1" class="table table-bordered table-striped" style="text-align:center">
                                 <thead>
                                     <tr>
-                                        <th>Person ID</th>
-                                        <th>Writer/Interpreter</th>
-                                        <th>Biograpy</th>
-                                        <th>Birth Date</th>
-                                        <th>Role</th>
+                                        <th>Category Name</th>
                                         <th>Add Date</th>
-                                        <th>Is Deleted</th>
                                         <th>Books</th>
                                         <th>Action</th>
-
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
                                         <tr>
-                                            <td>@item.PersonID</td>
-                                            <td>@item.Name @item.SurName</td>
-                                            <td>@item.Biography</td>
-                                            <td>@item.BirthDate.Value.ToString("dd.MM.yyyy")</td>
-                                            <td>@item.Duty</td>
+                                            <td>@item.CategoryName</td>
                                             <td>@item.AddDate.ToString("dd.MM.yyyy")</td>
-                                            <td>@item.IsDeleted</td>
                                             <td>
-                                                <a class="btn btn-sm btn-outline-bg-orange color-palette" href="/Person/BookDetail/@item.PersonID">
+                                                <a class="btn btn-sm btn-outline-primary"
+                                                   href="/Category/CategoryDetail/@item.CategoryID" role="button">
                                                     <i class="fas fa-book"></i>Books
                                                 </a>
                                             </td>
                                             <td>
-                                                <div style="display : flex ; justify-content : center">
-                                                    <a class="btn btn-sm btn-outline-danger delete" id="@item.PersonID">
-                                                        <i class="fas fa-trash"></i>Delete
-                                                    </a>
-                                                    <a class="btn btn-sm btn-outline-warning edit" href="/Person/Edit/@item.PersonID">
-                                                        <i class="fas fa-pencil-alt"></i>Edit
-                                                    </a>
-                                                </div>
-
-
+                                                <a class="btn btn-sm btn-outline-warning edit"
+                                                   role="button" id=@item.CategoryID>
+                                                    <i class="fas fa-edit"></i>Edit
+                                                </a>
+                                                <a class="btn btn-sm btn-outline-danger delete"
+                                                   role="button" id=@item.CategoryID>
+                                                    <i class="fas fa-trash"></i>Delete
+                                                </a>
                                             </td>
                                         </tr>
                                     }
@@ -95,8 +82,6 @@
                                 </tbody>
 
                             </table>
-
-
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -143,25 +128,24 @@
         //    "autoWidth": false,
         //    "responsive": true,
         //});
+    });
 
-        $(function () {
-            $('#zero_config').DataTable();
+    //$(document).on("click", ".delete", function () {
+    //    let id = $(this).attr("id");
+    //    $.ajax({
+    //        url: "/User/Delete",
+    //        type: "POST",
+    //        data: { id: id },
+    //        success: function (msg) {
+    //            console.log("Deleted");
+    //            $("#" + id).fadeOut();
+    //            //window.location.href= "/Adminblog"
+    //        },
+    //        error: function (err) {
+    //            console.log("Failed");
+    //        }
+    //    })
+    //})
 
-            $(document).on("click", ".delete", function () {
-                let id = $(this).attr("id");
-                $.ajax({
-                    url: "/Person/Delete",
-                    type: "POST",
-                    data: { id: id },
-                    success: function (msg) {
-                        $("#" + id).fadeOut();
-                        alert("Deleted successfully!!!");
-                    },
-                    error: function (err) {
-                        alert("Failed")
-                    }
-                })
-            });
-        });
-    });</script>
+</script>
 
