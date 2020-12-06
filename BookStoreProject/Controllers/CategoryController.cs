@@ -77,7 +77,7 @@ namespace BookStoreProject.Controllers
 
             if (ModelState.IsValid)
             {
-                model.CategoryName = category.CategoryName;
+                category.CategoryName = model.CategoryName;
                 _bookcontext.SaveChanges();
             }
             return RedirectToAction("Index");
