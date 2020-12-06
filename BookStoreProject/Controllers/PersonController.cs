@@ -98,6 +98,43 @@ namespace BookStoreProject.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult Edit(int id)
+        {
+            Person person = _bookcontext.People.FirstOrDefault(x => x.ID == id);
+
+            PersonVM model = new PersonVM();
+            model.PersonID = person.ID;
+            model.Name = person.Name;
+            model.SurName = person.SurName;
+            model.BirthDate = person.BirthDate;
+            model.Biography = person.Biography;
+            model.Duty = person.Duty.ToString();
+            model.UpdateDate = person.UpdateDate;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(PersonVM model)
+        {
+            Person person = _bookcontext.People.FirstOrDefault(q => q.ID == model.PersonID);
+
+            if (ModelState.IsValid)
+            {
+                //person.ID = model.PersonID;
+                person.Name = model.Name;
+                person.SurName = model.SurName;
+                person.Biography = model.Biography;
+                person.BirthDate = model.BirthDate;
+                person.Duty = Convert.ToInt32(model.Duty);
+                
+            }
+                _bookcontext.SaveChanges();  
+                return RedirectToAction("Index", "Person");
+           
+          
+        }
+
 
     }
 }

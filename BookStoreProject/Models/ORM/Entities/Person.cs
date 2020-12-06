@@ -11,7 +11,7 @@ namespace BookStoreProject.Models.ORM.Entities
         public string Name { get; set; }
         public string SurName { get; set; }
         public string Biography { get; set; }
-        public DateTime? BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }
 
         public List<Book> Books { get; set; }
 

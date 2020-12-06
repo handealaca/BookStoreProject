@@ -1,0 +1,35 @@
+﻿
+@model BookStoreProject.Models.VM.PersonVM
+
+
+    <div class="card-body">
+        @Html.ValidationSummary()
+        <div class="form-group">
+            @Html.LabelFor(q => q.Name)
+           
+            @Html.TextBoxFor(q => q.Name, new { @class = "form-control form-control-border border-width-2",  @placeholder = "Enter name" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(q => q.SurName)
+            @Html.TextBoxFor(q => q.SurName, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter surname" })
+        </div>
+      
+        <div class="form-group">
+            @Html.LabelFor(q => q.Biography)
+            @Html.TextAreaFor(q => q.Biography, new { @class = "form-control form-control-border border-width-2", @placeholder = "Write Something" })
+        </div>
+        <div class="form-row">
+            <div class="form-group col-lg-6 ">
+                @Html.LabelFor(q => q.BirthDate)
+                @Html.TextBoxFor(q => q.BirthDate, new { @type = "date", @name = "birthdate", @class = "form-control form-control-border border-width-2", @placeholder = "mm/dd/yyyy" })
+            </div>
+            <div class="form-group col-lg-6 ">
+                @Html.LabelFor(q => q.Duty)
+
+                @*@Html.DropDownList(q => q.Duty, new SelectList(Enum.GetValues(typeof(Duty))), "Select Gender")*@
+
+            </div>
+        </div>
+    </div>
+
+
