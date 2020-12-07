@@ -9,8 +9,8 @@ namespace BookStoreProject.Models.Types
     public enum EnumDuty
     { 
 
-        Writer = 1,
-        Interpreter = 2 
+        Writer = 0,
+        Interpreter = 1 
     
     }
 
