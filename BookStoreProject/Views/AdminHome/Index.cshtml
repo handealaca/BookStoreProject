@@ -5,7 +5,6 @@
 }
 
 @model BookStoreProject.Models.VM.AdminPanelVM
-
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->
 <script src="/Admin/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
@@ -42,11 +41,6 @@
 
 
     <!-- Main content -->
-
-
-
-
-
 
 
 
@@ -138,31 +132,78 @@
 
                                     @foreach (var item in Model.Books)
                                     {
-                                    <tr>
-                                        <td>@item.Name</td>
-                                        @*<td>@item.BookPersons</td>*@
-                                        <td>@item.Publisher</td>
-                                        <td>@item.PublishDate</td>
-                                    </tr>
+                                        <tr>
+                                            <td>@item.Name</td>
+                                            @*<td>@item.BookPersons</td>*@
+                                            <td>@item.Publisher</td>
+                                            <td>@item.PublishDate</td>
+                                        </tr>
                                     }
 
-                                   
+
                                 </tbody>
                             </table>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
-                            <a class="btn btn-sm btn-outline-primary float-right"
+                            <a class="btn btn-sm float-right" style="color: teal"
                                role="button" href="/Book/">
                                 <i class="fas fa-hand-point-right"></i>Show More
                             </a>
-                            @*<ul class="pagination pagination-sm m-0 float-right">
-            <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-        </ul>*@
+
+                        </div>
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+                <div class="col-md-6">
+                    <div class="card card-yellow">
+                        <div class="card-header">
+                            <h3 class="card-title">Writer / Interpreter</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Writer / Interpreter Name</th>
+                                        @*<th>Books</th>*@
+                                        <th>Birth Date</th>
+                                        <th>Duty</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @for (int i = 0; i < 5; i++)
+                                    {
+                                        <tr>
+                                            <td>@Model.People[i].Name @Model.People[i].SurName</td>
+
+                                            <td>@Model.People[i].BirthDate.ToString("dd.MM.yyyy")</td>
+                                            @if (Model.People[i].Duty == 0)
+                                            {
+                                                <td>Writer</td>
+                                            }
+                                            else
+                                            {
+                                                <td>Interpreter</td>
+                                            }
+
+                                        </tr>
+                                    }
+                                
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer clearfix">
+                            <a class="btn btn-sm  float-right" style="color: yellow"
+                               role="button" href="/Person/">
+                                <i class="fas fa-hand-point-right"></i>Show More
+                            </a>
+
                         </div>
                     </div>
                     <!-- /.card -->

@@ -21,10 +21,14 @@ namespace BookStoreProject.Models.VM
         public string PublishDate { get; set; }
         public string Edition { get; set; }
         public DateTime AddDate { get; set; }
+
+        public DateTime UpdateDate { get; set; }
         public bool IsDeleted { get; set; }
         public List<Comment> Comments { get; set; }
         public List<BookPerson> BookPersons { get; set; }
         public List<BookCategory> BookCategories { get; set; }
         public List<UserPoint> UserPoints { get; set; }
+
+        public List<Category> categories { get; set; }
     }
 }
