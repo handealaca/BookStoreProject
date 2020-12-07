@@ -4,7 +4,7 @@
     Layout = "~/Views/Admin/Shared/_AdminLayout.cshtml";
 }
 
-
+@model List<BookStoreProject.Models.VM.BookVM>
 <!-- DataTables -->
 <link rel="stylesheet" href="/Admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="/Admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
@@ -19,12 +19,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>DataTables</h1>
+                    <h1>Books</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">DataTables</li>
+                        <li class="breadcrumb-item active">Books</li>
                     </ol>
                 </div>
             </div>
@@ -41,28 +41,78 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">DataTable with default features</h3>
+                            <h3 class="card-title">Books</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table id="example1" class="table table-bordered table-striped">
+                            <table id="example1" class="table table-bordered table-striped" style="text-align:center">
                                 <thead>
                                     <tr>
-                                        <th>Rendering engine</th>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        <th>CSS grade</th>
+                                        <th>ID</th>
+                                        <th>Book Name</th>
+                                        <th>Writer/Interpreter</th>
+                                        @*<th>Interpreter</th>*@
+                                        <th>Publisher</th>
+                                        <th>Publish Date</th>
+                                        <th>Edition</th>
+                                        <th>Category</th>
+                                        <th>Add Date</th>
+                                        <th>Comments</th>
+                                        <th>User Points</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach (var item in Model)
+                                    {
                                     <tr>
-                                        <td>Gecko</td>
-                                        <td>Camino 1.0</td>
-                                        <td>OSX.2+</td>
-                                        <td>1.8</td>
-                                        <td>A</td>
+                                        <td>@item.BookID</td>
+                                        <td>@item.Name</td>
+                                        <td>
+                                           @item.BookPersons
+                                        </td>
+                                        @*<td>@item.BookPersons.Where(q => q.Book.Name == item.Name).ToList()</td>*@
+                                        <td>@item.Publisher</td>
+                                        <td>@item.PublishDate</td>
+                                        <td>@item.Edition</td>
+                                       
+                                        <td>
+                                            @foreach (var data1 in item.BookCategories)
+                                            {
+                                                @data1.
+                                            }
+                                        </td>
+                                        
+
+                                        <td>@item.AddDate.ToString("dd.MM.yyyy")</td>
+
+                                        <td>
+                                            <a class="btn btn-sm btn-outline-primary"
+                                               href="/Book/CommentDetail/@item.BookID" role="button">
+                                                <i class="fas fa-comment"></i>Comments
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-sm btn-outline-primary"
+                                               href="/Book/UserPoint/@item.BookID" role="button">
+                                                <i class="fas fa-vote-yea"></i>User Points
+                                            </a>
+                                        </td>
+
+                                        <td>
+                                            <a class="btn btn-sm btn-outline-warning edit"
+                                               href="/Book/Edit/@item.BookID"
+                                               role="button" id=@item.BookID>
+                                                <i class="fas fa-edit"></i>Edit
+                                            </a>
+                                            <a class="btn btn-sm btn-outline-danger delete"
+                                               role="button" id=@item.BookID>
+                                                <i class="fas fa-trash"></i>Delete
+                                            </a>
+                                        </td>
                                     </tr>
+                                    }
+
                                 </tbody>
 
                             </table>
@@ -79,7 +129,6 @@
     </section>
     <!-- /.content -->
 </div>
-
 
 <!-- DataTables  & Plugins -->
 <script src="/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
@@ -100,7 +149,7 @@
 <script>
     $(function () {
         $("#example1").DataTable({
-            "responsive": true, "lengthChange": true, "autoWidth": false,
+            "responsive": true, "lengthChange": true, "autoWidth": true,
             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         //$('#example2').DataTable({

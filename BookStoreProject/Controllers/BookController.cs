@@ -2,6 +2,7 @@
 using BookStoreProject.Models.ORM.Entities;
 using BookStoreProject.Models.VM;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,11 +23,15 @@ namespace BookStoreProject.Controllers
             {
                 BookID = q.ID,
                 Name  = q.Name,
+                BookPersons=q.BookPersons,
                 Publisher = q.Publisher,
                 PublishDate = q.PublishDate,
                 AddDate = q.AddDate,
                 Edition = q.Edition,
-                IsDeleted = q.IsDeleted
+                IsDeleted = q.IsDeleted,
+                Comments=q.Comments,
+                BookCategories=q.BookCategories,
+                UserPoints=q.UserPoints
                
             }).ToList();
             return View(books);

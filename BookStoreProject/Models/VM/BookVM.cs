@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookStoreProject.Models.ORM.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -21,5 +22,9 @@ namespace BookStoreProject.Models.VM
         public string Edition { get; set; }
         public DateTime AddDate { get; set; }
         public bool IsDeleted { get; set; }
+        public List<Comment> Comments { get; set; }
+        public List<BookPerson> BookPersons { get; set; }
+        public List<BookCategory> BookCategories { get; set; }
+        public List<UserPoint> UserPoints { get; set; }
     }
 }
