@@ -15,5 +15,7 @@ namespace BookStoreProject.Models.ORM.Entities
         public int PersonID { get; set; }
         [ForeignKey("PersonID")]
         public Person Person { get; set; }
+
+        //public int DutyID { get; set; }
     }
 }

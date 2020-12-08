@@ -30,7 +30,7 @@ namespace BookStoreProject.Controllers
                 Edition = q.Edition,
                 IsDeleted = q.IsDeleted,
                 Comments=q.Comments,
-                bookCategories=q.BookCategories.ToList(),
+                bookCategories=q.BookCategories,
                 UserPoints=q.UserPoints
                
             }).ToList();
@@ -95,7 +95,7 @@ namespace BookStoreProject.Controllers
 
         public IActionResult Edit(int id)
         {
-            Book book = _bookcontext.Books.FirstOrDefault(q => q.ID == id).;
+            Book book = _bookcontext.Books.Include(x => x.BookCategories).Include(x => x.BookPersons).FirstOrDefault(q => q.ID == id);
 
             BookVM model = new BookVM();
             model.BookID = book.ID;

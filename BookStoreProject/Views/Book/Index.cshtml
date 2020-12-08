@@ -80,14 +80,14 @@
                                         <td>@item.PublishDate</td>
                                         <td>@item.Edition</td>
                                        
-                                        @*<td>
-                                            @foreach (var data1 in item.bookCategories.Select(q=>q.Category))
+                                        <td>
+                                            @foreach (var data1 in item.bookCategories)
                                             {
                                             
-                                            <p>@data1.CategoryName</p>
+                                            <p>@data1.Category.CategoryName</p>
                                            
                                             }
-                                        </td>*@
+                                        </td>
                                         
 
                                         <td>@item.AddDate.ToString("dd.MM.yyyy")</td>
