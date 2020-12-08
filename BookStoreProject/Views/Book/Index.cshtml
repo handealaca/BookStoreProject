@@ -69,17 +69,23 @@
                                         <td>@item.BookID</td>
                                         <td>@item.Name</td>
                                         <td>
-                                           @item.BookPersons
+                                            @foreach (var data in item.people)
+                                            {
+                                            <p>@data.Name @data.SurName</p>
+                                            }
+
                                         </td>
-                                        @*<td>@item.BookPersons.Where(q => q.Book.Name == item.Name).ToList()</td>*@
+                                       
                                         <td>@item.Publisher</td>
                                         <td>@item.PublishDate</td>
                                         <td>@item.Edition</td>
                                        
                                         @*<td>
-                                            @foreach (var data1 in item.categories)
+                                            @foreach (var data1 in item.bookCategories.Select(q=>q.Category))
                                             {
-                                                @data1.CategoryName
+                                            
+                                            <p>@data1.CategoryName</p>
+                                           
                                             }
                                         </td>*@
                                         
@@ -161,8 +167,7 @@
         //    "autoWidth": false,
         //    "responsive": true,
         //});
-    });
-</script>
+    });</script>
 
 
 

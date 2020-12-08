@@ -179,7 +179,7 @@
                                         <tr>
                                             <td>@Model.People[i].Name @Model.People[i].SurName</td>
 
-                                            <td>@Model.People[i].BirthDate.ToString("dd.MM.yyyy")</td>
+                                            <td>@Model.People[i].BirthDate.Value.ToString("dd.MM.yyyy")</td>
                                             @if (Model.People[i].Duty == 0)
                                             {
                                                 <td>Writer</td>
