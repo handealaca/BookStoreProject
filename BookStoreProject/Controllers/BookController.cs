@@ -38,10 +38,12 @@ namespace BookStoreProject.Controllers
             //ViewBag.kategorikitap = _bookcontext.BookCategories.Include(q => q.Category).ToList();
             return View(books);
         }
+       
         public IActionResult Add()
         {
             BookVM model = new BookVM();
             model.categories = _bookcontext.Categories.ToList();
+            
             return View(model);
         }
 

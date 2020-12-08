@@ -55,7 +55,7 @@
                                         <th>Publisher</th>
                                         <th>Publish Date</th>
                                         <th>Edition</th>
-                                        <th>Category</th>
+                                        @*<th>Category</th>*@
                                         <th>Add Date</th>
                                         <th>Comments</th>
                                         <th>User Points</th>
@@ -77,9 +77,9 @@
                                         <td>@item.Edition</td>
                                        
                                         @*<td>
-                                            @foreach (var data1 in item.BookCategories)
+                                            @foreach (var data1 in item.categories)
                                             {
-                                                @data1
+                                                @data1.CategoryName
                                             }
                                         </td>*@
                                         
@@ -161,7 +161,8 @@
         //    "autoWidth": false,
         //    "responsive": true,
         //});
-    });</script>
+    });
+</script>
 
 
 
