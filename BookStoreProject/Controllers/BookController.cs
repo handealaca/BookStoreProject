@@ -92,6 +92,23 @@ namespace BookStoreProject.Controllers
 
         }
 
-    
+
+        public IActionResult Edit(int id)
+        {
+            Book book = _bookcontext.Books.FirstOrDefault(q => q.ID == id).;
+
+            BookVM model = new BookVM();
+            model.BookID = book.ID;
+            model.Name = book.Name;
+            model.Publisher = book.Publisher;
+            model.PublishDate = book.PublishDate;
+            model.Edition = book.Edition;
+            model.categories = book.BookCategories.Select(q=>q.Category).ToList();
+            model.people = book.BookPersons.Select(q => q.Person).ToList();
+
+            return View(model);
+
+        }
+
     }
 }
