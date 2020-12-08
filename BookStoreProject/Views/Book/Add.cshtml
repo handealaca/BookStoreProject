@@ -89,35 +89,23 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-
-
-
-
                         <form action="/Book/Add" method="post">
                             <div class="card-body">
                                 <div class="form-group">
                                     @Html.LabelFor(q => q.Name)
-                                    @Html.TextBoxFor(q => q.Name, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter name" })
+                                    @Html.TextBoxFor(q => q.Name, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Book Name" })
                                 </div>
                                 <div class="form-group">
                                     @Html.LabelFor(q => q.Publisher)
-                                    @Html.TextBoxFor(q => q.Publisher, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter publisher" })
-                                </div>
-                                <div class="form-group">
-                                    @Html.LabelFor(q => q.AddDate)
-                                    @Html.TextBoxFor(q => q.AddDate, new { @type = "date", @name = "adddate", @class = "form-control form-control-border border-width-2", @placeholder = "mm/dd/yyyy" })
-                                </div>
-                                <div class="form-group">
-                                    @Html.LabelFor(q => q.UpdateDate)
-                                    @Html.TextBoxFor(q => q.UpdateDate, new { @type = "date", @name = "updatedate", @class = "form-control form-control-border border-width-2", @placeholder = "mm/dd/yyyy" })
-                                </div>
-                                <div class="form-group">
-                                    @Html.LabelFor(q => q.WriterName)
-                                    @Html.TextBoxFor(q => q.WriterName, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter name" })
+                                    @Html.TextBoxFor(q => q.Publisher, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Publisher" })
                                 </div>
                                 <div class="form-group">
                                     @Html.LabelFor(q => q.PublishDate)
-                                    @Html.TextBoxFor(q => q.PublishDate, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter name" })
+                                    @Html.TextBoxFor(q => q.PublishDate, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Publish Date" })
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(q => q.Edition)
+                                    @Html.TextBoxFor(q => q.Edition, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Edition" })
                                 </div>
 
                                 @*<div class="form-group">
@@ -140,22 +128,26 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Multiple</label>
-                                        <select class="select2" name="catarray" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
+                                        <select class="select2" name="catarray" multiple="multiple" data-placeholder="Select a Category" style="width: 100%;">
                                             @foreach (var item in Model.categories)
                                             {
-                                                <option  value="@item.ID">@item.CategoryName</option>
+                                                <option value="@item.ID">@item.CategoryName</option>
                                             }
                                         </select>
                                     </div>
-
-
                                     <!-- /.card-body -->
-
-
-
-
-
-
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Multiple</label>
+                                        <select class="select2" name="personarray" multiple="multiple" data-placeholder="Select a Writer/Interpreter" style="width: 100%;">
+                                            @foreach (var item in Model.people)
+                                            {
+                                                <option value="@item.ID">@item.Name @item.SurName</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <!-- /.card-body -->
                                 </div>
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Submit</button>

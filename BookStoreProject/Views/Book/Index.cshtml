@@ -55,7 +55,7 @@
                                         <th>Publisher</th>
                                         <th>Publish Date</th>
                                         <th>Edition</th>
-                                        <th>Category</th>
+                                        @*<th>Category</th>*@
                                         <th>Add Date</th>
                                         <th>Comments</th>
                                         <th>User Points</th>
@@ -69,17 +69,23 @@
                                         <td>@item.BookID</td>
                                         <td>@item.Name</td>
                                         <td>
-                                           @item.BookPersons
+                                            @foreach (var data in item.people)
+                                            {
+                                            <p>@data.Name @data.SurName</p>
+                                            }
+
                                         </td>
-                                        @*<td>@item.BookPersons.Where(q => q.Book.Name == item.Name).ToList()</td>*@
+                                       
                                         <td>@item.Publisher</td>
                                         <td>@item.PublishDate</td>
                                         <td>@item.Edition</td>
                                        
                                         @*<td>
-                                            @foreach (var data1 in item.BookCategories)
+                                            @foreach (var data1 in item.bookCategories.Select(q=>q.Category))
                                             {
-                                                @data1
+                                            
+                                            <p>@data1.CategoryName</p>
+                                           
                                             }
                                         </td>*@
                                         

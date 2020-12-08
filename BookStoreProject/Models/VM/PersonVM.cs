@@ -21,13 +21,13 @@ namespace BookStoreProject.Models.VM
         public string SurName { get; set; }
 
         public string Biography { get; set; }
-        public DateTime BirthDate { get; set; } 
+        public DateTime? BirthDate { get; set; } 
 
         public string Duty { get; set; }
         public DateTime AddDate { get; set; } 
         public bool IsDeleted { get; set; }
         //public List<Book> Books { get; set; }
-        public DateTime UpdateDate { get; set; } 
+        public DateTime UpdateDate { get; set; } = DateTime.Now;
 
 
 

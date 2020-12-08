@@ -9,7 +9,7 @@ namespace BookStoreProject.Models.VM
     {
         public int CommentID { get; set; }
         public DateTime AddDate { get; set; }
-        public DateTime UpdateDate { get; set; }
+        public DateTime UpdateDate { get; set; } = DateTime.Now;
         public int UserID { get; set; }
         public string Content { get; set; }
         public string UserName { get; set; }

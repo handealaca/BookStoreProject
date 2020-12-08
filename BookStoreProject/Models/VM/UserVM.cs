@@ -29,9 +29,9 @@ namespace BookStoreProject.Models.VM
         [RegularExpression("^((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])|(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^a-zA-Z0-9]).{8,}$", ErrorMessage = "Passwords must be at least 8 characters and contain at 3 or 4 of the following: upper case (A-Z), lower case (a-z), number (0-9) and special character (eg. !@#$%^&*)")]
         public string ConfirmPassword { get; set; }
 
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
         public DateTime AddDate { get; set; }
-        public DateTime UpdateDate { get; set; }
+        public DateTime UpdateDate { get; set; } = DateTime.Now;
         public bool IsDeleted { get; set; }
         public List<Comment> Comments { get; set; }
     }

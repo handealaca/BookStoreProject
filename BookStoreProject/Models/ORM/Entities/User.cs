@@ -12,7 +12,7 @@ namespace BookStoreProject.Models.ORM.Entities
         public string SurName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
         public List<Comment> Comments { get; set; }
         public List<UserPoint> UserPoints { get; set; }
 

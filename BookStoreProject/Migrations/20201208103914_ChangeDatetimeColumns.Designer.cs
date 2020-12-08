@@ -4,14 +4,16 @@ using BookStoreProject.Models.ORM.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookStoreProject.Migrations
 {
     [DbContext(typeof(BookContext))]
-    partial class BookContextModelSnapshot : ModelSnapshot
+    [Migration("20201208103914_ChangeDatetimeColumns")]
+    partial class ChangeDatetimeColumns
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,7 +28,7 @@ namespace BookStoreProject.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<DateTime>("AddDate")
+                    b.Property<DateTime?>("AddDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Edition")
@@ -47,7 +49,7 @@ namespace BookStoreProject.Migrations
                     b.Property<string>("Publisher")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("ID");
@@ -64,7 +66,7 @@ namespace BookStoreProject.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<DateTime>("AddDate")
+                    b.Property<DateTime?>("AddDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("BookID")
@@ -76,7 +78,7 @@ namespace BookStoreProject.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("ID");
@@ -95,7 +97,7 @@ namespace BookStoreProject.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<DateTime>("AddDate")
+                    b.Property<DateTime?>("AddDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("BookID")
@@ -107,7 +109,7 @@ namespace BookStoreProject.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("ID");
@@ -126,7 +128,7 @@ namespace BookStoreProject.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<DateTime>("AddDate")
+                    b.Property<DateTime?>("AddDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("BookID")
@@ -138,7 +140,7 @@ namespace BookStoreProject.Migrations
                     b.Property<int>("PersonID")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("ID");
@@ -157,7 +159,7 @@ namespace BookStoreProject.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<DateTime>("AddDate")
+                    b.Property<DateTime?>("AddDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("CategoryName")
@@ -166,7 +168,7 @@ namespace BookStoreProject.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("ID");
@@ -181,7 +183,7 @@ namespace BookStoreProject.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<DateTime>("AddDate")
+                    b.Property<DateTime?>("AddDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("BookID")
@@ -193,7 +195,7 @@ namespace BookStoreProject.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("UserID")
@@ -215,7 +217,7 @@ namespace BookStoreProject.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<DateTime>("AddDate")
+                    b.Property<DateTime?>("AddDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
@@ -227,7 +229,7 @@ namespace BookStoreProject.Migrations
                     b.Property<int>("TopGenreID")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("ID");
@@ -242,7 +244,7 @@ namespace BookStoreProject.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<DateTime>("AddDate")
+                    b.Property<DateTime?>("AddDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Biography")
@@ -263,7 +265,7 @@ namespace BookStoreProject.Migrations
                     b.Property<string>("SurName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("ID");
@@ -278,7 +280,7 @@ namespace BookStoreProject.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<DateTime>("AddDate")
+                    b.Property<DateTime?>("AddDate")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("BirthDate")
@@ -299,7 +301,7 @@ namespace BookStoreProject.Migrations
                     b.Property<string>("SurName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("ID");
@@ -314,7 +316,7 @@ namespace BookStoreProject.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<DateTime>("AddDate")
+                    b.Property<DateTime?>("AddDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("BookID")
@@ -323,7 +325,7 @@ namespace BookStoreProject.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("UserID")
