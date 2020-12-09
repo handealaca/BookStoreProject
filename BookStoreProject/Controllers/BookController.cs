@@ -70,7 +70,7 @@ namespace BookStoreProject.Controllers
             _bookcontext.SaveChanges();
 
             int BookID = book.ID;
-            model.categories = _bookcontext.Categories.ToList();
+            model.categories = _bookcontext.Categories.Where(q => q.IsDeleted == false).ToList();
             model.people = _bookcontext.People.ToList();
 
             foreach (var item in catarray)
