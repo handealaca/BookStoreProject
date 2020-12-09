@@ -29,5 +29,10 @@ namespace BookStoreProject.Models.VM
         public List<UserPoint> UserPoints { get; set; }
         public List<Person> people { get; set; }
         public List<Category> categories { get; set; }
+
+        public List<int> DutyID { get; set; }
+
+        public List<Person> writers { get; set; }
+        public List<Person> interpreters { get; set; }
     }
 }

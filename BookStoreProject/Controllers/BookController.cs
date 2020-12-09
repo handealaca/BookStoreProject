@@ -1,5 +1,6 @@
 ﻿using BookStoreProject.Models.ORM.Context;
 using BookStoreProject.Models.ORM.Entities;
+using BookStoreProject.Models.Types;
 using BookStoreProject.Models.VM;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,20 +20,26 @@ namespace BookStoreProject.Controllers
         }
         public IActionResult Index()
         {
-            List<BookVM> books = _bookcontext.Books.Where(q => q.IsDeleted == false).Include(q=>q.BookCategories).Include(q=>q.BookPersons).Select(q => new BookVM()
+
+            //var data = _bookcontext.Books.Where(q => q.IsDeleted == false).Include(q => q.BookCategories).ThenInclude(BookCategories => BookCategories.Category).Include(q => q.BookPersons).ToList();
+
+            List<BookVM> books = _bookcontext.Books.Where(q => q.IsDeleted == false).Include(q => q.BookCategories).ThenInclude(BookCategories => BookCategories.Category).Include(q => q.BookPersons).Select(q => new BookVM()
             {
                 BookID = q.ID,
-                Name  = q.Name,
-                people=q.BookPersons.Select(q => q.Person).ToList(),
+                Name = q.Name,
+                //people = q.BookPersons.Select(q => q.Person).ToList(),
+                writers = q.BookPersons.Where(q => q.DutyID == 0).Select(q => q.Person).ToList(),
+                interpreters = q.BookPersons.Where(q => q.DutyID == 1).Select(q => q.Person).ToList(),
                 Publisher = q.Publisher,
                 PublishDate = q.PublishDate,
                 AddDate = q.AddDate,
                 Edition = q.Edition,
                 IsDeleted = q.IsDeleted,
-                Comments=q.Comments,
+                Comments = q.Comments,
                 bookCategories=q.BookCategories,
-                UserPoints=q.UserPoints
-               
+                //categories = q.BookCategories.Select(q => q.Category).ToList(),
+                UserPoints = q.UserPoints
+
             }).ToList();
 
             //ViewBag.kategorikitap = _bookcontext.BookCategories.Include(q => q.Category).ToList();
@@ -47,7 +54,7 @@ namespace BookStoreProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(BookVM model,int[] catarray,int[] personarray)
+        public IActionResult Add(BookVM model,int[] catarray,int[] writerarray,int[] ?interparray)
         {
 
             Book book = new Book();
@@ -75,20 +82,46 @@ namespace BookStoreProject.Controllers
                 _bookcontext.BookCategories.Add(bookCategory);
                 
             }
-            foreach (var item in personarray)
+            foreach (var item in writerarray)
             {
                 BookPerson bookperson = new BookPerson();
                 bookperson.PersonID = item;
                 bookperson.BookID = BookID;
+                bookperson.DutyID = 0;
+
+
+                _bookcontext.BookPeople.Add(bookperson);
+
+            }
+            foreach (var item in interparray)
+            {
+                BookPerson bookperson = new BookPerson();
+                bookperson.PersonID = item;
+                bookperson.BookID = BookID;
+                bookperson.DutyID = 1;
+
 
                 _bookcontext.BookPeople.Add(bookperson);
 
             }
 
+
+            //foreach (var item in personarray)
+            //{
+            //    BookPerson bookperson = new BookPerson();
+            //    bookperson.PersonID = item;
+            //    bookperson.BookID = BookID;
+
+
+            //    _bookcontext.BookPeople.Add(bookperson);
+
+            //}
+
             _bookcontext.SaveChanges();
 
 
-            return RedirectToAction("Index", "Book");
+            //return RedirectToAction("Index", "Book");
+            return View();
 
         }
 

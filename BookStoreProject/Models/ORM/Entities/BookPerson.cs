@@ -16,6 +16,6 @@ namespace BookStoreProject.Models.ORM.Entities
         [ForeignKey("PersonID")]
         public Person Person { get; set; }
 
-        //public int DutyID { get; set; }
+        public int DutyID { get; set; }
     }
 }

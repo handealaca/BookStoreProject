@@ -50,7 +50,9 @@ namespace BookStoreProject.Controllers
 
         public IActionResult Add()
         {
-            return View();
+            PersonVM model = new PersonVM();
+            //List<EnumDuty> = _bookcontext.People.ToList();
+                return View();
         }
         [HttpPost]
         public IActionResult Add(PersonVM model)
@@ -67,7 +69,6 @@ namespace BookStoreProject.Controllers
             _bookcontext.SaveChanges();
 
             return RedirectToAction("Add", "Person");
-
         }
                 
         public IActionResult BookDetail(int id)

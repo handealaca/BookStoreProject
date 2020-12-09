@@ -130,7 +130,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Category</label>
-                                        <select class="select2" name="catarray" multiple="multiple" data-placeholder="Select a Category" style="width: 100%;">
+                                        <select class="select2 form-control-border border-width-2" name="catarray" multiple="multiple" data-placeholder="Select a Category" style="width: 100%;">
                                             @foreach (var item in Model.categories)
                                             {
                                                 <option value="@item.ID">@item.CategoryName</option>
@@ -142,7 +142,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Writer/Interpreter</label>
-                                        <select class="select2" name="personarray" multiple="multiple" data-placeholder="Select a Writer/Interpreter" style="width: 100%;">
+                                        <select class="select2 form-control-border border-width-2" name="personarray" multiple="multiple" data-placeholder="Select a Writer/Interpreter" style="width: 100%;">
                                             @foreach (var item in Model.people)
                                             {
                                                 <option value="@item.ID">@item.Name @item.SurName</option>

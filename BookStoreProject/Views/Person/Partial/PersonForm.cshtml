@@ -2,34 +2,59 @@
 @model BookStoreProject.Models.VM.PersonVM
 
 
-    <div class="card-body">
-        @Html.ValidationSummary()
-        <div class="form-group">
-            @Html.LabelFor(q => q.Name)
-           
-            @Html.TextBoxFor(q => q.Name, new { @class = "form-control form-control-border border-width-2",  @placeholder = "Enter name" })
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(q => q.SurName)
-            @Html.TextBoxFor(q => q.SurName, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter surname" })
-        </div>
-      
-        <div class="form-group">
-            @Html.LabelFor(q => q.Biography)
-            @Html.TextAreaFor(q => q.Biography, new { @class = "form-control form-control-border border-width-2", @placeholder = "Write Something" })
-        </div>
-        <div class="form-row">
-            <div class="form-group col-lg-6 ">
-                @Html.LabelFor(q => q.BirthDate)
-                @Html.TextBoxFor(q => q.BirthDate, new { @type = "date", @name = "birthdate", @class = "form-control form-control-border border-width-2", @placeholder = "mm/dd/yyyy" })
-            </div>
-            <div class="form-group col-lg-6 ">
-                @Html.LabelFor(q => q.Duty)
+<div class="card-body">
+    @Html.ValidationSummary()
+    <div class="form-group">
+        @Html.LabelFor(q => q.Name)
 
-                @*@Html.DropDownList(q => q.Duty, new SelectList(Enum.GetValues(typeof(Duty))), "Select Gender")*@
+        @Html.TextBoxFor(q => q.Name, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter name" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(q => q.SurName)
+        @Html.TextBoxFor(q => q.SurName, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter surname" })
+    </div>
 
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(q => q.Biography)
+        @Html.TextAreaFor(q => q.Biography, new { @class = "form-control form-control-border border-width-2", @placeholder = "Write Something" })
+    </div>
+    <div class="form-row">
+        <div class="form-group col-lg-6 ">
+            @Html.LabelFor(q => q.BirthDate)
+            @Html.TextBoxFor(q => q.BirthDate, new { @type = "date", @name = "birthdate", @class = "form-control form-control-border border-width-2", @placeholder = "mm/dd/yyyy" })
+        </div>
+        <div class="form-group col-lg-6 ">
+            <!--@Html.LabelFor(q => q.Duty)-->
+            @*@Html.DropDownList(q => q.Duty, new SelectList(Enum.GetValues(typeof(Duty))), "Select Gender")*@
+
+
+            <label>Duty</label>
+            <select class="select2" name="duty" multiple="multiple" data-placeholder="Select Duty" style="width: 100%;">
+                @foreach (var item in Model.Duty)
+                {
+                    <option value="">@item</option>
+                }
+            </select>
+
+
+
+
         </div>
     </div>
+</div>
+<script>
+    $(document).ready(function () {
+        //Initialize Select2 Elements
+        $('.select2').select2()
+
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+
+    });
+
+
+</script>
 
 
