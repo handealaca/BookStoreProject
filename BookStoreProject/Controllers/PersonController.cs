@@ -101,7 +101,7 @@ namespace BookStoreProject.Controllers
                 Name = q.Book.Name,
                 Publisher = q.Book.Publisher,
                 PublishDate = q.Book.PublishDate,
-                WriterName = q.Person.Name + " " + q.Person.SurName,
+                //WriterName = q.Person.Name + " " + q.Person.SurName
 
 
             }).ToList();

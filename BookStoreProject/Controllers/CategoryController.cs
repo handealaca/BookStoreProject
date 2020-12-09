@@ -99,15 +99,16 @@ namespace BookStoreProject.Controllers
         }
 
 
-        public IActionResult BookDetail(int id)
+        public IActionResult CategoryDetail(int id)
         {
-            List<BookVM> books = _bookcontext.BookCategories.Include(q => q.Book).ThenInclude(Book => Book.BookPersons).Where(q => q.CategoryID == id).Select(q => new BookVM()
+            List<BookVM> books = _bookcontext.BookCategories.Include(q => q.Book).ThenInclude(Book => Book.BookPersons).ThenInclude(BookPersons => BookPersons.Person).Where(q => q.CategoryID == id).Select(q => new BookVM()
             {
                 BookID = q.BookID,
                 Name = q.Book.Name,
                 Publisher = q.Book.Publisher,
                 PublishDate = q.Book.PublishDate,
-                BookPersons=q.Book.BookPersons,
+                Edition = q.Book.Edition,
+                BookPersons = q.Book.BookPersons
 
             }).ToList();
 
