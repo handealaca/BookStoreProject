@@ -24,5 +24,7 @@ namespace BookStoreProject.Models.ORM.Context
         public DbSet<Person> People { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserPoint> UserPoints { get; set; }
+        public DbSet<PersonDuty> PeopleDuty { get; set; }
+
     }
 }

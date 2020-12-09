@@ -51,11 +51,17 @@ namespace BookStoreProject.Controllers
         public IActionResult Add()
         {
             PersonVM model = new PersonVM();
-            //List<EnumDuty> = _bookcontext.People.ToList();
-                return View();
+            List<EnumDuty> modelduty = new List<EnumDuty>();
+
+            modelduty.Add(EnumDuty.Interpreter);
+            modelduty.Add(EnumDuty.Writer);
+
+            model.EnumDuties = modelduty;
+
+            return View(model);
         }
         [HttpPost]
-        public IActionResult Add(PersonVM model)
+        public IActionResult Add(PersonVM model,int[] dutyarray)
         {
             Person person = new Person();
             person.Name = model.Name;
@@ -64,11 +70,27 @@ namespace BookStoreProject.Controllers
             person.BirthDate = model.BirthDate;
             person.UpdateDate = model.UpdateDate;
             person.IsDeleted = model.IsDeleted;
+            person.AddDate = model.AddDate;
+
 
             _bookcontext.People.Add(person);
             _bookcontext.SaveChanges();
 
-            return RedirectToAction("Add", "Person");
+            int PersonID = person.ID;
+
+            foreach (var item in dutyarray)
+            {
+                PersonDuty personduty = new PersonDuty();
+
+                personduty.PersonID = PersonID;
+                personduty.DutyID = item;
+
+                _bookcontext.PeopleDuty.Add(personduty);
+            }
+
+            _bookcontext.SaveChanges();
+
+            return RedirectToAction("Index", "Person");
         }
                 
         public IActionResult BookDetail(int id)
@@ -85,7 +107,6 @@ namespace BookStoreProject.Controllers
             }).ToList();
 
             return View(books);
-
         }
 
         [HttpPost]

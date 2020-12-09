@@ -122,8 +122,8 @@
                                 <thead>
                                     <tr>
                                         <th>Book Name</th>
-                                        @*<th>Writer</th>*@
-                                        @*<th>Category</th>*@
+                                        <th>Writer</th>
+                                        <th>Category</th>
                                         <th>Publisher</th>
                                         <th>Publish Date</th>
                                     </tr>
@@ -134,7 +134,29 @@
                                     {
                                         <tr>
                                             <td>@item.Name</td>
-                                            @*<td>@item.BookPersons</td>*@
+
+                                            <td>
+                                                @foreach (var data1 in item.BookPersons)
+                                                {
+
+                                                    if (data1.Person.Duty == 0)
+                                                    {
+
+                                                        <span>@data1.Person.Name @data1.Person.SurName</span>
+
+                                                    }
+
+                                                }
+                                            </td>
+
+                                            <td>
+                                                @foreach (var data in item.BookCategories)
+                                                {
+                                                    <span> @data.Category.CategoryName</span>
+
+                                                }
+                                            </td>
+
                                             <td>@item.Publisher</td>
                                             <td>@item.PublishDate</td>
                                         </tr>
@@ -174,13 +196,13 @@
                                 </thead>
                                 <tbody>
 
-                                    @for (int i = 0; i < 5; i++)
+                                    @foreach (var item in Model.People)
                                     {
                                         <tr>
-                                            <td>@Model.People[i].Name @Model.People[i].SurName</td>
+                                            <td>@item.Name @item.SurName</td>
+                                            <td>@item.BirthDate.Value.ToString("dd.MM.yyyy")</td>
 
-                                            <td>@Model.People[i].BirthDate.Value.ToString("dd.MM.yyyy")</td>
-                                            @if (Model.People[i].Duty == 0)
+                                            @if (item.Duty == 0)
                                             {
                                                 <td>Writer</td>
                                             }
@@ -188,11 +210,8 @@
                                             {
                                                 <td>Interpreter</td>
                                             }
-
                                         </tr>
                                     }
-                                
-
 
                                 </tbody>
                             </table>

@@ -2,6 +2,7 @@
 using BookStoreProject.Models.ORM.Entities;
 using BookStoreProject.Models.VM;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -95,6 +96,22 @@ namespace BookStoreProject.Controllers
 
             return RedirectToAction("Index");
 
+        }
+
+
+        public IActionResult BookDetail(int id)
+        {
+            List<BookVM> books = _bookcontext.BookCategories.Include(q => q.Book).ThenInclude(Book => Book.BookPersons).Where(q => q.CategoryID == id).Select(q => new BookVM()
+            {
+                BookID = q.BookID,
+                Name = q.Book.Name,
+                Publisher = q.Book.Publisher,
+                PublishDate = q.Book.PublishDate,
+                BookPersons=q.Book.BookPersons,
+
+            }).ToList();
+
+            return View(books);
         }
 
     }

@@ -65,70 +65,69 @@
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
-                                        <tr>
-                                            <td>@item.BookID</td>
-                                            <td>@item.Name</td>
-                                            <td>
-                                                @foreach (var data in item.writers)
-                                                {
-                                                    <p>@data.Name @data.SurName</p>
-                                                }
+                                    <tr>
+                                        <td>@item.BookID</td>
+                                        <td>@item.Name</td>
 
-                                            </td>
-                                            <td>
-                                                @foreach (var data in item.interpreters)
-                                                {
-                                                    <p>@data.Name @data.SurName</p>
-                                                }
+                                        <td>
+                                            @foreach (var data in item.BookPersons.Where(q => q.DutyID == 0))
+                                            {
 
-                                            </td>
 
-                                            <td>@item.Publisher</td>
-                                            <td>@item.PublishDate</td>
-                                            <td>@item.Edition</td>
+                                                <span>@data.Person.Name @data.Person.SurName</span>
 
-                                            @*<td>
-                                                    @foreach (var data1 in item.DutyID)
-                                                    {
-                                                                 <p>@data1</p>
-                                                    }
-                                            </td>*@
+                                            }
+                                        </td>
+                                        <td>
+                                            @foreach (var data in item.BookPersons.Where(q => q.DutyID == 1))
+                                            {
 
-                                            <td>
-                                                @foreach (var data1 in item.bookCategories)
-                                                {
 
-                                                    <p>@data1.Category.CategoryName</p>
-                                                }
-                                            </td>
+                                                <span>@data.Person.Name @data.Person.SurName</span>
 
-                                            <td>@item.AddDate.ToString("dd.MM.yyyy")</td>
+                                            }
+                                        </td>
 
-                                            <td>
-                                                <a class="btn btn-sm btn-outline-primary"
-                                                   href="/Book/CommentDetail/@item.BookID" role="button">
-                                                    <i class="fas fa-comment"></i>Comments
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-sm btn-outline-primary"
-                                                   href="/Book/UserPoint/@item.BookID" role="button">
-                                                    <i class="fas fa-vote-yea"></i>User Points
-                                                </a>
-                                            </td>
+                                        <td>@item.Publisher</td>
+                                        <td>@item.PublishDate</td>
+                                        <td>@item.Edition</td>
 
-                                            <td>
-                                                <a class="btn btn-sm btn-outline-warning edit"
-                                                   href="/Book/Edit/@item.BookID"
-                                                   role="button" id=@item.BookID>
-                                                    <i class="fas fa-edit"></i>Edit
-                                                </a>
-                                                <a class="btn btn-sm btn-outline-danger delete"
-                                                   role="button" id=@item.BookID>
-                                                    <i class="fas fa-trash"></i>Delete
-                                                </a>
-                                            </td>
-                                        </tr>
+
+                                        <td>
+                                            @foreach (var data1 in item.bookCategories)
+                                            {
+
+                                                <span>@data1.Category.CategoryName</span>
+                                            }
+                                        </td>
+
+                                        <td>@item.AddDate.ToString("dd.MM.yyyy")</td>
+
+                                        <td>
+                                            <a class="btn btn-sm btn-outline-primary"
+                                               href="/Book/CommentDetail/@item.BookID" role="button">
+                                                <i class="fas fa-comment"></i>Comments
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-sm btn-outline-primary"
+                                               href="/Book/UserPoint/@item.BookID" role="button">
+                                                <i class="fas fa-vote-yea"></i>User Points
+                                            </a>
+                                        </td>
+
+                                        <td>
+                                            <a class="btn btn-sm btn-outline-warning edit"
+                                               href="/Book/Edit/@item.BookID"
+                                               role="button" id=@item.BookID>
+                                                <i class="fas fa-edit"></i>Edit
+                                            </a>
+                                            <a class="btn btn-sm btn-outline-danger delete"
+                                               role="button" id=@item.BookID>
+                                                <i class="fas fa-trash"></i>Delete
+                                            </a>
+                                        </td>
+                                    </tr>
                                     }
 
                                 </tbody>

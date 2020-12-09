@@ -14,7 +14,6 @@ namespace BookStoreProject.Models.ORM.Entities
         public DateTime? BirthDate { get; set; }
 
         public List<Book> Books { get; set; }
-
         public int Duty { get; set; }
         public List<BookPerson> BookPeople { get; set; }
     }

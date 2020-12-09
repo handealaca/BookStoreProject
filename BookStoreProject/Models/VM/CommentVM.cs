@@ -8,7 +8,7 @@ namespace BookStoreProject.Models.VM
     public class CommentVM
     {
         public int CommentID { get; set; }
-        public DateTime AddDate { get; set; }
+        public DateTime AddDate { get; set; }= DateTime.Now;
         public DateTime UpdateDate { get; set; } = DateTime.Now;
         public int UserID { get; set; }
         public string Content { get; set; }

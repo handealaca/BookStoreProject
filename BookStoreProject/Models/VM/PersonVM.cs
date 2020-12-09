@@ -1,4 +1,5 @@
 ﻿using BookStoreProject.Models.ORM.Entities;
+using BookStoreProject.Models.Types;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
@@ -22,13 +23,11 @@ namespace BookStoreProject.Models.VM
 
         public string Biography { get; set; }
         public DateTime? BirthDate { get; set; } 
-
         public string Duty { get; set; }
-        public DateTime AddDate { get; set; } 
+        public DateTime AddDate { get; set; } = DateTime.Now;
         public bool IsDeleted { get; set; }
-        //public List<Book> Books { get; set; }
         public DateTime UpdateDate { get; set; } = DateTime.Now;
-
+        public List<EnumDuty> EnumDuties { get; set; }
 
 
     }

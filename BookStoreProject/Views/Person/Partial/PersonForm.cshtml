@@ -1,6 +1,10 @@
 ﻿
 @model BookStoreProject.Models.VM.PersonVM
-
+    <!-- Select2 -->
+<link rel="stylesheet" href="/Admin/plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="/Admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="/Admin/dist/css/adminlte.min.css">
 
 <div class="card-body">
     @Html.ValidationSummary()
@@ -24,24 +28,23 @@
             @Html.TextBoxFor(q => q.BirthDate, new { @type = "date", @name = "birthdate", @class = "form-control form-control-border border-width-2", @placeholder = "mm/dd/yyyy" })
         </div>
         <div class="form-group col-lg-6 ">
-            <!--@Html.LabelFor(q => q.Duty)-->
-            @*@Html.DropDownList(q => q.Duty, new SelectList(Enum.GetValues(typeof(Duty))), "Select Gender")*@
-
-
             <label>Duty</label>
-            <select class="select2" name="duty" multiple="multiple" data-placeholder="Select Duty" style="width: 100%;">
-                @foreach (var item in Model.Duty)
+            <select class="select2" name="dutyarray" multiple="multiple" data-placeholder="Select Duty" style="width: 100%;">
+                @foreach (var item in Model.EnumDuties)
                 {
-                    <option value="">@item</option>
+                    <option value="@Convert.ToInt32(item)">@item.ToString()</option>
                 }
             </select>
-
-
-
-
         </div>
     </div>
 </div>
+
+
+
+<!-- Select2 -->
+<script src="/Admin/plugins/select2/js/select2.full.min.js"></script>
+
+
 <script>
     $(document).ready(function () {
         //Initialize Select2 Elements
