@@ -45,54 +45,54 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                          
-                                <table id="example1" class="table table-bordered table-striped" style="text-align : center">
-                                    <thead>
+
+                            <table id="example1" class="table table-bordered table-striped" style="text-align : center">
+                                <thead>
+                                    <tr>
+                                        <th>Person ID</th>
+                                        <th>Writer/Interpreter</th>
+                                        <th>Biograpy</th>
+                                        <th>Birth Date</th>
+                                        <th>Role</th>
+                                        <th>Add Date</th>
+                                        <th>Books</th>
+                                        <th>Edit / Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
                                         <tr>
-                                            <th>Person ID</th>
-                                            <th>Writer/Interpreter</th>
-                                            <th>Biograpy</th>
-                                            <th>Birth Date</th>
-                                            <th>Role</th>
-                                            <th>Add Date</th>
-                                            <th>Books</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Model)
-                                        {
-                                            <tr>
-                                                <td>@item.PersonID</td>
-                                                <td>@item.Name @item.SurName</td>
-                                                <td>@item.Biography</td>
-                                                <td>@item.BirthDate?.ToString("dd.MM.yyyy")</td>
-                                                <td>@item.Duty</td>
-                                                @*<td>@item.AddDate.ToString("dd.MM.yyyy")</td>*@
-                                             
-                                                <td>
-                                                    <a class="btn btn-sm btn-outline-bg-orange color-palette" href="/Person/BookDetail/@item.PersonID">
-                                                        <i class="fas fa-book"></i>Books
+                                            <td>@item.PersonID</td>
+                                            <td>@item.Name @item.SurName</td>
+                                            <td>@item.Biography</td>
+                                            <td>@item.BirthDate?.ToString("dd.MM.yyyy")</td>
+                                            <td>@item.Duty</td>
+                                            <td>@item.AddDate.ToString("dd.MM.yyyy")</td>
+
+                                            <td>
+                                                <a class="btn btn-sm btn-outline-bg-orange color-palette" href="/Person/BookDetail/@item.PersonID">
+                                                    <i class="fas fa-book"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div style="display : flex ; justify-content : center">
+                                                    <a class="btn btn-sm btn-outline-danger delete" id="@item.PersonID">
+                                                        <i class="fas fa-trash"></i>
                                                     </a>
-                                                </td>
-                                                <td>
-                                                    <div style="display : flex ; justify-content : center">
-                                                        <a class="btn btn-sm btn-outline-danger delete" id="@item.PersonID">
-                                                            <i class="fas fa-trash"></i>Delete
-                                                        </a>
-                                                        <a class="btn btn-sm btn-outline-warning edit" href="/Person/Edit/@item.PersonID">
-                                                            <i class="fas fa-pencil-alt"></i>Edit
-                                                        </a>
-                                                    </div>
+                                                    <a class="btn btn-sm btn-outline-warning edit" href="/Person/Edit/@item.PersonID">
+                                                        <i class="fas fa-pencil-alt"></i>
+                                                    </a>
+                                                </div>
 
 
-                                                </td>
-                                            </tr>
-                                         }
+                                            </td>
+                                        </tr>
+                                    }
 
-                                    </tbody>
+                                </tbody>
 
-                                </table>
+                            </table>
 
                         </div>
                         <!-- /.card-body -->
@@ -141,26 +141,28 @@
         //    "responsive": true,
         //});
 
-        $(document).on("click", ".delete", function () {
-            let id = $(this).attr("id");
-            $.ajax({
-                url: "/Person/Delete",
-                type: "POST",
-                data: { id: id },
-                success: function (msg) {
-                    console.log(msg);
-                    $("#" + id).fadeOut();
-                    window.location.href= "/User/"
-                    alert("Deleted successfully!!!");
-                },
-                error: function (err) {
-                    alert("Failed!");
-                }
-            })
+    });
+
+    $(document).on("click", ".delete", function () {
+        let id = $(this).attr("id");
+        $.ajax({
+            url: "/Person/Delete",
+            type: "POST",
+            data: { id: id },
+            success: function (msg) {
+                console.log(msg);
+                $("#" + id).fadeOut();
+                window.location.href = "/Person/"
+                alert("Deleted successfully!!!");
+            },
+            error: function (err) {
+                alert("Failed!");
+            }
         })
+    });
 
-        
 
-       
-    });</script>
+
+
+    </script>
 

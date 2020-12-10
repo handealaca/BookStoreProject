@@ -95,6 +95,7 @@
                                     <div class="form-group col-lg-6">
                                         @Html.LabelFor(q => q.Name)
                                         @Html.TextBoxFor(q => q.Name, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Book Name" })
+                                        @Html.ValidationMessageFor(q => q.Name, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="form-group col-lg-6">
                                         @Html.LabelFor(q => q.Edition)
@@ -106,6 +107,7 @@
                                     <div class="form-group col-lg-6">
                                         @Html.LabelFor(q => q.Publisher)
                                         @Html.TextBoxFor(q => q.Publisher, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Publisher" })
+                                        @Html.ValidationMessageFor(q => q.Publisher, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="form-group col-lg-6">
                                         @Html.LabelFor(q => q.PublishDate)
@@ -116,36 +118,76 @@
                                 <div class="form-row">
                                     <div class="form-group col-lg-6">
                                         <label>Writer</label>
-                                        <select class="form-control form-control-border border-width-2 select2" name="writerarray" multiple="multiple" data-placeholder="Select a Writer" style="width: 100%;">
-
-                                            @foreach (var item in Model.people)
+                                        <select class="form-control form-control-border border-width-2 select2" name="people" multiple="multiple" data-placeholder="Select a Writer" style="width: 100%;">
+                                            @if (Model != null)
                                             {
-                                                <option value="@item.ID">@item.Name @item.SurName</option>
+                                                @foreach (var item in Model.people)
+                                                {
+                                                    <option value="@item.ID">@item.Name @item.SurName</option>
+                                                }
                                             }
+                                            else
+                                            {
+                                                @foreach (var item in ViewBag.personbag)
+                                                {
+                                                    <option value="@item.ID">@item.Name @item.SurName</option>
+                                                }
+
+                                            }
+
+
                                         </select>
+                                        @Html.ValidationMessageFor(q => q.people, "", new { @class = "text-danger" })
 
                                     </div>
                                     <div class="form-group col-lg-6">
                                         <label>Interpreter</label>
                                         <select class="select2 form-control form-control-border border-width-2" name="interparray" multiple="multiple" data-placeholder="Select an Interpreter" style="width: 100%;">
-                                            @foreach (var item in Model.people)
+                                            @if (Model != null)
                                             {
-                                                <option value="@item.ID">@item.Name @item.SurName</option>
+                                                @foreach (var item in Model.people)
+                                                {
+                                                    <option value="@item.ID">@item.Name @item.SurName</option>
+                                                }
+
                                             }
+                                            else
+                                            {
+                                                @foreach (var item in ViewBag.personbag)
+                                                {
+                                                    <option value="@item.ID">@item.Name @item.SurName</option>
+                                                }
+
+                                            }
+
+
                                         </select>
+                                     
                                     </div>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="form-group col-lg-6">
                                         <label>Category</label>
-                                        <select class="select2 form-control-border border-width-2" name="catarray" multiple="multiple" data-placeholder="Select a Category" style="width: 100%;">
-
-                                            @foreach (var item in Model.categories)
+                                        <select class="select2 form-control-border border-width-2" name="categories" multiple="multiple" data-placeholder="Select a Category" style="width: 100%;">
+                                            @if (Model != null)
                                             {
-                                                <option value="@item.ID">@item.CategoryName</option>
+                                                @foreach (var item in Model.categories)
+                                                {
+                                                    <option value="@item.ID">@item.CategoryName</option>
+                                                }
                                             }
+                                            else
+                                            {
+                                                @foreach (var item in ViewBag.categorybag)
+                                                {
+                                                    <option value="@item.ID">@item.CategoryName</option>
+                                                }
+
+                                            }
+
                                         </select>
+                                        @Html.ValidationMessageFor(q => q.categories, "", new { @class = "text-danger" })
                                     </div>
 
                                     @*<div class="form-group col-lg-6">

@@ -136,7 +136,7 @@
                                             <td>@item.Name</td>
 
                                             <td>
-                                                @foreach (var data1 in item.BookPersons)
+                                                @foreach (var data1 in item.BookPersons.Where(q => q.IsDeleted == false))
                                                 {
 
                                                     if (data1.Person.Duty == 0)
@@ -150,7 +150,7 @@
                                             </td>
 
                                             <td>
-                                                @foreach (var data in item.BookCategories)
+                                                @foreach (var data in item.BookCategories.Where(q => q.IsDeleted == false))
                                                 {
                                                     <span> @data.Category.CategoryName</span>
 
@@ -196,7 +196,7 @@
                                 </thead>
                                 <tbody>
 
-                                    @foreach (var item in Model.People)
+                                    @foreach (var item in Model.People.Where(q => q.IsDeleted == false ))
                                     {
                                         <tr>
                                             <td>@item.Name @item.SurName</td>

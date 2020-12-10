@@ -59,75 +59,75 @@
                                         @*<th>Add Date</th>*@
                                         <th>Comments</th>
                                         <th>User Points</th>
-                                        <th>Action</th>
+                                        <th>Edit / Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
-                                    <tr>
-                                        <td>@item.BookID</td>
-                                        <td>@item.Name</td>
+                                        <tr>
+                                            <td>@item.BookID</td>
+                                            <td>@item.Name</td>
 
-                                        <td>
-                                            @foreach (var data in item.BookPersons.Where(q => q.DutyID == 0))
-                                            {
-
-
-                                                <span>@data.Person.Name @data.Person.SurName</span>
-
-                                            }
-                                        </td>
-                                        <td>
-                                            @foreach (var data in item.BookPersons.Where(q => q.DutyID == 1))
-                                            {
+                                            <td>
+                                                @foreach (var data in item.BookPersons.Where(q => q.DutyID == 0))
+                                                {
 
 
-                                                <span>@data.Person.Name @data.Person.SurName</span>
+                                                    <span>@data.Person.Name @data.Person.SurName</span>
 
-                                            }
-                                        </td>
+                                                }
+                                            </td>
+                                            <td>
+                                                @foreach (var data in item.BookPersons.Where(q => q.DutyID == 1))
+                                                {
 
-                                        <td>@item.Publisher</td>
-                                        <td>@item.PublishDate</td>
-                                        <td>@item.Edition</td>
+
+                                                    <span>@data.Person.Name @data.Person.SurName</span>
+
+                                                }
+                                            </td>
+
+                                            <td>@item.Publisher</td>
+                                            <td>@item.PublishDate</td>
+                                            <td>@item.Edition</td>
 
 
-                                        <td>
-                                            @foreach (var data1 in item.bookCategories)
-                                            {
+                                            <td>
+                                                @foreach (var data1 in item.bookCategories)
+                                                {
 
-                                                <span>@data1.Category.CategoryName</span>
-                                            }
-                                        </td>
+                                                    <span>@data1.Category.CategoryName</span>
+                                                }
+                                            </td>
 
-                                        @*<td>@item.AddDate.ToString("dd.MM.yyyy")</td>*@
+                                            @*<td>@item.AddDate.ToString("dd.MM.yyyy")</td>*@
 
-                                        <td>
-                                            <a class="btn btn-sm btn-outline-primary"
-                                               href="/Book/CommentDetail/@item.BookID" role="button">
-                                                <i class="fas fa-comment"></i>Comments
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-sm btn-outline-primary"
-                                               href="/Book/UserPoint/@item.BookID" role="button">
-                                                <i class="fas fa-vote-yea"></i>User Points
-                                            </a>
-                                        </td>
+                                            <td>
+                                                <a class="btn btn-sm btn-outline-primary"
+                                                   href="/Book/CommentDetail/@item.BookID" role="button">
+                                                    <i class="fas fa-comment"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-sm btn-outline-primary"
+                                                   href="/Book/UserPoint/@item.BookID" role="button">
+                                                    <i class="fas fa-vote-yea"></i>
+                                                </a>
+                                            </td>
 
-                                        <td>
-                                            <a class="btn btn-sm btn-outline-warning edit"
-                                               href="/Book/Edit/@item.BookID"
-                                               role="button" id=@item.BookID>
-                                                <i class="fas fa-edit"></i>Edit
-                                            </a>
-                                            <a class="btn btn-sm btn-outline-danger delete"
-                                               role="button" id=@item.BookID>
-                                                <i class="fas fa-trash"></i>Delete
-                                            </a>
-                                        </td>
-                                    </tr>
+                                            <td>
+                                                <a class="btn btn-sm btn-outline-warning edit"
+                                                   href="/Book/Edit/@item.BookID"
+                                                   role="button" id=@item.BookID>
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <a class="btn btn-sm btn-outline-danger delete"
+                                                   role="button" id=@item.BookID>
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
                                     }
 
                                 </tbody>
@@ -169,16 +169,29 @@
             "responsive": true, "lengthChange": true, "autoWidth": true,
             "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        //$('#example2').DataTable({
-        //    "paging": true,
-        //    "lengthChange": false,
-        //    "searching": false,
-        //    "ordering": true,
-        //    "info": true,
-        //    "autoWidth": false,
-        //    "responsive": true,
-        //});
-    });</script>
+    
+    });
+
+
+    $(document).on("click", ".delete", function () {
+        let id = $(this).attr("id");
+        $.ajax({
+            url: "/Book/Delete",
+            type: "POST",
+            data: { id: id },
+            success: function (msg) {
+                console.log(msg);
+                $("#" + id).fadeOut();
+                window.location.href = "/Book/"
+                alert("Deleted successfully!!!");
+            },
+            error: function (err) {
+                alert("Failed!");
+            }
+        })
+    })
+
+</script>
 
 
 

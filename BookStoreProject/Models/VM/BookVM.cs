@@ -11,13 +11,15 @@ namespace BookStoreProject.Models.VM
     {
         public int BookID { get; set; }
 
-        [Required(ErrorMessage = "Name alanı boş geçilemez")]
+        [Required(ErrorMessage = "Name field is required.")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Publisher alanı boş geçilemez")]
+        [Required(ErrorMessage = "Publisher field is required.")]
         public string Publisher { get; set; }
         public string PublishDate { get; set; }
         public string Edition { get; set; }
+
+        [Required(ErrorMessage = "Writer/Interpreter field is required.")]
         public string WriterName { get; set; }
 
         public DateTime AddDate { get; set; } = DateTime.Now;
@@ -27,10 +29,16 @@ namespace BookStoreProject.Models.VM
         public List<BookPerson> BookPersons { get; set; }
         public List<BookCategory> bookCategories { get; set; }
         public List<UserPoint> UserPoints { get; set; }
+        [Required(ErrorMessage = "Writer field is required.")]
         public List<Person> people { get; set; }
+        [Required(ErrorMessage = "Category field is required.")]
         public List<Category> categories { get; set; }
+        
+        
 
-        public List<int> DutyID { get; set; }
+       
+
+
 
 
     }

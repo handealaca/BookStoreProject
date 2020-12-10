@@ -51,7 +51,7 @@
                                         <th>Category Name</th>
                                         <th>Add Date</th>
                                         <th>Books</th>
-                                        <th>Action</th>
+                                        <th>Edit / Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -63,18 +63,18 @@
                                             <td>
                                                 <a class="btn btn-sm btn-outline-primary"
                                                    href="/Category/CategoryDetail/@item.CategoryID" role="button">
-                                                    <i class="fas fa-book"></i>Books
+                                                    <i class="fas fa-book"></i>
                                                 </a>
                                             </td>
                                             <td>
                                                 <a class="btn btn-sm btn-outline-warning edit"
                                                     href="/Category/Edit/@item.CategoryID"
                                                    role="button" id=@item.CategoryID>
-                                                    <i class="fas fa-edit"></i>Edit
+                                                    <i class="fas fa-edit"></i>
                                                 </a>
                                                 <a class="btn btn-sm btn-outline-danger delete"
                                                    role="button" id=@item.CategoryID>
-                                                    <i class="fas fa-trash"></i>Delete
+                                                    <i class="fas fa-trash"></i>
                                                 </a>
                                             </td>
                                         </tr>
@@ -140,7 +140,7 @@
             success: function (msg) {
                 console.log("Deleted");
                 $("#" + id).fadeOut();
-                window.location.href= "/Category"
+                window.location.href= "/Category/"
             },
             error: function (err) {
                 console.log("Failed");
