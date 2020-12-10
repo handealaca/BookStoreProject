@@ -62,7 +62,7 @@ namespace BookStoreProject.Controllers
                 user.IsDeleted = true;
                 _bookcontext.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","User");
 
         }
     }
