@@ -113,7 +113,7 @@ namespace BookStoreProject.Controllers
             model.PublishDate = book.PublishDate;
             model.Edition = book.Edition;
             model.bookCategories = book.BookCategories.Where(q => q.IsDeleted == false).ToList();
-            model.categories = _bookcontext.Categories.Where(q => q.IsDeleted == false).ToList();
+            model.categories = _bookcontext.Categories.Where(q => q.IsDeleted == false). ToList();
             model.BookPersons = book.BookPersons.Where(q => q.IsDeleted == false).ToList();
             model.people= _bookcontext.People.Where(q => q.IsDeleted == false).ToList();
 
@@ -125,7 +125,7 @@ namespace BookStoreProject.Controllers
         [HttpPost]
         public IActionResult Edit(BookVM model, int[] catarray, int[] writerarray, int[]? interparray)
         {
-            Book book = _bookcontext.Books.Include(x => x.BookCategories).Include(x => x.BookPersons).FirstOrDefault(q => q.ID == model.BookID);
+            Book book = _bookcontext.Books.Include(x => x.BookCategories).ThenInclude(BookCategories => BookCategories.Category).Include(x => x.BookPersons).FirstOrDefault(q => q.ID == model.BookID);
 
             book.Name = model.Name;
             book.Publisher = model.Publisher;

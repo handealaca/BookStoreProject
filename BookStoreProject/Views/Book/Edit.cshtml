@@ -6,8 +6,7 @@
 }
 
 @model BookStoreProject.Models.VM.BookVM
-
-    <!-- daterange picker -->
+<!-- daterange picker -->
 <link rel="stylesheet" href="/Admin/plugins/daterangepicker/daterangepicker.css">
 <!-- iCheck for checkboxes and radio inputs -->
 <link rel="stylesheet" href="/Admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
@@ -119,71 +118,94 @@
                                     <div class="form-group col-lg-6">
                                         <label>Writer</label>
                                         <select class="select2 form-control-border border-width-2" name="writerarray" multiple="multiple" data-placeholder="Select a Writer" style="width: 100%;">
-                                            @foreach (var item in Model.people)
+                                            @if (Model != null)
                                             {
-                                                <option value="@item.ID">@item.Name @item.SurName</option>
+                                                List<int> selected = new List<int>();
+
+                                                @foreach (var item in Model.BookPersons.Where(q => q.DutyID == 0))
+                                                {
+                                                    <option selected value="@item.ID">
+                                            @item.Person.Name @item.Person.SurName</option>
+                                                    selected.Add(item.ID);
+                                                }
+
+                                                @foreach (var item in Model.people)
+                                                {
+                                                    if (!selected.Contains(item.ID))
+                                                    {
+                                                        <option value="@item.ID">@item.Name @item.SurName</option>
+
+                                                    }
+                                                }
                                             }
 
-                                            @foreach (var item in Model.BookPersons.Where(q => q.DutyID == 0))
-                                            {
-                                                <option selected value="@item.ID">@item.Person.Name @item.Person.SurName</option>
-                                            }
+
                                         </select>
-                                        @Html.HiddenFor(q => q.BookID)
-
                                     </div>
+
                                     <div class="form-group col-lg-6">
                                         <label>Interpreter</label>
                                         <select class="select2 form-control-border border-width-2" name="interparray" multiple="multiple" data-placeholder="Select an Interpreter" style="width: 100%;">
-                                            @foreach (var item in Model.people)
+                                            @if (Model != null)
                                             {
-                                                <option value="@item.ID">@item.Name @item.SurName</option>
-                                            }
+                                                List<int> selected = new List<int>();
 
-                                            @foreach (var item in Model.BookPersons.Where(q => q.DutyID == 1))
-                                            {
-                                                <option selected value="@item.ID">@item.Person.Name @item.Person.SurName</option>
+                                                @foreach (var item in Model.BookPersons.Where(q => q.DutyID == 1))
+                                                {
+                                                    <option selected value="@item.ID">
+                                                        @item.Person.Name @item.Person.SurName
+                                                    </option>
+                                                    selected.Add(item.ID);
+                                                }
+
+                                                @foreach (var item in Model.people)
+                                                {
+                                                    if (!selected.Contains(item.ID))
+                                                    {
+                                                        <option value="@item.ID">@item.Name @item.SurName</option>
+
+                                                    }
+                                                }
                                             }
                                         </select>
-                                        @Html.HiddenFor(q => q.BookID)
 
                                     </div>
-                                    <!-- /.card-body -->
                                 </div>
 
                                 <div class="form-row">
                                     <div class="form-group col-lg-6">
                                         <label>Category</label>
                                         <select class="select2 form-control-border border-width-2" name="catarray" multiple="multiple" data-placeholder="Select a Category" style="width: 100%;">
-                                            @foreach (var item in Model.categories)
+
+
+                                            @if (Model != null)
                                             {
-                                                <option value="@item.ID">@item.CategoryName</option>
+                                                List<int> selected = new List<int>();
+
+                                                foreach (var item in Model.bookCategories)
+                                                {
+                                                    <option selected value="@item.CategoryID">@item.Category.CategoryName</option>
+
+                                                    selected.Add(item.CategoryID);
+                                                }
+
+                                                foreach (var item in Model.categories)
+                                                {
+                                                    if (!selected.Contains(item.ID))
+                                                    {
+
+                                                        <option value="@item.ID">@item.CategoryName</option>
+
+                                                    }
+
+                                                }
+
                                             }
-                                            @foreach (var item in Model.bookCategories)
-                                            {
-                                                <option selected value="@item.ID">@item.Category.CategoryName</option>
-                                            }
+
                                         </select>
                                     </div>
+                                    @Html.HiddenFor(q => q.BookID)
 
-
-                                    @*<div class="form-group">
-            <label for="exampleInputFile">File input</label>
-            <div class="input-group">
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="exampleInputFile">
-                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                </div>
-                <div class="input-group-append">
-                    <span class="input-group-text">Upload</span>
-                </div>
-            </div>
-        </div>*@
-                                    @*<div class="form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>*@
-                                    <!-- /.card-body -->
                                 </div>
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Submit</button>
