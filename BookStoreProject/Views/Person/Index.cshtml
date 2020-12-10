@@ -45,7 +45,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <div class=" table-responsive" >
+                          
                                 <table id="example1" class="table table-bordered table-striped" style="text-align : center">
                                     <thead>
                                         <tr>
@@ -55,10 +55,8 @@
                                             <th>Birth Date</th>
                                             <th>Role</th>
                                             <th>Add Date</th>
-                                           
                                             <th>Books</th>
                                             <th>Action</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -70,7 +68,7 @@
                                                 <td>@item.Biography</td>
                                                 <td>@item.BirthDate?.ToString("dd.MM.yyyy")</td>
                                                 <td>@item.Duty</td>
-                                                <td>@item.AddDate.ToString("dd.MM.yyyy")</td>
+                                                @*<td>@item.AddDate.ToString("dd.MM.yyyy")</td>*@
                                              
                                                 <td>
                                                     <a class="btn btn-sm btn-outline-bg-orange color-palette" href="/Person/BookDetail/@item.PersonID">
@@ -95,11 +93,6 @@
                                     </tbody>
 
                                 </table>
-
-
-
-
-                            </div>
 
                         </div>
                         <!-- /.card-body -->

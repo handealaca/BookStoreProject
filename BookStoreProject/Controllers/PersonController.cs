@@ -28,12 +28,10 @@ namespace BookStoreProject.Controllers
             {
                 PersonID = q.ID,
                 Name = q.Name,
-                SurName = q.SurName,
+                SurName = q.SurName.ToUpper(),
                 Biography = q.Biography,
                 BirthDate = q.BirthDate,
-                AddDate = q.AddDate,
-                IsDeleted = q.IsDeleted,
-                UpdateDate = q.UpdateDate,
+                //AddDate = q.AddDate,
                 Duty = q.Duty == Convert.ToInt32(EnumDuty.Writer) ? EnumDuty.Writer.ToString() : EnumDuty.Interpreter.ToString()
             }).ToList();
 
@@ -63,14 +61,16 @@ namespace BookStoreProject.Controllers
         [HttpPost]
         public IActionResult Add(PersonVM model,int[] dutyarray)
         {
+
+
             Person person = new Person();
             person.Name = model.Name;
             person.SurName = model.SurName;
             person.Biography = model.Biography;
             person.BirthDate = model.BirthDate;
-            person.UpdateDate = model.UpdateDate;
-            person.IsDeleted = model.IsDeleted;
-            person.AddDate = model.AddDate;
+            //person.UpdateDate = model.UpdateDate;
+            //person.IsDeleted = model.IsDeleted;
+            //person.AddDate = model.AddDate;
 
 
             _bookcontext.People.Add(person);
@@ -131,7 +131,6 @@ namespace BookStoreProject.Controllers
             model.BirthDate = person.BirthDate;
             model.Biography = person.Biography;
             model.Duty = person.Duty.ToString();
-            model.UpdateDate = person.UpdateDate;
 
             return View(model);
         }

@@ -17,6 +17,5 @@ namespace BookStoreProject.Models.ORM.Entities
         public List<UserPoint> UserPoints { get; set; }
         public List<BookPerson> BookPersons { get; set; }
         public List<BookGenre> BookGenres { get; set; }
-
     }
 }

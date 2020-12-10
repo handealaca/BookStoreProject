@@ -32,7 +32,6 @@ namespace BookStoreProject.Models.VM
 
         public List<int> DutyID { get; set; }
 
-        public List<Person> writers { get; set; }
-        public List<Person> interpreters { get; set; }
+
     }
 }

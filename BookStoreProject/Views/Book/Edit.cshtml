@@ -93,64 +93,96 @@
                         <!-- form start -->
                         <form action="/Book/Edit" method="post">
                             <div class="card-body">
-                                <div class="form-group">
-                                    @Html.LabelFor(q => q.Name)
-                                    @Html.TextBoxFor(q => q.Name, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Book Name" })
-                                </div>
-                                <div class="form-group">
-                                    @Html.LabelFor(q => q.Publisher)
-                                    @Html.TextBoxFor(q => q.Publisher, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Publisher" })
-                                </div>
-                                <div class="form-group">
-                                    @Html.LabelFor(q => q.PublishDate)
-                                    @Html.TextBoxFor(q => q.PublishDate, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Publish Date" })
-                                </div>
-                                <div class="form-group">
-                                    @Html.LabelFor(q => q.Edition)
-                                    @Html.TextBoxFor(q => q.Edition, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Edition" })
+                                <div class="form-row">
+                                    <div class="form-group col-lg-6">
+                                        @Html.LabelFor(q => q.Name)
+                                        @Html.TextBoxFor(q => q.Name, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Book Name" })
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        @Html.LabelFor(q => q.Edition)
+                                        @Html.TextBoxFor(q => q.Edition, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Edition" })
+                                    </div>
                                 </div>
 
-                                @*<div class="form-group">
-                                        <label for="exampleInputFile">File input</label>
-                                        <div class="input-group">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="exampleInputFile">
-                                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                            </div>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">Upload</span>
-                                            </div>
-                                        </div>
-                                    </div>*@
-                                @*<div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                    </div>*@
+                                <div class="form-row">
+                                    <div class="form-group col-lg-6">
+                                        @Html.LabelFor(q => q.Publisher)
+                                        @Html.TextBoxFor(q => q.Publisher, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Publisher" })
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        @Html.LabelFor(q => q.PublishDate)
+                                        @Html.TextBoxFor(q => q.PublishDate, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Publish Date" })
+                                    </div>
+                                </div>
 
-                                <div class="col-md-6">
-                                    <div class="form-group">
+                                <div class="form-row">
+                                    <div class="form-group col-lg-6">
+                                        <label>Writer</label>
+                                        <select class="select2 form-control-border border-width-2" name="writerarray" multiple="multiple" data-placeholder="Select a Writer" style="width: 100%;">
+                                            @foreach (var item in Model.people)
+                                            {
+                                                <option value="@item.ID">@item.Name @item.SurName</option>
+                                            }
+
+                                            @foreach (var item in Model.BookPersons.Where(q => q.DutyID == 0))
+                                            {
+                                                <option selected value="@item.ID">@item.Person.Name @item.Person.SurName</option>
+                                            }
+                                        </select>
+                                        @Html.HiddenFor(q => q.BookID)
+
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label>Interpreter</label>
+                                        <select class="select2 form-control-border border-width-2" name="interparray" multiple="multiple" data-placeholder="Select an Interpreter" style="width: 100%;">
+                                            @foreach (var item in Model.people)
+                                            {
+                                                <option value="@item.ID">@item.Name @item.SurName</option>
+                                            }
+
+                                            @foreach (var item in Model.BookPersons.Where(q => q.DutyID == 1))
+                                            {
+                                                <option selected value="@item.ID">@item.Person.Name @item.Person.SurName</option>
+                                            }
+                                        </select>
+                                        @Html.HiddenFor(q => q.BookID)
+
+                                    </div>
+                                    <!-- /.card-body -->
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-lg-6">
                                         <label>Category</label>
                                         <select class="select2 form-control-border border-width-2" name="catarray" multiple="multiple" data-placeholder="Select a Category" style="width: 100%;">
                                             @foreach (var item in Model.categories)
                                             {
                                                 <option value="@item.ID">@item.CategoryName</option>
                                             }
-                                        </select>
-                                    </div>
-                                    <!-- /.card-body -->
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Writer/Interpreter</label>
-                                        <select class="select2 form-control-border border-width-2" name="personarray" multiple="multiple" data-placeholder="Select a Writer/Interpreter" style="width: 100%;">
-                                            @foreach (var item in Model.people)
+                                            @foreach (var item in Model.bookCategories)
                                             {
-                                                <option value="@item.ID">@item.Name @item.SurName</option>
+                                                <option selected value="@item.ID">@item.Category.CategoryName</option>
                                             }
                                         </select>
-                                        @Html.HiddenFor(q => q.BookID)
-
                                     </div>
+
+
+                                    @*<div class="form-group">
+            <label for="exampleInputFile">File input</label>
+            <div class="input-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="exampleInputFile">
+                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                </div>
+                <div class="input-group-append">
+                    <span class="input-group-text">Upload</span>
+                </div>
+            </div>
+        </div>*@
+                                    @*<div class="form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>*@
                                     <!-- /.card-body -->
                                 </div>
                                 <div class="card-footer">

@@ -27,14 +27,14 @@ namespace BookStoreProject.Controllers
             {
                 BookID = q.ID,
                 Name = q.Name,
-                BookPersons = q.BookPersons,
+                BookPersons = q.BookPersons.Where(q => q.IsDeleted==false).ToList(),
                 Publisher = q.Publisher,
                 PublishDate = q.PublishDate,
                 AddDate = q.AddDate,
                 Edition = q.Edition,
                 IsDeleted = q.IsDeleted,
                 Comments = q.Comments,
-                bookCategories=q.BookCategories,
+                bookCategories=q.BookCategories.Where(q=>q.IsDeleted==false).ToList(),
                 UserPoints = q.UserPoints
 
             }).ToList();
@@ -58,9 +58,8 @@ namespace BookStoreProject.Controllers
             book.Publisher = model.Publisher;
             book.PublishDate = model.PublishDate;
             book.Edition = model.Edition;
-            book.UpdateDate = model.UpdateDate;
-            book.AddDate = model.AddDate;
-
+            //book.UpdateDate = model.UpdateDate;
+            //book.AddDate = model.AddDate;
 
             _bookcontext.Books.Add(book);
             _bookcontext.SaveChanges();
@@ -74,8 +73,8 @@ namespace BookStoreProject.Controllers
                 bookCategory.BookID = BookID;
 
                 _bookcontext.BookCategories.Add(bookCategory);
-                
             }
+
             foreach (var item in writerarray)
             {
                 BookPerson bookperson = new BookPerson();
@@ -83,17 +82,15 @@ namespace BookStoreProject.Controllers
                 bookperson.BookID = BookID;
                 bookperson.DutyID = 0;
 
-
                 _bookcontext.BookPeople.Add(bookperson);
-
             }
+
             foreach (var item in interparray)
             {
                 BookPerson bookperson = new BookPerson();
                 bookperson.PersonID = item;
                 bookperson.BookID = BookID;
                 bookperson.DutyID = 1;
-
 
                 _bookcontext.BookPeople.Add(bookperson);
 
@@ -107,7 +104,7 @@ namespace BookStoreProject.Controllers
 
         public IActionResult Edit(int id)
         {
-            Book book = _bookcontext.Books.Include(x => x.BookCategories).Include(x => x.BookPersons).FirstOrDefault(q => q.ID == id);
+            Book book = _bookcontext.Books.Include(x => x.BookCategories).ThenInclude(BookCategories=> BookCategories.Category). Include(x => x.BookPersons).ThenInclude(BookPersons=> BookPersons.Person).FirstOrDefault(q => q.ID == id);
 
             BookVM model = new BookVM();
             model.BookID = book.ID;
@@ -115,11 +112,77 @@ namespace BookStoreProject.Controllers
             model.Publisher = book.Publisher;
             model.PublishDate = book.PublishDate;
             model.Edition = book.Edition;
-            model.categories = book.BookCategories.Select(q=>q.Category).ToList();
-            model.people = book.BookPersons.Select(q => q.Person).ToList();
+            model.bookCategories = book.BookCategories.Where(q => q.IsDeleted == false).ToList();
+            model.categories = _bookcontext.Categories.Where(q => q.IsDeleted == false).ToList();
+            model.BookPersons = book.BookPersons.Where(q => q.IsDeleted == false).ToList();
+            model.people= _bookcontext.People.Where(q => q.IsDeleted == false).ToList();
 
             return View(model);
+        }
 
+
+
+        [HttpPost]
+        public IActionResult Edit(BookVM model, int[] catarray, int[] writerarray, int[]? interparray)
+        {
+            Book book = _bookcontext.Books.Include(x => x.BookCategories).Include(x => x.BookPersons).FirstOrDefault(q => q.ID == model.BookID);
+
+            book.Name = model.Name;
+            book.Publisher = model.Publisher;
+            book.PublishDate = model.PublishDate;
+            book.Edition = model.Edition;
+
+            _bookcontext.SaveChanges();
+
+            int BookID = book.ID;
+
+            List<BookCategory> bookcategories = book.BookCategories.ToList();
+
+            foreach (var item in bookcategories)
+            {
+                item.IsDeleted = true;
+            }
+
+            foreach (var item in catarray)
+            {
+                BookCategory bookCategory = new BookCategory();
+                bookCategory.CategoryID = item;
+                bookCategory.BookID = BookID;
+
+                _bookcontext.BookCategories.Add(bookCategory);
+            }
+
+
+            List<BookPerson> bookpeople = book.BookPersons.ToList();
+
+            foreach (var item in bookpeople)
+            {
+                item.IsDeleted = true;
+            }
+
+            foreach (var item in writerarray)
+            {
+                BookPerson bookPerson = new BookPerson();
+                bookPerson.PersonID = item;
+                bookPerson.BookID = BookID;
+                bookPerson.DutyID = 0;
+
+                _bookcontext.BookPeople.Add(bookPerson);
+            }
+
+            foreach (var item in interparray)
+            {
+                BookPerson bookPerson = new BookPerson();
+                bookPerson.PersonID = item;
+                bookPerson.BookID = BookID;
+                bookPerson.DutyID = 1;
+
+                _bookcontext.BookPeople.Add(bookPerson);
+            }
+
+            _bookcontext.SaveChanges();
+
+            return RedirectToAction("Index","Book");
         }
 
     }

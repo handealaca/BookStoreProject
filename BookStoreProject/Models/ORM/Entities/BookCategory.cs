@@ -16,5 +16,7 @@ namespace BookStoreProject.Models.ORM.Entities
         [ForeignKey("CategoryID")]
         public Category Category { get; set; }
 
+
+
     }
 }
