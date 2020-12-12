@@ -67,7 +67,13 @@
                                             <td>@item.Name @item.SurName</td>
                                             <td>@item.Biography</td>
                                             <td>@item.BirthDate?.ToString("dd.MM.yyyy")</td>
-                                            <td>@item.Duty</td>
+
+                                            <td>
+                                                @foreach (var data in item.Duties)
+                                                {
+                                                    <span>@data</span>
+                                                }
+                                            </td>
                                             <td>@item.AddDate.ToString("dd.MM.yyyy")</td>
 
                                             <td>
@@ -164,5 +170,5 @@
 
 
 
-    </script>
+</script>
 

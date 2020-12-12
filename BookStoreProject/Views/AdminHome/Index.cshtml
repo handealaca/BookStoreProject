@@ -119,6 +119,7 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table class="table table-bordered">
+
                                 <thead>
                                     <tr>
                                         <th>Book Name</th>
@@ -128,8 +129,8 @@
                                         <th>Publish Date</th>
                                     </tr>
                                 </thead>
-                                <tbody>
 
+                                <tbody>
                                     @foreach (var item in Model.Books)
                                     {
                                         <tr>
@@ -139,16 +140,13 @@
                                                 @foreach (var data1 in item.BookPersons.Where(q => q.IsDeleted == false))
                                                 {
 
-                                                    if (data1.Person.Duty == 0)
+                                                    if (data1.DutyID == 0)
                                                     {
-
                                                         <span>@data1.Person.Name @data1.Person.SurName</span>
-
                                                     }
 
                                                 }
                                             </td>
-
                                             <td>
                                                 @foreach (var data in item.BookCategories.Where(q => q.IsDeleted == false))
                                                 {
@@ -161,9 +159,8 @@
                                             <td>@item.PublishDate</td>
                                         </tr>
                                     }
-
-
                                 </tbody>
+
                             </table>
                         </div>
                         <!-- /.card-body -->
@@ -176,49 +173,131 @@
                         </div>
                     </div>
                     <!-- /.card -->
-
                 </div>
+
                 <div class="col-md-6">
-                    <div class="card card-yellow">
+                    <div class="card"style="color: #ffc107">
                         <div class="card-header">
                             <h3 class="card-title">Writer / Interpreter</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table class="table table-bordered">
+
                                 <thead>
                                     <tr>
                                         <th>Writer / Interpreter Name</th>
-                                        @*<th>Books</th>*@
                                         <th>Birth Date</th>
                                         <th>Duty</th>
+                                        @*<th>Books</th>*@
                                     </tr>
                                 </thead>
-                                <tbody>
 
-                                    @foreach (var item in Model.People.Where(q => q.IsDeleted == false ))
+                                <tbody>
+                                    @foreach (var item in Model.People)
                                     {
                                         <tr>
                                             <td>@item.Name @item.SurName</td>
-                                            <td>@item.BirthDate.Value.ToString("dd.MM.yyyy")</td>
-
-                                            @if (item.Duty == 0)
-                                            {
-                                                <td>Writer</td>
-                                            }
-                                            else
-                                            {
-                                                <td>Interpreter</td>
-                                            }
+                                            <td>@item.BirthDate?.ToString("dd.MM.yyyy")</td>
+                                            <td>
+                                                @foreach (var data in item.Duties)
+                                                {
+                                                     <span>@data</span>
+                                                   
+                                                }
+                                            </td>
+                                            <td>
+                                                @foreach (var data in item.Books)
+                                                {
+                                                    <span>@data.Book.Name</span>
+                                                }
+                                            </td>
                                         </tr>
                                     }
+                                </tbody>
+                                
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer clearfix">
+                            <a class="btn btn-sm  float-right" style="color: #ffc107"
+                               role="button" href="/Person/">
+                                <i class="fas fa-hand-point-right"></i>Show More
+                            </a>
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card" style="color: #971c53">
+                        <div class="card-header">
+                            <h3 class="card-title">Users</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table class="table table-bordered">
+
+                                <thead>
+                                    <tr>
+                                        <th>User</th>
+                                        <th>User Name</th>
+                                        <th>Email</th>
+                                        <th>Birth Date</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var item in Model.Users)
+                                    {
+                                        <tr>
+                                            <td>@item.Name @item.SurName</td>
+                                            <td>@item.UserName</td>
+                                            <td>@item.Email</td>
+                                            <td>@item.BirthDate</td>
+                                        </tr>
+                                    }
+                                </tbody>
+
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer clearfix">
+                            <a class="btn btn-sm float-right" style="color: #971c53"
+                               role="button" href="/User/">
+                                <i class="fas fa-hand-point-right"></i>Show More
+                            </a>
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card card-yellow">
+                        <div class="card-header">
+                            <h3 class="card-title">Categories</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Category Name</th>
+                                        @*<th>Books</th>*@
+                                        <th>Birth Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
                                 </tbody>
                             </table>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
-                            <a class="btn btn-sm  float-right" style="color: yellow"
+                            <a class="btn btn-sm  float-right" style="color: #ffc107"
                                role="button" href="/Person/">
                                 <i class="fas fa-hand-point-right"></i>Show More
                             </a>

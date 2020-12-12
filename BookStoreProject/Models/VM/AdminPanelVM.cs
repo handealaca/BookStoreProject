@@ -8,9 +8,9 @@ namespace BookStoreProject.Models.VM
 {
     public class AdminPanelVM
     {
-        public List<Book>Books { get; set; }
-        public List<User> Users { get; set; }
-        public List<Category> Categories { get; set; }
-        public List<Person> People { get; set; }
+        public List<BookVM>Books { get; set; }
+        public List<UserVM> Users { get; set; }
+        public List<CategoryVM> Categories { get; set; }
+        public List<PersonVM> People { get; set; }
     }
 }

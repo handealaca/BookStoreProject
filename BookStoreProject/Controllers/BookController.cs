@@ -34,13 +34,15 @@ namespace BookStoreProject.Controllers
                 Edition = q.Edition,
                 Imagepath=q.Imagepath,
 
-                bookCategories = q.BookCategories.Where(q => q.IsDeleted == false).ToList(),
+                BookCategories = q.BookCategories.Where(q => q.IsDeleted == false).ToList(),
 
 
             }).ToList();
 
             return View(books);
         }
+
+
         public IActionResult Add()
         {
             BookVM model = new BookVM();
@@ -140,7 +142,7 @@ namespace BookStoreProject.Controllers
             model.Publisher = book.Publisher;
             model.PublishDate = book.PublishDate;
             model.Edition = book.Edition;
-            model.bookCategories = book.BookCategories.Where(q => q.IsDeleted == false).ToList();
+            model.BookCategories = book.BookCategories.Where(q => q.IsDeleted == false).ToList();
             model.categories = _bookcontext.Categories.Where(q => q.IsDeleted == false).ToList();
             model.BookPersons = book.BookPersons.Where(q => q.IsDeleted == false).ToList();
             model.people = _bookcontext.People.Where(q => q.IsDeleted == false).ToList();

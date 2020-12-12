@@ -27,7 +27,7 @@ namespace BookStoreProject.Models.VM
         public string Imagepath { get; set; }
         public List<Comment> Comments { get; set; }
         public List<BookPerson> BookPersons { get; set; }
-        public List<BookCategory> bookCategories { get; set; }
+        public List<BookCategory> BookCategories { get; set; }
         public List<UserPoint> UserPoints { get; set; }
         [Required(ErrorMessage = "Writer field is required.")]
         public List<Person> people { get; set; }

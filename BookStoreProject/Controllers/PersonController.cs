@@ -24,27 +24,19 @@ namespace BookStoreProject.Controllers
         public IActionResult Index()
         {
 
-            List<PersonVM> people = _bookcontext.People.Where(q => q.IsDeleted == false).Select(q => new PersonVM()
+            List<PersonVM> people = _bookcontext.People.Where(q => q.IsDeleted == false).Include(q => q.PersonDuties).Select(q => new PersonVM()
             {
                 PersonID = q.ID,
                 Name = q.Name,
                 SurName = q.SurName.ToUpper(),
                 Biography = q.Biography,
                 BirthDate = q.BirthDate,
-                //AddDate = q.AddDate,
-                Duty = q.Duty == Convert.ToInt32(EnumDuty.Writer) ? EnumDuty.Writer.ToString() : EnumDuty.Interpreter.ToString()
+                Duties = q.PersonDuties.Where(q => q.IsDeleted == false).Select(q => q.DutyID == Convert.ToInt32(EnumDuty.Writer) ? EnumDuty.Writer.ToString() : EnumDuty.Interpreter.ToString()).ToList(),
             }).ToList();
 
             return View(people);
-
-            //duty=q.Duty.Interpreter|Duty.Writer,
-
-            //var duties = from Duty duty in Enum.GetValues(typeof(Duty))
-            //                 select new { ID = duty, Name = duty.ToString() };
-
-            //ViewBag.Duties = duties;
-
         }
+
 
         public IActionResult Add()
         {
@@ -62,7 +54,6 @@ namespace BookStoreProject.Controllers
         [HttpPost]
         public IActionResult Add(PersonVM model,int[] dutyarray)
         {
-
             Person person = new Person();
             person.Name = model.Name;
             person.SurName = model.SurName;
@@ -120,7 +111,7 @@ namespace BookStoreProject.Controllers
 
         public IActionResult Edit(int id)
         {
-            Person person = _bookcontext.People.FirstOrDefault(x => x.ID == id);
+            Person person = _bookcontext.People.Include(q => q.PersonDuties).FirstOrDefault(x => x.ID == id);
 
             PersonVM model = new PersonVM();
             model.PersonID = person.ID;
@@ -128,31 +119,32 @@ namespace BookStoreProject.Controllers
             model.SurName = person.SurName;
             model.BirthDate = person.BirthDate;
             model.Biography = person.Biography;
-            model.Duty = person.Duty.ToString();
+            model.Duties = person.PersonDuties.Where(q => q.IsDeleted == false).Select(q => q.DutyID == Convert.ToInt32(EnumDuty.Writer) ? EnumDuty.Writer.ToString() : EnumDuty.Interpreter.ToString()).ToList();
 
             return View(model);
         }
 
-        [HttpPost]
-        public IActionResult Edit(PersonVM model)
-        {
-            Person person = _bookcontext.People.FirstOrDefault(q => q.ID == model.PersonID);
+        //[HttpPost]
+        //public IActionResult Edit(PersonVM model)
+        //{
+        //    Person person = _bookcontext.People.FirstOrDefault(q => q.ID == model.PersonID);
 
-            if (ModelState.IsValid)
-            {
-                //person.ID = model.PersonID;
-                person.Name = model.Name;
-                person.SurName = model.SurName;
-                person.Biography = model.Biography;
-                person.BirthDate = model.BirthDate;
-                person.Duty = Convert.ToInt32(model.Duty);
+        //    if (ModelState.IsValid)
+        //    {
+        //        //person.ID = model.PersonID;
+        //        person.Name = model.Name;
+        //        person.SurName = model.SurName;
+        //        person.Biography = model.Biography;
+        //        person.BirthDate = model.BirthDate;
                 
-            }
-                _bookcontext.SaveChanges();  
-                return RedirectToAction("Index", "Person");
+        //        person.Duty = Convert.ToInt32(model.Duty);
+                
+        //    }
+        //        _bookcontext.SaveChanges();  
+        //        return RedirectToAction("Index", "Person");
            
           
-        }
+        //}
 
 
     }

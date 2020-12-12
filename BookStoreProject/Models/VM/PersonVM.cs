@@ -23,14 +23,13 @@ namespace BookStoreProject.Models.VM
 
         public string Biography { get; set; }
         public DateTime? BirthDate { get; set; } 
-        public string Duty { get; set; }
+        public List<string> Duties { get; set; }
         public DateTime AddDate { get; set; } = DateTime.Now;
         public List<EnumDuty> EnumDuties { get; set; }
-
-
+        public List<BookPerson> Books { get; set; }
     }
 
-    
+
 
 
 }
