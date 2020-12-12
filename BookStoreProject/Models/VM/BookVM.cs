@@ -1,4 +1,5 @@
 ﻿using BookStoreProject.Models.ORM.Entities;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -18,13 +19,12 @@ namespace BookStoreProject.Models.VM
         public string Publisher { get; set; }
         public string PublishDate { get; set; }
         public string Edition { get; set; }
-
-        [Required(ErrorMessage = "Writer/Interpreter field is required.")]
         public string WriterName { get; set; }
-
         public DateTime AddDate { get; set; } = DateTime.Now;
         public DateTime UpdateDate { get; set; } = DateTime.Now;
         public bool IsDeleted { get; set; }
+        public IFormFile Coverimage { set; get; }
+        public string Imagepath { get; set; }
         public List<Comment> Comments { get; set; }
         public List<BookPerson> BookPersons { get; set; }
         public List<BookCategory> bookCategories { get; set; }

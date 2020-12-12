@@ -51,6 +51,8 @@
 <script src="/Admin/plugins/dropzone/min/dropzone.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/Admin/dist/js/adminlte.min.js"></script>
+<!-- bs-custom-file-input -->
+<script src="/Admin/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/Admin/dist/js/demo.js"></script>
 
@@ -89,9 +91,11 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="/Book/Add" method="post">
+                        <form action="/Book/Add" method="post" enctype="multipart/form-data">
                             <div class="card-body">
+
                                 <div class="form-row">
+
                                     <div class="form-group col-lg-6">
                                         @Html.LabelFor(q => q.Name)
                                         @Html.TextBoxFor(q => q.Name, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Book Name" })
@@ -104,6 +108,7 @@
                                 </div>
 
                                 <div class="form-row">
+
                                     <div class="form-group col-lg-6">
                                         @Html.LabelFor(q => q.Publisher)
                                         @Html.TextBoxFor(q => q.Publisher, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Publisher" })
@@ -140,6 +145,7 @@
                                         @Html.ValidationMessageFor(q => q.people, "", new { @class = "text-danger" })
 
                                     </div>
+
                                     <div class="form-group col-lg-6">
                                         <label>Interpreter</label>
                                         <select class="select2 form-control form-control-border border-width-2" name="interparray" multiple="multiple" data-placeholder="Select an Interpreter" style="width: 100%;">
@@ -162,7 +168,7 @@
 
 
                                         </select>
-                                     
+
                                     </div>
                                 </div>
 
@@ -190,18 +196,17 @@
                                         @Html.ValidationMessageFor(q => q.categories, "", new { @class = "text-danger" })
                                     </div>
 
-                                    @*<div class="form-group col-lg-6">
-                                            <label for="exampleInputFile">File input</label>
-                                            <div class="input-group">
-                                                <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="exampleInputFile">
-                                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                                </div>
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text">Upload</span>
-                                                </div>
+
+                                    <div class="form-group col-lg-6">
+                                        @Html.LabelFor(q => q.Coverimage)
+
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="exampleInputFile" name="Coverimage" multiple accept="image/x-png,image/gif,image/jpeg">
+                                                <label class="custom-file-label" for="customFile">Choose file</label>
                                             </div>
-                                        </div>*@
+                                        </div>
+                                    </div>
 
                                 </div>
 
@@ -238,5 +243,7 @@
 
     });
 
-
+    $(function () {
+        bsCustomFileInput.init();
+    });
 </script>
