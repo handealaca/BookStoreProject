@@ -12,6 +12,7 @@ namespace BookStoreProject.Models.ORM.Entities
         public string Publisher { get; set; }
         public string PublishDate { get; set; }
         public string Edition { get; set; }
+        public string Imagepath { get; set; }
         public List<Comment> Comments { get; set; }
         public List<BookCategory> BookCategories { get; set; }
         public List<UserPoint> UserPoints { get; set; }

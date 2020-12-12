@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -30,9 +31,8 @@ namespace BookStoreProject.Controllers
                 BookPersons = q.BookPersons.Where(q => q.IsDeleted == false).ToList(),
                 Publisher = q.Publisher,
                 PublishDate = q.PublishDate,
-                AddDate = q.AddDate,
                 Edition = q.Edition,
-                IsDeleted = q.IsDeleted,
+                Imagepath=q.Imagepath,
 
                 bookCategories = q.BookCategories.Where(q => q.IsDeleted == false).ToList(),
 
@@ -50,24 +50,41 @@ namespace BookStoreProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(BookVM model, int[] catarray, int[] writerarray, int[]? interparray)
+        public IActionResult Add(BookVM model, int[] categories, int[] people, int[]? interparray)
         {
-           
+            model.Imagepath = "";
+
+            if (model.Coverimage != null)
+            {
+                var guid = Guid.NewGuid().ToString();
+
+                var path = Path.Combine(
+                    Directory.GetCurrentDirectory(),
+                    "wwwroot/Admin/Coverimg", guid + ".jpg");
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    model.Coverimage.CopyTo(stream);
+                }
+
+                model.Imagepath = guid + ".jpg";
+            }
+
+
             if (ModelState.IsValid)
             {
                 Book book = new Book();
                 book.Name = model.Name;
                 book.Publisher = model.Publisher;
                 book.PublishDate = model.PublishDate;
+                book.Imagepath = model.Imagepath;
                 book.Edition = model.Edition;
-                //book.UpdateDate = model.UpdateDate;
-                //book.AddDate = model.AddDate;
 
                 _bookcontext.Books.Add(book);
                 _bookcontext.SaveChanges();
 
                 int BookID = book.ID;
-                foreach (var item in catarray)
+                foreach (var item in categories)
                 {
                     BookCategory bookCategory = new BookCategory();
                     bookCategory.CategoryID = item;
@@ -76,7 +93,7 @@ namespace BookStoreProject.Controllers
                     _bookcontext.BookCategories.Add(bookCategory);
                 }
 
-                foreach (var item in writerarray)
+                foreach (var item in people)
                 {
                     BookPerson bookperson = new BookPerson();
                     bookperson.PersonID = item;

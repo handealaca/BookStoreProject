@@ -58,20 +58,16 @@ namespace BookStoreProject.Controllers
 
             return View(model);
         }
+
         [HttpPost]
         public IActionResult Add(PersonVM model,int[] dutyarray)
         {
-
 
             Person person = new Person();
             person.Name = model.Name;
             person.SurName = model.SurName;
             person.Biography = model.Biography;
             person.BirthDate = model.BirthDate;
-            //person.UpdateDate = model.UpdateDate;
-            //person.IsDeleted = model.IsDeleted;
-            //person.AddDate = model.AddDate;
-
 
             _bookcontext.People.Add(person);
             _bookcontext.SaveChanges();
@@ -93,6 +89,7 @@ namespace BookStoreProject.Controllers
             return RedirectToAction("Index", "Person");
         }
                 
+
         public IActionResult BookDetail(int id)
         {
             List<BookVM> books = _bookcontext.BookPeople.Include(q => q.Book).Include(q => q.Person).Where(q => q.PersonID == id).Select(q => new BookVM()
@@ -108,6 +105,7 @@ namespace BookStoreProject.Controllers
 
             return View(books);
         }
+
 
         [HttpPost]
         public IActionResult Delete(int id)
