@@ -45,7 +45,7 @@ namespace BookStoreProject.Controllers
         {
             BookVM model = new BookVM();
             model.categories = _bookcontext.Categories.Where(q => q.IsDeleted == false).ToList();
-            model.people = _bookcontext.People.ToList();
+            model.people = _bookcontext.People.Where(q => q.IsDeleted == false).ToList();
             return View(model);
         }
 
@@ -95,6 +95,7 @@ namespace BookStoreProject.Controllers
 
                     _bookcontext.BookPeople.Add(bookperson);
                 } 
+
                 _bookcontext.SaveChanges();
                 
                 return RedirectToAction("Index", "Book");

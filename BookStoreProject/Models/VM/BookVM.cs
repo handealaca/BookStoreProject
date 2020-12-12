@@ -16,7 +16,7 @@ namespace BookStoreProject.Models.VM
 
         [Required(ErrorMessage = "Publisher field is required.")]
         public string Publisher { get; set; }
-        public string PublishDate { get; set; }
+        public string PublishDate { get; set; } 
         public string Edition { get; set; }
 
         [Required(ErrorMessage = "Writer/Interpreter field is required.")]
