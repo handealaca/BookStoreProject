@@ -118,7 +118,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered" style="text-align:center">
 
                                 <thead>
                                     <tr>
@@ -176,20 +176,20 @@
                 </div>
 
                 <div class="col-md-6">
-                    <div class="card"style="color: #ffc107">
-                        <div class="card-header">
-                            <h3 class="card-title">Writer / Interpreter</h3>
+                    <div class="card">
+                        <div class="card-header" style="background-color: #fedc56">
+                            <h3 class="card-title" style="color:white">Writer / Interpreter</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered" style="text-align:center">
 
                                 <thead>
                                     <tr>
                                         <th>Writer / Interpreter Name</th>
                                         <th>Birth Date</th>
                                         <th>Duty</th>
-                                        @*<th>Books</th>*@
+                                        <th>Books</th>
                                     </tr>
                                 </thead>
 
@@ -207,9 +207,9 @@
                                                 }
                                             </td>
                                             <td>
-                                                @foreach (var data in item.Books)
+                                                @foreach (var data1 in item.Books.Take(5))
                                                 {
-                                                    <span>@data.Book.Name</span>
+                                                    <span>@data1.Book.Name</span> <br>
                                                 }
                                             </td>
                                         </tr>
@@ -220,7 +220,7 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
-                            <a class="btn btn-sm  float-right" style="color: #ffc107"
+                            <a class="btn btn-sm  float-right" style="color: #fedc56"
                                role="button" href="/Person/">
                                 <i class="fas fa-hand-point-right"></i>Show More
                             </a>
@@ -233,13 +233,13 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <div class="card" style="color: #971c53">
-                        <div class="card-header">
-                            <h3 class="card-title">Users</h3>
+                    <div class="card">
+                        <div class="card-header" style="background-color:orange">
+                            <h3 class="card-title" style="color:white">Users</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered" style="text-align:center">
 
                                 <thead>
                                     <tr>
@@ -257,7 +257,7 @@
                                             <td>@item.Name @item.SurName</td>
                                             <td>@item.UserName</td>
                                             <td>@item.Email</td>
-                                            <td>@item.BirthDate</td>
+                                            <td>@item.BirthDate?.ToString("dd.MM.yyyy")</td>
                                         </tr>
                                     }
                                 </tbody>
@@ -266,7 +266,7 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
-                            <a class="btn btn-sm float-right" style="color: #971c53"
+                            <a class="btn btn-sm float-right" style="color: orange"
                                role="button" href="/User/">
                                 <i class="fas fa-hand-point-right"></i>Show More
                             </a>
@@ -277,12 +277,12 @@
 
                 <div class="col-md-6">
                     <div class="card card-yellow">
-                        <div class="card-header">
-                            <h3 class="card-title">Categories</h3>
+                        <div class="card-header" style="background-color: #971c53">
+                            <h3 class="card-title" style="color:white">Categories</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered" style="text-align:center">
                                 <thead>
                                     <tr>
                                         <th>Category Name</th>
@@ -297,7 +297,7 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
-                            <a class="btn btn-sm  float-right" style="color: #ffc107"
+                            <a class="btn btn-sm  float-right" style="color: #971c53"
                                role="button" href="/Person/">
                                 <i class="fas fa-hand-point-right"></i>Show More
                             </a>

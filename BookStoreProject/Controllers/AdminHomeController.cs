@@ -40,14 +40,14 @@ namespace BookStoreProject.Controllers
                 BirthDate = q.BirthDate
             }).ToList();
 
-            List<PersonVM> people = _bookcontext.People.Where(q => q.IsDeleted == false).Take(5).Include(q => q.).ThenInclude(BookPeople => BookPeople.Book).Include(q=>q.PersonDuties).Select(q => new PersonVM()
+            List<PersonVM> people = _bookcontext.People.Where(q => q.IsDeleted == false).Include(q => q.BookPeople).ThenInclude(BookPeople => BookPeople.Book).Include(q=>q.PersonDuties).Take(5).Select(q => new PersonVM()
             {
                 PersonID = q.ID,
                 Name = q.Name,
                 SurName = q.SurName,
                 BirthDate = q.BirthDate,
                 Duties = q.PersonDuties.Where(q=>q.IsDeleted==false).Select(q=>q.DutyID == Convert.ToInt32(EnumDuty.Writer) ? EnumDuty.Writer.ToString() : EnumDuty.Interpreter.ToString()).ToList(),
-                Books = q.BookPeople.Where(q=>q.IsDeleted==false).Take(5).ToList(),
+                Books = q.BookPeople.Where(q=>q.IsDeleted== false).ToList(),
             }).ToList();
 
             List<CategoryVM> categories = _bookcontext.Categories.Where(q => q.IsDeleted == false).Take(5).Select(q => new CategoryVM()
