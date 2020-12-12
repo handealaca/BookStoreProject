@@ -15,6 +15,10 @@ namespace BookStoreProject.Models.VM
         public string CategoryName { get; set; }
         public DateTime AddDate { get; set; }= DateTime.Now;
         public DateTime UpdateDate { get; set; } = DateTime.Now;
-        public List<BookCategory> BookCategories { get; set; }
+
+        public List<Category> topcategories { get; set; }
+
+        public List<Category> subcategories { get; set; }
+
     }
 }

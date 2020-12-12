@@ -26,8 +26,8 @@ namespace BookStoreProject.Controllers
             {
                 CategoryID = q.ID,
                 CategoryName = q.CategoryName,
-                AddDate = q.AddDate,
-                BookCategories = q.BookCategories
+               
+               
             }).ToList();
 
             return View(categories);
@@ -37,11 +37,15 @@ namespace BookStoreProject.Controllers
 
         public IActionResult Add()
         {
-            return View();
+            CategoryVM model = new CategoryVM();
+            model.subcategories = _bookcontext.Categories.Where(q => q.IsDeleted == false & q.TopCategory != 0).ToList();
+            model.topcategories = _bookcontext.Categories.Where(q => q.IsDeleted == false & q.TopCategory == 0).ToList();
+
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult Add(CategoryVM model)
+        public IActionResult Add(CategoryVM model, int[] categories)
         {
             if (ModelState.IsValid)
             {

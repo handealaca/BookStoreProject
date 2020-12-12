@@ -10,6 +10,20 @@
 <link rel="stylesheet" href="/Admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 <link rel="stylesheet" href="/Admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
+<!--DataTables  & Plugins -->
+<script src="/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/Admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/Admin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/Admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="/Admin/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="/Admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="/Admin/plugins/jszip/jszip.min.js"></script>
+<script src="/Admin/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="/Admin/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="/Admin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="/Admin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="/Admin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
 
 <!-- Left navbar links -->
 <!-- Content Wrapper. Contains page content -->
@@ -17,13 +31,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Categories</h1>
-                </div>
+            <div class="row mb-2 justify-content-end">
+              
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/AdminHome/">Home</a></li>
                         <li class="breadcrumb-item active">Categories</li>
                     </ol>
                 </div>
@@ -48,8 +60,9 @@
                             <table id="example1" class="table table-bordered table-striped" style="text-align:center">
                                 <thead>
                                     <tr>
+                                      
                                         <th>Category Name</th>
-                                        <th>Add Date</th>
+                                        <th>SubCategories</th>
                                         <th>Books</th>
                                         <th>Edit / Delete</th>
                                     </tr>
@@ -58,6 +71,7 @@
                                     @foreach (var item in Model)
                                     {
                                         <tr>
+                                            
                                             <td>@item.CategoryName</td>
                                             <td>@item.AddDate.ToString("dd.MM.yyyy")</td>
                                             <td>
@@ -68,7 +82,7 @@
                                             </td>
                                             <td>
                                                 <a class="btn btn-sm btn-outline-warning edit"
-                                                    href="/Category/Edit/@item.CategoryID"
+                                                   href="/Category/Edit/@item.CategoryID"
                                                    role="button" id=@item.CategoryID>
                                                     <i class="fas fa-edit"></i>
                                                 </a>
@@ -98,19 +112,7 @@
 </div>
 
 
-<!-- DataTables  & Plugins -->
-<script src="/Admin/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="/Admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="/Admin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="/Admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="/Admin/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="/Admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="/Admin/plugins/jszip/jszip.min.js"></script>
-<script src="/Admin/plugins/pdfmake/pdfmake.min.js"></script>
-<script src="/Admin/plugins/pdfmake/vfs_fonts.js"></script>
-<script src="/Admin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="/Admin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="/Admin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
 
 
 <!-- Page specific script -->
@@ -140,7 +142,7 @@
             success: function (msg) {
                 console.log("Deleted");
                 $("#" + id).fadeOut();
-                window.location.href= "/Category/"
+                window.location.href = "/Category/"
             },
             error: function (err) {
                 console.log("Failed");

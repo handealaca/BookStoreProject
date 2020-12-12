@@ -10,6 +10,8 @@ namespace BookStoreProject.Models.ORM.Entities
         public string CategoryName { get; set; }
         public List<BookCategory> BookCategories { get; set; }
 
+        public int TopCategory { get; set; }
+
 
 
     }
