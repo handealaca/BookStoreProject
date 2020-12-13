@@ -27,6 +27,8 @@ namespace BookStoreProject.Models.VM
         public DateTime AddDate { get; set; } = DateTime.Now;
         public List<EnumDuty> EnumDuties { get; set; }
         public List<BookPerson> Books { get; set; }
+
+
     }
 
 

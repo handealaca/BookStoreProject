@@ -4,6 +4,11 @@
     Layout = "~/Views/Admin/Shared/_AdminLayout.cshtml";
 }
 @model BookStoreProject.Models.VM.PersonVM
+    <!-- Select2 -->
+<link rel="stylesheet" href="/Admin/plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="/Admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="/Admin/dist/css/adminlte.min.css">
 
 <style>
     .validation-summary-errors {
@@ -44,7 +49,67 @@
                         <!-- /.card-header -->
                         <!-- form start -->
                         <form action="/Person/Edit/" method="post">
-                            @await Html.PartialAsync("Partial/PersonForm")
+
+                            <div class="card-body">
+                                @Html.ValidationSummary()
+                                <div class="form-row">
+                                    <div class="form-group col-lg-6">
+                                        @Html.LabelFor(q => q.Name)
+
+                                        @Html.TextBoxFor(q => q.Name, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter name" })
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        @Html.LabelFor(q => q.SurName)
+                                        @Html.TextBoxFor(q => q.SurName, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter surname" })
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(q => q.Biography)
+                                    @Html.TextAreaFor(q => q.Biography, new { @class = "form-control form-control-border border-width-2", @placeholder = "Write Something" })
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-lg-6 ">
+                                        @Html.LabelFor(q => q.BirthDate)
+                                        @Html.TextBoxFor(q => q.BirthDate, new { @type = "date", @name = "birthdate", @class = "form-control form-control-border border-width-2", @placeholder = "mm/dd/yyyy" })
+                                    </div>
+                                    <div class="form-group col-lg-6 ">
+                                        @Html.LabelFor(q => q.Duties)
+                                        <select class="select2" name="dutyarray" multiple="multiple" data-placeholder="Select Duty" style="width: 100%;">
+
+                                            @if (Model != null)
+                                            {
+                                                List<int> selected = new List<int>();
+
+                                                @foreach (var item in Model.EnumDuties)
+                                                {
+                                                    foreach (var data in Model.Duties)
+                                                    {
+                                                        if (item.ToString() == data)
+                                                        {
+                                                            <option selected value="@Convert.ToUInt32(item)">
+                                                                @item.ToString()
+
+                                                            </option>
+                                                            selected.Add(Convert.ToInt32(item));
+                                                        }
+                                                    }
+                                                }
+                                                @foreach (var item in Model.EnumDuties)
+                                                {
+                                                    if (!selected.Contains(Convert.ToInt32(item)))
+                                                    {
+                                                        <option value="@Convert.ToInt32(item)">@item.ToString()</option>
+
+                                                    }
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
                             @Html.HiddenFor(q => q.PersonID)
 
                             <div class="card-footer">
@@ -72,7 +137,7 @@
     //$(document).on("click", ".edit", function () {
     //    var id = $(this).attr("id");
     //    var Name =()
-        
+
     //    $.ajax({
     //        url: "/Person/Edit",
     //        type: "POST",
@@ -81,8 +146,8 @@
 
 
     //            console.log(msg);
-                               
-               
+
+
     //            //window.location.href= "/Adminblog"
     //            alert("You will be redirected to the edit page")
     //        },
@@ -91,6 +156,25 @@
     //        }
     //    })
     //})
+</script>
+
+<!-- Select2 -->
+<script src="/Admin/plugins/select2/js/select2.full.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        //Initialize Select2 Elements
+        $('.select2').select2()
+
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+
+    });
+
+
 </script>
 
 

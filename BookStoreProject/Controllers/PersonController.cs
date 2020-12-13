@@ -121,30 +121,57 @@ namespace BookStoreProject.Controllers
             model.Biography = person.Biography;
             model.Duties = person.PersonDuties.Where(q => q.IsDeleted == false).Select(q => q.DutyID == Convert.ToInt32(EnumDuty.Writer) ? EnumDuty.Writer.ToString() : EnumDuty.Interpreter.ToString()).ToList();
 
+            List<EnumDuty> modelduty = new List<EnumDuty>();
+
+            modelduty.Add(EnumDuty.Interpreter);
+            modelduty.Add(EnumDuty.Writer);
+
+            model.EnumDuties = modelduty;
+
             return View(model);
+
         }
 
-        //[HttpPost]
-        //public IActionResult Edit(PersonVM model)
-        //{
-        //    Person person = _bookcontext.People.FirstOrDefault(q => q.ID == model.PersonID);
+        [HttpPost]
+        public IActionResult Edit(PersonVM model,int[] dutyarray)
+        {
+            Person person = _bookcontext.People.Include(q=> q.PersonDuties).FirstOrDefault(q => q.ID == model.PersonID);
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        //person.ID = model.PersonID;
-        //        person.Name = model.Name;
-        //        person.SurName = model.SurName;
-        //        person.Biography = model.Biography;
-        //        person.BirthDate = model.BirthDate;
-                
-        //        person.Duty = Convert.ToInt32(model.Duty);
-                
-        //    }
-        //        _bookcontext.SaveChanges();  
-        //        return RedirectToAction("Index", "Person");
-           
-          
-        //}
+            if (ModelState.IsValid)
+            {
+               
+                person.Name = model.Name;
+                person.SurName = model.SurName;
+                person.Biography = model.Biography;
+                person.BirthDate = model.BirthDate;
+
+                _bookcontext.SaveChanges();
+
+                int PersonID = person.ID;
+
+                List<PersonDuty> personduties = person.PersonDuties.ToList();
+                foreach (var item in personduties)
+                {
+                    item.IsDeleted = true;
+                }
+                foreach (var item in dutyarray)
+                {
+                    PersonDuty personduty = new PersonDuty();
+
+                    personduty.PersonID = PersonID;
+                    personduty.DutyID = item;
+
+                    _bookcontext.PeopleDuty.Add(personduty);
+                }
+
+               
+            }
+            _bookcontext.SaveChanges();
+
+            return RedirectToAction("Index", "Person");
+
+
+        }
 
 
     }

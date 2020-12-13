@@ -8,15 +8,19 @@
 
 <div class="card-body">
     @Html.ValidationSummary()
-    <div class="form-group">
-        @Html.LabelFor(q => q.Name)
+    <div class="form-row">
+        <div class="form-group col-lg-6">
+            @Html.LabelFor(q => q.Name)
 
-        @Html.TextBoxFor(q => q.Name, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter name" })
+            @Html.TextBoxFor(q => q.Name, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter name" })
+        </div>
+        <div class="form-group col-lg-6">
+            @Html.LabelFor(q => q.SurName)
+            @Html.TextBoxFor(q => q.SurName, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter surname" })
+        </div>
+
     </div>
-    <div class="form-group">
-        @Html.LabelFor(q => q.SurName)
-        @Html.TextBoxFor(q => q.SurName, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter surname" })
-    </div>
+
 
     <div class="form-group">
         @Html.LabelFor(q => q.Biography)
@@ -31,9 +35,10 @@
             <label>Duty</label>
             <select class="select2" name="dutyarray" multiple="multiple" data-placeholder="Select Duty" style="width: 100%;">
                 @foreach (var item in Model.EnumDuties)
-                {
-                    <option value="@Convert.ToInt32(item)">@item.ToString()</option>
-                }
+        {
+            <option value="@Convert.ToInt32(item)">@item.ToString()</option>
+        }
+                
             </select>
         </div>
     </div>
