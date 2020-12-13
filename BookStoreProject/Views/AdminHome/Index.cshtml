@@ -51,13 +51,12 @@
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box">
-                        <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+                        <span class="info-box-icon elevation-1"style="background-color: #18afa2; color:white"><i class="fas fa-book-open"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">CPU Traffic</span>
+                            <span class="info-box-text">Books</span>
                             <span class="info-box-number">
-                                10
-                                <small>%</small>
+                                @Model.Books.Count()
                             </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -67,11 +66,11 @@
                 <!-- /.col -->
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box mb-3">
-                        <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+                        <span class="info-box-icon elevation-1"style="background-color: #fedc56;color: white"><i class="fas fa-feather-alt"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Likes</span>
-                            <span class="info-box-number">60</span>
+                            <span class="info-box-text">Writers/Interpreters</span>
+                            <span class="info-box-number"> @Model.People.Count()</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -83,11 +82,11 @@
 
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box mb-3">
-                        <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+                        <span class="info-box-icon elevation-1"style="background-color: orange;color: white"><i class="fas fa-users"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Sales</span>
-                            <span class="info-box-number">76</span>
+                            <span class="info-box-text">Users</span>
+                            <span class="info-box-number"> @Model.Users.Count()</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -96,11 +95,11 @@
                 <!-- /.col -->
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box mb-3">
-                        <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+                        <span class="info-box-icon elevation-1"style="background-color: #971c53;color: white"><i class="fas fa-clipboard-list"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">New Members</span>
-                            <span class="info-box-number">2,000</span>
+                            <span class="info-box-text">Categories</span>
+                            <span class="info-box-number"> @Model.Categories.Count()</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -112,9 +111,9 @@
 
             <div class="row">
                 <div class="col-md-6">
-                    <div class="card card-teal">
-                        <div class="card-header">
-                            <h3 class="card-title">Books</h3>
+                    <div class="card">
+                        <div class="card-header"style="background-color: #18afa2">
+                            <h3 class="card-title"style="color:white">Books</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -131,7 +130,7 @@
                                 </thead>
 
                                 <tbody>
-                                    @foreach (var item in Model.Books)
+                                    @foreach (var item in Model.Books.Take(5))
                                     {
                                         <tr>
                                             <td>@item.Name</td>
@@ -165,7 +164,7 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
-                            <a class="btn btn-sm float-right" style="color: teal"
+                            <a class="btn btn-sm float-right" style="color: #18afa2"
                                role="button" href="/Book/">
                                 <i class="fas fa-hand-point-right"></i>Show More
                             </a>
@@ -178,7 +177,7 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header" style="background-color: #fedc56">
-                            <h3 class="card-title" style="color:white">Writer / Interpreter</h3>
+                            <h3 class="card-title" style="color:white">Writers / Interpreters</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -194,7 +193,7 @@
                                 </thead>
 
                                 <tbody>
-                                    @foreach (var item in Model.People)
+                                    @foreach (var item in Model.People.Take(5))
                                     {
                                         <tr>
                                             <td>@item.Name @item.SurName</td>
@@ -251,7 +250,7 @@
                                 </thead>
 
                                 <tbody>
-                                    @foreach (var item in Model.Users)
+                                    @foreach (var item in Model.Users.Take(5))
                                     {
                                         <tr>
                                             <td>@item.Name @item.SurName</td>
@@ -283,22 +282,35 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table class="table table-bordered" style="text-align:center">
+
                                 <thead>
                                     <tr>
                                         <th>Category Name</th>
-                                        @*<th>Books</th>*@
-                                        <th>Birth Date</th>
+                                        <th>Books</th>
                                     </tr>
                                 </thead>
-                                <tbody>
 
+                                <tbody>
+                                    @foreach (var item in Model.Categories.Take(5))
+                                    {
+                                        <tr>
+                                            <td>@item.CategoryName</td>
+                                            <td>
+                                                @foreach (var data in item.Books.Take(5))
+                                                {
+                                                    <span>@data.Book.Name</span> <br>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
                                 </tbody>
+
                             </table>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
                             <a class="btn btn-sm  float-right" style="color: #971c53"
-                               role="button" href="/Person/">
+                               role="button" href="/Category/">
                                 <i class="fas fa-hand-point-right"></i>Show More
                             </a>
 
