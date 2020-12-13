@@ -26,8 +26,9 @@ namespace BookStoreProject.Controllers
             {
                 CategoryID = q.ID,
                 CategoryName = q.CategoryName,
-               
-               
+                TopCategory = q.TopCategory,
+
+
             }).ToList();
 
             return View(categories);
@@ -38,28 +39,50 @@ namespace BookStoreProject.Controllers
         public IActionResult Add()
         {
             CategoryVM model = new CategoryVM();
-            model.subcategories = _bookcontext.Categories.Where(q => q.IsDeleted == false & q.TopCategory != 0).ToList();
+
             model.topcategories = _bookcontext.Categories.Where(q => q.IsDeleted == false & q.TopCategory == 0).ToList();
 
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult Add(CategoryVM model, int[] categories)
+        public IActionResult Add(CategoryVM model, int? topcategories)
         {
-            if (ModelState.IsValid)
+
+            if (topcategories == null)
             {
                 Category category = new Category();
 
                 category.CategoryName = model.CategoryName;
+                category.TopCategory = 0;
 
                 _bookcontext.Categories.Add(category);
                 _bookcontext.SaveChanges();
 
-                return RedirectToAction("Index");
+                int CategoryID = category.ID;
+
+
+                Category category1 = new Category();
+                category1.TopCategory = CategoryID;
+                category1.CategoryName = model.subcategoryname;
+
+                _bookcontext.Categories.Add(category1);
+                _bookcontext.SaveChanges();
             }
 
-            return View();
+            else
+            {
+                Category category2 = new Category();
+                category2.CategoryName = model.subcategoryname;
+                category2.TopCategory = topcategories;
+
+                _bookcontext.Categories.Add(category2);
+                _bookcontext.SaveChanges();
+            }
+
+            return RedirectToAction("Index", "Category");
+
+
 
         }
 
@@ -72,20 +95,40 @@ namespace BookStoreProject.Controllers
             CategoryVM model = new CategoryVM();
             model.CategoryID = category.ID;
             model.CategoryName = category.CategoryName;
+            model.TopCategory = category.TopCategory;
+
+            model.topcategories = _bookcontext.Categories.Where(q => q.IsDeleted == false & q.TopCategory == 0).ToList();
             return View(model);
+
+
+
+
+
         }
 
         [HttpPost]
-        public IActionResult Edit(CategoryVM model)
+        public IActionResult Edit(CategoryVM model, int? topcategories)
         {
             Category category = _bookcontext.Categories.FirstOrDefault(q => q.ID == model.CategoryID);
 
-            if (ModelState.IsValid)
+            category.CategoryName = model.CategoryName;
+
+            if (topcategories == null)
             {
-                category.CategoryName = model.CategoryName;
-                _bookcontext.SaveChanges();
+
+                category.TopCategory = 0;
             }
-            return RedirectToAction("Index");
+            else
+            {
+                category.TopCategory = topcategories;
+            }
+
+
+
+
+            _bookcontext.SaveChanges();
+
+            return RedirectToAction("Index", "Category");
         }
 
 

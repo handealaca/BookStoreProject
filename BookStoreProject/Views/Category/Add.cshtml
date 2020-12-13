@@ -61,14 +61,14 @@
                         <form action="/Category/Add" method="post">
                             <div class="card-body">
                                 <div class="form-row">
-                                    <div class="form-group col-lg-6">
+                                    <div class="form-group col-lg-4">
                                         @Html.LabelFor(q => q.CategoryName, "New TopCategory Name")
                                         @Html.TextBoxFor(q => q.CategoryName, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Category Name", @id = "name" })
-                                       
+
                                     </div>
 
-                                    <div class="form-group col-lg-6">
-                                        @Html.LabelFor(q => q.subcategories, "TopCategory Name")
+                                    <div class="form-group col-lg-4">
+                                        @Html.LabelFor(q => q.topcategories, "TopCategory Name")
                                         <select class="select2 form-control-border border-width-2" name="topcategories" multiple="multiple" data-placeholder="Select a TopCategory" style="width: 100%;">
                                             @if (Model != null)
                                                 @*{*@
@@ -88,37 +88,17 @@
 
                                         </select>
                                     </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-lg-6">
-                                        @Html.LabelFor(q => q.CategoryName, "New SubCategory Name")
-                                        @Html.TextBoxFor(q => q.CategoryName, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Category Name", @id = "name" })
-                                       
+                                    <div class="form-group col-lg-4">
+                                        @Html.LabelFor(q => q.subcategoryname, "New SubCategory Name")
+                                        @Html.TextBoxFor(q => q.subcategoryname, new { @name = "subcategory", @class = "form-control form-control-border border-width-2", @placeholder = "Enter Category Name", @id = "name" })
+
                                     </div>
-
-                                    <div class="form-group col-lg-6">
-                                        @Html.LabelFor(q => q.subcategories, "SubCategory Name")
-                                        <select class="select2 form-control-border border-width-2" name="subcategories" multiple="multiple" data-placeholder="Select a SubCategory" style="width: 100%;">
-                                            @if (Model != null)
-                                                @*{*@
-                                                @foreach (var item in Model.subcategories)
-                                                {
-                                                    <option value="@item.ID">@item.CategoryName</option>
-                                                }
-                                                @*}
-                                                    else
-                                                    {
-                                                        @foreach (var item in ViewBag.categorybag)
-                                                        {
-                                                            <option value="@item.ID">@item.CategoryName</option>
-                                                        }
-
-                                                    }*@
-
-                                        </select>
-                                    </div>
-                                    @*@Html.ValidationMessageFor(q => q.subcategories, "", new { @class = "text-danger" })*@
                                 </div>
+
+
+
+
+
 
                             </div>
                             <!-- /.card-body -->

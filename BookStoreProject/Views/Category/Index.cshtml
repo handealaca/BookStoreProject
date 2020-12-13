@@ -60,20 +60,30 @@
                             <table id="example1" class="table table-bordered table-striped" style="text-align:center">
                                 <thead>
                                     <tr>
-                                      
+                                        <th>ID</th>
                                         <th>Category Name</th>
-                                        <th>SubCategories</th>
+                                        @*<th>SubCategories</th>*@
+                                        <th>Top Category ID</th>
+                                        @*<th>Top Category Name</th>*@
                                         <th>Books</th>
                                         <th>Edit / Delete</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
                                         <tr>
-                                            
+                                            <td>@item.CategoryID</td>
                                             <td>@item.CategoryName</td>
-                                            <td>@item.AddDate.ToString("dd.MM.yyyy")</td>
+                                            @*<td>@item.AddDate.ToString("dd.MM.yyyy")</td>*@
+                                            <td>@item.TopCategory</td>
+                                            @*<td>
+                                                @foreach (var item in Model)
+                                                {
+
+                                                }
+                                            </td>*@
                                             <td>
                                                 <a class="btn btn-sm btn-outline-primary"
                                                    href="/Category/CategoryDetail/@item.CategoryID" role="button">

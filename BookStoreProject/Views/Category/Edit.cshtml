@@ -1,23 +1,42 @@
 ﻿
+
 @{
     ViewData["Title"] = "Add";
     Layout = "~/Views/Admin/Shared/_AdminLayout.cshtml";
 }
 
 @model BookStoreProject.Models.VM.CategoryVM
+    <!-- Select2 -->
+<link rel="stylesheet" href="/Admin/plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="/Admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="/Admin/dist/css/adminlte.min.css">
+<!-- Bootstrap Color Picker -->
+<link rel="stylesheet" href="/Admin/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+
+
+<!--jQuery -->
+<script src="/Admin/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Select2 -->
+<script src="/Admin/plugins/select2/js/select2.full.min.js"></script>
+<!-- bootstrap color picker -->
+<script src="/Admin/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/Admin/dist/js/adminlte.min.js"></script>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Category Edit Form</h1>
-                </div>
-                <div class="col-sm-6">
+            <div class="row mb-2 justify-content-end">
+
+                <div class="col-sm-6 ">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/AdminHome/">Home</a></li>
+                       
                         <li class="breadcrumb-item active">Category Edit Form</li>
                     </ol>
                 </div>
@@ -35,18 +54,50 @@
                     <!-- general form elements -->
                     <div class="card card-info">
                         <div class="card-header">
-                            <h3 class="card-title">Edit Category</h3>
+                            <h3 class="card-title">Category Edit Form</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="/Category/Edit/" method="post">
+                        <form action="/Category/Edit" method="post">
                             <div class="card-body">
-                                <div class="form-group">
-                                    @Html.LabelFor(q => q.CategoryName)
-                                    @Html.TextBoxFor(q => q.CategoryName, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Category Name", @id = "name" })
-                                    @Html.ValidationMessageFor(q => q.CategoryName, "", new { @class = "text-danger" })
+                                <div class="form-row">
+                                    <div class="form-group col-lg-6">
+                                        @Html.LabelFor(q => q.CategoryName, "Category Name")
+                                        @Html.TextBoxFor(q => q.CategoryName, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Category Name", @id = "name" })
+
+                                    </div>
+
+                                    <div class="form-group col-lg-6">
+                                        @Html.LabelFor(q => q.topcategories, "TopCategory Name")
+                                        <select class="select2 form-control-border border-width-2" name="topcategories" multiple="multiple" data-placeholder="Select a TopCategory" style="width: 100%;">
+                                            @if (Model != null)
+                                            {
+                                                List<int> selected = new List<int>();
+
+                                                @foreach (var item in Model.topcategories.Where(q => q.ID == Model.TopCategory))
+                                                {
+                                                    <option selected value="@item.ID">
+                                                        @item.CategoryName
+                                                    </option>
+                                                    selected.Add(item.ID);
+                                                }
+
+                                                @foreach (var item in Model.topcategories)
+                                                {
+                                                    if (!selected.Contains(item.ID) && Model.TopCategory != 0)
+                                                    {
+                                                        <option value="@item.ID">@item.CategoryName</option>
+
+                                                    }
+                                                }
+                                            }
+
+                                        </select>
+                                        @Html.HiddenFor(q => q.CategoryID)
+                                    </div>
                                 </div>
-                                @Html.HiddenFor(q => q.CategoryID)
+                          
+
                             </div>
                             <!-- /.card-body -->
 
@@ -61,4 +112,14 @@
         </div>
     </section>
 </div>
+<script>
+    $(document).ready(function () {
+        //Initialize Select2 Elements
+        $('.select2').select2()
+    });
+
+
+</script>
+
+
 
