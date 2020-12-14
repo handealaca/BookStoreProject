@@ -97,6 +97,8 @@ namespace BookStoreProject.Controllers
             return View(books);
         }
 
+      
+
 
         [HttpPost]
         public IActionResult Delete(int id)
