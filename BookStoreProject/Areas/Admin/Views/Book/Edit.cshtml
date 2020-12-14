@@ -1,11 +1,12 @@
 ﻿
+
 @{
     ViewData["Title"] = "Add";
     Layout = "~/Views/Admin/Shared/_AdminLayout.cshtml";
 }
 
 @model BookStoreProject.Models.VM.BookVM
-    <!-- daterange picker -->
+<!-- daterange picker -->
 <link rel="stylesheet" href="/Admin/plugins/daterangepicker/daterangepicker.css">
 <!-- iCheck for checkboxes and radio inputs -->
 <link rel="stylesheet" href="/Admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
@@ -26,7 +27,7 @@
 <link rel="stylesheet" href="/Admin/dist/css/adminlte.min.css">
 
 
-<!--jQuery -->
+<!-- jQuery -->
 <script src="/Admin/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -51,8 +52,6 @@
 <script src="/Admin/plugins/dropzone/min/dropzone.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/Admin/dist/js/adminlte.min.js"></script>
-<!-- bs-custom-file-input -->
-<script src="/Admin/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/Admin/dist/js/demo.js"></script>
 
@@ -64,12 +63,14 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2 justify-content-end">
-             
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Book Edit Form</h1>
+                </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/AdminHome/">Home</a></li>
-                        <li class="breadcrumb-item active">Book Add Form</li>
+                        <li class="breadcrumb-item active">Book Edit Form</li>
                     </ol>
                 </div>
             </div>
@@ -85,19 +86,16 @@
                     <!-- general form elements -->
                     <div class="card card-teal">
                         <div class="card-header">
-                            <h3 class="card-title">Book Add Form</h3>
+                            <h3 class="card-title">Edit Book</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="/Book/Add" method="post" enctype="multipart/form-data">
+                        <form action="/Admin/Book/Edit/" method="post">
                             <div class="card-body">
-
                                 <div class="form-row">
-
                                     <div class="form-group col-lg-6">
                                         @Html.LabelFor(q => q.Name)
                                         @Html.TextBoxFor(q => q.Name, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Book Name" })
-                                        @Html.ValidationMessageFor(q => q.Name, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="form-group col-lg-6">
                                         @Html.LabelFor(q => q.Edition)
@@ -106,11 +104,9 @@
                                 </div>
 
                                 <div class="form-row">
-
                                     <div class="form-group col-lg-6">
                                         @Html.LabelFor(q => q.Publisher)
                                         @Html.TextBoxFor(q => q.Publisher, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Publisher" })
-                                        @Html.ValidationMessageFor(q => q.Publisher, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="form-group col-lg-6">
                                         @Html.LabelFor(q => q.PublishDate)
@@ -121,50 +117,56 @@
                                 <div class="form-row">
                                     <div class="form-group col-lg-6">
                                         <label>Writer</label>
-                                        <select class="form-control form-control-border border-width-2 select2" name="people" multiple="multiple" data-placeholder="Select a Writer" style="width: 100%;">
+                                        <select class="select2 form-control-border border-width-2" name="people" multiple="multiple" data-placeholder="Select a Writer" style="width: 100%;">
                                             @if (Model != null)
                                             {
-                                                @foreach (var item in Model.people)
+                                                List<int> selected = new List<int>();
+
+                                                @foreach (var item in Model.BookPersons.Where(q => q.DutyID == 0))
                                                 {
-                                                    <option value="@item.ID">@item.Name @item.SurName</option>
-                                                }
-                                            }
-                                            else
-                                            {
-                                                @foreach (var item in ViewBag.personbag)
-                                                {
-                                                    <option value="@item.ID">@item.Name @item.SurName</option>
+                                                    <option selected value="@item.ID">
+                                            @item.Person.Name @item.Person.SurName</option>
+                                                    selected.Add(item.ID);
                                                 }
 
+                                                @foreach (var item in Model.people)
+                                                {
+                                                    if (!selected.Contains(item.ID))
+                                                    {
+                                                        <option value="@item.ID">@item.Name @item.SurName</option>
+
+                                                    }
+                                                }
                                             }
 
 
                                         </select>
-                                        @Html.ValidationMessageFor(q => q.people, "", new { @class = "text-danger" })
-
                                     </div>
 
                                     <div class="form-group col-lg-6">
                                         <label>Interpreter</label>
-                                        <select class="select2 form-control form-control-border border-width-2" name="interparray" multiple="multiple" data-placeholder="Select an Interpreter" style="width: 100%;">
+                                        <select class="select2 form-control-border border-width-2" name="interparray" multiple="multiple" data-placeholder="Select an Interpreter" style="width: 100%;">
                                             @if (Model != null)
                                             {
+                                                List<int> selected = new List<int>();
+
+                                                @foreach (var item in Model.BookPersons.Where(q => q.DutyID == 1))
+                                                {
+                                                    <option selected value="@item.ID">
+                                                        @item.Person.Name @item.Person.SurName
+                                                    </option>
+                                                    selected.Add(item.ID);
+                                                }
+
                                                 @foreach (var item in Model.people)
                                                 {
-                                                    <option value="@item.ID">@item.Name @item.SurName</option>
+                                                    if (!selected.Contains(item.ID))
+                                                    {
+                                                        <option value="@item.ID">@item.Name @item.SurName</option>
+
+                                                    }
                                                 }
-
                                             }
-                                            else
-                                            {
-                                                @foreach (var item in ViewBag.personbag)
-                                                {
-                                                    <option value="@item.ID">@item.Name @item.SurName</option>
-                                                }
-
-                                            }
-
-
                                         </select>
 
                                     </div>
@@ -174,45 +176,40 @@
                                     <div class="form-group col-lg-6">
                                         <label>Category</label>
                                         <select class="select2 form-control-border border-width-2" name="categories" multiple="multiple" data-placeholder="Select a Category" style="width: 100%;">
+
+
                                             @if (Model != null)
                                             {
-                                                @foreach (var item in Model.categories)
+                                                List<int> selected = new List<int>();
+
+                                                foreach (var item in Model.BookCategories)
                                                 {
-                                                    <option value="@item.ID">@item.CategoryName</option>
+                                                    <option selected value="@item.CategoryID">@item.Category.CategoryName</option>
+
+                                                    selected.Add(item.CategoryID);
                                                 }
-                                            }
-                                            else
-                                            {
-                                                @foreach (var item in ViewBag.categorybag)
+
+                                                foreach (var item in Model.categories)
                                                 {
-                                                    <option value="@item.ID">@item.CategoryName</option>
+                                                    if (!selected.Contains(item.ID))
+                                                    {
+
+                                                        <option value="@item.ID">@item.CategoryName</option>
+
+                                                    }
+
                                                 }
 
                                             }
 
                                         </select>
-                                        @Html.ValidationMessageFor(q => q.categories, "", new { @class = "text-danger" })
                                     </div>
-
-
-                                    <div class="form-group col-lg-6">
-                                        @Html.LabelFor(q => q.Coverimage)
-
-                                        <div class="input-group">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="exampleInputFile" name="Coverimage" multiple accept="image/x-png,image/gif,image/jpeg">
-                                                <label class="custom-file-label" for="customFile">Choose file</label>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @Html.HiddenFor(q => q.BookID)
 
                                 </div>
-
-                                <!-- /.card-body -->
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
-
                             </div>
                         </form>
                     </div>
@@ -241,7 +238,5 @@
 
     });
 
-    $(function () {
-        bsCustomFileInput.init();
-    });
+
 </script>

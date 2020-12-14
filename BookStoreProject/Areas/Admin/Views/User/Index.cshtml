@@ -68,7 +68,7 @@
                                             <td>@item.AddDate.ToString("dd.MM.yyyy")</td>
                                             <td>
                                                 <a class="btn btn-sm btn-outline-primary"
-                                                   href="/User/CommentDetail/@item.UserID" role="button">
+                                                   href="/Admin/User/CommentDetail/@item.UserID" role="button">
                                                     <i class="fas fa-comment"></i>
                                                 </a>
                                             </td>
@@ -136,13 +136,13 @@
     $(document).on("click", ".delete", function () {
         let id = $(this).attr("id");
         $.ajax({
-            url: "/User/Delete",
+            url: "/Admin/User/Delete",
             type: "POST",
             data: { id: id },
             success: function (msg) {
                 console.log("Deleted");
                 $("#" + id).fadeOut();
-                window.location.href = "/User/"
+                window.location.href = "/Admin/User/"
             },
             error: function (err) {
                 console.log("Failed");

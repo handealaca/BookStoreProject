@@ -26,6 +26,8 @@ namespace BookStoreProject
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddControllersWithViews();
+            services.AddRazorPages();
             services.AddDbContext<BookContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
@@ -40,11 +42,29 @@ namespace BookStoreProject
 
             app.UseRouting();
             app.UseStaticFiles();
+            //app.UseMvc(routes =>
+            //{
+            //    routes.MapRoute
+            //    ("Areas",
+            //    "{ area: exists}/{ controller = Admin}/{ action = Index}/{ id ?}");
+            //    routes.MapRoute
+            //        (name: "default",
+            //        template: "{Controller=AdminHome}/{Action=Index}/{id?}");
+            //});
 
             app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute("default", "{Controller=AdminHome}/{Action=Index}/{id?}");
-            });
+                {
+                    endpoints.MapAreaControllerRoute(
+                     name: "Admin",
+                     areaName: "Admin",
+                     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                     );
+                    endpoints.MapControllerRoute("default", "{Controller=AdminHome}/{Action=Index}/{id?}");
+                    endpoints.MapRazorPages();
+                });
+
+
+
         }
     }
 }

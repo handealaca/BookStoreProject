@@ -10,8 +10,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using static BookStoreProject.Models.ORM.Entities.Person;
 
-namespace BookStoreProject.Controllers
+namespace BookStoreProject.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class PersonController : Controller
     {
 

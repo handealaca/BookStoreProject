@@ -10,8 +10,9 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BookStoreProject.Controllers
+namespace BookStoreProject.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class BookController : Controller
     {
         private readonly BookContext _bookcontext;
@@ -202,12 +203,12 @@ namespace BookStoreProject.Controllers
 
             foreach (var item in interparray)
             {
-                BookPerson bookPerson = new BookPerson();
-                bookPerson.PersonID = item;
-                bookPerson.BookID = BookID;
-                bookPerson.DutyID = 1;
+                BookPerson bookPerson1 = new BookPerson();
+                bookPerson1.PersonID = item;
+                bookPerson1.BookID = BookID;
+                bookPerson1.DutyID = 1;
 
-                _bookcontext.BookPeople.Add(bookPerson);
+                _bookcontext.BookPeople.Add(bookPerson1);
             }
 
             _bookcontext.SaveChanges();

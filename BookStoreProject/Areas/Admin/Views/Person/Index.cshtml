@@ -77,13 +77,13 @@
                                             <td>@item.AddDate.ToString("dd.MM.yyyy")</td>
 
                                             <td>
-                                                <a class="btn btn-sm btn-outline-bg-orange color-palette" href="/Person/BookDetail/@item.PersonID">
+                                                <a class="btn btn-sm btn-outline-bg-orange color-palette" href="/Admin/Person/BookDetail/@item.PersonID">
                                                     <i class="fas fa-book"></i>
                                                 </a>
                                             </td>
                                             <td>
                                                 <div style="display : flex ; justify-content : center">
-                                                    <a class="btn btn-sm btn-outline-warning edit" href="/Person/Edit/@item.PersonID">
+                                                    <a class="btn btn-sm btn-outline-warning edit" href="/Admin/Person/Edit/@item.PersonID">
                                                         <i class="fas fa-pencil-alt"></i>
                                                     </a>
                                                     <a class="btn btn-sm btn-outline-danger delete" id="@item.PersonID">
@@ -153,13 +153,13 @@
     $(document).on("click", ".delete", function () {
         let id = $(this).attr("id");
         $.ajax({
-            url: "/Person/Delete",
+            url: "/Admin/Person/Delete",
             type: "POST",
             data: { id: id },
             success: function (msg) {
                 console.log(msg);
                 $("#" + id).fadeOut();
-                window.location.href = "/Person/"
+                window.location.href = "/Admin/Person/"
                 alert("Deleted successfully!!!");
             },
             error: function (err) {

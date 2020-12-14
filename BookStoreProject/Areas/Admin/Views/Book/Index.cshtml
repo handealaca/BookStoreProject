@@ -101,14 +101,14 @@
 
                                         <td>
                                             <a class="btn btn-sm btn-outline-success"
-                                               href="/Book/CommentDetail/@item.BookID" role="button">
+                                               href="/Admin/Book/CommentDetail/@item.BookID" role="button">
                                                 <i class="fas fa-comment"></i>
                                             </a>
                                         </td>
 
                                         <td>
                                             <a class="btn btn-sm btn-outline-primary"
-                                               href="/Book/UserPoint/@item.BookID" role="button">
+                                               href="/Admin/Book/UserPoint/@item.BookID" role="button">
                                                 <i class="fas fa-splotch"></i>
                                             </a>
                                         </td>
@@ -116,7 +116,7 @@
                                         <td>
                                             <div class="row justify-content-around">
                                                 <a class="btn btn-sm btn-outline-warning edit"
-                                                   href="/Book/Edit/@item.BookID"
+                                                   href="/Admin/Book/Edit/@item.BookID"
                                                    role="button" id=@item.BookID>
                                                     <i class="fas fa-edit"></i>
                                                 </a>
@@ -176,13 +176,13 @@
     $(document).on("click", ".delete", function () {
         let id = $(this).attr("id");
         $.ajax({
-            url: "/Book/Delete",
+            url: "/Admin/Book/Delete/",
             type: "POST",
             data: { id: id },
             success: function (msg) {
                 console.log(msg);
                 $("#" + id).fadeOut();
-                window.location.href = "/Book/"
+                window.location.href = "/Admin/Book/"
                 alert("Deleted successfully!!!");
             },
             error: function (err) {
