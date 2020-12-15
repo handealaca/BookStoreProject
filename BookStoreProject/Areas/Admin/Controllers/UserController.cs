@@ -3,6 +3,7 @@ using BookStoreProject.Models.ORM.Entities;
 using BookStoreProject.Models.VM;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,12 @@ using System.Threading.Tasks;
 namespace BookStoreProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         private readonly BookContext _bookcontext;
-        public UserController(BookContext bookContext)
+        public UserController(BookContext bookcontext, IMemoryCache memoryCache) : base(bookcontext, memoryCache)
         {
-            _bookcontext = bookContext;
+            _bookcontext = bookcontext;
         }
         public IActionResult Index()
         {

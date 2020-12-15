@@ -1,9 +1,11 @@
-﻿using BookStoreProject.Models.ORM.Context;
+﻿using BookStoreProject.Areas.Admin.Controllers;
+using BookStoreProject.Models.ORM.Context;
 using BookStoreProject.Models.ORM.Entities;
 using BookStoreProject.Models.Types;
 using BookStoreProject.Models.VM;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +13,12 @@ using System.Threading.Tasks;
 
 namespace BookStoreProject.Controllers
 {
-    public class AdminHomeController : Controller
+    public class AdminHomeController : BaseController
     {
         private readonly BookContext _bookcontext;
-        public AdminHomeController(BookContext bookContext)
+        public AdminHomeController(BookContext bookcontext, IMemoryCache memoryCache): base(bookcontext,memoryCache )
         {
-            _bookcontext = bookContext;
+            _bookcontext = bookcontext;
         }
 
         public IActionResult Index()

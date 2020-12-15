@@ -4,6 +4,7 @@ using BookStoreProject.Models.Types;
 using BookStoreProject.Models.VM;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,13 +14,13 @@ using static BookStoreProject.Models.ORM.Entities.Person;
 namespace BookStoreProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class PersonController : Controller
+    public class PersonController : BaseController
     {
 
         private readonly BookContext _bookcontext;
-        public PersonController(BookContext bookContext)
+        public PersonController(BookContext bookcontext, IMemoryCache memoryCache) : base(bookcontext, memoryCache)
         {
-            _bookcontext = bookContext;
+            _bookcontext = bookcontext;
         }
 
         public IActionResult Index()

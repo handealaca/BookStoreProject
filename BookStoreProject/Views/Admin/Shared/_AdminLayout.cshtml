@@ -66,21 +66,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <span class="badge badge-danger navbar-badge"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        
+
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item">
                             <!-- Message Start -->
                             @*<div class="media">
-                                <img src="/Admin/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                                <div class="media-body">
-                                    <h3 class="dropdown-item-title">
-                                        Nora Silvester
-                                        <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                                    </h3>
-                                    <p class="text-sm">The subject goes here</p>
-                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                                </div>
-                            </div>*@
+                                    <img src="/Admin/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                                    <div class="media-body">
+                                        <h3 class="dropdown-item-title">
+                                            Nora Silvester
+                                            <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                                        </h3>
+                                        <p class="text-sm">The subject goes here</p>
+                                        <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                                    </div>
+                                </div>*@
                             <!-- Message End -->
                         </a>
                         <div class="dropdown-divider"></div>
@@ -96,10 +96,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <span class="dropdown-item dropdown-header"></span>
                         @*<div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-file mr-2"></i> 3 new reports
-                            <span class="float-right text-muted text-sm">2 days</span>
-                        </a>*@
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-file mr-2"></i> 3 new reports
+                                <span class="float-right text-muted text-sm">2 days</span>
+                            </a>*@
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                     </div>
@@ -109,7 +109,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <i class="fas fa-expand-arrows-alt"></i>
                     </a>
                 </li>
-                
+
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -117,12 +117,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="/AdminHome/" class="brand-link" style="height: auto; display: flex; justify-content: center;">
-                <img src="/Admin/dist/img/bookstorelogo.png" alt="" class="brand-image elevation-3" style="opacity: .8" >
+                <img src="/Admin/dist/img/bookstorelogo.png" alt="" class="brand-image elevation-3" style="opacity: .8">
             </a>
 
             <!-- Sidebar -->
             <div class="sidebar">
-                <br/>
+                <br />
                 <!-- SidebarSearch Form -->
                 <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
@@ -139,100 +139,143 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-    with font-awesome or any other icon font library -->
-
+                        with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-book-open"></i>
-                                <p>
-                                    Books
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/Admin/Book/" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>List</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/Admin/Book/Add" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        @*<li class="nav-header">EXAMPLES</li>*@
+                            @foreach (var item in ViewBag.menus)
+                            {
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-feather-alt"></i>
-                                <p>
-                                    Writers/Interpreters
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/Admin/Person/" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>List</p>
+
+                                @if (item.Name.Contains("Book"))
+                                {
+                                    <a href="@item.Path" class="nav-link">
+                                        <i class="@item.IconName"></i>
+                                        <p>
+                                            @item.Name
+                                            <i class="fas fa-angle-left right"></i>
+                                        </p>
                                     </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/Admin/Person/Add" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add</p>
-                                    </a>
-                                </li>
-                            </ul>
+                                }
+
+                                @if (item.Path.Contains("Book"))
+                                {<ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="@item.Path" class="nav-link">
+                                                <i class="@item.IconName"></i>
+                                                <p>@item.Name</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                }
+
+
+
+                            }
                         </li>
 
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>
-                                    Users
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/Admin/User/" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>List</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+
 
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-clipboard-list"></i>
-                                <p>
-                                    Categories
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/Admin/Category/" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>List</p>
+                            @foreach (var item in ViewBag.menus)
+                            {
+                                @if (item.Name.Contains("Writer"))
+                                {
+                                    <a href="@item.Path" class="nav-link">
+                                        <i class="@item.IconName"></i>
+                                        <p>
+                                            @item.Name
+                                            <i class="fas fa-angle-left right"></i>
+                                        </p>
                                     </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/Admin/Category/Add/" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add</p>
-                                    </a>
-                                </li>
-                            </ul>
+                                }
+                                @if (item.Path.Contains("Person"))
+                                {
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="@item.Path" class="nav-link">
+                                                <i class="@item.IconName"></i>
+                                                <p>@item.Name</p>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                }
+
+
+                            }
                         </li>
+
+
+
+
+
+                        <li class="nav-item">
+                            @foreach (var item in ViewBag.menus)
+                            {
+                                @if (item.Name.Contains("User"))
+                                {
+                                    <a href="@item.Path" class="nav-link">
+                                        <i class="@item.IconName"></i>
+                                        <p>
+                                            @item.Name
+                                            <i class="fas fa-angle-left right"></i>
+                                        </p>
+                                    </a>
+                                }
+                                @if (item.Path.Contains("User"))
+                                {
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="@item.Path" class="nav-link">
+                                                <i class="@item.IconName"></i>
+                                                <p>@item.Name</p>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                }
+
+
+
+
+                            }
+                        </li>
+
+
+
+
+                        <li class="nav-item">
+                            @foreach (var item in ViewBag.menus)
+                            {
+                                @if (item.Name.Contains("Categories"))
+                                {
+                                    <a href="@item.Path" class="nav-link">
+                                        <i class="@item.IconName"></i>
+                                        <p>
+                                            @item.Name
+                                            <i class="fas fa-angle-left right"></i>
+                                        </p>
+                                    </a>
+                                }
+
+                                @if (item.Path.Contains("Category"))
+                                {
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a href="@item.Path" class="nav-link">
+                                                <i class="@item.IconName"></i>
+                                                <p>@item.Name</p>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                }
+                            }
+                        </li>
+
+
+
 
 
 
@@ -243,7 +286,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->
-           
+
         </aside>
 
         @RenderBody()
