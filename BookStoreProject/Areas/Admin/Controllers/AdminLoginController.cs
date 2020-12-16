@@ -35,13 +35,14 @@ namespace BookStoreProject.Areas.Admin.Controllers
                 AdminUser adminuser = _bookcontext.AdminUsers.FirstOrDefault(x => x.Email == model.EMail && x.Password == model.Password);
                 if (adminuser != null)
                 {
+                    model.Name = adminuser.Name;
 
                     var claims = new List<Claim>
-                 {
-                new Claim(ClaimTypes.Email, model.EMail),
-                //new Claim(ClaimTypes.Name, model.Name),
-
-                 };
+                    {
+                        new Claim(ClaimTypes.Email, model.EMail),
+                        new Claim(ClaimTypes.Name, model.Name)
+                     };
+               
 
                     var userIdentity = new ClaimsIdentity(claims, "login");
 
