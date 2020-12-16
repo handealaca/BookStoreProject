@@ -27,5 +27,7 @@ namespace BookStoreProject.Models.ORM.Context
         public DbSet<PersonDuty> PeopleDuty { get; set; }
         public DbSet<AdminMenu> AdminMenus { get; set; }
 
+        public DbSet<AdminUser> AdminUsers { get; set; }
+
     }
 }

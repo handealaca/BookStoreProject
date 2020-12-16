@@ -1,5 +1,6 @@
 ﻿using BookStoreProject.Models.ORM.Context;
 using BookStoreProject.Models.ORM.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Caching.Memory;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BookStoreProject.Areas.Admin.Controllers
 {
-   
+   [Authorize]
     public class BaseController : Controller
     {
         private readonly BookContext _bookcontext;
@@ -23,12 +24,13 @@ namespace BookStoreProject.Areas.Admin.Controllers
         }
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            List<AdminMenu> menus = new List<AdminMenu>();
+           List<AdminMenu> menus = new List<AdminMenu>();
 
             bool isExist = _memoryCache.TryGetValue("adminmenus", out menus);
 
             if (!isExist)
             {
+                
                 var cacheEntryOptions = new MemoryCacheEntryOptions()
                     .SetAbsoluteExpiration(DateTime.Now.AddMinutes(2))
                     .SetSlidingExpiration(TimeSpan.FromSeconds(60));
@@ -38,7 +40,8 @@ namespace BookStoreProject.Areas.Admin.Controllers
 
                 _memoryCache.Set("adminmenus", menus, cacheEntryOptions);
             }
-
+            ViewBag.name = HttpContext.User.Claims.ToArray()[0].Value;
+            ViewBag.email = HttpContext.User.Claims.ToArray()[0].Value;
             ViewBag.menus = menus;
             base.OnActionExecuting(context);
         }

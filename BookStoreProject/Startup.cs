@@ -1,4 +1,5 @@
 using BookStoreProject.Models.ORM.Context;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -25,11 +26,20 @@ namespace BookStoreProject
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc().AddRazorRuntimeCompilation();
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddDbContext<BookContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddSession();
+            services.AddMemoryCache();
+          
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(options =>
+            {
+                options.LoginPath = "/Admin/AdminLogin/Index/";
+            }); ;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,8 +50,13 @@ namespace BookStoreProject
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSession();
             app.UseRouting();
             app.UseStaticFiles();
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+
             //app.UseMvc(routes =>
             //{
             //    routes.MapRoute

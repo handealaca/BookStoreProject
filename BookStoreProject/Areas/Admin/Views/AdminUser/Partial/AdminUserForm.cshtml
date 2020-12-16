@@ -1,0 +1,69 @@
+﻿
+@model BookStoreProject.Models.VM.AdminUserVM
+<!-- Select2 -->
+<link rel="stylesheet" href="/Admin/plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="/Admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="/Admin/dist/css/adminlte.min.css">
+
+<div class="card-body">
+    @Html.ValidationSummary()
+    <div class="form-row">
+        <div class="form-group col-lg-6">
+            @Html.LabelFor(q => q.Name)
+
+            @Html.TextBoxFor(q => q.Name, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter name" })
+        </div>
+        <div class="form-group col-lg-6">
+            @Html.LabelFor(q => q.SurName)
+
+            @Html.TextBoxFor(q => q.SurName, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter surname" })
+        </div>
+
+    </div> 
+    <div class="form-row col-lg-6">
+        <div class="form-group col-lg-6">
+            @Html.LabelFor(q => q.Email)
+            @Html.TextBoxFor(q => q.Email, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter e-mail" })
+        </div>
+
+    </div>
+    <div class="form-row">
+        <div class="form-group col-lg-6" >
+            @Html.LabelFor(q => q.Password)
+            @Html.PasswordFor(q => q.Password, new { @class = "form-control form-control-border border-width-2", @placeholder = "Write Something" })
+            @Html.ValidationMessageFor(q => q.Password, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group col-lg-6">
+            @Html.LabelFor(q => q.ConfirmPassword)
+            @Html.PasswordFor(q => q.ConfirmPassword, new { @class = "form-control form-control-border border-width-2", @placeholder = "Write Something" })
+            @Html.ValidationMessageFor(q => q.ConfirmPassword, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    @*<div class="form-row">
+        <div class="form-group col-lg-6 ">
+            @Html.LabelFor(q => q.AddDate)
+            @Html.TextBoxFor(q => q.AddDate, new { @type = "date", @name = "birthdate", @class = "form-control form-control-border border-width-2", @placeholder = "mm/dd/yyyy" })
+        </div>
+    </div>*@
+</div>
+
+
+<!-- Select2 -->
+<script src="/Admin/plugins/select2/js/select2.full.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        //Initialize Select2 Elements
+        $('.select2').select2()
+
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+
+    });
+
+
+</script>
