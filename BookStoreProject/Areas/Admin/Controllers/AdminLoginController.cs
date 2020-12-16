@@ -38,7 +38,8 @@ namespace BookStoreProject.Areas.Admin.Controllers
 
                     var claims = new List<Claim>
                  {
-                new Claim(ClaimTypes.Name, model.EMail),
+                new Claim(ClaimTypes.Email, model.EMail),
+                //new Claim(ClaimTypes.Name, model.Name),
 
                  };
 
@@ -52,7 +53,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
 
                     _bookcontext.SaveChanges();
 
-                    return RedirectToAction("Index", "AdminHome");
+                    return RedirectToRoute("default", new { controller = "AdminHome", action = "Index" });
                 }
                 else
                 {
