@@ -40,7 +40,8 @@ namespace BookStoreProject.Areas.Admin.Controllers
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Email, model.EMail),
-                        new Claim(ClaimTypes.Name, model.Name)
+                        new Claim(ClaimTypes.Name, model.Name),
+                        new Claim(ClaimTypes.Role,adminuser.Role)
                      };
                
 

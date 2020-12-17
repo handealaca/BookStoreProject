@@ -1,4 +1,5 @@
-﻿using BookStoreProject.Models.ORM.Context;
+﻿using BookStoreProject.Models.Attributes;
+using BookStoreProject.Models.ORM.Context;
 using BookStoreProject.Models.ORM.Entities;
 using BookStoreProject.Models.Types;
 using BookStoreProject.Models.VM;
@@ -21,6 +22,8 @@ namespace BookStoreProject.Areas.Admin.Controllers
         {
             _bookcontext = bookcontext;
         }
+
+        [RoleControl(EnumRole.BookList)]
         public IActionResult Index()
         {
 
