@@ -35,12 +35,14 @@ namespace BookStoreProject.Areas.Admin.Controllers
                 AdminUser adminuser = _bookcontext.AdminUsers.FirstOrDefault(x => x.Email == model.EMail && x.Password == model.Password);
                 if (adminuser != null)
                 {
+                    model.Name = adminuser.Name;
 
                     var claims = new List<Claim>
-                 {
-                new Claim(ClaimTypes.Name, model.EMail),
-
-                 };
+                    {
+                        new Claim(ClaimTypes.Email, model.EMail),
+                        new Claim(ClaimTypes.Name, model.Name)
+                     };
+               
 
                     var userIdentity = new ClaimsIdentity(claims, "login");
 
@@ -52,7 +54,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
 
                     _bookcontext.SaveChanges();
 
-                    return RedirectToAction("Index", "AdminHome");
+                    return RedirectToRoute("default", new { controller = "AdminHome", action = "Index" });
                 }
                 else
                 {

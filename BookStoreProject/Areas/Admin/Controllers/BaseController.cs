@@ -40,10 +40,13 @@ namespace BookStoreProject.Areas.Admin.Controllers
 
                 _memoryCache.Set("adminmenus", menus, cacheEntryOptions);
             }
-            ViewBag.name = HttpContext.User.Claims.ToArray()[0].Value;
-            ViewBag.email = HttpContext.User.Claims.ToArray()[0].Value;
+
+            ViewBag.Email = HttpContext.User.Claims.ToArray()[0].Value;
+            ViewBag.Name = HttpContext.User.Claims.ToArray()[1].Value;
             ViewBag.menus = menus;
+
             base.OnActionExecuting(context);
+
         }
         public override void OnActionExecuted(ActionExecutedContext context)
         {
