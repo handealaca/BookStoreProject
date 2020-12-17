@@ -20,16 +20,50 @@
             @Html.TextBoxFor(q => q.SurName, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter surname" })
         </div>
 
-    </div> 
-    <div class="form-row col-lg-6">
+    </div>
+    <div class="form-row">
         <div class="form-group col-lg-6">
             @Html.LabelFor(q => q.Email)
             @Html.TextBoxFor(q => q.Email, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter e-mail" })
         </div>
+        <div class="form-group col-lg-6 ">
+            @Html.LabelFor(q => q.roles)
+            <select class="select2" name="rolearray" multiple="multiple" data-placeholder="Select Duty" style="width: 100%;">
+
+                @if (Model != null)
+                {
+                    List<int> selected = new List<int>();
+
+                    if (Model.selectedroles != null)
+                    {
+                        foreach (var item in Model.selectedroles)
+                        {
+
+                           <option selected value="@Convert.ToInt32(item)">
+                                    @item.ToString()
+
+                           </option>
+                            selected.Add(Convert.ToInt32(item));
+
+                        }
+                    }
+                             
+                    @foreach (var item in Model.roles)
+                    {
+                        if (!selected.Contains(Convert.ToInt32(item)))
+                        {
+                            <option value="@Convert.ToInt32(item)">@item.ToString()</option>
+
+                        }
+                    }
+                }
+
+            </select>
+        </div>
 
     </div>
     <div class="form-row">
-        <div class="form-group col-lg-6" >
+        <div class="form-group col-lg-6">
             @Html.LabelFor(q => q.Password)
             @Html.PasswordFor(q => q.Password, new { @class = "form-control form-control-border border-width-2", @placeholder = "Write Something" })
             @Html.ValidationMessageFor(q => q.Password, "", new { @class = "text-danger" })
@@ -39,13 +73,10 @@
             @Html.PasswordFor(q => q.ConfirmPassword, new { @class = "form-control form-control-border border-width-2", @placeholder = "Write Something" })
             @Html.ValidationMessageFor(q => q.ConfirmPassword, "", new { @class = "text-danger" })
         </div>
+
     </div>
-    @*<div class="form-row">
-        <div class="form-group col-lg-6 ">
-            @Html.LabelFor(q => q.AddDate)
-            @Html.TextBoxFor(q => q.AddDate, new { @type = "date", @name = "birthdate", @class = "form-control form-control-border border-width-2", @placeholder = "mm/dd/yyyy" })
-        </div>
-    </div>*@
+    
+
 </div>
 
 

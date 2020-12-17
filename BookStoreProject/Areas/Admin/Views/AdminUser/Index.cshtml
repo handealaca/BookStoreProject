@@ -50,6 +50,7 @@
                                         <th>User</th>
                                         @*<th>User Name</th>*@
                                         <th>Email</th>
+                                        @*<th>Roles</th>*@
                                         <th>Login Date</th>
                                         <th>Add Date</th>
                                         
@@ -63,10 +64,21 @@
                                             <td>@item.Name @item.SurName</td>
                                             @*<td>@item.UserName</td>*@
                                             <td>@item.Email</td>
+                                            @*<td>
+                                                @foreach (var item in collection)
+                                                {
+
+                                                }
+
+                                            </td>*@
                                             <td>@item.LoginDate.ToString("dd.MM.yyyy")</td>
                                             <td>@item.AddDate.ToString("dd.MM.yyyy")</td>
                                         
                                             <td>
+                                                <a class="btn btn-sm btn-outline-warning edit"
+                                                   role="button" id=@item.UserID>
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
                                                 <a class="btn btn-sm btn-outline-danger delete"
                                                    role="button" id=@item.UserID>
                                                     <i class="fas fa-trash"></i>

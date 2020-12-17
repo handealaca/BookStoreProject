@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookStoreProject.Models.Types;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -37,5 +38,10 @@ namespace BookStoreProject.Models.VM
         public DateTime LoginDate { get; set; } = DateTime.Now;
 
         public bool IsDeleted { get; set; }
+
+        public List<string> rolelist { get; set; }
+
+        public List<EnumRole> roles { get; set; }
+        public List<EnumRole> selectedroles { get; set; }
     }
 }

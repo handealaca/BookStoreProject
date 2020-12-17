@@ -13,5 +13,7 @@ namespace BookStoreProject.Models.ORM.Entities
         public string Password { get; set; }
         public DateTime Lastlogindate { get; set; }
 
+        public string Role { get; set; }
+
     }
 }
