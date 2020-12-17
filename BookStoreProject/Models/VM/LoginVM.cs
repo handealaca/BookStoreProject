@@ -14,7 +14,6 @@ namespace BookStoreProject.Models.VM
         public string Surname { get; set; }
 
         [Required(ErrorMessage = "Password field is required.")]
-        [Display(Name = "Şifre")]
         public string Password { get; set; }
     }
 }
