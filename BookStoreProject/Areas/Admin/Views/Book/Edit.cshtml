@@ -124,9 +124,9 @@
 
                                                 @foreach (var item in Model.BookPersons.Where(q => q.DutyID == 0))
                                                 {
-                                                    <option selected value="@item.ID">
+                                                    <option selected value="@item.Person.ID">
                                             @item.Person.Name @item.Person.SurName</option>
-                                                    selected.Add(item.ID);
+                                                    selected.Add(item.Person.ID);
                                                 }
 
                                                 @foreach (var item in Model.people)
@@ -153,10 +153,10 @@
 
                                                 @foreach (var item in Model.BookPersons.Where(q => q.DutyID == 1))
                                                 {
-                                                    <option selected value="@item.ID">
+                                                    <option selected value="@item.Person.ID">
                                                         @item.Person.Name @item.Person.SurName
                                                     </option>
-                                                    selected.Add(item.ID);
+                                                    selected.Add(item.Person.ID);
                                                 }
 
                                                 @foreach (var item in Model.people)

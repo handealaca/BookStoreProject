@@ -27,7 +27,7 @@ namespace BookStoreProject.Models.Attributes
 
                 foreach (var item in rolenames)
                 {
-                    if (item == pagerole)
+                    if (item.Trim() == pagerole)
                     {
                         authority = true;
                     }

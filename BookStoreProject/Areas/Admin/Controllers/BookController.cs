@@ -160,7 +160,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Edit(BookVM model, int[] categories, int[] people, int[]? interparray)
         {
-            Book book = _bookcontext.Books.Include(x => x.BookCategories).ThenInclude(BookCategories => BookCategories.Category).Include(x => x.BookPersons).FirstOrDefault(q => q.ID == model.BookID);
+            Book book = _bookcontext.Books.FirstOrDefault(q => q.ID == model.BookID);
 
             book.Name = model.Name;
             book.Publisher = model.Publisher;
@@ -171,11 +171,11 @@ namespace BookStoreProject.Areas.Admin.Controllers
 
             int BookID = book.ID;
 
-            List<BookCategory> bookcategories = book.BookCategories.ToList();
+            List<BookCategory> bookcategories = _bookcontext.BookCategories.Where(q => q.BookID == model.BookID).ToList();
 
             foreach (var item in bookcategories)
             {
-                item.IsDeleted = true;
+                _bookcontext.BookCategories.Remove(item);
             }
 
             foreach (var item in categories)
@@ -188,12 +188,15 @@ namespace BookStoreProject.Areas.Admin.Controllers
             }
 
 
-            List<BookPerson> bookpeople = book.BookPersons.ToList();
+            List<BookPerson> bookpeople = _bookcontext.BookPeople.Where(q => q.BookID == model.BookID).ToList();
 
             foreach (var item in bookpeople)
             {
                 item.IsDeleted = true;
+                _bookcontext.BookPeople.Remove(item);
             }
+
+            _bookcontext.SaveChanges();
 
             foreach (var item in people)
             {
