@@ -39,7 +39,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
                 menus = _bookcontext.AdminMenus.ToList();
 
                 _memoryCache.Set("adminmenus", menus, cacheEntryOptions);
-            }
+          }
 
             ViewBag.Email = HttpContext.User.Claims.ToArray()[0].Value;
             ViewBag.Name = HttpContext.User.Claims.ToArray()[1].Value;

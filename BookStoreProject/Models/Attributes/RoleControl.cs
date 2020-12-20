@@ -31,13 +31,13 @@ namespace BookStoreProject.Models.Attributes
                     {
                         authority = true;
                     }
-
                 }
 
                 if (authority)
                 {
                     base.OnActionExecuting(context);
                 }
+
                 else
                 {
                     context.HttpContext.Response.Redirect("/Admin/Error/NoAccess");

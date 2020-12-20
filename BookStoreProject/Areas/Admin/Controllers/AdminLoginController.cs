@@ -59,7 +59,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
                 }
                 else
                 {
-                    ViewBag.error = "Name or Password is wrong!";
+                    ViewBag.error = "Email or Password is wrong!";
                     return View();
                 }
             }

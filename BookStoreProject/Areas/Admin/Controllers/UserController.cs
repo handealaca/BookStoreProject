@@ -1,5 +1,7 @@
-﻿using BookStoreProject.Models.ORM.Context;
+﻿using BookStoreProject.Models.Attributes;
+using BookStoreProject.Models.ORM.Context;
 using BookStoreProject.Models.ORM.Entities;
+using BookStoreProject.Models.Types;
 using BookStoreProject.Models.VM;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +21,9 @@ namespace BookStoreProject.Areas.Admin.Controllers
         {
             _bookcontext = bookcontext;
         }
+
+
+        [RoleControl(EnumRole.UserList)]
         public IActionResult Index()
         {
             List<UserVM> users = _bookcontext.Users.Where(q => q.IsDeleted == false).Select(q => new UserVM()
@@ -38,7 +43,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
             return View(users);
         }
 
-
+        [RoleControl(EnumRole.CommentDetail)]
         public IActionResult CommentDetail(int id)
         {
             List<CommentVM> comments = _bookcontext.Comments.Include(q=>q.User).Include(q=>q.Book).Where(q => q.UserID == id).Select(q => new CommentVM()

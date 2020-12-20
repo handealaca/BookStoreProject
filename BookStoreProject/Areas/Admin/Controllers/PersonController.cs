@@ -1,4 +1,5 @@
-﻿using BookStoreProject.Models.ORM.Context;
+﻿using BookStoreProject.Models.Attributes;
+using BookStoreProject.Models.ORM.Context;
 using BookStoreProject.Models.ORM.Entities;
 using BookStoreProject.Models.Types;
 using BookStoreProject.Models.VM;
@@ -23,6 +24,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
             _bookcontext = bookcontext;
         }
 
+        [RoleControl(EnumRole.PersonList)]
         public IActionResult Index()
         {
 
@@ -40,6 +42,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
         }
 
 
+        [RoleControl(EnumRole.PersonAdd)]
         public IActionResult Add()
         {
             PersonVM model = new PersonVM();
@@ -113,6 +116,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        [RoleControl(EnumRole.PersonEdit)]
         public IActionResult Edit(int id)
         {
             Person person = _bookcontext.People.Include(q => q.PersonDuties).FirstOrDefault(x => x.ID == id);

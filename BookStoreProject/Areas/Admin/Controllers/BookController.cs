@@ -23,6 +23,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
             _bookcontext = bookcontext;
         }
 
+
         [RoleControl(EnumRole.BookList)]
         public IActionResult Index()
         {
@@ -47,7 +48,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
             return View(books);
         }
 
-
+        [RoleControl(EnumRole.BookAdd)]
         public IActionResult Add()
         {
             BookVM model = new BookVM();
@@ -55,6 +56,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
             model.people = _bookcontext.People.Where(q => q.IsDeleted == false).ToList();
             return View(model);
         }
+
 
         [HttpPost]
         public IActionResult Add(BookVM model, int[] categories, int[] people, int[]? interparray)
@@ -137,6 +139,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
         }
 
 
+        [RoleControl(EnumRole.BookEdit)]
         public IActionResult Edit(int id)
         {
             Book book = _bookcontext.Books.Include(x => x.BookCategories).ThenInclude(BookCategories => BookCategories.Category).Include(x => x.BookPersons).ThenInclude(BookPersons => BookPersons.Person).FirstOrDefault(q => q.ID == id);
@@ -170,6 +173,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
             _bookcontext.SaveChanges();
 
             int BookID = book.ID;
+
 
             List<BookCategory> bookcategories = _bookcontext.BookCategories.Where(q => q.BookID == model.BookID).ToList();
 

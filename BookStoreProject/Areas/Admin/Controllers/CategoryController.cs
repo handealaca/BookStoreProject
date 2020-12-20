@@ -1,6 +1,7 @@
 ﻿using BookStoreProject.Models.Attributes;
 using BookStoreProject.Models.ORM.Context;
 using BookStoreProject.Models.ORM.Entities;
+using BookStoreProject.Models.Types;
 using BookStoreProject.Models.VM;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -21,7 +22,9 @@ namespace BookStoreProject.Areas.Admin.Controllers
         {
             _bookcontext = bookcontext;
         }
-        [RoleControl(Models.Types.EnumRole.CategoryList)]
+
+
+        [RoleControl(EnumRole.CategoryList)]
         public IActionResult Index()
         {
 
@@ -38,7 +41,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
         }
 
 
-
+        [RoleControl(EnumRole.CategoryAdd)]
         public IActionResult Add()
         {
             CategoryVM model = new CategoryVM();
@@ -89,7 +92,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
 
         }
 
-
+        [RoleControl(EnumRole.CategoryEdit)]
         public IActionResult Edit(int id)
         {
             Category category = _bookcontext.Categories.FirstOrDefault(q => q.ID == id);
@@ -102,10 +105,6 @@ namespace BookStoreProject.Areas.Admin.Controllers
 
             model.topcategories = _bookcontext.Categories.Where(q => q.IsDeleted == false & q.TopCategory == 0).ToList();
             return View(model);
-
-
-
-
 
         }
 
@@ -126,9 +125,6 @@ namespace BookStoreProject.Areas.Admin.Controllers
                 category.TopCategory = topcategories;
             }
 
-
-
-
             _bookcontext.SaveChanges();
 
             return RedirectToAction("Index", "Category");
@@ -147,7 +143,6 @@ namespace BookStoreProject.Areas.Admin.Controllers
             return RedirectToAction("Index");
 
         }
-
 
         public IActionResult CategoryDetail(int id)
         {

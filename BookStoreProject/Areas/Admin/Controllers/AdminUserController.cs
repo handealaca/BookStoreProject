@@ -1,4 +1,5 @@
-﻿using BookStoreProject.Models.ORM.Context;
+﻿using BookStoreProject.Models.Attributes;
+using BookStoreProject.Models.ORM.Context;
 using BookStoreProject.Models.ORM.Entities;
 using BookStoreProject.Models.Types;
 using BookStoreProject.Models.VM;
@@ -20,6 +21,8 @@ namespace BookStoreProject.Areas.Admin.Controllers
             _bookcontext = bookcontext;
         }
 
+
+        [RoleControl(EnumRole.AdminUserList)]
         public IActionResult Index()
         {
             List<AdminUserVM> admins = _bookcontext.AdminUsers.Where(q => q.IsDeleted == false).Select(q => new AdminUserVM()
@@ -66,7 +69,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
 
         //}
 
-
+        [RoleControl(EnumRole.AdminUserAdd)]
         public IActionResult Add()
         {
             AdminUserVM model = new AdminUserVM();
@@ -75,8 +78,6 @@ namespace BookStoreProject.Areas.Admin.Controllers
             role = Enum.GetValues(typeof(EnumRole))
                                      .Cast<EnumRole>()
                                      .ToList();
-
-
             model.roles = role;
 
             return View(model);
@@ -96,20 +97,15 @@ namespace BookStoreProject.Areas.Admin.Controllers
                 _bookcontext.AdminUsers.Add(adminUser);
                 _bookcontext.SaveChanges();
 
-
-
-                string rolenames = " ";
+                string rolenames = "";
 
                 foreach (var item in rolearray)
                 {
                     rolenames = rolenames + item.ToString() + ";";
-
-
                 }
                 adminUser.Role = rolenames;
 
                 _bookcontext.SaveChanges();
-
 
                 return RedirectToAction("Index", "AdminUser");
             }
