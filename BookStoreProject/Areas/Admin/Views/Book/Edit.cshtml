@@ -6,238 +6,281 @@
 }
 
 @model BookStoreProject.Models.VM.BookVM
-<!-- daterange picker -->
-<link rel="stylesheet" href="/Admin/plugins/daterangepicker/daterangepicker.css">
-<!-- iCheck for checkboxes and radio inputs -->
-<link rel="stylesheet" href="/Admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-<!-- Bootstrap Color Picker -->
-<link rel="stylesheet" href="/Admin/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
-<!-- Tempusdominus Bootstrap 4 -->
-<link rel="stylesheet" href="/Admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-<!-- Select2 -->
-<link rel="stylesheet" href="/Admin/plugins/select2/css/select2.min.css">
-<link rel="stylesheet" href="/Admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-<!-- Bootstrap4 Duallistbox -->
-<link rel="stylesheet" href="/Admin/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
-<!-- BS Stepper -->
-<link rel="stylesheet" href="/Admin/plugins/bs-stepper/css/bs-stepper.min.css">
-<!-- dropzonejs -->
-<link rel="stylesheet" href="/Admin/plugins/dropzone/min/dropzone.min.css">
-<!-- Theme style -->
-<link rel="stylesheet" href="/Admin/dist/css/adminlte.min.css">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="/Admin/plugins/daterangepicker/daterangepicker.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="/Admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Bootstrap Color Picker -->
+    <link rel="stylesheet" href="/Admin/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="/Admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="/Admin/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="/Admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <!-- Bootstrap4 Duallistbox -->
+    <link rel="stylesheet" href="/Admin/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+    <!-- BS Stepper -->
+    <link rel="stylesheet" href="/Admin/plugins/bs-stepper/css/bs-stepper.min.css">
+    <!-- dropzonejs -->
+    <link rel="stylesheet" href="/Admin/plugins/dropzone/min/dropzone.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/Admin/dist/css/adminlte.min.css">
+
+    <!--jQuery -->
+    <script src="/Admin/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Select2 -->
+    <script src="/Admin/plugins/select2/js/select2.full.min.js"></script>
+    <!-- Bootstrap4 Duallistbox -->
+    <script src="/Admin/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+    <!-- InputMask -->
+    <script src="/Admin/plugins/moment/moment.min.js"></script>
+    <script src="/Admin/plugins/inputmask/jquery.inputmask.min.js"></script>
+    <!-- date-range-picker -->
+    <script src="/Admin/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap color picker -->
+    <script src="/Admin/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="/Admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Bootstrap Switch -->
+    <script src="/Admin/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <!-- BS-Stepper -->
+    <script src="/Admin/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+    <!-- dropzonejs -->
+    <script src="/Admin/plugins/dropzone/min/dropzone.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/Admin/dist/js/adminlte.min.js"></script>
+    <!-- bs-custom-file-input -->
+    <script src="/Admin/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="/Admin/dist/js/demo.js"></script>
 
 
-<!-- jQuery -->
-<script src="/Admin/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Select2 -->
-<script src="/Admin/plugins/select2/js/select2.full.min.js"></script>
-<!-- Bootstrap4 Duallistbox -->
-<script src="/Admin/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
-<!-- InputMask -->
-<script src="/Admin/plugins/moment/moment.min.js"></script>
-<script src="/Admin/plugins/inputmask/jquery.inputmask.min.js"></script>
-<!-- date-range-picker -->
-<script src="/Admin/plugins/daterangepicker/daterangepicker.js"></script>
-<!-- bootstrap color picker -->
-<script src="/Admin/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="/Admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Bootstrap Switch -->
-<script src="/Admin/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
-<!-- BS-Stepper -->
-<script src="/Admin/plugins/bs-stepper/js/bs-stepper.min.js"></script>
-<!-- dropzonejs -->
-<script src="/Admin/plugins/dropzone/min/dropzone.min.js"></script>
-<!-- AdminLTE App -->
-<script src="/Admin/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="/Admin/dist/js/demo.js"></script>
-
-
-<!-- Bootstrap 4 -->
-<!--<script src="Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>-->
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Book Edit Form</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/AdminHome/">Home</a></li>
-                        <li class="breadcrumb-item active">Book Edit Form</li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <!-- left column -->
-                <div class="col-lg">
-                    <!-- general form elements -->
-                    <div class="card card-teal">
-                        <div class="card-header">
-                            <h3 class="card-title">Edit Book</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <!-- form start -->
-                        <form action="/Admin/Book/Edit/" method="post">
-                            <div class="card-body">
-                                <div class="form-row">
-                                    <div class="form-group col-lg-6">
-                                        @Html.LabelFor(q => q.Name)
-                                        @Html.TextBoxFor(q => q.Name, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Book Name" })
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        @Html.LabelFor(q => q.Edition)
-                                        @Html.TextBoxFor(q => q.Edition, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Edition" })
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-lg-6">
-                                        @Html.LabelFor(q => q.Publisher)
-                                        @Html.TextBoxFor(q => q.Publisher, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Publisher" })
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        @Html.LabelFor(q => q.PublishDate)
-                                        @Html.TextBoxFor(q => q.PublishDate, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Publish Date" })
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-lg-6">
-                                        <label>Writer</label>
-                                        <select class="select2 form-control-border border-width-2" name="people" multiple="multiple" data-placeholder="Select a Writer" style="width: 100%;">
-                                            @if (Model != null)
-                                            {
-                                                List<int> selected = new List<int>();
-
-                                                @foreach (var item in Model.BookPersons.Where(q => q.DutyID == 0))
-                                                {
-                                                    <option selected value="@item.Person.ID">
-                                            @item.Person.Name @item.Person.SurName</option>
-                                                    selected.Add(item.Person.ID);
-                                                }
-
-                                                @foreach (var item in Model.people)
-                                                {
-                                                    if (!selected.Contains(item.ID))
-                                                    {
-                                                        <option value="@item.ID">@item.Name @item.SurName</option>
-
-                                                    }
-                                                  
-                                                }
-                                            }
-
-
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group col-lg-6">
-                                        <label>Interpreter</label>
-                                        <select class="select2 form-control-border border-width-2" name="interparray" multiple="multiple" data-placeholder="Select an Interpreter" style="width: 100%;">
-                                            @if (Model != null)
-                                            {
-                                                List<int> selected = new List<int>();
-
-                                                @foreach (var item in Model.BookPersons.Where(q => q.DutyID == 1))
-                                                {
-                                                    <option selected value="@item.Person.ID">
-                                                        @item.Person.Name @item.Person.SurName
-                                                    </option>
-                                                    selected.Add(item.Person.ID);
-                                                }
-
-                                                @foreach (var item in Model.people)
-                                                {
-                                                    if (!selected.Contains(item.ID))
-                                                    {
-                                                        <option value="@item.ID">@item.Name @item.SurName</option>
-
-                                                    }
-                                                }
-                                            }
-                                        </select>
-
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group col-lg-6">
-                                        <label>Category</label>
-                                        <select class="select2 form-control-border border-width-2" name="categories" multiple="multiple" data-placeholder="Select a Category" style="width: 100%;">
-
-
-                                            @if (Model != null)
-                                            {
-                                                List<int> selected = new List<int>();
-
-                                                foreach (var item in Model.BookCategories)
-                                                {
-                                                    <option selected value="@item.CategoryID">@item.Category.CategoryName</option>
-
-                                                    selected.Add(item.CategoryID);
-                                                }
-
-                                                foreach (var item in Model.categories)
-                                                {
-                                                    if (!selected.Contains(item.ID))
-                                                    {
-
-                                                        <option value="@item.ID">@item.CategoryName</option>
-
-                                                    }
-
-                                                }
-
-                                            }
-
-                                        </select>
-                                    </div>
-                                    @Html.HiddenFor(q => q.BookID)
-
-                                </div>
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </div>
-                        </form>
+    <!-- Bootstrap 4 -->
+    <!--<script src="Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Book Edit Form</h1>
                     </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="/AdminHome/">Home</a></li>
+                            <li class="breadcrumb-item active">Book Edit Form</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
 
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- left column -->
+                    <div class="col-lg">
+                        <!-- general form elements -->
+                        <div class="card card-teal">
+                            <div class="card-header">
+                                <h3 class="card-title">Edit Book</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <!-- form start -->
+                            <form action="/Admin/Book/Edit/" method="post">
+                                <div class="card-body">
+                                    <div class="form-row">
+                                        <div class="form-group col-lg-6">
+                                            @Html.LabelFor(q => q.Name)
+                                            @Html.TextBoxFor(q => q.Name, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Book Name" })
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            @Html.LabelFor(q => q.Edition)
+                                            @Html.TextBoxFor(q => q.Edition, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Edition" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-lg-6">
+                                            @Html.LabelFor(q => q.Publisher)
+                                            @Html.TextBoxFor(q => q.Publisher, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Publisher" })
+                                        </div>
+                                        <div class="form-group col-lg-6">
+                                            @Html.LabelFor(q => q.PublishDate)
+                                            @Html.TextBoxFor(q => q.PublishDate, new { @class = "form-control form-control-border border-width-2", @placeholder = "Enter Publish Date" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-lg-6">
+                                            <label>Writer</label>
+                                            <select class="select2 form-control-border border-width-2" name="people" multiple="multiple" data-placeholder="Select a Writer" style="width: 100%;">
+                                                @if (Model != null)
+                                                {
+                                                    List<int> selected = new List<int>();
+
+                                                    @foreach (var item in Model.BookPersons.Where(q => q.DutyID == 0))
+                                                    {
+                                                        <option selected value="@item.Person.ID">
+                                                            @item.Person.Name @item.Person.SurName
+                                                        </option>
+                                                        selected.Add(item.Person.ID);
+                                                    }
+
+                                                    @foreach (var item in Model.people)
+                                                    {
+                                                        if (!selected.Contains(item.ID))
+                                                        {
+                                                            <option value="@item.ID">@item.Name @item.SurName</option>
+
+                                                        }
+
+                                                    }
+                                                }
+
+
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group col-lg-6">
+                                            <label>Interpreter</label>
+                                            <select class="select2 form-control-border border-width-2" name="interparray" multiple="multiple" data-placeholder="Select an Interpreter" style="width: 100%;">
+                                                @if (Model != null)
+                                                {
+                                                    List<int> selected = new List<int>();
+
+                                                    @foreach (var item in Model.BookPersons.Where(q => q.DutyID == 1))
+                                                    {
+                                                        <option selected value="@item.Person.ID">
+                                                            @item.Person.Name @item.Person.SurName
+                                                        </option>
+                                                        selected.Add(item.Person.ID);
+                                                    }
+
+                                                    @foreach (var item in Model.people)
+                                                    {
+                                                        if (!selected.Contains(item.ID))
+                                                        {
+                                                            <option value="@item.ID">@item.Name @item.SurName</option>
+
+                                                        }
+                                                    }
+                                                }
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-lg-6">
+                                            <label>Category</label>
+                                            <select class="select2 form-control-border border-width-2" name="categories" multiple="multiple" data-placeholder="Select a Category" style="width: 100%;">
+
+
+                                                @if (Model != null)
+                                                {
+                                                    List<int> selected = new List<int>();
+
+                                                    foreach (var item in Model.BookCategories)
+                                                    {
+                                                        <option selected value="@item.CategoryID">@item.Category.CategoryName</option>
+
+                                                        selected.Add(item.CategoryID);
+                                                    }
+
+                                                    foreach (var item in Model.categories)
+                                                    {
+                                                        if (!selected.Contains(item.ID))
+                                                        {
+
+                                                            <option value="@item.ID">@item.CategoryName</option>
+
+                                                        }
+
+                                                    }
+
+                                                }
+
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group col-lg-6">
+                                            @Html.LabelFor(q => q.Coverimage)
+
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="exampleInputFile" name="Coverimage" multiple accept="image/x-png,image/gif,image/jpeg">
+                                                    <label class="custom-file-label" for="customFile" @*id=@Model.Imagepath*@>Choose file</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @Html.HiddenFor(q => q.BookID)
+
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+
+                    </div>
+                    <!--/.col (left) -->
 
                 </div>
-                <!--/.col (left) -->
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
 
-            </div>
-            <!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
+    <script>
+        $(document).ready(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2()
 
-<script>
-    $(document).ready(function () {
-        //Initialize Select2 Elements
-        $('.select2').select2()
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            })
 
-        //Initialize Select2 Elements
-        $('.select2bs4').select2({
-            theme: 'bootstrap4'
-        })
-
-    });
+        });
 
 
-</script>
+        $(function () {
+            bsCustomFileInput.init();
+        });
+    </script>
+
+
+    @*<script>
+        $(document).ready(function () {
+            let text = $(".custom-file-label").innerHTML;
+            let path = $(".custom-file-label").attr("id");
+            text = path;
+        });
+
+        $(document).on("change", "#exampleInputFile", function () {
+            let input = this.files[0];
+
+            if (input) {
+
+                text = exampleInputFile.value.replace(path);
+
+            }
+            else {
+                text = ("Choose file");
+            }
+        });
+    </script>*@
+
+
+
+
+

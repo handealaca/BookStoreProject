@@ -48,7 +48,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
             return View(books);
         }
 
-        [RoleControl(EnumRole.BookAdd)]
+        //[RoleControl(EnumRole.BookAdd)]
         public IActionResult Add()
         {
             BookVM model = new BookVM();
@@ -139,7 +139,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
         }
 
 
-        [RoleControl(EnumRole.BookEdit)]
+        //[RoleControl(EnumRole.BookEdit)]
         public IActionResult Edit(int id)
         {
             Book book = _bookcontext.Books.Include(x => x.BookCategories).ThenInclude(BookCategories => BookCategories.Category).Include(x => x.BookPersons).ThenInclude(BookPersons => BookPersons.Person).FirstOrDefault(q => q.ID == id);
@@ -154,6 +154,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
             model.categories = _bookcontext.Categories.Where(q => q.IsDeleted == false).ToList();
             model.BookPersons = book.BookPersons.Where(q => q.IsDeleted == false).ToList();
             model.people = _bookcontext.People.Where(q => q.IsDeleted == false).ToList();
+            model.Imagepath = book.Imagepath;
 
             return View(model);
         }
@@ -165,10 +166,29 @@ namespace BookStoreProject.Areas.Admin.Controllers
         {
             Book book = _bookcontext.Books.FirstOrDefault(q => q.ID == model.BookID);
 
+             model.Imagepath = "";
+
+            if (model.Coverimage != null)
+            {
+                var guid = Guid.NewGuid().ToString();
+
+                var path = Path.Combine(
+                    Directory.GetCurrentDirectory(),
+                    "wwwroot/Admin/Coverimg", guid + ".jpg");
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    model.Coverimage.CopyTo(stream);
+                }
+
+                model.Imagepath = guid + ".jpg";
+            }
+
             book.Name = model.Name;
             book.Publisher = model.Publisher;
             book.PublishDate = model.PublishDate;
             book.Edition = model.Edition;
+            book.Imagepath = model.Imagepath;
 
             _bookcontext.SaveChanges();
 
