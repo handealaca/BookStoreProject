@@ -48,9 +48,8 @@
                                 <thead>
                                     <tr>
                                         <th>User</th>
-                                        @*<th>User Name</th>*@
                                         <th>Email</th>
-                                        @*<th>Roles</th>*@
+                                        <th>Roles</th>
                                         <th>Login Date</th>
                                         <th>Add Date</th>
                                         
@@ -62,15 +61,15 @@
                                     {
                                         <tr>
                                             <td>@item.Name @item.SurName</td>
-                                            @*<td>@item.UserName</td>*@
                                             <td>@item.Email</td>
-                                            @*<td>
-                                                @foreach (var item in collection)
+                                            <td>
+                                                @foreach (var data in item.rolelist)
                                                 {
+                                                    <span>@data</span> <br />
 
                                                 }
 
-                                            </td>*@
+                                            </td>
                                             <td>@item.LoginDate.ToString("dd.MM.yyyy")</td>
                                             <td>@item.AddDate.ToString("dd.MM.yyyy")</td>
                                         

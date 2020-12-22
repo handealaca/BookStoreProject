@@ -188,7 +188,6 @@ namespace BookStoreProject.Areas.Admin.Controllers
             book.Publisher = model.Publisher;
             book.PublishDate = model.PublishDate;
             book.Edition = model.Edition;
-            book.Imagepath = model.Imagepath;
 
             _bookcontext.SaveChanges();
 
