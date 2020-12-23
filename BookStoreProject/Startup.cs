@@ -74,9 +74,22 @@ namespace BookStoreProject
                      areaName: "Admin",
                      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
                      );
+                 
                     endpoints.MapControllerRoute("default", "{Controller=AdminHome}/{Action=Index}/{id?}");
                     endpoints.MapRazorPages();
                 });
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapAreaControllerRoute(
+                 name: "Site",
+                 areaName: "Site",
+                 pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                 );
+
+                endpoints.MapControllerRoute("default", "{Controller=SiteHome}/{Action=Index}/{id?}");
+                endpoints.MapRazorPages();
+            });
 
 
 
