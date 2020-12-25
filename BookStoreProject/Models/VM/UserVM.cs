@@ -31,7 +31,7 @@ namespace BookStoreProject.Models.VM
 
         public DateTime? BirthDate { get; set; }
         public DateTime AddDate { get; set; }= DateTime.Now;
-        public DateTime UpdateDate { get; set; } = DateTime.Now;
+       
         public bool IsDeleted { get; set; }
         public List<Comment> Comments { get; set; }
     }

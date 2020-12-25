@@ -13,8 +13,7 @@ namespace BookStoreProject.Models.VM
 
         [Required(ErrorMessage = "Category Name field is required.")]
         public string CategoryName { get; set; }
-        public DateTime AddDate { get; set; }= DateTime.Now;
-        public DateTime UpdateDate { get; set; } = DateTime.Now;
+       
 
         public List<Category> topcategories { get; set; }
 

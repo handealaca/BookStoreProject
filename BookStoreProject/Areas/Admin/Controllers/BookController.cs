@@ -166,10 +166,16 @@ namespace BookStoreProject.Areas.Admin.Controllers
         {
             Book book = _bookcontext.Books.FirstOrDefault(q => q.ID == model.BookID);
 
-             model.Imagepath = "";
+            book.Name = model.Name;
+            book.Publisher = model.Publisher;
+            book.PublishDate = model.PublishDate;
+            book.Edition = model.Edition;
+
 
             if (model.Coverimage != null)
             {
+                model.Imagepath = "";
+                
                 var guid = Guid.NewGuid().ToString();
 
                 var path = Path.Combine(
@@ -182,12 +188,12 @@ namespace BookStoreProject.Areas.Admin.Controllers
                 }
 
                 model.Imagepath = guid + ".jpg";
-            }
+                
+                
+            book.Imagepath = model.Imagepath;
 
-            book.Name = model.Name;
-            book.Publisher = model.Publisher;
-            book.PublishDate = model.PublishDate;
-            book.Edition = model.Edition;
+            }
+                     
 
             _bookcontext.SaveChanges();
 

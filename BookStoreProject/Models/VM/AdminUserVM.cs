@@ -31,8 +31,8 @@ namespace BookStoreProject.Models.VM
       
         public string ConfirmPassword { get; set; }
 
-        public DateTime AddDate { get; set; }
-        public DateTime UpdateDate { get; set; }
+        
+       
 
         public DateTime LoginDate { get; set; } = DateTime.Now;
 

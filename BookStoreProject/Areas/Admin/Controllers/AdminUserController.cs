@@ -34,8 +34,8 @@ namespace BookStoreProject.Areas.Admin.Controllers
                 role = q.Role,
                 Email = q.Email,
                 Password = q.Password,
-                AddDate = q.AddDate,
-                UpdateDate = q.UpdateDate,
+               LoginDate = q.Lastlogindate,
+               
                 IsDeleted = q.IsDeleted,
             }).ToList();
 

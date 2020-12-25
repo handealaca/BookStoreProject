@@ -27,7 +27,7 @@ namespace BookStoreProject.Models.VM
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? BirthDate { get; set; } 
         public List<string> Duties { get; set; }
-        public DateTime AddDate { get; set; } = DateTime.Now;
+     
         public List<EnumDuty> EnumDuties { get; set; }
         public List<BookPerson> Books { get; set; }
 

@@ -34,8 +34,8 @@ namespace BookStoreProject.Areas.Admin.Controllers
                 Email = q.Email,
                 Password = q.Password,
                 Comments = q.Comments,
-                AddDate = q.AddDate,
-                UpdateDate = q.UpdateDate,
+               
+                
                 IsDeleted = q.IsDeleted,
                 BirthDate = q.BirthDate
             }).ToList();
