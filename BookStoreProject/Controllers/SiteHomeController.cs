@@ -21,5 +21,13 @@ namespace BookStoreProject.Controllers
         {
             return View();
         }
+
+        public IActionResult Books()
+        {
+            return View();
+        }
     }
 }
+
+
+   

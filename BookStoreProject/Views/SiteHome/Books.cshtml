@@ -1,0 +1,161 @@
+﻿
+@{
+    ViewData["Title"] = "Books";
+    Layout = "~/Views/Site/Shared/_SiteLayout.cshtml";
+}
+
+<div id="content" class="site-content">
+    <div id="primary" class="content-area">
+        <main id="main" class="site-main">
+            <div class="books-full-width">
+                <div class="container">
+
+                    <!-- Start: Search Section -->
+                    <section class="search-filters">
+                        <div class="filter-box">
+                            <h3>What are you looking for at the library?</h3>
+                            <form action="http://libraria.demo.presstigers.com/index.html" method="get">
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Search by Keyword" id="keywords" name="keywords" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                        <select name="catalog" id="catalog" class="form-control">
+                                            <option>Search the Catalog</option>
+                                            <option>Catalog 01</option>
+                                            <option>Catalog 02</option>
+                                            <option>Catalog 03</option>
+                                            <option>Catalog 04</option>
+                                            <option>Catalog 05</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                        <select name="category" id="category" class="form-control">
+                                            <option>All Categories</option>
+                                            <option>Category 01</option>
+                                            <option>Category 02</option>
+                                            <option>Category 03</option>
+                                            <option>Category 04</option>
+                                            <option>Category 05</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control" type="submit" value="Search">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="clear"></div>
+                    </section>
+                    <!-- End: Search Section -->
+
+                    <div class="filter-options margin-list">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3">
+                                <select name="orderby">
+                                    <option selected="selected">Sort by Title</option>
+                                    <option>Sort by popularity</option>
+                                    <option>Sort by rating</option>
+                                    <option>Sort by newness</option>
+                                    <option>Sort by price</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-sm-3">
+                                <select name="orderby">
+                                    <option selected="selected">Sort by Author</option>
+                                    <option>Sort by popularity</option>
+                                    <option>Sort by rating</option>
+                                    <option>Sort by newness</option>
+                                    <option>Sort by price</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 col-sm-3">
+                                <select name="orderby">
+                                    <option selected="selected">Language</option>
+                                    <option>Sort by popularity</option>
+                                    <option>Sort by rating</option>
+                                    <option>Sort by newness</option>
+                                    <option>Sort by price</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 col-sm-3">
+                                <select name="orderby">
+                                    <option selected="selected">Publishing Date</option>
+                                    <option>Sort by popularity</option>
+                                    <option>Sort by rating</option>
+                                    <option>Sort by newness</option>
+                                    <option>Sort by price</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 col-sm-12 pull-right">
+                                <div class="filter-toggle">
+                                    <a href="books-media-gird-view-v2.html" class="active"><i class="glyphicon glyphicon-th-large"></i></a>
+                                    <a href="books-media-list-view.html"><i class="glyphicon glyphicon-th-list"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="booksmedia-fullwidth">
+                        <ul>
+
+                            <li>
+                                <div class="book-list-icon yellow-icon"></div>
+                                <figure>
+                                    <a href="books-media-detail-v2.html"><img src="/Site/images/books-media-layout3-06.jpg" alt="Book"></a>
+                                    <figcaption>
+                                        <header>
+                                            <h4><a href="books-media-detail-v2.html">The Great Gatsby</a></h4>
+                                            <p><strong>Author:</strong>  F. Scott Fitzgerald</p>
+                                            <p><strong>ISBN:</strong>  9781581573268</p>
+                                        </header>
+                                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
+                                        <div class="actions">
+                                            <ul>
+                                                <li>
+                                                    <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="Add TO CART">
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="Like">
+                                                        <i class="fa fa-heart"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="Mail">
+                                                        <i class="fa fa-envelope"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="Search">
+                                                        <i class="fa fa-search"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="Print">
+                                                        <i class="fa fa-print"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="Share">
+                                                        <i class="fa fa-share-alt"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
