@@ -105,21 +105,11 @@
                             <ul class="nav navbar-nav">
                                 <li class="dropdown active">
                                     <a data-toggle="dropdown" class="dropdown-toggle disabled" href="/SiteHome/">Home</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="index-2.html">Home V1</a></li>
-                                        <li><a href="home-v2.html">Home V2</a></li>
-                                        <li><a href="home-v3.html">Home V3</a></li>
-                                    </ul>
+                                  
                                 </li>
                                 <li class="dropdown">
                                     <a data-toggle="dropdown" class="dropdown-toggle disabled" href="/SiteHome/Books/">Books</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="books-media-list-view.html">Books &amp; Media List View</a></li>
-                                        <li><a href="books-media-gird-view-v1.html">Books &amp; Media Grid View V1</a></li>
-                                        <li><a href="books-media-gird-view-v2.html">Books &amp; Media Grid View V2</a></li>
-                                        <li><a href="books-media-detail-v1.html">Books &amp; Media Detail V1</a></li>
-                                        <li><a href="books-media-detail-v2.html">Books &amp; Media Detail V2</a></li>
-                                    </ul>
+                                 
                                 </li>
 
                                 <li class="dropdown">
@@ -142,9 +132,21 @@
                                 <li><a href="contact.html">About</a></li>
                             </ul>
                             <!-- Header Topbar -->
+
                             <div class="header-topbar hidden-md">
-                                <div class="topbar-links">
-                                    <a href="signin.html"><i class="fa fa-lock"></i>Login / Register</a>
+                                <div class="topbar-links" >
+                                    @if (ViewBag.UserName != null)
+                                    {
+                                    <div>
+                                        <a style="padding-right:10px" href ="/SiteLogin/"><i class="fa fa-lock"></i>LogOut</a>
+                                        <a href="/SiteLogin/"><i class="fa fa-user"></i>My Account</a>
+                                    </div>
+                                        <span class="d-none d-md-inline">Welcome @ViewBag.UserName</span>
+                                    }
+                                    else
+                                    {
+                                        <a href="/SiteLogin/"><i class="fa fa-lock"></i>Login</a>
+                                    }
 
                                 </div>
                             </div>
@@ -178,7 +180,7 @@
                                         <li><a href="books-media-detail-v2.html">Books &amp; Media Detail V2</a></li>
                                     </ul>
                                 </li>
-                            
+
                                 <li>
                                     <a href="#">Pages</a>
                                     <ul>
@@ -220,7 +222,7 @@
             <div class="container">
                 <div class="row">
                     <div class="footer-text col-md-3">
-                        <p><a target="" href="/SiteHome/"style="color:#288feb">Book Store</a></p>
+                        <p><a target="" href="/SiteHome/" style="color:#288feb">Book Store</a></p>
                     </div>
                     <div class="col-md-9 pull-right">
                         <ul>

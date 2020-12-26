@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Site/Shared/_SiteLayout.cshtml";
+}
+
+@model BookStoreProject.Models.VM.LoginVM
+
+<!-- Start: Page Banner -->
+<section class="page-banner services-banner" style="background-image: url(/Site/images/kitaplık.jpg)">
+    <div class="container">
+        <div class="banner-header">
+            <h2>Signin</h2>
+            <span class="underline center"></span>
+            <p class="lead">Proin ac eros pellentesque dolor pharetra tempo.</p>
+        </div>
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="/SiteHome/">Home</a></li>
+                <li>Login</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- End: Page Banner -->
+<!-- Start: Cart Section -->
+<div id="content" class="site-content">
+    <div id="primary" class="content-area">
+        <main id="main" class="site-main">
+            <div class="signin-main">
+                <div class="container" >
+                    <div class="woocommerce">
+                        <div class="woocommerce-login">
+                            <div class="company-info signin-register">
+                                
+                                    <div class="row " style="display:flex; justify-content:center">
+                                        <div class="col-md-6">
+                                            <div class="company-detail bg-dark">
+                                                <div class="signin-head">
+                                                    <h2>Sign in</h2>
+                                                    <span class="underline left"></span>
+                                                </div>
+                                                <p style="color:red">@ViewBag.error</p>
+                                                <form action="/SiteLogin/Index" class="login" method="post">
+                                                    <p class="form-row form-row-first input-required">
+
+                                                        @Html.TextBoxFor(q => q.EMail, new { @type = "email", @class = "form-control", @placeholder = "Email", @name = "Email" })
+
+
+
+                                                    </p>
+                                                    <p class="form-row form-row-last input-required">
+
+                                                        @Html.PasswordFor(q => q.Password, new { @type = "password", @class = "form-control", @placeholder = "Password", @name = "Password" })
+                                                    </p>
+                                                    <div class="clear"></div>
+                                                    <div class="password-form-row">
+                                                        <p class="form-row input-checkbox">
+                                                            <input type="checkbox" value="forever" id="rememberme" name="rememberme">
+                                                            <label class="inline" for="rememberme">Remember me</label>
+                                                        </p>
+                                                        <p class="lost_password">
+                                                            <a href="#">Lost your Pin?</a>
+                                                        </p>
+                                                    </div>
+                                                    <input type="submit" value="Login" name="login" class="button btn btn-default">
+                                                    <div class="clear"></div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<!-- End: Cart Section -->

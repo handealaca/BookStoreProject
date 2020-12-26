@@ -26,7 +26,7 @@ namespace BookStoreProject.Models.VM
 
         [Required(ErrorMessage = "Confirm Password field is required.")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-        [RegularExpression("^((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])|(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^a-zA-Z0-9]).{8,}$", ErrorMessage = "Passwords must be at least 8 characters and contain at 3 or 4 of the following: upper case (A-Z), lower case (a-z), number (0-9) and special character (eg. !@#$%^&*)")]
+        //[RegularExpression("^((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])|(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^a-zA-Z0-9]).{8,}$", ErrorMessage = "Passwords must be at least 8 characters and contain at 3 or 4 of the following: upper case (A-Z), lower case (a-z), number (0-9) and special character (eg. !@#$%^&*)")]
         public string ConfirmPassword { get; set; }
 
         public DateTime? BirthDate { get; set; }
@@ -34,5 +34,7 @@ namespace BookStoreProject.Models.VM
        
         public bool IsDeleted { get; set; }
         public List<Comment> Comments { get; set; }
+
+        public DateTime Lastlogindate { get; set; }
     }
 }

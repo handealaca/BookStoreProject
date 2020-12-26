@@ -1,7 +1,8 @@
-﻿using BookStoreProject.Areas.Admin.Controllers;
+﻿using BookStoreProject.Controllers;
 using BookStoreProject.Models.ORM.Context;
 using BookStoreProject.Models.ORM.Entities;
 using BookStoreProject.Models.VM;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
@@ -12,8 +13,10 @@ using System.Threading.Tasks;
 
 namespace BookStoreProject.Controllers
 {
-    public class SiteHomeController : BaseController
+    //[Authorize]
+    public class SiteHomeController : SiteBaseController
     {
+       
         private readonly BookContext _bookcontext;
         public SiteHomeController(BookContext bookcontext, IMemoryCache memoryCache) : base(bookcontext, memoryCache)
         {

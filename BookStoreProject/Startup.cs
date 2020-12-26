@@ -39,7 +39,9 @@ namespace BookStoreProject
             .AddCookie(options =>
             {
                 options.LoginPath = "/Admin/AdminLogin/Index/";
-            }); 
+                options.LoginPath = "/SiteLogin/Index/";
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -75,17 +77,17 @@ namespace BookStoreProject
                      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
                      );
                  
-                    endpoints.MapControllerRoute("default", "{Controller=AdminHome}/{Action=Index}/{id?}");
+                    endpoints.MapControllerRoute("default", "{Controller=SiteHome}/{Action=Index}/{id?}");
                     endpoints.MapRazorPages();
                 });
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapAreaControllerRoute(
-                 name: "Site",
-                 areaName: "Site",
-                 pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-                 );
+                //endpoints.MapAreaControllerRoute(
+                // name: "Site",
+                // areaName: "Site",
+                // pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                // );
 
                 endpoints.MapControllerRoute("default", "{Controller=SiteHome}/{Action=Index}/{id?}");
                 endpoints.MapRazorPages();

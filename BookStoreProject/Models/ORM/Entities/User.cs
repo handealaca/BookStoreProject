@@ -16,5 +16,7 @@ namespace BookStoreProject.Models.ORM.Entities
         public List<Comment> Comments { get; set; }
         public List<UserPoint> UserPoints { get; set; }
 
+        public DateTime Lastlogindate { get; set; }
+
     }
 }

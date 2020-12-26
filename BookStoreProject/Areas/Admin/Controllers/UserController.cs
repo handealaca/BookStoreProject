@@ -34,6 +34,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
                 Email = q.Email,
                 Password = q.Password,
                 Comments = q.Comments,
+                Lastlogindate = q.Lastlogindate,
                
                 
                 IsDeleted = q.IsDeleted,
