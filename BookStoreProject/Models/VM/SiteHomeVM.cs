@@ -11,14 +11,5 @@ namespace BookStoreProject.Models.VM
         public List<Book> BookCovers { get; set; }
         public List<Category> Topcategories { get; set; }
         public List<Category> Subcategories { get; set; }
-
-        //public List<Category> getsubcategory(int id)
-        //{
-        //    List<Category> categories = new List<Category>();
-
-        //    var Subcategories = categories.Where(q => q.IsDeleted == false && q.TopCategory == id).ToList();
-        //    return (Subcategories);
-        //}
-
     }
 }

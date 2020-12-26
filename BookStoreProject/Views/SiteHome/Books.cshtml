@@ -9,10 +9,11 @@
     <div id="primary" class="content-area">
         <main id="main" class="site-main">
             <div class="books-full-width">
-                <div class="container">
+
+                <div class="container-fluid">
 
                     <!-- Start: Search Section -->
-                    <section class="search-filters">
+                    <section class="search-filters" style="padding:0 70px 0 70px">
                         <div class="filter-box">
                             <h3>What are you looking for at the library?</h3>
                             <form action="" method="get">
@@ -30,10 +31,10 @@
                                                 <option value="@item.ID">@item.CategoryName</option>
 
                                             }
-                                       
+
                                         </select>
 
-                                       
+
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-sm-6">
@@ -41,9 +42,9 @@
                                         <select name="category" id="category" class="form-control">
 
                                             @*@foreach (var item in Model.Topcategories.Where(q=>q.ID==))
-                                            {
-                                                <option>All Categories</option>
-                                            }*@
+                            {
+                                <option>All Categories</option>
+                            }*@
                                         </select>
                                     </div>
                                 </div>
@@ -55,312 +56,272 @@
                             </form>
                         </div>
                         <div class="clear"></div>
+                        <div class="row" style="padding:50px 0 0 0">
+                            <div class="col-md-3">
+                                <aside id="secondary" class="sidebar widget-area" data-accordion-group>
+                                    <div class="widget widget_related_search open" data-accordion>
+                                        <h4 class="widget-title" data-control>Related Searches</h4>
+                                        <div data-content>
+                                            <div data-accordion>
+                                                <h5 class="widget-sub-title" data-control>Subject</h5>
+                                                <div class="widget_categories" data-content>
+                                                    <ul>
+                                                        <li><a href="#">Love stories <span>(18)</span></a></li>
+                                                        <li><a href="#">Texas <span>(04)</span></a></li>
+                                                        <li><a href="#">Rich people <span>(03)</span></a></li>
+                                                        <li><a href="#">Humorous stories <span>(02)</span></a></li>
+                                                        <li><a href="#">Widows <span>(02)</span></a></li>
+                                                        <li><a href="#">Women <span>(11)</span></a></li>
+                                                        <li><a href="#">Babysitters <span>(25)</span></a></li>
+                                                        <li><a href="#">Law firms <span>(09)</span></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div data-accordion>
+                                                <h5 class="widget-sub-title" data-control>Authors</h5>
+                                                <div class="widget_categories" data-content>
+                                                    <ul>
+                                                        <li><a href="#">Love stories <span>(18)</span></a></li>
+                                                        <li><a href="#">Texas <span>(04)</span></a></li>
+                                                        <li><a href="#">Rich people <span>(03)</span></a></li>
+                                                        <li><a href="#">Humorous stories <span>(02)</span></a></li>
+                                                        <li><a href="#">Widows <span>(02)</span></a></li>
+                                                        <li><a href="#">Women <span>(11)</span></a></li>
+                                                        <li><a href="#">Babysitters <span>(25)</span></a></li>
+                                                        <li><a href="#">Law firms <span>(09)</span></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div data-accordion>
+                                                <h5 class="widget-sub-title" data-control>Series</h5>
+                                                <div class="widget_categories" data-content>
+                                                    <ul>
+                                                        <li><a href="#">Love stories <span>(18)</span></a></li>
+                                                        <li><a href="#">Texas <span>(04)</span></a></li>
+                                                        <li><a href="#">Rich people <span>(03)</span></a></li>
+                                                        <li><a href="#">Humorous stories <span>(02)</span></a></li>
+                                                        <li><a href="#">Widows <span>(02)</span></a></li>
+                                                        <li><a href="#">Women <span>(11)</span></a></li>
+                                                        <li><a href="#">Babysitters <span>(25)</span></a></li>
+                                                        <li><a href="#">Law firms <span>(09)</span></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div data-accordion>
+                                                <h5 class="widget-sub-title" data-control>Other Searches</h5>
+                                                <div class="widget_categories" data-content>
+                                                    <ul>
+                                                        <li><a href="#">Love stories <span>(18)</span></a></li>
+                                                        <li><a href="#">Texas <span>(04)</span></a></li>
+                                                        <li><a href="#">Rich people <span>(03)</span></a></li>
+                                                        <li><a href="#">Humorous stories <span>(02)</span></a></li>
+                                                        <li><a href="#">Widows <span>(02)</span></a></li>
+                                                        <li><a href="#">Women <span>(11)</span></a></li>
+                                                        <li><a href="#">Babysitters <span>(25)</span></a></li>
+                                                        <li><a href="#">Law firms <span>(09)</span></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="widget widget_narrow_search" data-accordion>
+                                        <h4 class="widget-title" data-control>Narrow your search</h4>
+                                        <div data-content>
+                                            <div data-accordion>
+                                                <h5 class="widget-sub-title" data-control>Type of Material</h5>
+                                                <div class="widget_material" data-content>
+                                                    <form action="#">
+                                                        <label><input type="checkbox" name="material" value="books"> Books</label>
+                                                        <label><input type="checkbox" name="material" value="electronic" checked> Electronic Resources</label>
+                                                        <label><input type="checkbox" name="material" value="ebooks"> ebooks</label>
+                                                        <label><input type="checkbox" name="material" value="soundrecording" checked> Sound Recording</label>
+                                                        <label><input type="checkbox" name="material" value="largeprint"> Large Print</label>
+                                                        <label><input type="checkbox" name="material" value="audioebooks" checked> Audio eBooks</label>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div data-accordion>
+                                                <h5 class="widget-sub-title" data-control>Publishing Date </h5>
+                                                <div class="widget widget_material" data-content>
+                                                    <form action="#">
+                                                        <label><input type="checkbox" name="material" value="books"> Books</label>
+                                                        <label><input type="checkbox" name="material" value="electronic" checked> Electronic Resources</label>
+                                                        <label><input type="checkbox" name="material" value="ebooks"> ebooks</label>
+                                                        <label><input type="checkbox" name="material" value="soundrecording" checked> Sound Recording</label>
+                                                        <label><input type="checkbox" name="material" value="largeprint"> Large Print</label>
+                                                        <label><input type="checkbox" name="material" value="audioebooks" checked> Audio eBooks</label>
+                                                    </form>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div data-accordion>
+                                                <h5 class="widget-sub-title" data-control>Popularity </h5>
+                                                <div class="widget widget_material" data-content>
+                                                    <form action="#">
+                                                        <label><input type="checkbox" name="material" value="books"> Books</label>
+                                                        <label><input type="checkbox" name="material" value="electronic" checked> Electronic Resources</label>
+                                                        <label><input type="checkbox" name="material" value="ebooks"> ebooks</label>
+                                                        <label><input type="checkbox" name="material" value="soundrecording" checked> Sound Recording</label>
+                                                        <label><input type="checkbox" name="material" value="largeprint"> Large Print</label>
+                                                        <label><input type="checkbox" name="material" value="audioebooks" checked> Audio eBooks</label>
+                                                    </form>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div data-accordion>
+                                                <h5 class="widget-sub-title" data-control>Language </h5>
+                                                <div class="widget widget_material" data-content>
+                                                    <form action="#">
+                                                        <label><input type="checkbox" name="material" value="books"> Books</label>
+                                                        <label><input type="checkbox" name="material" value="electronic" checked> Electronic Resources</label>
+                                                        <label><input type="checkbox" name="material" value="ebooks"> ebooks</label>
+                                                        <label><input type="checkbox" name="material" value="soundrecording" checked> Sound Recording</label>
+                                                        <label><input type="checkbox" name="material" value="largeprint"> Large Print</label>
+                                                        <label><input type="checkbox" name="material" value="audioebooks" checked> Audio eBooks</label>
+                                                    </form>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="widget widget_recent_releases">
+                                        <h4 class="widget-title">New Releases</h4>
+                                        <ul>
+                                            <li><a href="#">Books</a></li>
+                                            <li><a href="#">eBooks</a></li>
+                                            <li><a href="#">DVDS</a></li>
+                                            <li><a href="#">Magazines</a></li>
+                                            <li><a href="#">Audio</a></li>
+                                            <li><a href="#">eAudio</a></li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    @*<div class="widget widget_recent_entries">
+                    <h4 class="widget-title">On-Order Items</h4>
+                    <ul>
+                        <li>
+                            <figure>
+                                <img src="images/order-item-01.jpg" alt="product" />
+                            </figure>
+                            <a href="#">The Sonic Boom</a>
+                            <span class="price"><strong>Author:</strong> F. Scott Fitzgerald</span>
+                            <span><strong>ISBN:</strong> 978158157</span>
+                            <div class="rating">
+                                <span>☆</span>
+                                <span>☆</span>
+                                <span>☆</span>
+                                <span>☆</span>
+                                <span>☆</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                        <li>
+                            <figure>
+                                <img src="images/order-item-02.jpg" alt="product" />
+                            </figure>
+                            <a href="#">The Sonic Boom</a>
+                            <span class="price"><strong>Author:</strong> F. Scott Fitzgerald</span>
+                            <span><strong>ISBN:</strong> 978158157</span>
+                            <div class="rating">
+                                <span>☆</span>
+                                <span>☆</span>
+                                <span>☆</span>
+                                <span>☆</span>
+                                <span>☆</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                        <li>
+                            <figure>
+                                <img src="images/order-item-03.jpg" alt="product" />
+                            </figure>
+                            <a href="#">The Sonic Boom</a>
+                            <span class="price"><strong>Author:</strong> F. Scott Fitzgerald</span>
+                            <span><strong>ISBN:</strong> 978158157</span>
+                            <div class="rating">
+                                <span>☆</span>
+                                <span>☆</span>
+                                <span>☆</span>
+                                <span>☆</span>
+                                <span>☆</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>*@
+                                </aside>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="filter-options margin-list">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-4">
+                                            <select name="orderby">
+                                                <option selected="selected">Default sorting</option>
+                                                <option>Sort by popularity</option>
+                                                <option>Sort by rating</option>
+                                                <option>Sort by newness</option>
+                                                <option>Sort by price</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4">
+                                            <div class="filter-result">Showing items 1 to 9 of 19 total</div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-3 pull-right">
+                                            <div class="filter-toggle">
+                                                <a href="books-media-gird-view-v1.html" class="active"><i class="glyphicon glyphicon-th-large"></i></a>
+                                                <a href="books-media-list-view.html"><i class="glyphicon glyphicon-th-list"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="booksmedia-fullwidth">
+                                    <ul>
+                                        <li>
+                                            <div class="book-list-icon yellow-icon"></div>
+                                            <figure>
+                                                <a href="books-media-detail-v2.html"><img src="/Site/images/books-media-layout3-06.jpg" alt="Book"></a>
+                                                <figcaption>
+                                                    <header>
+                                                        <h4><a href="books-media-detail-v2.html">The Great Gatsby</a></h4>
+                                                        <p><strong>Author:</strong>  F. Scott Fitzgerald</p>
+                                                        <p><strong>ISBN:</strong>  9781581573268</p>
+                                                    </header>
+                                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
+                                                    
+                                                </figcaption>
+                                            </figure>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <nav class="navigation pagination text-center">
+                                    <h2 class="screen-reader-text">Posts navigation</h2>
+                                    <div class="nav-links">
+                                        <a class="prev page-numbers" href="#."><i class="fa fa-long-arrow-left"></i> Previous</a>
+                                        <a class="page-numbers" href="#.">1</a>
+                                        <span class="page-numbers current">2</span>
+                                        <a class="page-numbers" href="#.">3</a>
+                                        <a class="page-numbers" href="#.">4</a>
+                                        <a class="next page-numbers" href="#.">Next <i class="fa fa-long-arrow-right"></i></a>
+                                    </div>
+                                </nav>
+                            </div>
+
+                        </div>
+
                     </section>
                     <!-- End: Search Section -->
 
-                    <div class="filter-options margin-list">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-3">
-                                <select name="orderby">
-                                    <option selected="selected">Sort by Title</option>
-                                    <option>Sort by popularity</option>
-                                    <option>Sort by rating</option>
-                                    <option>Sort by newness</option>
-                                    <option>Sort by price</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3 col-sm-3">
-                                <select name="orderby">
-                                    <option selected="selected">Sort by Author</option>
-                                    <option>Sort by popularity</option>
-                                    <option>Sort by rating</option>
-                                    <option>Sort by newness</option>
-                                    <option>Sort by price</option>
-                                </select>
-                            </div>
-                            <div class="col-md-2 col-sm-3">
-                                <select name="orderby">
-                                    <option selected="selected">Language</option>
-                                    <option>Sort by popularity</option>
-                                    <option>Sort by rating</option>
-                                    <option>Sort by newness</option>
-                                    <option>Sort by price</option>
-                                </select>
-                            </div>
-                            <div class="col-md-2 col-sm-3">
-                                <select name="orderby">
-                                    <option selected="selected">Publishing Date</option>
-                                    <option>Sort by popularity</option>
-                                    <option>Sort by rating</option>
-                                    <option>Sort by newness</option>
-                                    <option>Sort by price</option>
-                                </select>
-                            </div>
-                            <div class="col-md-2 col-sm-12 pull-right">
-                                <div class="filter-toggle">
-                                    <a href="books-media-gird-view-v2.html" class="active"><i class="glyphicon glyphicon-th-large"></i></a>
-                                    <a href="books-media-list-view.html"><i class="glyphicon glyphicon-th-list"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3 col-md-pull-9">
-                            <aside id="secondary" class="sidebar widget-area" data-accordion-group>
-                                <div class="widget widget_related_search open" data-accordion>
-                                    <h4 class="widget-title" data-control>Related Searches</h4>
-                                    <div data-content>
-                                        <div data-accordion>
-                                            <h5 class="widget-sub-title" data-control>Subject</h5>
-                                            <div class="widget_categories" data-content>
-                                                <ul>
-                                                    <li><a href="#">Love stories <span>(18)</span></a></li>
-                                                    <li><a href="#">Texas <span>(04)</span></a></li>
-                                                    <li><a href="#">Rich people <span>(03)</span></a></li>
-                                                    <li><a href="#">Humorous stories <span>(02)</span></a></li>
-                                                    <li><a href="#">Widows <span>(02)</span></a></li>
-                                                    <li><a href="#">Women <span>(11)</span></a></li>
-                                                    <li><a href="#">Babysitters <span>(25)</span></a></li>
-                                                    <li><a href="#">Law firms <span>(09)</span></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div data-accordion>
-                                            <h5 class="widget-sub-title" data-control>Authors</h5>
-                                            <div class="widget_categories" data-content>
-                                                <ul>
-                                                    <li><a href="#">Love stories <span>(18)</span></a></li>
-                                                    <li><a href="#">Texas <span>(04)</span></a></li>
-                                                    <li><a href="#">Rich people <span>(03)</span></a></li>
-                                                    <li><a href="#">Humorous stories <span>(02)</span></a></li>
-                                                    <li><a href="#">Widows <span>(02)</span></a></li>
-                                                    <li><a href="#">Women <span>(11)</span></a></li>
-                                                    <li><a href="#">Babysitters <span>(25)</span></a></li>
-                                                    <li><a href="#">Law firms <span>(09)</span></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div data-accordion>
-                                            <h5 class="widget-sub-title" data-control>Series</h5>
-                                            <div class="widget_categories" data-content>
-                                                <ul>
-                                                    <li><a href="#">Love stories <span>(18)</span></a></li>
-                                                    <li><a href="#">Texas <span>(04)</span></a></li>
-                                                    <li><a href="#">Rich people <span>(03)</span></a></li>
-                                                    <li><a href="#">Humorous stories <span>(02)</span></a></li>
-                                                    <li><a href="#">Widows <span>(02)</span></a></li>
-                                                    <li><a href="#">Women <span>(11)</span></a></li>
-                                                    <li><a href="#">Babysitters <span>(25)</span></a></li>
-                                                    <li><a href="#">Law firms <span>(09)</span></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div data-accordion>
-                                            <h5 class="widget-sub-title" data-control>Other Searches</h5>
-                                            <div class="widget_categories" data-content>
-                                                <ul>
-                                                    <li><a href="#">Love stories <span>(18)</span></a></li>
-                                                    <li><a href="#">Texas <span>(04)</span></a></li>
-                                                    <li><a href="#">Rich people <span>(03)</span></a></li>
-                                                    <li><a href="#">Humorous stories <span>(02)</span></a></li>
-                                                    <li><a href="#">Widows <span>(02)</span></a></li>
-                                                    <li><a href="#">Women <span>(11)</span></a></li>
-                                                    <li><a href="#">Babysitters <span>(25)</span></a></li>
-                                                    <li><a href="#">Law firms <span>(09)</span></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="widget widget_narrow_search" data-accordion>
-                                    <h4 class="widget-title" data-control>Narrow your search</h4>
-                                    <div data-content>
-                                        <div data-accordion>
-                                            <h5 class="widget-sub-title" data-control>Type of Material</h5>
-                                            <div class="widget_material" data-content>
-                                                <form action="#">
-                                                    <label><input type="checkbox" name="material" value="books"> Books</label>
-                                                    <label><input type="checkbox" name="material" value="electronic" checked> Electronic Resources</label>
-                                                    <label><input type="checkbox" name="material" value="ebooks"> ebooks</label>
-                                                    <label><input type="checkbox" name="material" value="soundrecording" checked> Sound Recording</label>
-                                                    <label><input type="checkbox" name="material" value="largeprint"> Large Print</label>
-                                                    <label><input type="checkbox" name="material" value="audioebooks" checked> Audio eBooks</label>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <div data-accordion>
-                                            <h5 class="widget-sub-title" data-control>Publishing Date </h5>
-                                            <div class="widget widget_material" data-content>
-                                                <form action="#">
-                                                    <label><input type="checkbox" name="material" value="books"> Books</label>
-                                                    <label><input type="checkbox" name="material" value="electronic" checked> Electronic Resources</label>
-                                                    <label><input type="checkbox" name="material" value="ebooks"> ebooks</label>
-                                                    <label><input type="checkbox" name="material" value="soundrecording" checked> Sound Recording</label>
-                                                    <label><input type="checkbox" name="material" value="largeprint"> Large Print</label>
-                                                    <label><input type="checkbox" name="material" value="audioebooks" checked> Audio eBooks</label>
-                                                </form>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div data-accordion>
-                                            <h5 class="widget-sub-title" data-control>Popularity </h5>
-                                            <div class="widget widget_material" data-content>
-                                                <form action="#">
-                                                    <label><input type="checkbox" name="material" value="books"> Books</label>
-                                                    <label><input type="checkbox" name="material" value="electronic" checked> Electronic Resources</label>
-                                                    <label><input type="checkbox" name="material" value="ebooks"> ebooks</label>
-                                                    <label><input type="checkbox" name="material" value="soundrecording" checked> Sound Recording</label>
-                                                    <label><input type="checkbox" name="material" value="largeprint"> Large Print</label>
-                                                    <label><input type="checkbox" name="material" value="audioebooks" checked> Audio eBooks</label>
-                                                </form>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div data-accordion>
-                                            <h5 class="widget-sub-title" data-control>Language </h5>
-                                            <div class="widget widget_material" data-content>
-                                                <form action="#">
-                                                    <label><input type="checkbox" name="material" value="books"> Books</label>
-                                                    <label><input type="checkbox" name="material" value="electronic" checked> Electronic Resources</label>
-                                                    <label><input type="checkbox" name="material" value="ebooks"> ebooks</label>
-                                                    <label><input type="checkbox" name="material" value="soundrecording" checked> Sound Recording</label>
-                                                    <label><input type="checkbox" name="material" value="largeprint"> Large Print</label>
-                                                    <label><input type="checkbox" name="material" value="audioebooks" checked> Audio eBooks</label>
-                                                </form>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="widget widget_recent_releases">
-                                    <h4 class="widget-title">New Releases</h4>
-                                    <ul>
-                                        <li><a href="#">Books</a></li>
-                                        <li><a href="#">eBooks</a></li>
-                                        <li><a href="#">DVDS</a></li>
-                                        <li><a href="#">Magazines</a></li>
-                                        <li><a href="#">Audio</a></li>
-                                        <li><a href="#">eAudio</a></li>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="widget widget_recent_entries">
-                                    <h4 class="widget-title">On-Order Items</h4>
-                                    <ul>
-                                        <li>
-                                            <figure>
-                                                <img src="images/order-item-01.jpg" alt="product" />
-                                            </figure>
-                                            <a href="#">The Sonic Boom</a>
-                                            <span class="price"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                            <span><strong>ISBN:</strong> 978158157</span>
-                                            <div class="rating">
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </li>
-                                        <li>
-                                            <figure>
-                                                <img src="images/order-item-02.jpg" alt="product" />
-                                            </figure>
-                                            <a href="#">The Sonic Boom</a>
-                                            <span class="price"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                            <span><strong>ISBN:</strong> 978158157</span>
-                                            <div class="rating">
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </li>
-                                        <li>
-                                            <figure>
-                                                <img src="images/order-item-03.jpg" alt="product" />
-                                            </figure>
-                                            <a href="#">The Sonic Boom</a>
-                                            <span class="price"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                            <span><strong>ISBN:</strong> 978158157</span>
-                                            <div class="rating">
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </li>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </aside>
-                        </div>
-                        <div class="col-md-9 col-md-push-3">
-                            <ul>
 
-                                <li>
-                                    <div class="book-list-icon yellow-icon"></div>
-                                    <figure>
-                                        <a href="books-media-detail-v2.html"><img src="/Site/images/books-media-layout3-06.jpg" alt="Book"></a>
-                                        <figcaption>
-                                            <header>
-                                                <h4><a href="books-media-detail-v2.html">The Great Gatsby</a></h4>
-                                                <p><strong>Author:</strong>  F. Scott Fitzgerald</p>
-                                                <p><strong>ISBN:</strong>  9781581573268</p>
-                                            </header>
-                                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                            <div class="actions">
-                                                <ul>
-                                                    <li>
-                                                        <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="Add TO CART">
-                                                            <i class="fa fa-shopping-cart"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="Like">
-                                                            <i class="fa fa-heart"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="Mail">
-                                                            <i class="fa fa-envelope"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="Search">
-                                                            <i class="fa fa-search"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="Print">
-                                                            <i class="fa fa-print"></i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#" target="_blank" data-toggle="blog-tags" data-placement="top" title="Share">
-                                                            <i class="fa fa-share-alt"></i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </figcaption>
-                                    </figure>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                    </div>
+                    
+
+
                 </div>
             </div>
         </main>

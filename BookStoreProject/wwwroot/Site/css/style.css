@@ -12873,7 +12873,7 @@ a:focus {
 12.3. Home-V3
 --------------------------------------------------------------*/
 .layout-v3 .underline {
-  background-image: url("images/underline-v3.png");
+  background-image: url("/Site/images/underline-v3.png");
 }
 .layout-v3 .features {
   padding: 0;
@@ -13620,7 +13620,7 @@ a:focus {
   }
 }
 .page-banner::before {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.5) !important;
   content: "";
   height: 100%;
   left: 0;
@@ -13644,7 +13644,7 @@ a:focus {
   background-image: url(images/page-banners/product-banner.jpg);
 }
 .page-banner.services-banner {
-  background-image: url(images/page-banners/services-banner.jpg);
+    background-image: url(/Site/images/kitaplık.jpg);
 }
 .page-banner.signin-banner {
   background-image: url(images/page-banners/signin-banner.jpg);
@@ -16607,7 +16607,7 @@ a:focus {
   box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.07);
 }
 .book-list-icon {
-  background-image: url("images/book-list-icons.png");
+  background-image: url("/Site/images/book-list-icons.png");
   background-repeat: no-repeat;
   height: 55px;
   left: -10px;
