@@ -14415,7 +14415,7 @@ a:focus {
 .company-info .company-detail input[type="search"],
 .company-info .company-detail input[type="number"],
 .company-info .company-detail input[type="tel"],
-.company-info .company-detail input[type="range"],
+
 .company-info .company-detail input[type="date"],
 .company-info .company-detail input[type="month"],
 .company-info .company-detail input[type="week"],
@@ -14454,9 +14454,10 @@ a:focus {
 }
 .company-info .new-user .company-detail input[type="text"],
 .company-info .new-user .company-detail input[type="email"],
+.company-info .company-detail input[type="date"],
 .company-info .new-user .company-detail input[type="password"] {
-  background-color: #fff;
-  border-color: #f4f4f4;
+    background-color: #fff;
+    border-color: #f4f4f4;
 }
 .company-info .new-user .btn {
   background-color: #282828;

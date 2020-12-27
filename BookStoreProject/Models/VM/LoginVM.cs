@@ -15,5 +15,6 @@ namespace BookStoreProject.Models.VM
 
         [Required(ErrorMessage = "Password field is required.")]
         public string Password { get; set; }
+
     }
 }

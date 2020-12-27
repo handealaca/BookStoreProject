@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Site/Shared/_SiteLayout.cshtml";
+}
+
+@model BookStoreProject.Models.VM.UserVM
+    <style>
+        .field-validation-error {
+            color: #ff7236
+        }
+    </style>
+
+<!-- Start: Page Banner -->
+<section class="page-banner services-banner" style="background-image: url(/Site/images/kitaplık.jpg)">
+    <div class="container">
+        <div class="banner-header">
+            <h2>My Account</h2>
+            <span class="underline center"></span>
+            <p class="lead">Proin ac eros pellentesque dolor pharetra tempo.</p>
+        </div>
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="/SiteHome/">Home</a></li>
+                <li>My Account</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- End: Page Banner -->
+<!-- Start: Cart Section -->
+<div id="content" class="site-content">
+    <div id="primary" class="content-area">
+        <main id="main" class="site-main">
+            <div class="signin-main">
+                <div class="container">
+                    <div class="woocommerce">
+                        <div class="woocommerce-login">
+                            <div class="company-info signin-register">
+                                <div class="col-md-12 new-user">
+                                    <div class="row" style="display:flex; justify-content:center">
+                                        <div class="col-md-12">
+                                            <div class="company-detail bg-light">
+                                                <div class="new-user-head">
+                                                    <h2>Edit Account</h2>
+                                                    <span class="underline left"></span>
+                                                </div>
+                                                <form action="/SiteUser/Edit/" method="post">
+
+                                                    <div class="form-group">
+                                                            @Html.LabelFor(q => q.Email)
+                                                            <span style="color:#ff7236">*</span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        @Html.TextBoxFor(q => q.Email, new { @type = "email", @class = "form-control", @name = "Email", @placeholder = "EMail" })
+
+                                                        @Html.ValidationMessageFor(q => q.Email, "")
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(q => q.Password)
+                                                        <span style="color:#ff7236"">*</span>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        @Html.PasswordFor(q => q.Password, new { @type = "password", @class = "form-control", @name = "Password", @placeholder = "Password" })
+                                                        @Html.ValidationMessageFor(q => q.Password, "")
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(q => q.ConfirmPassword)
+                                                        <span style="color:#ff7236">*</span>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        @Html.PasswordFor(q => q.ConfirmPassword, new { @type = "password", @class = "form-control", @name = "Password", @placeholder = "ConfirmPassword" })
+                                                        @Html.ValidationMessageFor(q => q.ConfirmPassword, "")
+                                                    </div>
+
+
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(q => q.Name)
+                                                        @*<span style="color:#ff7236">*</span>*@
+                                                    </div>
+                                                    <div class="form-group">
+                                                        @Html.TextBoxFor(q => q.Name, new { @type = "text", @class = "form-control", @name = "Name", @placeholder = "Name" })
+                                                    </div>
+
+                                                    <div class="form-group">
+
+                                                        @Html.LabelFor(q => q.SurName)
+                                                    </div>
+                                                    <div class="form-group">
+
+                                                        @Html.TextBoxFor(q => q.SurName, new { @type = "text", @class = "form-control", @name = "SurName", @placeholder = "SurName" })
+                                                    </div>
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(q => q.BirthDate)
+                                                        <span style="color:#ff7236">*</span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        @Html.TextBoxFor(q => q.BirthDate, "{0:yyyy-MM-dd}", new { @type = "date", @name = "birthdate", @class = "form-control", @style= "background-color:#fff; border-color: #f4f4f4" })
+                                                    </div>
+
+                                                    <div class="clear"></div>
+                                                    @Html.HiddenFor(q => q.UserID)
+                                                    <input type="submit" value="Submit" name="signup" class="button btn btn-default">
+                                                    <div class="clear"></div>
+                                                </form>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<!-- End: Cart Section -->

@@ -26,7 +26,7 @@ namespace BookStoreProject.Controllers
 
             ViewBag.UserEmail = HttpContext.User.Claims.ToArray()[0].Value;
             ViewBag.UserName = HttpContext.User.Claims.ToArray()[1].Value;
-
+            ViewBag.UserId = HttpContext.User.Claims.ToArray()[2].Value;
             base.OnActionExecuting(context2);
 
         }

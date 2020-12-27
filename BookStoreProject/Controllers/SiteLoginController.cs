@@ -30,21 +30,23 @@ namespace BookStoreProject.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(LoginVM model)
+        public async Task<IActionResult> Index(UserLoginVM model)
         {
 
             if (ModelState.IsValid)
             {
-                User user = _bookcontext.Users.FirstOrDefault(x => x.Email == model.EMail && x.Password == model.Password);
+               
+                User user = _bookcontext.Users.FirstOrDefault(x => x.Email == model.Login.EMail && x.Password == model.Login.Password);
                 if (user != null)
                 {
-                    model.Name = user.Name;
+                    model.Login.Name = user.Name;
 
                     var claims = new List<Claim>
                     {
-                        new Claim(ClaimTypes.Email, model.EMail),
-                        new Claim(ClaimTypes.Name, model.Name),
-                       
+                        new Claim(ClaimTypes.Email, model.Login.EMail),
+                        new Claim(ClaimTypes.Name, model.Login.Name),
+                        new Claim(ClaimTypes.Sid, user.ID.ToString()),
+
                      };
 
 

@@ -44,6 +44,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
             return View(users);
         }
 
+
         [RoleControl(EnumRole.CommentDetail)]
         public IActionResult CommentDetail(int id)
         {

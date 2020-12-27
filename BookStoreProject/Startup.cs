@@ -38,8 +38,8 @@ namespace BookStoreProject
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(options =>
             {
-                options.LoginPath = "/Admin/AdminLogin/Index/";
                 options.LoginPath = "/SiteLogin/Index/";
+                options.LoginPath = "/Admin/AdminLogin/Index/";
             });
 
         }
@@ -89,7 +89,7 @@ namespace BookStoreProject
                 // pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
                 // );
 
-                endpoints.MapControllerRoute("default", "{Controller=SiteHome}/{Action=Index}/{id?}");
+                endpoints.MapControllerRoute("default", "{Controller=SiteLogin}/{Action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
 

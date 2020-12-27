@@ -10,12 +10,15 @@ namespace BookStoreProject.Models.VM
     public class UserVM
     {
         public int UserID { get; set; }
+
+        //[Required(ErrorMessage = "Name field is required.")]
         public string Name { get; set; }
         public string SurName { get; set; }
 
-        [Required(ErrorMessage = "User Name field is required.")]
-        public string UserName { get; set; }
+        //[Required(ErrorMessage = "User Name field is required.")]
         [StringLength(8, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
+        public string UserName { get; set; }
+       
 
         [Required(ErrorMessage = "Email field is required.")]
         public string Email { get; set; }
