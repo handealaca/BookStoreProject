@@ -12872,9 +12872,7 @@ a:focus {
 /*--------------------------------------------------------------
 12.3. Home-V3
 --------------------------------------------------------------*/
-.layout-v3 .underline {
-  background-image: url("Site/images/underline.png");
-}
+
 .layout-v3 .features {
   padding: 0;
 }

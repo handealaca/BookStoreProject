@@ -84,39 +84,9 @@
                                                     <h2>Create New Account</h2>
                                                     <span class="underline left"></span>
                                                 </div>
-                                            <form action="/SiteUser/Add/" method="post">
-                                                <p class="form-row form-row-first input-required">
-                                                    <label>
-                                                        <span class="first-letter">EMail</span>
-                                                        <span class="second-letter">*</span>
-                                                    </label>
-                                                    @Html.TextBoxFor(q => q.register.Email, new { @type = "email", @class = "form-control", @name = "Email" })
-
-                                                    @Html.ValidationMessageFor(q => q.register.Email, "")
-
-                                                </p>
-                                                <p class="form-row input-required">
-                                                    <label>
-                                                        <span class="first-letter">Password</span>
-                                                        <span class="second-letter">*</span>
-                                                    </label>
-                                                    @Html.PasswordFor(q => q.register.Password, new { @type = "password", @class = "form-control", @name = "Password" })
-                                                    @Html.ValidationMessageFor(q => q.register.Password, "")
-
-                                                </p>
-                                                <p class="form-row input-required">
-                                                    <label>
-                                                        <span class="first-letter">Confirm Password</span>
-                                                        <span class="second-letter">*</span>
-                                                    </label>
-                                                    @Html.PasswordFor(q => q.register.ConfirmPassword, new { @type = "password", @class = "form-control", @name = "Password" })
-                                                    @Html.ValidationMessageFor(q => q.register.ConfirmPassword, "")
-
-                                                </p>
-                                                <div class="clear"></div>
-                                                <input type="submit" value="Signup" name="signup" class="button btn btn-default">
-                                                <div class="clear"></div>
-                                            </form>
+                                                <form action="/SiteUser/Add/" method="post">
+                                                    @*@await Html.PartialAsync("SiteUser/Add")*@
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

@@ -18,17 +18,17 @@ namespace BookStoreProject.Models.VM
         //[Required(ErrorMessage = "User Name field is required.")]
         [StringLength(8, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
         public string UserName { get; set; }
-       
+
 
         [Required(ErrorMessage = "Email field is required.")]
-        public string Email { get; set; }
+        public string UserEmail { get; set; }
 
 
         [Required(ErrorMessage = "Password field is required.")]
-        public string Password { get; set; }
+        public string UserPassword { get; set; }
 
         [Required(ErrorMessage = "Confirm Password field is required.")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("UserPassword", ErrorMessage = "The password and confirmation password do not match.")]
         //[RegularExpression("^((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])|(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^a-zA-Z0-9]).{8,}$", ErrorMessage = "Passwords must be at least 8 characters and contain at 3 or 4 of the following: upper case (A-Z), lower case (a-z), number (0-9) and special character (eg. !@#$%^&*)")]
         public string ConfirmPassword { get; set; }
 

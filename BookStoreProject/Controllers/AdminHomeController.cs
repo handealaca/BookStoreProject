@@ -38,7 +38,7 @@ namespace BookStoreProject.Controllers
                 UserID = q.ID,
                 Name = q.Name,
                 SurName = q.SurName,
-                Email = q.Email,
+                UserEmail = q.Email,
                 BirthDate = q.BirthDate
             }).ToList();
 

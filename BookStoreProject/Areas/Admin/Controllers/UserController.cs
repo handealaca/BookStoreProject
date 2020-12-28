@@ -31,8 +31,8 @@ namespace BookStoreProject.Areas.Admin.Controllers
                 UserID = q.ID,
                 Name = q.Name,
                 SurName = q.SurName,
-                Email = q.Email,
-                Password = q.Password,
+                UserEmail = q.Email,
+                UserPassword = q.Password,
                 Comments = q.Comments,
                 Lastlogindate = q.Lastlogindate,
                

@@ -38,7 +38,7 @@ namespace BookStoreProject
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(options =>
             {
-                options.LoginPath = "/SiteLogin/Index/";
+                options.LoginPath = "/SiteAccount/Index/";
                 options.LoginPath = "/Admin/AdminLogin/Index/";
             });
 

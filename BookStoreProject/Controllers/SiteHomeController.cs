@@ -1,4 +1,5 @@
 ﻿using BookStoreProject.Controllers;
+using BookStoreProject.Models.Attributes;
 using BookStoreProject.Models.ORM.Context;
 using BookStoreProject.Models.ORM.Entities;
 using BookStoreProject.Models.VM;
@@ -51,6 +52,8 @@ namespace BookStoreProject.Controllers
 
         //    return View(model);
         //}
+
+        [SiteAuth]
         public IActionResult Books()
         {
             SiteHomeVM model = new SiteHomeVM();

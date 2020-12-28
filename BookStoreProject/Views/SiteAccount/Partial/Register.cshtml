@@ -1,0 +1,40 @@
+﻿@model BookStoreProject.Models.VM.UserVM
+
+
+
+<div class="form-group">
+    @Html.LabelFor(q => q.UserEmail, "EMail")
+    <span style="color:#ff7236">*</span>
+</div>
+<div class="form-group">
+    @Html.TextBoxFor(q => q.UserEmail, new { @type = "email", @class = "form-control", @name = "Email", @placeholder = "EMail" })
+
+    @Html.ValidationMessageFor(q => q.UserEmail, "")
+</div>
+
+
+<div class="form-group">
+    @Html.LabelFor(q => q.UserPassword, "Password")
+    <span style="color:#ff7236">*</span>
+</div>
+
+<div class="form-group">
+    @Html.PasswordFor(q => q.UserPassword, new { @type = "password", @class = "form-control", @name = "Password", @placeholder = "Password" })
+    @Html.ValidationMessageFor(q => q.UserPassword, "")
+</div>
+
+
+<div class="form-group">
+    @Html.LabelFor(q => q.ConfirmPassword)
+    <span style="color:#ff7236">*</span>
+</div>
+
+<div class="form-group">
+    @Html.PasswordFor(q => q.ConfirmPassword, new { @type = "password", @class = "form-control", @name = "Password", @placeholder = "ConfirmPassword" })
+    @Html.ValidationMessageFor(q => q.ConfirmPassword, "")
+</div>
+
+
+<div class="clear"></div>
+<input type="submit" value="Signup" name="signup" class="button btn btn-default">
+<div class="clear"></div>

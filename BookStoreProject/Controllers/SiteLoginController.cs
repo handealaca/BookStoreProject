@@ -79,7 +79,7 @@ namespace BookStoreProject.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "SiteAccount");
         }
     }
 }

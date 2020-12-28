@@ -56,7 +56,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
 
                     _bookcontext.SaveChanges();
 
-                    return Redirect("");
+                    return Redirect("/AdminHome/");
                 }
                 else
                 {

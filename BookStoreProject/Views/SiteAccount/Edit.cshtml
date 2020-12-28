@@ -45,26 +45,26 @@
                                                     <h2>Edit Account</h2>
                                                     <span class="underline left"></span>
                                                 </div>
-                                                <form action="/SiteUser/Edit/" method="post">
+                                                <form action="/SiteAccount/Edit/" method="post">
 
                                                     <div class="form-group">
-                                                            @Html.LabelFor(q => q.Email)
+                                                            @Html.LabelFor(q => q.UserEmail,"EMail")
                                                             <span style="color:#ff7236">*</span>
                                                     </div>
                                                     <div class="form-group">
-                                                        @Html.TextBoxFor(q => q.Email, new { @type = "email", @class = "form-control", @name = "Email", @placeholder = "EMail" })
+                                                        @Html.TextBoxFor(q => q.UserEmail, new { @type = "email", @class = "form-control", @name = "Email", @placeholder = "EMail" })
 
-                                                        @Html.ValidationMessageFor(q => q.Email, "")
+                                                        @Html.ValidationMessageFor(q => q.UserEmail, "")
                                                     </div>
 
                                                     <div class="form-group">
-                                                        @Html.LabelFor(q => q.Password)
-                                                        <span style="color:#ff7236"">*</span>
+                                                        @Html.LabelFor(q => q.UserPassword, "Password")
+                                                        <span style="color:#ff7236">*</span>
                                                     </div>
 
                                                     <div class="form-group">
-                                                        @Html.PasswordFor(q => q.Password, new { @type = "password", @class = "form-control", @name = "Password", @placeholder = "Password" })
-                                                        @Html.ValidationMessageFor(q => q.Password, "")
+                                                        @Html.PasswordFor(q => q.UserPassword, new { @type = "password", @class = "form-control", @name = "Password", @placeholder = "Password" })
+                                                        @Html.ValidationMessageFor(q => q.UserPassword, "")
                                                     </div>
 
                                                     <div class="form-group">

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace BookStoreProject.Areas.Admin.Controllers
 {
-   [SiteAuth]
+   [Authorize]
     public class BaseController : Controller
     {
         private readonly BookContext _bookcontext;
@@ -25,26 +25,34 @@ namespace BookStoreProject.Areas.Admin.Controllers
         }
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-           List<AdminMenu> menus = new List<AdminMenu>();
-
-            bool isExist = _memoryCache.TryGetValue("adminmenus", out menus);
-
-            if (!isExist)
+            if (HttpContext.User.Identity.IsAuthenticated)
             {
+                if (HttpContext.User.Claims.ToArray()[3].Value == "Admin")
+                {
+                    List<AdminMenu> menus = new List<AdminMenu>();
+
+                bool isExist = _memoryCache.TryGetValue("adminmenus", out menus);
+
+                if (!isExist)
+                {
+
+                    var cacheEntryOptions = new MemoryCacheEntryOptions()
+                        .SetAbsoluteExpiration(DateTime.Now.AddMinutes(2))
+                        .SetSlidingExpiration(TimeSpan.FromSeconds(60));
+
+
+                    menus = _bookcontext.AdminMenus.ToList();
+
+                    _memoryCache.Set("adminmenus", menus, cacheEntryOptions);
+                }
+
                 
-                var cacheEntryOptions = new MemoryCacheEntryOptions()
-                    .SetAbsoluteExpiration(DateTime.Now.AddMinutes(2))
-                    .SetSlidingExpiration(TimeSpan.FromSeconds(60));
+                    ViewBag.Email = HttpContext.User.Claims.ToArray()[0].Value;
+                    ViewBag.Name = HttpContext.User.Claims.ToArray()[1].Value;
+                    ViewBag.menus = menus;
+                }
 
-
-                menus = _bookcontext.AdminMenus.ToList();
-
-                _memoryCache.Set("adminmenus", menus, cacheEntryOptions);
-          }
-
-            ViewBag.Email = HttpContext.User.Claims.ToArray()[0].Value;
-            ViewBag.Name = HttpContext.User.Claims.ToArray()[1].Value;
-            ViewBag.menus = menus;
+            }
 
             base.OnActionExecuting(context);
 

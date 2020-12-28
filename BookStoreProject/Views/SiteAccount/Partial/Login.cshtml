@@ -1,0 +1,36 @@
+﻿@model BookStoreProject.Models.VM.LoginVM
+
+<div class="form-group">
+    @Html.LabelFor(q => q.EMail, "EMail",new { @style="color:white"})
+    <span style="color:#ff7236">*</span>
+</div>
+<div class="form-group">
+    @Html.TextBoxFor(q => q.EMail, new { @type = "email", @class = "form-control", @name = "Email", @placeholder = "EMail" })
+
+    @Html.ValidationMessageFor(q => q.EMail, "")
+</div>
+
+
+<div class="form-group">
+    @Html.LabelFor(q => q.Password, "Password", new { @style = "color:white" })
+    <span style="color:#ff7236">*</span>
+</div>
+
+<div class="form-group">
+    @Html.PasswordFor(q => q.Password, new { @type = "password", @class = "form-control", @name = "Password", @placeholder = "Password" })
+    @Html.ValidationMessageFor(q => q.Password, "")
+</div>
+
+
+<div class="clear"></div>
+<div class="password-form-row">
+    <p class="form-row input-checkbox">
+        <input type="checkbox" value="forever" id="rememberme" name="rememberme">
+        <label class="inline" for="rememberme">Remember me</label>
+    </p>
+    <p class="lost_password">
+        <a href="#">Lost your Pin?</a>
+    </p>
+</div>
+<input type="submit" value="Login" name="login" class="button btn btn-default">
+<div class="clear"></div>

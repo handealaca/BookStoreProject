@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BookStoreProject.Controllers
 {
- 
+ //[SiteAuth]
     public class SiteBaseController : Controller
     {
         private readonly BookContext _bookcontext;
@@ -35,8 +35,6 @@ namespace BookStoreProject.Controllers
 
             }
            
-
-          
             base.OnActionExecuting(context2);
 
         }
