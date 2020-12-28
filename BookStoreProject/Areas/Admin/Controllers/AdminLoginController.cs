@@ -41,7 +41,8 @@ namespace BookStoreProject.Areas.Admin.Controllers
                     {
                         new Claim(ClaimTypes.Email, model.EMail),
                         new Claim(ClaimTypes.Name, model.Name),
-                        new Claim(ClaimTypes.Role,adminuser.Role)
+                        new Claim(ClaimTypes.Role,adminuser.Role),
+                        new Claim(ClaimTypes.UserData, "Admin")
                      };
                
 
@@ -50,12 +51,12 @@ namespace BookStoreProject.Areas.Admin.Controllers
                     ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
 
                     await HttpContext.SignInAsync(principal);
-
+                      
                     adminuser.Lastlogindate = DateTime.Now;
 
                     _bookcontext.SaveChanges();
 
-                    return RedirectToRoute("default", new { controller = "AdminHome", action = "Index" });
+                    return Redirect("");
                 }
                 else
                 {

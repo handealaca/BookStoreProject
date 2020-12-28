@@ -46,7 +46,7 @@ namespace BookStoreProject.Controllers
                         new Claim(ClaimTypes.Email, model.Login.EMail),
                         new Claim(ClaimTypes.Name, model.Login.Name),
                         new Claim(ClaimTypes.Sid, user.ID.ToString()),
-
+                        new Claim(ClaimTypes.UserData, "User")
                      };
 
 
@@ -60,7 +60,7 @@ namespace BookStoreProject.Controllers
 
                     _bookcontext.SaveChanges();
 
-                    return RedirectToRoute("default", new { controller = "SiteHome", action = "Index" });
+                    return RedirectToAction("Index","SiteHome");
                 }
                 else
                 {

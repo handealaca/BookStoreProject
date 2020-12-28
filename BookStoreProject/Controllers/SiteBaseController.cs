@@ -1,4 +1,5 @@
-﻿using BookStoreProject.Models.ORM.Context;
+﻿using BookStoreProject.Models.Attributes;
+using BookStoreProject.Models.ORM.Context;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BookStoreProject.Controllers
 {
-    [Authorize]
+ 
     public class SiteBaseController : Controller
     {
         private readonly BookContext _bookcontext;
@@ -23,10 +24,19 @@ namespace BookStoreProject.Controllers
         }
         public override void OnActionExecuting(ActionExecutingContext context2)
         {
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                if (HttpContext.User.Claims.ToArray()[3].Value == "User")
+                {
+                    ViewBag.UserEmail = HttpContext.User.Claims.ToArray()[0].Value;
+                    ViewBag.UserName = HttpContext.User.Claims.ToArray()[1].Value;
+                    ViewBag.UserId = HttpContext.User.Claims.ToArray()[2].Value;
+                }
 
-            ViewBag.UserEmail = HttpContext.User.Claims.ToArray()[0].Value;
-            ViewBag.UserName = HttpContext.User.Claims.ToArray()[1].Value;
-            ViewBag.UserId = HttpContext.User.Claims.ToArray()[2].Value;
+            }
+           
+
+          
             base.OnActionExecuting(context2);
 
         }

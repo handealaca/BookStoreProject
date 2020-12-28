@@ -37,10 +37,15 @@ namespace BookStoreProject.Controllers
                 _bookcontext.SaveChanges();
 
                 int userid = user.ID;
-                return RedirectToRoute("default", new { controller = "SiteUser", action = "Edit",id= userid });
+                return Redirect("/SiteUser/Edit/" + userid);
+                //return RedirectToRoute("default", new { controller = "SiteUser", action = "Edit",id= userid });
 
             }
-            return RedirectToRoute("default", new { controller = "SiteLogin", action = "Index" });
+            else
+            {
+            return Redirect("/SiteLogin/Index/");
+            }
+            
 
         }
 

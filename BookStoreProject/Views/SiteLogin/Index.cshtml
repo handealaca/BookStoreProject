@@ -92,7 +92,7 @@
                                                     </label>
                                                     @Html.TextBoxFor(q => q.register.Email, new { @type = "email", @class = "form-control", @name = "Email" })
 
-                                                    @Html.ValidationMessageFor(q => q.register.Email, "", new { @class = "second-letter" })
+                                                    @Html.ValidationMessageFor(q => q.register.Email, "")
 
                                                 </p>
                                                 <p class="form-row input-required">
@@ -101,7 +101,7 @@
                                                         <span class="second-letter">*</span>
                                                     </label>
                                                     @Html.PasswordFor(q => q.register.Password, new { @type = "password", @class = "form-control", @name = "Password" })
-                                                    @Html.ValidationMessageFor(q => q.register.Password, "", new { @class = "second-letter" })
+                                                    @Html.ValidationMessageFor(q => q.register.Password, "")
 
                                                 </p>
                                                 <p class="form-row input-required">
@@ -110,7 +110,7 @@
                                                         <span class="second-letter">*</span>
                                                     </label>
                                                     @Html.PasswordFor(q => q.register.ConfirmPassword, new { @type = "password", @class = "form-control", @name = "Password" })
-                                                    @Html.ValidationMessageFor(q => q.register.ConfirmPassword, "", new { @class = "second-letter" })
+                                                    @Html.ValidationMessageFor(q => q.register.ConfirmPassword, "")
 
                                                 </p>
                                                 <div class="clear"></div>
