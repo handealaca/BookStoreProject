@@ -19,7 +19,7 @@ namespace BookStoreProject.Controllers
     {
        
         private readonly BookContext _bookcontext;
-        public SiteHomeController(BookContext bookcontext, IMemoryCache memoryCache) : base(bookcontext, memoryCache)
+        public SiteHomeController(BookContext bookcontext) : base(bookcontext)
         {
             _bookcontext = bookcontext;
         }

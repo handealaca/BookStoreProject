@@ -23,7 +23,9 @@ namespace BookStoreProject.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
+            
             return View();
+            
         }
 
         [HttpPost]
@@ -75,8 +77,9 @@ namespace BookStoreProject.Areas.Admin.Controllers
 
         public async Task<IActionResult> Logout()
         {
+            
             await HttpContext.SignOutAsync();
-            return RedirectToAction("Index");
+            return Redirect("/AdminHome/");
         }
 
     }

@@ -38,9 +38,13 @@
                 @Html.ValidationSummary()
                 <p style="color:red">@ViewBag.error</p>
 
+               
+
                 <form action="/Admin/AdminLogin/Index" method="post">
                     <div class="input-group mb-3">
                         @Html.TextBoxFor(q => q.EMail, new { @type = "email", @class = "form-control", @placeholder = "Email", @name = "Email" })
+
+                       
 
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -75,14 +79,14 @@
                 </form>
 
                 @*<div class="social-auth-links text-center mb-3">
-                        <p>- OR -</p>
-                        <a href="#" class="btn btn-block btn-primary">
-                            <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-                        </a>
-                        <a href="#" class="btn btn-block btn-danger">
-                            <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-                        </a>
-                    </div>*@
+            <p>- OR -</p>
+            <a href="#" class="btn btn-block btn-primary">
+                <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
+            </a>
+            <a href="#" class="btn btn-block btn-danger">
+                <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+            </a>
+        </div>*@
                 <!-- /.social-auth-links -->
 
                 <p class="mb-1">

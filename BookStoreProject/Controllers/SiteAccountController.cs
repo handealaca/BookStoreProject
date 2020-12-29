@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Principal;
 using System.Threading.Tasks;
 
 namespace BookStoreProject.Controllers
@@ -89,9 +90,12 @@ namespace BookStoreProject.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();
-            return RedirectToAction("Index","SiteAccount");
-        }
+            //FormsAuthentication.LogOut();
+            HttpContext.User =
+                new GenericPrincipal(new GenericIdentity(string.Empty), null);
 
+            return RedirectToAction("Index", "SiteAccount");
+        }
 
         public IActionResult Register()
         {
@@ -104,6 +108,7 @@ namespace BookStoreProject.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 User user = new User();
                 user.Password = model.UserPassword;
                 user.Email = model.UserEmail;
@@ -113,7 +118,7 @@ namespace BookStoreProject.Controllers
 
                 int userid = user.ID;
                 //return Redirect("/SiteAccount/Edit/" + userid);
-                return RedirectToAction("Edit", "SiteAccount", new { id = userid });
+                return RedirectToAction("Edit", "UserAction", new { id = userid });
             }
 
             else
@@ -123,41 +128,9 @@ namespace BookStoreProject.Controllers
                 //return Redirect("/SiteAccount/Index/");
             }
 
-        }
 
-        public IActionResult Edit(int id)
-        {
-            User user = _bookcontext.Users.FirstOrDefault(q => q.ID == id);
 
-            UserVM model = new UserVM();
-            model.UserID = user.ID;
-            model.Name = user.Name;
-            model.SurName = user.SurName;
-            model.UserEmail = user.Email;
-            model.BirthDate = user.BirthDate;
-            model.UserPassword = user.Password;
 
-            return View(model);
-        }
-
-        [HttpPost]
-        public IActionResult Edit (UserVM model)
-        {
-            if (ModelState.IsValid)
-            {
-                User user = _bookcontext.Users.FirstOrDefault(q => q.ID == model.UserID);
-                user.Name = model.Name;
-                user.SurName = model.SurName;
-                user.Email = model.UserEmail;
-                user.BirthDate = model.BirthDate;
-                user.Password = model.UserPassword;
-
-                _bookcontext.SaveChanges();
-
-                return RedirectToRoute("default", new { controller = "SiteHome", action = "Index"});
-
-            }
-            return View();
         }
     }
 }

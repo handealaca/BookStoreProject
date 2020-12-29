@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BookStoreProject.Models.Attributes
 {
-    public class SiteAuth : Attribute, IAuthorizationFilter
+    public class AdminAuth : Attribute, IAuthorizationFilter
     {
 
         public void OnAuthorization(AuthorizationFilterContext context)
@@ -14,24 +14,24 @@ namespace BookStoreProject.Models.Attributes
             if (context.HttpContext.User.Identity.IsAuthenticated)
             {
 
-               
+
 
 
                 string siterole = context.HttpContext.User.Claims.ToArray()[3].Value;
 
-                if (siterole == "User")
+                if (siterole == "Admin")
                 {
                     //context.HttpContext.Response.Redirect("/SiteHome/Books");
 
                 }
                 else
                 {
-                    context.HttpContext.Response.Redirect("/SiteAccount/");
+                    context.HttpContext.Response.Redirect("/Admin/AdminLogin/");
                 }
             }
             else
             {
-                context.HttpContext.Response.Redirect("/SiteAccount/");
+                context.HttpContext.Response.Redirect("/Admin/AdminLogin/");
 
             }
         }
