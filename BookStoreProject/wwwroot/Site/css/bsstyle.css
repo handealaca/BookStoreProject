@@ -9517,7 +9517,7 @@ a:focus {
   width: 64px;
 }
     .facts-counter ul li .fact-item .fact-icon i {
-        background-image: url(/Site/images/facts-count-icons-v1.png);
+        background-image: url(/Site/images/facts-count-icons-v2.png);
         background-position: 300px 300px;
         background-repeat: no-repeat;
         display: inline-block;
@@ -17051,7 +17051,7 @@ a:focus {
   bottom: 0;
   width: 100%;
   z-index: 15;
-  height: 275px;
+  height: 250px;
   transform: translate3d(0px, 59%, 0px);
   transition: transform 0.35s ease 0s;
 }
@@ -17064,7 +17064,7 @@ a:focus {
   }
 }
 .booksmedia-fullwidth ul li figure figcaption header {
-  margin-bottom: 13px;
+  margin-bottom: 40px;
 }
 .booksmedia-fullwidth ul li figure figcaption h4 {
   margin-bottom: 7px;
