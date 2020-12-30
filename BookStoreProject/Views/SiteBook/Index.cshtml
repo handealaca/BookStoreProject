@@ -46,6 +46,7 @@
                             <form action="" method="get">
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
+                                        <label class="sr-only" for="keywords">Search by Keyword</label>
                                         <input class="form-control" placeholder="Search by Keyword" id="keywords" name="keywords" type="text">
                                     </div>
                                 </div>
@@ -308,7 +309,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="booksmedia-fullwidth">
+                                <div class="booksmedia-fullwidth col-md-12" >
                                     <ul style="display:flex; justify-content:space-around; flex-wrap:wrap">
                                         @foreach (var item in Model)
                                         {

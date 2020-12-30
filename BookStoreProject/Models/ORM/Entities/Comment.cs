@@ -16,5 +16,6 @@ namespace BookStoreProject.Models.ORM.Entities
         [ForeignKey("BookID")]
         public Book Book { get; set; }
         public string Content { get; set; }
+        public string Header { get; set; }
     }
 }

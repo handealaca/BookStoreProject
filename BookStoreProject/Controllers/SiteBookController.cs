@@ -52,13 +52,22 @@ namespace BookStoreProject.Controllers
             model.Publisher = book.Publisher;
             model.Edition = book.Edition;
             model.Imagepath = book.Imagepath;
+
             model.BookCategories = book.BookCategories.Where(q => q.IsDeleted == false).ToList();
+           
+            //string []joined = string.Join(",", book.BookCategories.Where(q => q.IsDeleted == false).ToList()).ToArray();
+            //model.BookCategories = joined;
+           
+           
             model.BookPersons = book.BookPersons.Where(q => q.IsDeleted == false).ToList();
             model.Comments = book.Comments.Where(q => q.IsDeleted == false).ToList();
             model.UserPoints = book.UserPoints.Where(q => q.IsDeleted == false).ToList();
 
             return View(model);
         }
+
+
+
 
     }
 }
