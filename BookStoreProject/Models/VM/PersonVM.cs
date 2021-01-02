@@ -31,7 +31,8 @@ namespace BookStoreProject.Models.VM
         public List<EnumDuty> EnumDuties { get; set; }
         public List<BookPerson> Books { get; set; }
 
-
+        public string Imagepath { get; set; }
+        public List<BookPerson> BookPeople { get; internal set; }
     }
 
 

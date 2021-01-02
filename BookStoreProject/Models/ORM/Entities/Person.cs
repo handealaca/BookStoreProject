@@ -15,5 +15,6 @@ namespace BookStoreProject.Models.ORM.Entities
         public List<Book> Books { get; set; }
         public List<BookPerson> BookPeople { get; set; }
         public List<PersonDuty> PersonDuties { get; set; }
+        public string Imagepath { get; set; }
     }
 }

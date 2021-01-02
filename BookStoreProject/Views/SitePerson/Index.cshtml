@@ -1,0 +1,168 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Site/Shared/_SiteLayout.cshtml";
+}
+
+
+@model List<BookStoreProject.Models.VM.PersonVM>
+    <!-- Start: Page Banner -->
+<section class="page-banner services-banner" style="background-image: url(/Site/images/kitaplık.jpg)">
+    <div class="container">
+
+        <div class="banner-header">
+
+            <h2> Writers/Interpreters Listing </h2>
+
+            <span class="underline center"></span>
+
+            <p class="lead"> Proin ac eros pellentesque dolor pharetra tempo.</p>
+        </div>
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="/SiteHome/"> Home </a></li>
+
+                <li> Writers/Interpreters </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--End: Page Banner -->
+<div id="content" class="site-content">
+    <div id="primary" class="content-area">
+        <main id="main" class="site-main">
+            <div class="books-full-width">
+
+                <div class="container-fluid">
+
+                    <!-- Start: Search Section -->
+                    <section class="search-filters" style="padding:0 70px 0 70px">
+                        <div class="filter-box">
+                            <h3>What are you looking for at the library?</h3>
+                            <form action="" method="get">
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="sr-only" for="keywords">Search by Keyword</label>
+                                        <input class="form-control" placeholder="Search by Keyword" id="keywords" name="keywords" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                        <select name="catalog" id="catalog" class="form-control" placeholder="Select Category">
+                                            @*<option>Search the Catalog</option>*@
+                                            @*@foreach (var item in Model.Topcategories.Where(q => q.TopCategory == 0))
+                                                {
+                                                    <option value="@item.ID">@item.CategoryName</option>
+
+                                                }*@
+
+                                        </select>
+
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="form-group">
+                                        <select name="category" id="category" class="form-control">
+
+                                            @*@foreach (var item in Model.Topcategories.Where(q=>q.ID==))
+                                                {
+                                                    <option>All Categories</option>
+                                                }*@
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control" type="submit" value="Search">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="row" style="padding:50px 0 0 0">
+                          
+                            <div class="col-md-12">
+                                <div class="filter-options margin-list">
+                                    <div class="row">
+                                        <div class="col-md-4 col-sm-4">
+                                            <select name="orderby">
+                                                <option selected="selected">Default sorting</option>
+                                                <option>Sort by popularity</option>
+                                                <option>Sort by rating</option>
+                                                <option>Sort by newness</option>
+                                                <option>Sort by price</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4">
+                                            <div class="filter-result">Showing items 1 to 9 of 19 total</div>
+                                        </div>
+                                        @*<div class="col-md-3 col-sm-3 pull-right">
+                                            <div class="filter-toggle">
+                                                <a href="books-media-gird-view-v1.html" class="active"><i class="glyphicon glyphicon-th-large"></i></a>
+                                                <a href="books-media-list-view.html"><i class="glyphicon glyphicon-th-list"></i></a>
+                                            </div>
+                                        </div>*@
+                                    </div>
+                                </div>
+                                <div class="booksmedia-fullwidth">
+                                    <ul style="display:flex; justify-content:space-around; flex-wrap:wrap">
+                                        @foreach (var item in Model)
+                                        {
+                                            <li >
+                                                <div class="book-list-icon light-green-icon"></div>
+                                                <figure style="height:450px">
+                                                    <a href="/SitePerson/PersonDetail/@item.PersonID"><img src="/Admin/Coverimg/@item.Imagepath" alt="Book" style="height:450px"></a>
+                                                    <figcaption>
+                                                        <header>
+
+                                                            <h4><a href="">@item.Name @item.SurName</a></h4>
+                                                            <p><strong>Duties:</strong>
+                                                                @foreach (var data in item.Duties)
+                                                                {
+                                                                    @data<br/>
+                                                                }
+                                                            </p>
+
+                                                        </header>
+
+                                                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
+
+                                                    </figcaption>
+                                                </figure>
+                                            </li>
+                                        }
+
+                                    </ul>
+                                </div>
+                                <nav class="navigation pagination text-center">
+                                    <h2 class="screen-reader-text">Posts navigation</h2>
+                                    <div class="nav-links">
+                                        <a class="prev page-numbers" href="#."><i class="fa fa-long-arrow-left"></i> Previous</a>
+                                        <a class="page-numbers" href="#.">1</a>
+                                        <span class="page-numbers current">2</span>
+                                        <a class="page-numbers" href="#.">3</a>
+                                        <a class="page-numbers" href="#.">4</a>
+                                        <a class="next page-numbers" href="#.">Next <i class="fa fa-long-arrow-right"></i></a>
+                                    </div>
+                                </nav>
+                            </div>
+
+                        </div>
+
+                    </section>
+                    <!-- End: Search Section -->
+
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+
+

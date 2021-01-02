@@ -301,12 +301,12 @@
                                         <div class="col-md-4 col-sm-4">
                                             <div class="filter-result">Showing items 1 to 9 of 19 total</div>
                                         </div>
-                                        <div class="col-md-3 col-sm-3 pull-right">
+                                        @*<div class="col-md-3 col-sm-3 pull-right">
                                             <div class="filter-toggle">
                                                 <a href="books-media-gird-view-v1.html" class="active"><i class="glyphicon glyphicon-th-large"></i></a>
                                                 <a href="books-media-list-view.html"><i class="glyphicon glyphicon-th-list"></i></a>
                                             </div>
-                                        </div>
+                                        </div>*@
                                     </div>
                                 </div>
                                 <div class="booksmedia-fullwidth col-md-12" >
@@ -320,7 +320,7 @@
                                                     <figcaption>
                                                         <header>
 
-                                                            <h4><a href="books-media-detail-v2.html">@item.Name</a></h4>
+                                                            <h4><a href="">@item.Name</a></h4>
                                                             <p>
                                                                 @foreach (var data in item.BookPersons.Where(q=>q.DutyID==0))
                                                                 {
