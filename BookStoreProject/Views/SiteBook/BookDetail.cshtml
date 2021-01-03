@@ -22,66 +22,78 @@
     </div>
 </section>
 <!-- End: Page Banner -->
+
 <!-- Start: Products Section -->
 <div id="content" class="site-content">
     <div id="primary" class="content-area">
         <main id="main" class="site-main">
             <div class="booksmedia-detail-main">
                 <div class="container-fluid">
-
                     <!-- Start: Search Section -->
 
+                    <div class="row">
 
-                    <section class="search-filters" style="padding:0 70px 0 70px">
-                        <div class="container">
+                        <section class="search-filters" style="padding:0 70px 0 70px">
+
                             <div class="filter-box">
+
                                 <h3>What are you looking for at the library?</h3>
+
                                 <form action="" method="get">
+
                                     <div class="col-md-4 col-sm-6">
                                         <div class="form-group">
                                             <label class="sr-only" for="keywords">Search by Keyword</label>
                                             <input class="form-control" placeholder="Search by Keyword" id="keywords" name="keywords" type="text">
                                         </div>
                                     </div>
+
                                     <div class="col-md-3 col-sm-6">
                                         <div class="form-group">
-                                            <select name="catalog" id="catalog" class="form-control">
-                                                <option>Search the Catalog</option>
-                                                <option>Catalog 01</option>
-                                                <option>Catalog 02</option>
-                                                <option>Catalog 03</option>
-                                                <option>Catalog 04</option>
-                                                <option>Catalog 05</option>
+                                            <select name="catalog" id="catalog" class="form-control" placeholder="Select Category">
+                                                @*<option>Search the Catalog</option>*@
+                                                @*@foreach (var item in Model.Topcategories.Where(q => q.TopCategory == 0))
+                            {
+                                <option value="@item.ID">@item.CategoryName</option>
+
+                            }*@
                                             </select>
                                         </div>
                                     </div>
+
                                     <div class="col-md-3 col-sm-6">
                                         <div class="form-group">
                                             <select name="category" id="category" class="form-control">
-                                                <option>All Categories</option>
-                                                <option>Category 01</option>
-                                                <option>Category 02</option>
-                                                <option>Category 03</option>
-                                                <option>Category 04</option>
-                                                <option>Category 05</option>
+
+                                                @*@foreach (var item in Model.Topcategories.Where(q=>q.ID==))
+                            {
+                                <option>All Categories</option>
+                            }*@
                                             </select>
                                         </div>
                                     </div>
+
                                     <div class="col-md-2 col-sm-6">
                                         <div class="form-group">
                                             <input class="form-control" type="submit" value="Search">
                                         </div>
                                     </div>
+
                                 </form>
                             </div>
-                        </div>
 
+                            <div class="clear"></div>
 
-                    </section>
+                        </section>
+
+                    </div>
+
+                    
                     <!-- End: Search Section -->
-                    <div class="container" style="padding:50px 0 0 0">
+                    <div class="row" style="padding: 0 55px 100px 55px;margin: 0 -15px 0 -15px;">
 
                         <div class="col-md-3">
+
                             <aside id="secondary" class="sidebar widget-area" data-accordion-group>
                                 <div class="widget widget_related_search open" data-accordion>
                                     <h4 class="widget-title" data-control>Related Searches</h4>
@@ -282,6 +294,8 @@
                                 </div>
                             </aside>
                         </div>
+
+
                         <div class="col-md-9">
                             <div class="booksmedia-detail-box">
                                 <div class="single-book-box">
@@ -376,15 +390,10 @@
 
                             </div>
                         </div>
+
                     </div>
                 </div>
-
-
-
-
-
             </div>
-
         </main>
     </div>
 </div>
