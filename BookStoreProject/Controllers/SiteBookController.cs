@@ -47,12 +47,13 @@ namespace BookStoreProject.Controllers
             Book book = _bookcontext.Books.Include(q => q.BookCategories).ThenInclude(BookCategories => BookCategories.Category).Include(q => q.BookPersons).ThenInclude(BookPersons => BookPersons.Person).Include(q=>q.Comments).ThenInclude(Comments=>Comments.User).Include(q=>q.UserPoints).ThenInclude(UserPoints => UserPoints.USer).FirstOrDefault(q => q.ID == id);
 
             BookVM model = new BookVM();
+            model.BookID = book.ID;
             model.Name = book.Name;
             model.PublishDate = book.PublishDate;
             model.Publisher = book.Publisher;
             model.Edition = book.Edition;
             model.Imagepath = book.Imagepath;
-
+            
             model.BookCategories = book.BookCategories.Where(q => q.IsDeleted == false).ToList();
            
             //string []joined = string.Join(",", book.BookCategories.Where(q => q.IsDeleted == false).ToList()).ToArray();
@@ -60,13 +61,29 @@ namespace BookStoreProject.Controllers
            
            
             model.BookPersons = book.BookPersons.Where(q => q.IsDeleted == false).ToList();
-            model.Comments = book.Comments.Where(q => q.IsDeleted == false).ToList();
+            model.Comments = book.Comments.Where(q => q.IsDeleted == false && q.BookID==id).ToList();
             model.UserPoints = book.UserPoints.Where(q => q.IsDeleted == false).ToList();
 
             return View(model);
         }
 
 
+        [HttpPost]
+        public IActionResult AddComment(CommentVM model)
+        {
+
+            Comment comment = new Comment();
+            comment.UserID = Convert.ToInt32(ViewBag.UserId);
+            comment.Header = model.Header;
+            comment.Content = model.Content;
+            comment.BookID = model.BookID;
+           
+
+            _bookcontext.Comments.Add(comment);
+            _bookcontext.SaveChanges();
+
+            return RedirectToAction("BookDetail", "SiteBook", new { id = model.BookID });
+        }
 
 
     }

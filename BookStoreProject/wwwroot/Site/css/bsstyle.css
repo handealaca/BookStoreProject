@@ -16003,7 +16003,7 @@ a:focus {
   display: table;
   position: relative;
   text-align: center;
-  padding: 30px 33px;
+  padding: 30px 100px;
 }
 @media (max-width: 480px) {
   .single-testimonial-box .user-comment {
@@ -16080,7 +16080,7 @@ a:focus {
   box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.07);
   clear: both;
   display: block;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 @media (max-width: 480px) {
   .single-testimonial-box .bottom-portion {

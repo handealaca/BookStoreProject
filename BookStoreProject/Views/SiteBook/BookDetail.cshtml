@@ -22,7 +22,6 @@
     </div>
 </section>
 <!-- End: Page Banner -->
-
 <!-- Start: Products Section -->
 <div id="content" class="site-content">
     <div id="primary" class="content-area">
@@ -53,10 +52,10 @@
                                             <select name="catalog" id="catalog" class="form-control" placeholder="Select Category">
                                                 @*<option>Search the Catalog</option>*@
                                                 @*@foreach (var item in Model.Topcategories.Where(q => q.TopCategory == 0))
-                            {
-                                <option value="@item.ID">@item.CategoryName</option>
+                                                    {
+                                                        <option value="@item.ID">@item.CategoryName</option>
 
-                            }*@
+                                                    }*@
                                             </select>
                                         </div>
                                     </div>
@@ -66,9 +65,9 @@
                                             <select name="category" id="category" class="form-control">
 
                                                 @*@foreach (var item in Model.Topcategories.Where(q=>q.ID==))
-                            {
-                                <option>All Categories</option>
-                            }*@
+                                                    {
+                                                        <option>All Categories</option>
+                                                    }*@
                                             </select>
                                         </div>
                                     </div>
@@ -88,7 +87,7 @@
 
                     </div>
 
-                    
+
                     <!-- End: Search Section -->
                     <div class="row" style="padding: 0 55px 100px 55px;margin: 0 -15px 0 -15px;">
 
@@ -369,24 +368,146 @@
 
                                 </ul>
                                 <div class="table-tabs" id="responsiveTabs">
-                                    <ul class="nav nav-tabs">
+                                    <ul class="nav nav-tabs" style="margin-bottom:-50px">
 
-                                        <li><b class="arrow-up"></b><a data-toggle="tab" href="#sectionB">Reviews (12)</a></li>
-
+                                        <li><b class="arrow-up"></b><a data-toggle="tab" href="#sectionB">User Comments (@Model.Comments.Count())</a></li>
 
                                     </ul>
-                                    <div class="tab-content">
 
-                                        <div id="sectionB" class="tab-pane fade in">
-                                            @foreach (var item in Model.Comments)
-                                            {
-                                                <h5>@item.Header</h5>
-                                                <p>@item.Content</p>
-                                            }
+                                    <div class="comments-area" id="comments">
+                                        <div class="comment-bg">
+                                            <ol class="comment-list">
+                                                <li class="comment even thread-even depth-1 parent">
 
+                                                    @foreach (var item in Model.Comments)
+                                                    {
+                                                        TimeSpan ts = DateTime.Now - item.AddDate;
+
+                                                        <div class="comment-body">
+                                                            <div class="comment-author vcard">
+                                                                <img class="avatar avatar-32 photo avatar-default" src="/Site/images/userprofilepic.jpg" alt="Comment Author">
+                                                                <b class="fn">
+                                                                    <a class="url" rel="external nofollow" href="#">@item.User.Name @item.User.SurName</a>
+                                                                </b>
+                                                            </div>
+                                                            <footer class="comment-meta">
+                                                                <div class="left-arrow"></div>
+                                                                <div class="reply">
+                                                                    <a href="#" class="comment-reply-link">
+                                                                        <i class="fa fa-reply"></i> Reply
+                                                                    </a>
+                                                                </div>
+                                                                <div class="comment-metadata">
+                                                                    
+                                                                        <time datetime="2016-01-17">
+                                                                            <b>@item.AddDate.ToString("dd.MM.yyyy")/ </b>
+                                                                            @if (ts.Hours > 24)
+                                                                            {
+                                                                                <span>
+                                                                                    @ts.Days.ToString() Days Ago
+                                                                                </span>
+                                                                            }
+
+                                                                            <span>
+                                                                                @ts.Hours.ToString() Hours @ts.Minutes.ToString()  Minutes Ago
+                                                                            </span>
+
+
+                                                                        </time>
+                                                                   
+                                                                </div>
+                                                                <div class="comment-content">
+                                                                    <h5>@item.Header</h5>
+                                                                    <p>
+                                                                        @item.Content
+                                                                    </p>
+                                                                </div>
+                                                            </footer>
+                                                        </div>
+
+                                                    }
+
+
+
+                                                    @*<ol class="children">
+                                                            <li class="comment odd alt depth-2">
+                                                                <div class="comment-body">
+                                                                    <div class="comment-author vcard">
+                                                                        <img class="avatar photo" src="images/blog/peter.jpg" alt="Comment Avatar">
+                                                                        <b class="fn">
+                                                                            <a class="url" rel="external nofollow" href="#">Peter</a>
+                                                                        </b>
+                                                                    </div>
+                                                                    <footer class="comment-meta">
+                                                                        <div class="left-arrow"></div>
+                                                                        <div class="reply">
+                                                                            <a href="#" class="comment-reply-link">
+                                                                                <i class="fa fa-reply"></i> Reply
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="comment-metadata">
+                                                                            <a href="#">
+                                                                                <time datetime="2016-01-17">
+                                                                                    <b>Mar 17, 2016 / </b>  45 Minutes Ago
+                                                                                </time>
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="comment-content">
+                                                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                                                        </div>
+                                                                    </footer>
+                                                                </div>
+                                                            </li>
+                                                        </ol>*@
+                                                </li>
+                                            </ol>
+                                        </div>
+
+
+
+
+                                        <div class="comment-respond" id="respond">
+                                            <h4 class="comment-reply-title" id="reply-title">Write your comment:</h4>
+                                            <span class="underline left"></span>
+                                            <form class="comment-form" id="commentform" method="post" action="/SiteBook/AddComment/">
+                                                <div class="row">
+                                                    <p class="comment-form-author input-required">
+                                                        <label>
+                                                            <span class="first-letter">@ViewBag.UserName</span>
+                                                            <span class="second-letter">*</span>
+                                                        </label>
+                                                        <input name="UserName" id="author" type="text">
+                                                    </p>
+                                                    <p class="comment-form-email input-required">
+                                                        <label>
+                                                            <span class="first-letter">@ViewBag.UserEmail</span>
+                                                            <span class="second-letter">*</span>
+                                                        </label>
+                                                        <input name="email" id="email" type="email">
+                                                    </p>
+                                                    <p class="comment-form-subject input-required">
+                                                        <label>
+                                                            <span class="first-letter">Header</span>
+                                                        </label>
+                                                        <input name="Header" id="subject" type="text">
+                                                    </p>
+                                                    <p class="comment-form-comment">
+                                                        <textarea name="Content" id="comment" placeholder="Write Comment"></textarea>
+                                                    </p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                                <p class="form-submit">
+                                                    @Html.HiddenFor(q => q.BookID)
+                                                    <input value="submit" class="submit" id="submit" name="bookid" type="submit">
+                                                </p>
+
+                                            </form>
                                         </div>
                                     </div>
+
                                 </div>
+
+
 
                             </div>
                         </div>
