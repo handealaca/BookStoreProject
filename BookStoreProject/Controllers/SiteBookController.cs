@@ -86,5 +86,36 @@ namespace BookStoreProject.Controllers
         }
 
 
+        public IActionResult EditComment (int id)
+        {
+            Comment comment = _bookcontext.Comments.FirstOrDefault(q => q.ID == id);
+
+            CommentVM model = new CommentVM();
+            model.Header = comment.Header;
+            model.Content = comment.Content;
+            model.BookID = comment.BookID;
+            model.CommentID = comment.ID;
+            //return View("BookDetail", model);
+
+            return View(model);
+        }
+
+
+        [HttpPost]
+        public IActionResult EditComment (CommentVM model)
+        {
+            Comment comment = _bookcontext.Comments.FirstOrDefault(q => q.ID == model.CommentID);
+            comment.Header = model.Header;
+            comment.Content = model.Content;
+            comment.BookID = model.BookID;
+            comment.UserID = Convert.ToInt32(ViewBag.UserId);
+            comment.UpdateDate = DateTime.Now;
+
+            _bookcontext.SaveChanges();
+
+            return RedirectToAction("BookDetail", "SiteBook", new { id = model.BookID });
+
+        }
+
     }
 }

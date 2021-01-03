@@ -397,24 +397,35 @@
                                                                         <i class="fa fa-reply"></i> Reply
                                                                     </a>
                                                                 </div>
+
+                                                                <div class="reply" style="margin-right:5px">
+                                                                    @if (Convert.ToInt32(ViewBag.UserId) == item.User.ID)
+                                                                    {
+                                                                        <a href="/SiteBook/EditComment/@item.ID" class="comment-reply-link">
+                                                                            <i class="fa fa-edit"></i> Edit
+                                                                        </a>
+                                                                    }
+
+                                                                </div>
                                                                 <div class="comment-metadata">
-                                                                    
-                                                                        <time datetime="2016-01-17">
-                                                                            <b>@item.AddDate.ToString("dd.MM.yyyy")/ </b>
-                                                                            @if (ts.Hours > 24)
-                                                                            {
-                                                                                <span>
-                                                                                    @ts.Days.ToString() Days Ago
-                                                                                </span>
-                                                                            }
 
+                                                                    <time datetime="2016-01-17">
+                                                                     
+                                                                        <b>@item.AddDate.ToString("dd.MM.yyyy")/ </b>
+                                                                        @if (ts.Hours > 24)
+                                                                        {
                                                                             <span>
-                                                                                @ts.Hours.ToString() Hours @ts.Minutes.ToString()  Minutes Ago
+                                                                                @ts.Days.ToString() Days Ago
                                                                             </span>
+                                                                        }
+
+                                                                        <span>
+                                                                            @ts.Hours.ToString() Hours @ts.Minutes.ToString()  Minutes Ago
+                                                                        </span>
 
 
-                                                                        </time>
-                                                                   
+                                                                    </time>
+
                                                                 </div>
                                                                 <div class="comment-content">
                                                                     <h5>@item.Header</h5>
@@ -471,20 +482,7 @@
                                             <span class="underline left"></span>
                                             <form class="comment-form" id="commentform" method="post" action="/SiteBook/AddComment/">
                                                 <div class="row">
-                                                    <p class="comment-form-author input-required">
-                                                        <label>
-                                                            <span class="first-letter">@ViewBag.UserName</span>
-                                                            <span class="second-letter">*</span>
-                                                        </label>
-                                                        <input name="UserName" id="author" type="text">
-                                                    </p>
-                                                    <p class="comment-form-email input-required">
-                                                        <label>
-                                                            <span class="first-letter">@ViewBag.UserEmail</span>
-                                                            <span class="second-letter">*</span>
-                                                        </label>
-                                                        <input name="email" id="email" type="email">
-                                                    </p>
+                                                   
                                                     <p class="comment-form-subject input-required">
                                                         <label>
                                                             <span class="first-letter">Header</span>
