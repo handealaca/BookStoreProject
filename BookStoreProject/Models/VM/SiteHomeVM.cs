@@ -11,5 +11,8 @@ namespace BookStoreProject.Models.VM
         public List<Book> BookCovers { get; set; }
         public List<Category> Topcategories { get; set; }
         public List<Category> Subcategories { get; set; }
+
+        public List<Person> People { get; set; }
+        public List<User> Users { get; set; }
     }
 }

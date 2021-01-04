@@ -12976,9 +12976,9 @@ a:focus {
   margin: 0;
   padding: 0;
 }
-.layout-v3 .category-filter .category-list .category-item figcaption.bg-blue {
-  background-color: rgba(40, 143, 235, 0.9);
-}
+    .layout-v3 .category-filter .category-list .category-item figcaption.bg-blue {
+        background-color: rgba(255, 114, 54, 0.9);
+    }
 .layout-v3 .category-filter .category-list .category-item:hover figcaption {
   -moz-opacity: 1;
   -khtml-opacity: 1;
@@ -18873,7 +18873,7 @@ a:focus {
 #home-v1-header-carousel .carousel-caption h2 {
   color: #ff7236;
   font-size: 60px;
-  margin: 0 0 14px;
+  margin: 0 0 120px;
 }
 #home-v1-header-carousel .carousel-caption h2 strong {
   display: block;

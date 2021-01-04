@@ -31,7 +31,7 @@ namespace BookStoreProject.Models.Attributes
             }
             else
             {
-                context.HttpContext.Response.Redirect("/SiteAccount/");
+                context.HttpContext.Response.Redirect("/SiteError/NoAccess");
 
             }
         }

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using static BookStoreProject.Models.ORM.Entities.Person;
@@ -17,7 +18,6 @@ namespace BookStoreProject.Areas.Admin.Controllers
     [Area("Admin")]
     public class PersonController : BaseController
     {
-
         private readonly BookContext _bookcontext;
         public PersonController(BookContext bookcontext, IMemoryCache memoryCache) : base(bookcontext, memoryCache)
         {
@@ -35,6 +35,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
                 SurName = q.SurName.ToUpper(),
                 Biography = q.Biography,
                 BirthDate = q.BirthDate,
+                Imagepath = q.Imagepath,
                 Duties = q.PersonDuties.Where(q => q.IsDeleted == false).Select(q => q.DutyID == Convert.ToInt32(EnumDuty.Writer) ? EnumDuty.Writer.ToString() : EnumDuty.Interpreter.ToString()).ToList(),
             }).ToList();
 
@@ -57,33 +58,58 @@ namespace BookStoreProject.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(PersonVM model,int[] dutyarray)
+        public IActionResult Add(PersonVM model, int[] dutyarray)
         {
-            Person person = new Person();
-            person.Name = model.Name;
-            person.SurName = model.SurName;
-            person.Biography = model.Biography;
-            person.BirthDate = model.BirthDate;
+            model.Imagepath = "";
 
-            _bookcontext.People.Add(person);
-            _bookcontext.SaveChanges();
-
-            int PersonID = person.ID;
-
-            foreach (var item in dutyarray)
+            if (model.Coverimage != null)
             {
-                PersonDuty personduty = new PersonDuty();
+                var guid = Guid.NewGuid().ToString();
 
-                personduty.PersonID = PersonID;
-                personduty.DutyID = item;
+                var path = Path.Combine(
+                    Directory.GetCurrentDirectory(),
+                    "wwwroot/Admin/Coverimg", guid + ".jpg");
 
-                _bookcontext.PeopleDuty.Add(personduty);
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    model.Coverimage.CopyTo(stream);
+                }
+
+                model.Imagepath = guid + ".jpg";
             }
 
-            _bookcontext.SaveChanges();
+            if (ModelState.IsValid)
+            {
 
-            return RedirectToAction("Index", "Person");
+                Person person = new Person();
+                person.Name = model.Name;
+                person.SurName = model.SurName;
+                person.Biography = model.Biography;
+                person.BirthDate = model.BirthDate;
+                person.Imagepath = model.Imagepath;
+
+                _bookcontext.People.Add(person);
+                _bookcontext.SaveChanges();
+
+                int PersonID = person.ID;
+
+                foreach (var item in dutyarray)
+                {
+                    PersonDuty personduty = new PersonDuty();
+
+                    personduty.PersonID = PersonID;
+                    personduty.DutyID = item;
+
+                    _bookcontext.PeopleDuty.Add(personduty);
+                }
+
+                _bookcontext.SaveChanges();
+
+                return RedirectToAction("Index", "Person");
+            }
+            return View();
         }
+   
                 
 
         public IActionResult BookDetail(int id)

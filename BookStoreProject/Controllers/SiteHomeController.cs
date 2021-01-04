@@ -31,6 +31,10 @@ namespace BookStoreProject.Controllers
 
             model.Topcategories = _bookcontext.Categories.Where(q => q.IsDeleted == false).ToList();
 
+            model.Users = _bookcontext.Users.Where(q => q.IsDeleted == false).ToList();
+
+            model.People = _bookcontext.People.Where(q => q.IsDeleted == false).ToList();
+
             return View(model);
         }
 

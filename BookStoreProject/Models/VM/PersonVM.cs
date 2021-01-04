@@ -1,5 +1,6 @@
 ﻿using BookStoreProject.Models.ORM.Entities;
 using BookStoreProject.Models.Types;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,8 @@ namespace BookStoreProject.Models.VM
 
         [Required(ErrorMessage = "Surname must be written")]
         public string SurName { get; set; }
+
+        public IFormFile Coverimage { set; get; }
 
         public string Biography { get; set; }
 

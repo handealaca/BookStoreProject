@@ -5,8 +5,6 @@
 }
 
 @model BookStoreProject.Models.VM.SiteHomeVM
-
-
 <!--Start: Slider Section -->
 <div data-ride="carousel" class="carousel slide" id="home-v1-header-carousel">
     <!-- Carousel slides-->
@@ -17,8 +15,8 @@
             </figure>
             <div class="container">
                 <div class="carousel-caption">
-                    <h2>What’s all the Book Store?</h2>
-                    <p>Book Store gives you access to <strong>Audiobooks,</strong> <strong>eBooks,</strong> <strong>Music,</strong> <strong>Movies and Comics.</strong></p>
+                    <h2>Book Store</h2>
+
                     <div class="filter-box">
                         <form action="/Site/SiteHome/" class="banner-filter-box" method="get">
                             <div class="form-group">
@@ -26,9 +24,9 @@
                                 <input class="form-control" placeholder="Search by Keyword" id="keywords" name="keywords" type="text">
                             </div>
                             <div class="form-group">
-                                <select name="catalog" id="catalog" class="form-control" data-placeholder="Select Category">
+                                <select name="catalog" id="catalog" class="form-control">
 
-                                    <option>Search the Catalog</option>
+                                    <option>Search the Top Category</option>
 
                                     @foreach (var item in Model.Topcategories.Where(q => q.TopCategory == 0))
                                     {
@@ -39,13 +37,13 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <select name="category" id="category" class="form-control" data-placeholder="Select a SubCategory">
+                                <select name="category" id="category" class="form-control">
                                     <option>Search the SubCategory</option>
 
                                     @*@foreach (var item in Model.Subcategories)
-        {
-            <option value="@item.ID">@item.CategoryName</option>
-        }*@
+                                        {
+                                            <option value="@item.ID">@item.CategoryName</option>
+                                        }*@
 
                                 </select>
                             </div>
@@ -84,17 +82,9 @@
         <div class="center-content">
             <h2 class="section-title">Check Out The New Releases</h2>
             <span class="underline center"></span>
-            <p class="lead">The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.</p>
+           
         </div>
-        <div class="filter-buttons">
-            <div class="filter btn" data-filter="all">All Releases</div>
-            <div class="filter btn" data-filter=".adults">Adults</div>
-            <div class="filter btn" data-filter=".kids-teens">Kids &amp; Teens</div>
-            <div class="filter btn" data-filter=".video">Video</div>
-            <div class="filter btn" data-filter=".audio">Audio</div>
-            <div class="filter btn" data-filter=".books">Books</div>
-            <div class="filter btn" data-filter=".magazines">Magazines</div>
-        </div>
+     
     </div>
     <div id="category-filter">
         <ul class="category-list">
@@ -124,30 +114,8 @@
                                     <span>☆</span>
                                 </div>
                                 <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-                                <a href="#">Read More <i class="fa fa-long-arrow-right"></i></a>
-                                <ol>
+                                <a href="/SiteBook/BookDetail/@item.ID">Read More <i class="fa fa-long-arrow-right"></i></a>
 
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-heart"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-envelope"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-share-alt"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-search"></i>
-                                        </a>
-                                    </li>
-                                </ol>
                             </div>
                         </figcaption>
                     </figure>
@@ -165,38 +133,34 @@
         <div class="fun-stuff">
             <div class="facts-counter">
                 <ul>
-                    <li class="col-sm-3">
+                    <li class="col-sm-4">
                         <div class="fact-item icon-ebooks">
                             <div class="fact-icon">
                                 <img src="/Site/images/icon-ebooks.png" alt="" />
                             </div>
-                            <span>eBooks<strong class="fact-counter">45780</strong></span>
+                            <span>Books<strong class="fact-counter">@Model.BookCovers.Count()</strong></span>
                         </div>
                     </li>
-                    <li class="col-sm-3">
+                    <li class="col-sm-4">
                         <div class="fact-item icon-eaudio">
                             <div class="fact-icon">
                                 <img src="/Site/images/icon-eaudio.png" alt="" />
                             </div>
-                            <span>eAudio<strong class="fact-counter">32450</strong></span>
+                            <span>Users<strong class="fact-counter">@Model.Users.Count()</strong></span>
                         </div>
                     </li>
-                    <li class="col-sm-3">
+                    <li class="col-sm-4">
                         <div class="fact-item icon-magazine">
                             <div class="fact-icon">
                                 <img src="/Site/images/icon-magazine.png" alt="" />
-                            </div>
-                            <span>Magazine<strong class="fact-counter">14450</strong></span>
+                                                            </div>
+                            <span>
+                                Writers<strong class="fact-counter">@Model.People.Count()</strong>
+                            </span>
+
                         </div>
                     </li>
-                    <li class="col-sm-3">
-                        <div class="fact-item icon-videos">
-                            <div class="fact-icon">
-                                <img src="/Site/images/icon-videos.png" alt="" />
-                            </div>
-                            <span>Videos<strong class="fact-counter">32450</strong></span>
-                        </div>
-                    </li>
+
                 </ul>
             </div>
         </div>
@@ -264,22 +228,28 @@
     var categoryId = $(this).val(); // use $(this)
     console.log(categoryId);
     subcategoryselect.empty(); // clear existing options
-    if (!categoryId) {
-        return; // there is no point making an ajax call so just exit
-    }
+    //if (!categoryId) {
+    //    return; // there is no point making an ajax call so just exit
+    //}
     $.ajax({
         type: 'POST', // or 'GET' depending on how you have modified the method above
         url: "/SiteHome/Getsubcategory", // use @Url.Action() to generate urls
         data: { catalog: categoryId },
         success: function (response) {
             console.log(response);
+
             //subcategoryselect.append($('<option></option>').val('').text('Please select')); // add a default null option
             $.each(response, function (i, item) {
                 console.log(item.categoryName);
                 console.log(item.id);
                 subcategoryselect.append($('<option></option>').val(item.id).text(item.categoryName));
             });
+
         },
+        error: function (result) {
+            console.log("FAILED");
+            subcategoryselect.append($('<option></option>').text('Search the SubCategory'));
+        }
     });
 })
 </script>
