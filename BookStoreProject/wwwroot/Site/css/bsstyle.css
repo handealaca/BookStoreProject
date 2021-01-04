@@ -8029,9 +8029,9 @@ textarea::-webkit-input-placeholder {
   left: 0;
   top: 31%;
 }
-.select-hidden {
+/*.select-hidden {
   display: none;
-}
+}*/
 .select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -8052,6 +8052,7 @@ textarea::-webkit-input-placeholder {
   -moz-border-radius: 0;
   border-radius: 0;
   padding: 15px 10px;
+  display:none;
 }
 .select-styled::after {
   content: '\f107';
