@@ -326,14 +326,15 @@
 
 
                                                 <li><strong>Edition:</strong>@Model.Edition</li>
+
                                                 <li>
                                                     <div class="rating">
                                                         <strong>Rating:</strong>
-                                                        <span>☆</span>
-                                                        <span>☆</span>
-                                                        <span>☆</span>
-                                                        <span>☆</span>
-                                                        <span>☆</span>
+                                                        <span id="1">☆</span>
+                                                        <span id="2">☆</span>
+                                                        <span id="3">☆</span>
+                                                        <span id="4">☆</span>
+                                                        <span id="5">☆</span>
                                                     </div>
                                                 </li>
 
@@ -517,3 +518,13 @@
     </div>
 </div>
 <!-- End: Products Section -->
+
+<script>
+
+    $(".rating").click(function () {
+        var id = $(this).attr('id');
+      
+
+
+    }
+</script>
