@@ -35,8 +35,7 @@ namespace BookStoreProject.Controllers
         [HttpPost]
         public IActionResult Edit(UserVM model)
         {
-            ViewBag.UserName = null;
-            ViewBag.Email = null;
+          
 
             if (ModelState.IsValid)
             {
@@ -47,7 +46,10 @@ namespace BookStoreProject.Controllers
                 user.BirthDate = model.BirthDate;
                 user.Password = model.UserPassword;
 
-                TempData["user"] = "";
+                TempData["UserName"] = model.Name;
+
+
+
 
                 _bookcontext.SaveChanges();
 

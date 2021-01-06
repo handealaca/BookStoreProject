@@ -237,60 +237,7 @@
                                     </ul>
                                     <div class="clearfix"></div>
                                 </div>
-                                <div class="widget widget_recent_entries">
-                                    <h4 class="widget-title">On-Order Items</h4>
-                                    <ul>
-                                        <li>
-                                            <figure>
-                                                <img src="images/order-item-01.jpg" alt="product" />
-                                            </figure>
-                                            <a href="#">The Sonic Boom</a>
-                                            <span class="price"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                            <span><strong>ISBN:</strong> 978158157</span>
-                                            <div class="rating">
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </li>
-                                        <li>
-                                            <figure>
-                                                <img src="images/order-item-02.jpg" alt="product" />
-                                            </figure>
-                                            <a href="#">The Sonic Boom</a>
-                                            <span class="price"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                            <span><strong>ISBN:</strong> 978158157</span>
-                                            <div class="rating">
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </li>
-                                        <li>
-                                            <figure>
-                                                <img src="images/order-item-03.jpg" alt="product" />
-                                            </figure>
-                                            <a href="#">The Sonic Boom</a>
-                                            <span class="price"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                            <span><strong>ISBN:</strong> 978158157</span>
-                                            <div class="rating">
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                                <span>☆</span>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </li>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                </div>
+                                
                             </aside>
                         </div>
 
@@ -301,7 +248,7 @@
                                     <div class="post-thumbnail">
                                         <div class="book-list-icon yellow-icon"></div>
 
-                                        <img alt="Book" src="/Admin/Coverimg/@Model.Imagepath" />
+                                        <img alt="Book" src="/Admin/Coverimg/@Model.Imagepath" style="height:550px;width:400px" />
                                     </div>
                                     <div class="post-detail">
 
@@ -331,7 +278,7 @@
                                                     <div class="rating">
                                                         <strong>Rating:</strong>
                                                         @{
-                                                            int puan = 3;
+                                                            int puan = 2;
 
                                                         }
                                                         @for (int i = 5; i >= 1 ; i--)
@@ -350,11 +297,9 @@
                                                     </div>
                                                 </li>
 
-
                                             </ul>
                                         </header>
-
-                                    </div>
+                                        </div>
                                 </div>
                                 <p><strong>Summary:</strong> There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. </p>
                                 <ul class="detail-page-listing">
@@ -392,6 +337,11 @@
                                             <ol class="comment-list">
                                                 <li class="comment even thread-even depth-1 parent">
 
+                                                    @if (Model.Comments.Count == 0)
+                                                    {
+                                                        <span>No comments yet!</span>
+                                                    }
+
                                                     @foreach (var item in Model.Comments)
                                                     {
                                                         TimeSpan ts = DateTime.Now - item.AddDate;
@@ -412,10 +362,23 @@
                                                                 </div>
 
                                                                 <div class="reply" style="margin-right:5px">
-                                                                    @if (Convert.ToInt32(ViewBag.UserId) == item.User.ID)
+                                                                    @if (Convert.ToInt32(TempData["UserId"]) == item.User.ID)
                                                                     {
                                                                         <a href="/SiteBook/EditComment/@item.ID" class="comment-reply-link">
                                                                             <i class="fa fa-edit"></i> Edit
+                                                                        </a>
+                                                                    
+                                                                    }
+
+                                                                </div>
+                                                                <div class="reply" style="margin-right:5px">
+                                                                    @if (Convert.ToInt32(TempData["UserId"]) == item.User.ID)
+                                                                    {
+                                                                        
+                                                                        
+
+                                                                        <a id="@item.ID" class="comment-reply-link commentdelete">
+                                                                            <i class="fa fa-trash"></i> Delete
                                                                         </a>
                                                                     }
 
@@ -423,7 +386,7 @@
                                                                 <div class="comment-metadata">
 
                                                                     <time datetime="2016-01-17">
-                                                                     
+
                                                                         <b>@item.AddDate.ToString("dd.MM.yyyy")/ </b>
                                                                         @if (ts.Hours > 24)
                                                                         {
@@ -454,35 +417,35 @@
 
 
                                                     @*<ol class="children">
-                                                            <li class="comment odd alt depth-2">
-                                                                <div class="comment-body">
-                                                                    <div class="comment-author vcard">
-                                                                        <img class="avatar photo" src="images/blog/peter.jpg" alt="Comment Avatar">
-                                                                        <b class="fn">
-                                                                            <a class="url" rel="external nofollow" href="#">Peter</a>
-                                                                        </b>
-                                                                    </div>
-                                                                    <footer class="comment-meta">
-                                                                        <div class="left-arrow"></div>
-                                                                        <div class="reply">
-                                                                            <a href="#" class="comment-reply-link">
-                                                                                <i class="fa fa-reply"></i> Reply
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="comment-metadata">
-                                                                            <a href="#">
-                                                                                <time datetime="2016-01-17">
-                                                                                    <b>Mar 17, 2016 / </b>  45 Minutes Ago
-                                                                                </time>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="comment-content">
-                                                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                                                        </div>
-                                                                    </footer>
-                                                                </div>
-                                                            </li>
-                                                        </ol>*@
+            <li class="comment odd alt depth-2">
+                <div class="comment-body">
+                    <div class="comment-author vcard">
+                        <img class="avatar photo" src="images/blog/peter.jpg" alt="Comment Avatar">
+                        <b class="fn">
+                            <a class="url" rel="external nofollow" href="#">Peter</a>
+                        </b>
+                    </div>
+                    <footer class="comment-meta">
+                        <div class="left-arrow"></div>
+                        <div class="reply">
+                            <a href="#" class="comment-reply-link">
+                                <i class="fa fa-reply"></i> Reply
+                            </a>
+                        </div>
+                        <div class="comment-metadata">
+                            <a href="#">
+                                <time datetime="2016-01-17">
+                                    <b>Mar 17, 2016 / </b>  45 Minutes Ago
+                                </time>
+                            </a>
+                        </div>
+                        <div class="comment-content">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                        </div>
+                    </footer>
+                </div>
+            </li>
+        </ol>*@
                                                 </li>
                                             </ol>
                                         </div>
@@ -539,4 +502,23 @@
 
 
     })
+
+    $(document).on("click", ".commentdelete", function () {
+        let id = $(this).attr("id");
+        $.ajax({
+            url: "/SiteBook/DeleteComment/",
+            type: "POST",
+            data: { id: id},
+            success: function (msg) {
+                console.log(msg);
+                //$("#" + id).fadeOut();
+                window.location.href = "/SiteBook/BookDetail/"
+                alert("Deleted successfully!!!");
+            },
+            error: function (err) {
+                alert("Failed!");
+            }
+        })
+    })
+
 </script>

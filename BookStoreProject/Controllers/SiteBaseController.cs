@@ -49,12 +49,11 @@ namespace BookStoreProject.Controllers
                     //    _cache.Set(CacheKeys.Entry, cacheEntry, cacheEntryOptions);
                     //}
 
+                    TempData["UserEmail"] = HttpContext.User.Claims.ToArray()[0].Value;
 
-                    ViewBag.UserEmail = HttpContext.User.Claims.ToArray()[0].Value;
-                    ViewBag.UserName = HttpContext.User.Claims.ToArray()[1].Value;
-                    ViewBag.UserId = HttpContext.User.Claims.ToArray()[2].Value;
+                    TempData["UserId"] = HttpContext.User.Claims.ToArray()[2].Value;
 
-                    
+                    TempData["UserName"] = HttpContext.User.Claims.ToArray()[1].Value;
                 }
 
             }

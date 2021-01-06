@@ -73,7 +73,7 @@ namespace BookStoreProject.Controllers
         {
 
             Comment comment = new Comment();
-            comment.UserID = Convert.ToInt32(ViewBag.UserId);
+            comment.UserID = Convert.ToInt32(TempData["UserID"]);
             comment.Header = model.Header;
             comment.Content = model.Content;
             comment.BookID = model.BookID;
@@ -108,12 +108,26 @@ namespace BookStoreProject.Controllers
             comment.Header = model.Header;
             comment.Content = model.Content;
             comment.BookID = model.BookID;
-            comment.UserID = Convert.ToInt32(ViewBag.UserId);
+            comment.UserID = Convert.ToInt32(TempData["UserID"]);
             comment.UpdateDate = DateTime.Now;
 
             _bookcontext.SaveChanges();
 
             return RedirectToAction("BookDetail", "SiteBook", new { id = model.BookID });
+
+        }
+
+        [HttpPost]
+        public IActionResult DeleteComment(int id)
+        {
+            Comment comment = _bookcontext.Comments.FirstOrDefault(q => q.ID == id);
+
+          
+            comment.IsDeleted = true;
+
+            _bookcontext.SaveChanges();
+
+            return RedirectToAction("BookDetail", "SiteBook", new { id = comment.BookID });
 
         }
 

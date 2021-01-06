@@ -68,7 +68,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
 
                 var path = Path.Combine(
                     Directory.GetCurrentDirectory(),
-                    "wwwroot/Admin/Coverimg", guid + ".jpg");
+                     "wwwroot/Admin/writerimg", guid + ".jpg");
 
                 using (var stream = new FileStream(path, FileMode.Create))
                 {
@@ -105,12 +105,12 @@ namespace BookStoreProject.Areas.Admin.Controllers
 
                 _bookcontext.SaveChanges();
 
-                return RedirectToAction("Index", "Person");
+                return Redirect("//");
             }
             return View();
         }
-   
-                
+
+
 
         public IActionResult BookDetail(int id)
         {
@@ -128,7 +128,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
             return View(books);
         }
 
-      
+
 
 
         [HttpPost]
@@ -142,9 +142,12 @@ namespace BookStoreProject.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+
+
         [RoleControl(EnumRole.PersonEdit)]
         public IActionResult Edit(int id)
         {
+
             Person person = _bookcontext.People.Include(q => q.PersonDuties).FirstOrDefault(x => x.ID == id);
 
             PersonVM model = new PersonVM();
@@ -154,6 +157,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
             model.BirthDate = person.BirthDate;
             model.Biography = person.Biography;
             model.Duties = person.PersonDuties.Where(q => q.IsDeleted == false).Select(q => q.DutyID == Convert.ToInt32(EnumDuty.Writer) ? EnumDuty.Writer.ToString() : EnumDuty.Interpreter.ToString()).ToList();
+            model.Imagepath = person.Imagepath;
 
             List<EnumDuty> modelduty = new List<EnumDuty>();
 
@@ -161,23 +165,45 @@ namespace BookStoreProject.Areas.Admin.Controllers
             modelduty.Add(EnumDuty.Writer);
 
             model.EnumDuties = modelduty;
-
             return View(model);
 
-        }
+                    }
+
 
         [HttpPost]
-        public IActionResult Edit(PersonVM model,int[] dutyarray)
+        public IActionResult Edit(PersonVM model, int[] dutyarray)
         {
-            Person person = _bookcontext.People.Include(q=> q.PersonDuties).FirstOrDefault(q => q.ID == model.PersonID);
-
+            Person person = _bookcontext.People.Include(q => q.PersonDuties).FirstOrDefault(q => q.ID == model.PersonID);
             if (ModelState.IsValid)
             {
-               
+
                 person.Name = model.Name;
                 person.SurName = model.SurName;
                 person.Biography = model.Biography;
                 person.BirthDate = model.BirthDate;
+
+
+
+                if (model.Coverimage != null)
+
+                {
+                    model.Imagepath = "";
+                    var guid = Guid.NewGuid().ToString();
+
+                    var path = Path.Combine(
+                        Directory.GetCurrentDirectory(),
+                        "wwwroot/Admin/writerimg", guid + ".jpg");
+
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        model.Coverimage.CopyTo(stream);
+                    }
+
+                    model.Imagepath = guid + ".jpg";
+
+                    person.Imagepath = model.Imagepath;
+                }
+
 
                 _bookcontext.SaveChanges();
 
@@ -198,7 +224,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
                     _bookcontext.PeopleDuty.Add(personduty);
                 }
 
-               
+
             }
             _bookcontext.SaveChanges();
 

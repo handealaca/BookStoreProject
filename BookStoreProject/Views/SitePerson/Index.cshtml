@@ -127,11 +127,11 @@
                                 <ul style="display:flex; justify-content:space-around; flex-wrap:wrap">
                                     @foreach (var item in Model)
                                     {
-                                        <li>
+                                        <li @*style="width:250px;height:200px"*@>
                                             <div class="book-list-icon light-green-icon"></div>
-                                            <figure style="height:450px">
-                                                <a href="/SitePerson/PersonDetail/@item.PersonID"><img src="/Admin/Coverimg/@item.Imagepath" alt="Book" style="height:450px"></a>
-                                                <figcaption>
+                                            <figure @*style="height:450px"*@>
+                                                <a href="/SitePerson/PersonDetail/@item.PersonID"><img src="/Admin/writerimg/@item.Imagepath" alt="Book" style="height:300px;width:250px"></a>
+                                                <figcaption class="">
                                                     <header>
 
                                                         <h4><a href="">@item.Name @item.SurName</a></h4>
@@ -145,7 +145,7 @@
 
                                                     </header>
 
-                                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
+                                                    <p>@item.Biography</p>
 
                                                 </figcaption>
                                             </figure>

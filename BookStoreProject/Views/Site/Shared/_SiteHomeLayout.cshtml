@@ -124,18 +124,18 @@
                             <!-- Header Topbar -->
 
                             <div class="header-topbar hidden-md">
-                                <div class="topbar-links" >
-                                    @if (ViewBag.UserName != null)
+                                <div class="topbar-links">
+                                    @if (TempData["UserName"] != null)
                                     {
-                                    <div>
-                                        <a style="padding-right:10px" href ="/SiteAccount/"><i class="fa fa-lock"></i>LogOut</a>
-                                        <a href="/UserAction/Edit/@ViewBag.UserId"><i class="fa fa-user"></i>My Account</a>
-                                    </div>
-                                        <span class="d-none d-md-inline">Welcome @ViewBag.UserName</span>
+                                        <div>
+                                            <a style="padding-right:10px" href="/SiteAccount/Logout"><i class="fa fa-lock"></i>LogOut</a>
+                                            <a href="/UserAction/Edit/@TempData["UserId"]"> <i class="fa fa-user"></i>My Account</a>
+                                        </div>
+                                        <span class="d-none d-md-inline">Welcome @TempData["UserName"]</span>
                                     }
                                     else
                                     {
-                                <a href="/SiteAccount/"><i class="fa fa-lock"></i>Login / Register</a>
+                                        <a href="/SiteAccount/"><i class="fa fa-lock"></i>Login / Register</a>
                                     }
 
                                 </div>

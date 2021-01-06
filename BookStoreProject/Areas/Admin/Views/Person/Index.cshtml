@@ -49,7 +49,8 @@
                             <table id="example1" class="table table-bordered table-striped" style="text-align : center">
                                 <thead>
                                     <tr>
-                                        <th>Person ID</th>
+
+                                      <th>Person Image</th>
                                         <th>Writer/Interpreter</th>
                                         <th>Biograpy</th>
                                         <th>Birth Date</th>
@@ -62,7 +63,7 @@
                                     @foreach (var item in Model)
                                     {
                                         <tr>
-                                            <td>@item.PersonID</td>
+                                            <td><img width="75" height="100" src="/Admin/writerimg/@item.Imagepath"></td>
                                             <td>@item.Name @item.SurName</td>
                                             <td>@item.Biography</td>
                                             <td>@item.BirthDate?.ToString("dd.MM.yyyy")</td>

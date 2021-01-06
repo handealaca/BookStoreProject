@@ -8052,7 +8052,7 @@ textarea::-webkit-input-placeholder {
   -moz-border-radius: 0;
   border-radius: 0;
   padding: 15px 10px;
-  display:none;
+  /*display:none;*/
 }
 .select-styled::after {
   content: '\f107';
@@ -17010,7 +17010,7 @@ a:focus {
   margin: 0 26px 30px 0;
   position: relative;
   vertical-align: top;
-  width: 31.5%;
+  width:31.5%;
 }
 @media (min-width: 768px) and (max-width: 1199px) {
   .booksmedia-fullwidth ul li {
@@ -17048,7 +17048,7 @@ a:focus {
   cursor: pointer;
   left: 0;
   position: absolute;
-  padding: 27px 14px 0;
+  padding: 15px 14px 0;
   bottom: 0;
   width: 100%;
   z-index: 15;
