@@ -19099,11 +19099,11 @@ a:focus {
   }
 }
 .layout-v3 #home-v1-header-carousel .filter-box .select {
-  background-color: transparent;
-  border-width: 3px 3px 3px 0;
+    background-color: transparent;
+    /*border-width: 0 0 0 0;
   border-style: solid;
-  border-color: #595959;
-  color: #bababa;
+  border-color: #595959;*/
+    color: transparent;
 }
 @media (max-width: 767px) {
   .layout-v3 #home-v1-header-carousel .filter-box .select {
@@ -19129,8 +19129,8 @@ a:focus {
   }
 }
 .layout-v3 #home-v1-header-carousel .filter-box input {
-  border-color: #595959;
-  border-radius: 3px 0 0 3px;
+ /* border-color: transparent;
+  border-radius: 3px 0 0 3px;*/
 }
 @media (max-width: 767px) {
   .layout-v3 #home-v1-header-carousel .filter-box input {

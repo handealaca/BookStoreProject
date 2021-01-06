@@ -26,7 +26,7 @@
                             <div class="form-group">
                                 <select name="catalog" id="catalog" class="form-control">
 
-                                    <option>Search the Top Category</option>
+                                    <option>Select Top Category</option>
 
                                     @foreach (var item in Model.Topcategories.Where(q => q.TopCategory == 0))
                                     {
@@ -38,7 +38,7 @@
                             </div>
                             <div class="form-group">
                                 <select name="category" id="category" class="form-control">
-                                    <option>Search the SubCategory</option>
+                                    <option>Select SubCategory</option>
 
                                     @*@foreach (var item in Model.Subcategories)
                                         {

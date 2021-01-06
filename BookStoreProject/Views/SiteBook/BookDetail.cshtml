@@ -330,11 +330,23 @@
                                                 <li>
                                                     <div class="rating">
                                                         <strong>Rating:</strong>
-                                                        <span id="1">☆</span>
-                                                        <span id="2">☆</span>
-                                                        <span id="3">☆</span>
-                                                        <span id="4">☆</span>
-                                                        <span id="5">☆</span>
+                                                        @{
+                                                            int puan = 3;
+
+                                                        }
+                                                        @for (int i = 5; i >= 1 ; i--)
+                                                        {
+                                                            if (i <= puan)
+                                                            {
+                                                                <i class="fa fa-star"></i>
+                                                            }
+                                                            else
+                                                            {
+                                                                <i class="fa fa-star-o"></i>
+                                                            }
+
+                                                        }
+
                                                     </div>
                                                 </li>
 
@@ -521,10 +533,10 @@
 
 <script>
 
-    $(".rating").click(function () {
+    $(".rating span").click(function () {
         var id = $(this).attr('id');
-      
+        //bu rating ajax ile action a gidecek ve oradan kitabın rate tablosuna kaydolacak
 
 
-    }
+    })
 </script>

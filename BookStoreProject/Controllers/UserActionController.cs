@@ -47,6 +47,8 @@ namespace BookStoreProject.Controllers
                 user.BirthDate = model.BirthDate;
                 user.Password = model.UserPassword;
 
+                TempData["user"] = "";
+
                 _bookcontext.SaveChanges();
 
                 return RedirectToRoute("default", new { controller = "SiteHome", action = "Index" });

@@ -1,4 +1,5 @@
-﻿using BookStoreProject.Models.ORM.Context;
+﻿using BookStoreProject.Models.Attributes;
+using BookStoreProject.Models.ORM.Context;
 using BookStoreProject.Models.ORM.Entities;
 using BookStoreProject.Models.Types;
 using BookStoreProject.Models.VM;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace BookStoreProject.Controllers
 {
+    [SiteAuth]
     public class SitePersonController : SiteBaseController
     {
         private readonly BookContext _bookcontext;

@@ -14,9 +14,6 @@ namespace BookStoreProject.Models.Attributes
             if (context.HttpContext.User.Identity.IsAuthenticated)
             {
 
-
-
-
                 string siterole = context.HttpContext.User.Claims.ToArray()[3].Value;
 
                 if (siterole == "Admin")
