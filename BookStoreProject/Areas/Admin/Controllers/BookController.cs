@@ -123,8 +123,8 @@ namespace BookStoreProject.Areas.Admin.Controllers
                 } 
 
                 _bookcontext.SaveChanges();
-                
-                return RedirectToAction("Index", "Book");
+
+                return Redirect("/Admin/Book/");
 
             }
             
@@ -249,7 +249,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
 
             _bookcontext.SaveChanges();
 
-            return RedirectToAction("Index", "Book");
+            return Redirect("/Admin/Book/");
         }
 
 

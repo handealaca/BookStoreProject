@@ -105,7 +105,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
 
                 _bookcontext.SaveChanges();
 
-                return Redirect("//");
+                return Redirect("/Admin/Person/");
             }
             return View();
         }
@@ -228,7 +228,8 @@ namespace BookStoreProject.Areas.Admin.Controllers
             }
             _bookcontext.SaveChanges();
 
-            return RedirectToAction("Index", "Person");
+            return Redirect("/Admin/Person/");
+            //Redirect("/SiteAccount/");
 
 
         }

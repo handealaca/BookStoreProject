@@ -177,6 +177,34 @@
         </main>
     </div>
 </div>
+<script>
+
+    $(".rating span").click(function () {
+        var id = $(this).attr('id');
+        //bu rating ajax ile action a gidecek ve oradan kitabın rate tablosuna kaydolacak
+
+
+    })
+
+    $(document).on("click", ".commentdelete", function () {
+        let id = $(this).attr("id");
+        $.ajax({
+            url: "/SiteBook/DeleteComment/",
+            type: "POST",
+            data: { id: id},
+            success: function (msg) {
+                console.log(msg);
+                //$("#" + id).fadeOut();
+                window.location.href = "/SiteBook/BookDetail/"
+                alert("Deleted successfully!!!");
+            },
+            error: function (err) {
+                alert("Failed!");
+            }
+        })
+    })
+
+</script>
 
 
 
