@@ -119,11 +119,7 @@
                                                     <li><a href="#">Love stories <span>(18)</span></a></li>
                                                     <li><a href="#">Texas <span>(04)</span></a></li>
                                                     <li><a href="#">Rich people <span>(03)</span></a></li>
-                                                    <li><a href="#">Humorous stories <span>(02)</span></a></li>
-                                                    <li><a href="#">Widows <span>(02)</span></a></li>
-                                                    <li><a href="#">Women <span>(11)</span></a></li>
-                                                    <li><a href="#">Babysitters <span>(25)</span></a></li>
-                                                    <li><a href="#">Law firms <span>(09)</span></a></li>
+
                                                 </ul>
                                             </div>
                                             <div class="clearfix"></div>
@@ -237,7 +233,7 @@
                                     </ul>
                                     <div class="clearfix"></div>
                                 </div>
-                                
+
                             </aside>
                         </div>
 
@@ -278,10 +274,11 @@
                                                     <div class="rating">
                                                         <strong>Rating:</strong>
                                                         @{
+                                                            //int puan = Convert.ToInt32(Model.UserPoints);
                                                             int puan = 2;
 
                                                         }
-                                                        @for (int i = 5; i >= 1 ; i--)
+                                                        @for (int i = 5; i >= 1; i--)
                                                         {
                                                             if (i <= puan)
                                                             {
@@ -299,7 +296,7 @@
 
                                             </ul>
                                         </header>
-                                        </div>
+                                    </div>
                                 </div>
                                 <p><strong>Summary:</strong> There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. </p>
                                 <ul class="detail-page-listing">
@@ -362,20 +359,20 @@
                                                                 </div>
 
                                                                 <div class="reply" style="margin-right:5px">
-                                                                    @if (Convert.ToInt32(TempData["UserId"]) == item.User.ID)
+                                                                    @if (Convert.ToInt32(TempData["UserID"]) == item.User.ID)
                                                                     {
                                                                         <a href="/SiteBook/EditComment/@item.ID" class="comment-reply-link">
                                                                             <i class="fa fa-edit"></i> Edit
                                                                         </a>
-                                                                    
+
                                                                     }
 
                                                                 </div>
                                                                 <div class="reply" style="margin-right:5px">
-                                                                    @if (Convert.ToInt32(TempData["UserId"]) == item.User.ID)
+                                                                    @if (Convert.ToInt32(TempData["UserID"]) == item.User.ID)
                                                                     {
-                                                                        
-                                                                        
+
+
 
                                                                         <a id="@item.ID" class="comment-reply-link commentdelete">
                                                                             <i class="fa fa-trash"></i> Delete
@@ -417,35 +414,35 @@
 
 
                                                     @*<ol class="children">
-            <li class="comment odd alt depth-2">
-                <div class="comment-body">
-                    <div class="comment-author vcard">
-                        <img class="avatar photo" src="images/blog/peter.jpg" alt="Comment Avatar">
-                        <b class="fn">
-                            <a class="url" rel="external nofollow" href="#">Peter</a>
-                        </b>
-                    </div>
-                    <footer class="comment-meta">
-                        <div class="left-arrow"></div>
-                        <div class="reply">
-                            <a href="#" class="comment-reply-link">
-                                <i class="fa fa-reply"></i> Reply
-                            </a>
-                        </div>
-                        <div class="comment-metadata">
-                            <a href="#">
-                                <time datetime="2016-01-17">
-                                    <b>Mar 17, 2016 / </b>  45 Minutes Ago
-                                </time>
-                            </a>
-                        </div>
-                        <div class="comment-content">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                        </div>
-                    </footer>
-                </div>
-            </li>
-        </ol>*@
+                                                            <li class="comment odd alt depth-2">
+                                                                <div class="comment-body">
+                                                                    <div class="comment-author vcard">
+                                                                        <img class="avatar photo" src="images/blog/peter.jpg" alt="Comment Avatar">
+                                                                        <b class="fn">
+                                                                            <a class="url" rel="external nofollow" href="#">Peter</a>
+                                                                        </b>
+                                                                    </div>
+                                                                    <footer class="comment-meta">
+                                                                        <div class="left-arrow"></div>
+                                                                        <div class="reply">
+                                                                            <a href="#" class="comment-reply-link">
+                                                                                <i class="fa fa-reply"></i> Reply
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="comment-metadata">
+                                                                            <a href="#">
+                                                                                <time datetime="2016-01-17">
+                                                                                    <b>Mar 17, 2016 / </b>  45 Minutes Ago
+                                                                                </time>
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="comment-content">
+                                                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                                                        </div>
+                                                                    </footer>
+                                                                </div>
+                                                            </li>
+                                                        </ol>*@
                                                 </li>
                                             </ol>
                                         </div>
@@ -458,7 +455,7 @@
                                             <span class="underline left"></span>
                                             <form class="comment-form" id="commentform" method="post" action="/SiteBook/AddComment/">
                                                 <div class="row">
-                                                   
+
                                                     <p class="comment-form-subject input-required">
                                                         <label>
                                                             <span class="first-letter">Header</span>
@@ -499,26 +496,37 @@
     $(".rating span").click(function () {
         var id = $(this).attr('id');
         //bu rating ajax ile action a gidecek ve oradan kitabın rate tablosuna kaydolacak
-
-
-    })
-
-    $(document).on("click", ".commentdelete", function () {
-        let id = $(this).attr("id");
         $.ajax({
-            url: "/SiteBook/DeleteComment/",
+            url: "/SiteBook/BookDetail/",
             type: "POST",
-            data: { id: id},
+            data: { id: id },
             success: function (msg) {
                 console.log(msg);
                 //$("#" + id).fadeOut();
                 window.location.href = "/SiteBook/BookDetail/"
-                alert("Deleted successfully!!!");
+                alert();
             },
-            error: function (err) {
-                alert("Failed!");
-            }
+
         })
     })
+
+        $(document).on("click", ".commentdelete", function () {
+            let id = $(this).attr("id");
+            $.ajax({
+                url: "/SiteBook/DeleteComment/",
+                type: "POST",
+                data: { id: id },
+                success: function (msg) {
+                    console.log(msg);
+                    //$("#" + id).fadeOut();
+                    var modelbook = @Model.BookID;
+                    window.location.href = "/SiteBook/BookDetail/" + modelbook;
+                        alert("Deleted successfully!!!");
+                },
+                error: function (err) {
+                    alert("Failed!");
+                }
+            })
+        })
 
 </script>

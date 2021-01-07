@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,7 +33,7 @@ namespace BookStoreProject
             services.AddDbContext<BookContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddSession();
+       
             services.AddMemoryCache();
           
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -41,6 +42,17 @@ namespace BookStoreProject
                 options.LoginPath = "/SiteAccount/Index/";
                 options.LoginPath = "/Admin/AdminLogin/Index/";
             });
+
+            services.AddSingleton<ITempDataProvider, CookieTempDataProvider>();
+
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromHours(8);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
 
         }
 
@@ -52,6 +64,7 @@ namespace BookStoreProject
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCookiePolicy();
             app.UseSession();
             app.UseRouting();
             app.UseStaticFiles();

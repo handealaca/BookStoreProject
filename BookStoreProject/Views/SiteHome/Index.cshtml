@@ -26,7 +26,7 @@
                             <div class="form-group">
                                 <select name="catalog" id="catalog" class="form-control">
 
-                                    <option>hande</option>
+                                    <option>Select Top Category</option>
 
                                     @foreach (var item in Model.Topcategories.Where(q => q.TopCategory == 0))
                                     {
@@ -38,7 +38,7 @@
                             </div>
                             <div class="form-group">
                                 <select name="category" id="category" class="form-control">
-                                    <option>ece</option>
+                                    <option>Select Sub Category</option>
 
                                     @*@foreach (var item in Model.Subcategories)
                                         {
@@ -88,7 +88,7 @@
     </div>
     <div id="category-filter">
         <ul class="category-list">
-            @foreach (var item in Model.BookCovers)
+            @foreach (var item in Model.BookCovers.Take(8))
             {
                 <li class="category-item adults">
                     <figure>
@@ -169,27 +169,27 @@
 </section>
 
 
+<script>
+        @*$(document).ready(function () {
+            $("#catalog").change(function () {
+                let selected = $('#catalog option:selected').val();
+                console.log(selected);
+                $.getJSON("@Url.Action("Getsubcategory", "SiteHome")/" + selected,
+                    function(subs) {
 
-@*<script>
-        //$(document).ready(function () {
-        //    $("#catalog").change(function () {
-        //        let selected = $('#catalog option:selected').val();
-        //        Console.log(selected);
-        //        SiteHomeVM.getsubcategory(selected)
-        //            .then((subs) => {
-
-        //                for (let i = 0; i < subs.length; i++) {
-        //                    $('#category').append(
-        //                        `<option>` + subs[i] + `</option>`
-        //                    )
-        //                }
-        //            });
-
-        //    });
-        //});
+                    for (let i = 0; i < subs.length; i++) {
+                        console.log(subs[i]);
+                        $('#category').append(
+                            `<option>` + subs[i] + `</option>`
+                        )
+                    }
+                    });
+                
+            });
+        });*@
 
 
-        $(document).ready(function () {
+        @*$(document).ready(function () {
             $("#catalog").change(function () {
                 //var url =@Url.Content("~/")+ "SiteHome/Getsubcategory";
                 var selected = $(this).val();
@@ -208,14 +208,10 @@
                             + "</option>";
                     });
                     $("#category").html(items);
-
+                    });
                 });
-
-
-            });
-
-        })
-    </script>*@
+            })*@
+</script>
 
 
 <script>
@@ -224,21 +220,22 @@
 
     $('#catalog').change(function () {
 
-    alert("hola")
     var categoryId = $(this).val(); // use $(this)
     console.log(categoryId);
     subcategoryselect.empty(); // clear existing options
-    //if (!categoryId) {
+ 
     //    return; // there is no point making an ajax call so just exit
-    //}
+  
     $.ajax({
         type: 'POST', // or 'GET' depending on how you have modified the method above
         url: "/SiteHome/Getsubcategory", // use @Url.Action() to generate urls
         data: { catalog: categoryId },
         success: function (response) {
-            console.log(response);
 
-            //subcategoryselect.append($('<option></option>').val('').text('Please select')); // add a default null option
+            if (response.length == 0) {
+                subcategoryselect.css("cursor","not-allowed")
+            }
+
             $.each(response, function (i, item) {
                 console.log(item.categoryName);
                 console.log(item.id);

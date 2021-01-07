@@ -32,16 +32,32 @@ namespace BookStoreProject.Controllers
                 PublishDate = q.PublishDate,
                 Publisher = q.Publisher,
                 Edition = q.Edition,
-                Imagepath=q.Imagepath,
-                BookPersons = q.BookPersons.Where(q => q.IsDeleted == false).ToList()
+                Imagepath = q.Imagepath,
+                BookPersons = q.BookPersons.Where(q => q.IsDeleted == false).ToList(),
+                UserPoints = q.UserPoints.Where(q => q.IsDeleted == false).ToList(),
+                categories = _bookcontext.Categories.Where(q => q.IsDeleted == false).ToList()
 
             }).ToList();
 
-            return View(model);
+            List<CategoryVM> model2 = _bookcontext.Categories.Where(q => q.IsDeleted == false).Select(q => new CategoryVM() { 
+            
+            CategoryName = q.CategoryName,
+            CategoryID = q.ID,
+            TopCategory = q.TopCategory,
+            
+                      
+            
+            }).ToList();
+
+            SiteBookVM sitebook = new SiteBookVM();
+            sitebook.BookVM = model;
+            sitebook.CategoryVM = model2;
+
+            return View(sitebook);
         }
 
         
-       
+       [SiteAuth]
         public IActionResult BookDetail(int id)
         {
             Book book = _bookcontext.Books.Include(q => q.BookCategories).ThenInclude(BookCategories => BookCategories.Category).Include(q => q.BookPersons).ThenInclude(BookPersons => BookPersons.Person).Include(q=>q.Comments).ThenInclude(Comments=>Comments.User).Include(q=>q.UserPoints).ThenInclude(UserPoints => UserPoints.USer).FirstOrDefault(q => q.ID == id);
@@ -53,6 +69,7 @@ namespace BookStoreProject.Controllers
             model.Publisher = book.Publisher;
             model.Edition = book.Edition;
             model.Imagepath = book.Imagepath;
+            model.UserPoints = book.UserPoints;
             
             model.BookCategories = book.BookCategories.Where(q => q.IsDeleted == false).ToList();
            
@@ -127,7 +144,8 @@ namespace BookStoreProject.Controllers
 
             _bookcontext.SaveChanges();
 
-            return RedirectToAction("BookDetail", "SiteBook", new { id = comment.BookID });
+
+            return Redirect("/SiteBook/BookDetail/" + comment.BookID);
 
         }
 

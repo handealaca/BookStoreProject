@@ -24,12 +24,13 @@ namespace BookStoreProject.Controllers
             //_memoryCache2 = memoryCache;
 
         }
-        
-        
-        
-            public override void OnActionExecuting(ActionExecutingContext context2)
+
+
+
+
+        public override void OnActionExecuting(ActionExecutingContext context2)
         {
-           
+
 
             if (HttpContext.User.Identity.IsAuthenticated)
             {
@@ -49,7 +50,7 @@ namespace BookStoreProject.Controllers
                     //    _cache.Set(CacheKeys.Entry, cacheEntry, cacheEntryOptions);
                     //}
 
-                    TempData["UserEmail"] = HttpContext.User.Claims.ToArray()[0].Value;
+                   TempData["UserEmail"] = HttpContext.User.Claims.ToArray()[0].Value;
 
                     TempData["UserId"] = HttpContext.User.Claims.ToArray()[2].Value;
 
@@ -57,7 +58,7 @@ namespace BookStoreProject.Controllers
                 }
 
             }
-           
+
             base.OnActionExecuting(context2);
 
         }
@@ -65,5 +66,7 @@ namespace BookStoreProject.Controllers
         {
             base.OnActionExecuted(context2);
         }
+
+
     }
 }

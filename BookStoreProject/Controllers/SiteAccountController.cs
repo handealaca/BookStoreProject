@@ -56,6 +56,13 @@ namespace BookStoreProject.Controllers
                         new Claim(ClaimTypes.UserData, "User")
                      };
 
+                    //TempData["UserEmail"] = model.EMail;
+                
+                    
+                    TempData["UserID"] = user.ID.ToString();
+
+                    TempData["UserName"] = model.Name;
+
 
                     var userIdentity = new ClaimsIdentity(claims, "login");
 

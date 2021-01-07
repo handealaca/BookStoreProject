@@ -4,7 +4,7 @@
     Layout = "~/Views/Site/Shared/_SiteLayout.cshtml";
 }
 
-@model List<BookStoreProject.Models.VM.BookVM>
+@model BookStoreProject.Models.VM.SiteBookVM
     <!-- Start: Page Banner -->
 <section class="page-banner services-banner" style="background-image: url(/Site/images/kitaplık.jpg)">
 
@@ -61,25 +61,27 @@
 
                                     <div class="col-md-3 col-sm-6">
                                         <div class="form-group">
-                                            <select name="catalog" id="catalog" class="form-control" placeholder="Select Category">
-                                                <option>Search the Catalog</option>
-                                                @*@foreach (var item in Model.Topcategories.Where(q => q.TopCategory == 0))
-                                                    {
-                                                        <option value="@item.ID">@item.CategoryName</option>
+                                            <select name="catalog" id="catalog" class="form-control">
 
-                                                    }*@
+                                                <option>Select Top Category</option>
+
+                                                @foreach (var item in Model.CategoryVM.Where(q => q.TopCategory == 0))
+                                                {
+
+                                                    <option value="@item.CategoryID">@item.CategoryName</option>
+                                                }
+                                          
+
                                             </select>
                                         </div>
                                     </div>
 
                                     <div class="col-md-3 col-sm-6">
                                         <div class="form-group">
+                                            
                                             <select name="category" id="category" class="form-control">
+                                                <option>Select Sub Category</option>
 
-                                                @*@foreach (var item in Model.Topcategories.Where(q=>q.ID==))
-                                                    {
-                                                        <option>All Categories</option>
-                                                    }*@
                                             </select>
                                         </div>
                                     </div>
@@ -331,7 +333,7 @@
                             </div>
                             <div class="booksmedia-fullwidth">
                                 <ul style="display:flex; justify-content:space-around; flex-wrap:wrap">
-                                    @foreach (var item in Model)
+                                    @foreach (var item in Model.BookVM)
                                     {
                                         <li>
                                             <div class="book-list-icon yellow-icon"></div>
@@ -379,4 +381,38 @@
         </main>
     </div>
 </div>
+<script>
+    var subcategoryselect = $('#category'); // cache it
+
+
+    $('#catalog').change(function () {
+
+    var categoryId = $(this).val(); // use $(this)
+    console.log(categoryId);
+    subcategoryselect.empty(); // clear existing options
+    //if (!categoryId) {
+    //    return; // there is no point making an ajax call so just exit
+    //}
+    $.ajax({
+        type: 'POST', // or 'GET' depending on how you have modified the method above
+        url: "/SiteHome/Getsubcategory", // use @Url.Action() to generate urls
+        data: { catalog: categoryId },
+        success: function (response) {
+            console.log(response);
+
+            //subcategoryselect.append($('<option></option>').val('').text('Please select')); // add a default null option
+            $.each(response, function (i, item) {
+                console.log(item.categoryName);
+                console.log(item.id);
+                subcategoryselect.append($('<option></option>').val(item.id).text(item.categoryName));
+            });
+
+        },
+        error: function (result) {
+            console.log("FAILED");
+            subcategoryselect.append($('<option></option>').text('Search the SubCategory'));
+        }
+    });
+})
+</script>
 
