@@ -33,13 +33,8 @@ namespace BookStoreProject.Models.VM
         public List<Person> people { get; set; }
         [Required(ErrorMessage = "Category field is required.")]
         public List<Category> categories { get; set; }
-        
-        
 
-       
-
-
-
+        public double AvrPoint { get; set; }
 
     }
 }

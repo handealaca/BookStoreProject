@@ -70,7 +70,8 @@ namespace BookStoreProject.Controllers
             model.Edition = book.Edition;
             model.Imagepath = book.Imagepath;
             model.UserPoints = book.UserPoints;
-            
+            model.AvrPoint = book.AvrPoint;
+
             model.BookCategories = book.BookCategories.Where(q => q.IsDeleted == false).ToList();
            
             //string []joined = string.Join(",", book.BookCategories.Where(q => q.IsDeleted == false).ToList()).ToArray();
@@ -146,6 +147,37 @@ namespace BookStoreProject.Controllers
 
 
             return Redirect("/SiteBook/BookDetail/" + comment.BookID);
+
+        }
+
+        [HttpPost]
+        public IActionResult AddPoint(int bookid, int point)
+        {
+            UserPoint userpoint = new UserPoint();
+            userpoint.BookID = bookid;
+            userpoint.Point = point;
+            userpoint.UserID = Convert.ToInt32(TempData["UserID"]);
+
+            _bookcontext.UserPoints.Add(userpoint);
+            _bookcontext.SaveChanges();
+
+            int userpointid = userpoint.ID;
+
+            Book book = _bookcontext.Books.Include(q=>q.UserPoints).Where(q => q.IsDeleted == false).FirstOrDefault(q => q.ID == bookid);
+
+            int totalpoint= book.TotalPoint + userpoint.Point;
+            book.TotalPoint = totalpoint;
+
+            _bookcontext.SaveChanges();
+
+            double rated = book.UserPoints.Count();
+            double avrpoint = totalpoint/rated;
+            double average = Math.Round(avrpoint, 0, MidpointRounding.AwayFromZero);
+
+            book.AvrPoint = average;
+            _bookcontext.SaveChanges();
+
+            return Json(average);
 
         }
 

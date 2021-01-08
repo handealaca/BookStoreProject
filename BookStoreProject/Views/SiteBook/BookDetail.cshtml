@@ -271,244 +271,315 @@
                                                 <li><strong>Edition:</strong>@Model.Edition</li>
 
                                                 <li>
-                                                    <div class="rating">
-                                                        <strong>Rating:</strong>
-                                                        @{
-                                                            //int puan = Convert.ToInt32(Model.UserPoints);
-                                                            int puan = 2;
 
-                                                        }
-                                                        @for (int i = 5; i >= 1; i--)
+                                                    <strong>Rating:</strong>
+
+
+                                                    @if (Model.AvrPoint == 0)
+                                                    {
+                                                        <i class="fa fa-star-o" id="@Model.BookID" value="1"></i>
+                                                        <i class="fa fa-star-o" id="@Model.BookID" value="2"></i>
+                                                        <i class="fa fa-star-o" id="@Model.BookID" value="3"></i>
+                                                        <i class="fa fa-star-o" id="@Model.BookID" value="4"></i>
+                                                        <i class="fa fa-star-o" id="@Model.BookID" value="5"></i>
+
+                                                    <li><strong>Your Point:</strong>-</li>
+
+                                                }
+
+                                                else
+                                                {
+
+                                                    @for (int i = 1; i <= 5; i++)
+                                                    {
+                                                        if (i <= Model.AvrPoint)
                                                         {
-                                                            if (i <= puan)
-                                                            {
-                                                                <i class="fa fa-star"></i>
-                                                            }
-                                                            else
-                                                            {
-                                                                <i class="fa fa-star-o"></i>
-                                                            }
+                                                            <i class="fa fa-star" id="@Model.BookID" value="@i"></i>
 
                                                         }
 
-                                                    </div>
-                                                </li>
+                                                        else
+                                                        {
+                                                            <i class="fa fa-star-o" id="@Model.BookID" value="@i"></i>
 
-                                            </ul>
-                                        </header>
+                                                        }
+                                                    }
+                                                    <span style="color: #ff7236;">
+                                                        @Model.AvrPoint/5 -
+                                                        <strong style="color: #ff7236;">
+                                                            @Model.UserPoints.GroupBy(q => q.UserID).Count()
+                                                        </strong> People
+                                                    </span>
+
+                                                    @if (@Model.UserPoints.LastOrDefault(q => q.UserID == Convert.ToInt32(TempData["UserID"])) != null)
+                                                    {
+                                                        <li><strong>Your Point:</strong>@Model.UserPoints.LastOrDefault(q => q.UserID == Convert.ToInt32(TempData["UserID"])).Point</li>
+                                                    }
+
+                                                    else
+                                                    {
+                                                        <li><strong>Your Point:</strong>-</li>
+
+                                                    }
+
+                                                }
+
+                                                    </li>
+
+
+                                                </ul>
+                                            </header>
+                                        </div>
                                     </div>
-                                </div>
-                                <p><strong>Summary:</strong> There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. </p>
-                                <ul class="detail-page-listing">
+                                    <p><strong>Summary:</strong> There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. </p>
+                                    <ul class="detail-page-listing">
 
-                                    <li><strong>Name:</strong>@Model.Name</li>
-                                    <li><strong>PublishDate:</strong>@Model.PublishDate</li>
-                                    <li><strong>Length:</strong> 518 pages.</li>
-                                    <li>
-                                        <strong>Top Category :</strong>
-                                        @foreach (var item in Model.BookCategories.Where(q => q.Category.TopCategory == 0))
-                                        {
-                                            @item.Category.CategoryName
-                                        }
-                                    </li>
-                                    <li>
-                                        <strong>Sub Category :</strong>
-                                        @foreach (var item in Model.BookCategories.Where(q => q.Category.TopCategory != 0))
-                                        {
-                                            @item.Category.CategoryName
+                                        <li><strong>Name:</strong>@Model.Name</li>
+                                        <li><strong>PublishDate:</strong>@Model.PublishDate</li>
+                                        <li><strong>Length:</strong> 518 pages.</li>
+                                        <li>
+                                            <strong>Top Category :</strong>
+                                            @foreach (var item in Model.BookCategories.Where(q => q.Category.TopCategory == 0))
+                                            {
+                                                @item.Category.CategoryName
+                                            }
+                                        </li>
+                                        <li>
+                                            <strong>Sub Category :</strong>
+                                            @foreach (var item in Model.BookCategories.Where(q => q.Category.TopCategory != 0))
+                                            {
+                                                @item.Category.CategoryName
 
-                                        }
-                                    </li>
+                                            }
+                                        </li>
 
-
-                                </ul>
-                                <div class="table-tabs" id="responsiveTabs">
-                                    <ul class="nav nav-tabs" style="margin-bottom:-50px">
-
-                                        <li><b class="arrow-up"></b><a data-toggle="tab" href="#sectionB">User Comments (@Model.Comments.Count())</a></li>
 
                                     </ul>
+                                    <div class="table-tabs" id="responsiveTabs">
+                                        <ul class="nav nav-tabs" style="margin-bottom:-50px">
 
-                                    <div class="comments-area" id="comments">
-                                        <div class="comment-bg">
-                                            <ol class="comment-list">
-                                                <li class="comment even thread-even depth-1 parent">
+                                            <li><b class="arrow-up"></b><a data-toggle="tab" href="#sectionB">User Comments (@Model.Comments.Count())</a></li>
 
-                                                    @if (Model.Comments.Count == 0)
-                                                    {
-                                                        <span>No comments yet!</span>
-                                                    }
+                                        </ul>
 
-                                                    @foreach (var item in Model.Comments)
-                                                    {
-                                                        TimeSpan ts = DateTime.Now - item.AddDate;
+                                        <div class="comments-area" id="comments">
+                                            <div class="comment-bg">
+                                                <ol class="comment-list">
+                                                    <li class="comment even thread-even depth-1 parent">
 
-                                                        <div class="comment-body">
-                                                            <div class="comment-author vcard">
-                                                                <img class="avatar avatar-32 photo avatar-default" src="/Site/images/userprofilepic.jpg" alt="Comment Author">
-                                                                <b class="fn">
-                                                                    <a class="url" rel="external nofollow" href="#">@item.User.Name @item.User.SurName</a>
-                                                                </b>
-                                                            </div>
-                                                            <footer class="comment-meta">
-                                                                <div class="left-arrow"></div>
-                                                                <div class="reply">
-                                                                    <a href="#" class="comment-reply-link">
-                                                                        <i class="fa fa-reply"></i> Reply
-                                                                    </a>
+                                                        @if (Model.Comments.Count == 0)
+                                                        {
+                                                            <span>No comments yet!</span>
+                                                        }
+
+                                                        @foreach (var item in Model.Comments)
+                                                        {
+                                                            TimeSpan ts = DateTime.Now - item.AddDate;
+
+                                                            <div class="comment-body">
+                                                                <div class="comment-author vcard">
+                                                                    <img class="avatar avatar-32 photo avatar-default" src="/Site/images/userprofilepic.jpg" alt="Comment Author">
+                                                                    <b class="fn">
+                                                                        <a class="url" rel="external nofollow" href="#">@item.User.Name @item.User.SurName</a>
+                                                                    </b>
                                                                 </div>
-
-                                                                <div class="reply" style="margin-right:5px">
-                                                                    @if (Convert.ToInt32(TempData["UserID"]) == item.User.ID)
-                                                                    {
-                                                                        <a href="/SiteBook/EditComment/@item.ID" class="comment-reply-link">
-                                                                            <i class="fa fa-edit"></i> Edit
+                                                                <footer class="comment-meta">
+                                                                    <div class="left-arrow"></div>
+                                                                    <div class="reply">
+                                                                        <a href="#" class="comment-reply-link">
+                                                                            <i class="fa fa-reply"></i> Reply
                                                                         </a>
+                                                                    </div>
 
-                                                                    }
-
-                                                                </div>
-                                                                <div class="reply" style="margin-right:5px">
-                                                                    @if (Convert.ToInt32(TempData["UserID"]) == item.User.ID)
-                                                                    {
-
-
-
-                                                                        <a id="@item.ID" class="comment-reply-link commentdelete">
-                                                                            <i class="fa fa-trash"></i> Delete
-                                                                        </a>
-                                                                    }
-
-                                                                </div>
-                                                                <div class="comment-metadata">
-
-                                                                    <time datetime="2016-01-17">
-
-                                                                        <b>@item.AddDate.ToString("dd.MM.yyyy")/ </b>
-                                                                        @if (ts.Hours > 24)
+                                                                    <div class="reply" style="margin-right:5px">
+                                                                        @if (Convert.ToInt32(TempData["UserID"]) == item.User.ID)
                                                                         {
-                                                                            <span>
-                                                                                @ts.Days.ToString() Days Ago
-                                                                            </span>
+                                                                            <a href="/SiteBook/EditComment/@item.ID" class="comment-reply-link">
+                                                                                <i class="fa fa-edit"></i> Edit
+                                                                            </a>
+
                                                                         }
 
-                                                                        <span>
-                                                                            @ts.Hours.ToString() Hours @ts.Minutes.ToString()  Minutes Ago
-                                                                        </span>
-
-
-                                                                    </time>
-
-                                                                </div>
-                                                                <div class="comment-content">
-                                                                    <h5>@item.Header</h5>
-                                                                    <p>
-                                                                        @item.Content
-                                                                    </p>
-                                                                </div>
-                                                            </footer>
-                                                        </div>
-
-                                                    }
-
-
-
-                                                    @*<ol class="children">
-                                                            <li class="comment odd alt depth-2">
-                                                                <div class="comment-body">
-                                                                    <div class="comment-author vcard">
-                                                                        <img class="avatar photo" src="images/blog/peter.jpg" alt="Comment Avatar">
-                                                                        <b class="fn">
-                                                                            <a class="url" rel="external nofollow" href="#">Peter</a>
-                                                                        </b>
                                                                     </div>
-                                                                    <footer class="comment-meta">
-                                                                        <div class="left-arrow"></div>
-                                                                        <div class="reply">
-                                                                            <a href="#" class="comment-reply-link">
-                                                                                <i class="fa fa-reply"></i> Reply
+                                                                    <div class="reply" style="margin-right:5px">
+                                                                        @if (Convert.ToInt32(TempData["UserID"]) == item.User.ID)
+                                                                        {
+
+
+
+                                                                            <a id="@item.ID" class="comment-reply-link commentdelete">
+                                                                                <i class="fa fa-trash"></i> Delete
                                                                             </a>
+                                                                        }
+
+                                                                    </div>
+                                                                    <div class="comment-metadata">
+
+                                                                        <time datetime="2016-01-17">
+
+                                                                            <b>@item.AddDate.ToString("dd.MM.yyyy")/ </b>
+                                                                            @if (ts.Hours > 24)
+                                                                            {
+                                                                                <span>
+                                                                                    @ts.Days.ToString() Days Ago
+                                                                                </span>
+                                                                            }
+
+                                                                            <span>
+                                                                                @ts.Hours.ToString() Hours @ts.Minutes.ToString()  Minutes Ago
+                                                                            </span>
+
+
+                                                                        </time>
+
+                                                                    </div>
+                                                                    <div class="comment-content">
+                                                                        <h5>@item.Header</h5>
+                                                                        <p>
+                                                                            @item.Content
+                                                                        </p>
+                                                                    </div>
+                                                                </footer>
+                                                            </div>
+
+                                                        }
+
+
+
+                                                        @*<ol class="children">
+                                                                <li class="comment odd alt depth-2">
+                                                                    <div class="comment-body">
+                                                                        <div class="comment-author vcard">
+                                                                            <img class="avatar photo" src="images/blog/peter.jpg" alt="Comment Avatar">
+                                                                            <b class="fn">
+                                                                                <a class="url" rel="external nofollow" href="#">Peter</a>
+                                                                            </b>
                                                                         </div>
-                                                                        <div class="comment-metadata">
-                                                                            <a href="#">
-                                                                                <time datetime="2016-01-17">
-                                                                                    <b>Mar 17, 2016 / </b>  45 Minutes Ago
-                                                                                </time>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div class="comment-content">
-                                                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                                                        </div>
-                                                                    </footer>
-                                                                </div>
-                                                            </li>
-                                                        </ol>*@
-                                                </li>
-                                            </ol>
+                                                                        <footer class="comment-meta">
+                                                                            <div class="left-arrow"></div>
+                                                                            <div class="reply">
+                                                                                <a href="#" class="comment-reply-link">
+                                                                                    <i class="fa fa-reply"></i> Reply
+                                                                                </a>
+                                                                            </div>
+                                                                            <div class="comment-metadata">
+                                                                                <a href="#">
+                                                                                    <time datetime="2016-01-17">
+                                                                                        <b>Mar 17, 2016 / </b>  45 Minutes Ago
+                                                                                    </time>
+                                                                                </a>
+                                                                            </div>
+                                                                            <div class="comment-content">
+                                                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                                                            </div>
+                                                                        </footer>
+                                                                    </div>
+                                                                </li>
+                                                            </ol>*@
+                                                    </li>
+                                                </ol>
+                                            </div>
+
+
+
+
+                                            <div class="comment-respond" id="respond">
+                                                <h4 class="comment-reply-title" id="reply-title">Write your comment:</h4>
+                                                <span class="underline left"></span>
+                                                <form class="comment-form" id="commentform" method="post" action="/SiteBook/AddComment/">
+                                                    <div class="row">
+
+                                                        <p class="comment-form-subject input-required">
+                                                            <label>
+                                                                <span class="first-letter">Header</span>
+                                                            </label>
+                                                            <input name="Header" id="subject" type="text">
+                                                        </p>
+                                                        <p class="comment-form-comment">
+                                                            <textarea name="Content" id="comment" placeholder="Write Comment"></textarea>
+                                                        </p>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                    <p class="form-submit">
+                                                        @Html.HiddenFor(q => q.BookID)
+                                                        <input value="submit" class="submit" id="submit" name="bookid" type="submit">
+                                                    </p>
+
+                                                </form>
+                                            </div>
                                         </div>
 
-
-
-
-                                        <div class="comment-respond" id="respond">
-                                            <h4 class="comment-reply-title" id="reply-title">Write your comment:</h4>
-                                            <span class="underline left"></span>
-                                            <form class="comment-form" id="commentform" method="post" action="/SiteBook/AddComment/">
-                                                <div class="row">
-
-                                                    <p class="comment-form-subject input-required">
-                                                        <label>
-                                                            <span class="first-letter">Header</span>
-                                                        </label>
-                                                        <input name="Header" id="subject" type="text">
-                                                    </p>
-                                                    <p class="comment-form-comment">
-                                                        <textarea name="Content" id="comment" placeholder="Write Comment"></textarea>
-                                                    </p>
-                                                </div>
-                                                <div class="clearfix"></div>
-                                                <p class="form-submit">
-                                                    @Html.HiddenFor(q => q.BookID)
-                                                    <input value="submit" class="submit" id="submit" name="bookid" type="submit">
-                                                </p>
-
-                                            </form>
-                                        </div>
                                     </div>
 
+
+
                                 </div>
-
-
-
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
-            </div>
-        </main>
+            </main>
+        </div>
     </div>
-</div>
-<!-- End: Products Section -->
+    <!-- End: Products Section -->
 
-<script>
+    <script>
 
-    $(".rating span").click(function () {
-        var id = $(this).attr('id');
-        //bu rating ajax ile action a gidecek ve oradan kitabın rate tablosuna kaydolacak
+
+    $(".fa").click(function () {
+        var point = $(this).attr("value");
+        var bookid = $(this).attr("id");
+
+        console.log(point);
+
         $.ajax({
-            url: "/SiteBook/BookDetail/",
-            type: "POST",
-            data: { id: id },
-            success: function (msg) {
-                console.log(msg);
-                //$("#" + id).fadeOut();
-                window.location.href = "/SiteBook/BookDetail/"
-                alert();
+            url: "/SiteBook/AddPoint/",
+            type: "post",
+            data: { bookid: bookid, point: point },
+            success: function (average) {
+                console.log(average);
+                //for (var i = 5; i >= 1; i--) {
+
+                //    if (i <= average) {
+                //        $(this).removeClass('fa-star-o').addClass('fa-star');
+                //    }
+
+                //    else {
+                //        $(this).nextAll(".fa").removeClass('fa-star-o').addClass('fa-star');
+
+                //    }
+                //}
+
+                var modelbook = @Model.BookID;
+                window.location.href = "/sitebook/bookdetail/" + modelbook;
+
             },
 
         })
     })
+
+
+
+            $(".fa").mouseover(function () {
+        $(this).removeClass('fa-star-o').addClass('fa-star');
+        $(this).prevAll(".fa").removeClass('fa-star-o').addClass('fa-star');
+
+    })
+
+
+
+    $(".fa").mouseout(function () {
+        $(this).removeClass('fa-star').addClass('fa-star-o');
+        $(this).prevAll(".fa").removeClass('fa-star').addClass('fa-star-o');
+
+    })
+
+
+
+
+
+
 
         $(document).on("click", ".commentdelete", function () {
             let id = $(this).attr("id");
@@ -529,4 +600,8 @@
             })
         })
 
-</script>
+
+
+
+
+    </script>
