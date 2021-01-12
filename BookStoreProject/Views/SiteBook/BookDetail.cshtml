@@ -270,7 +270,7 @@
 
                                                 <li><strong>Edition:</strong>@Model.Edition</li>
 
-                                                <li>
+                                                <li id="stars">
 
                                                     <strong>Rating:</strong>
 
@@ -571,7 +571,8 @@
 
 
 
-    $(".fa").mouseout(function () {
+        $(".fa").mouseleave(function () {
+            //kaç adet dolu yıldız olduğunu bulalım. Daha sonra o yıldız kadar fa class ını ayarlayalım. id si starts olan li nin içerisinde fa-ftart olan kaç eleman var?
         $(this).removeClass('fa-star').addClass('fa-star-o');
         $(this).prevAll(".fa").removeClass('fa-star').addClass('fa-star-o');
 
