@@ -1,7 +1,9 @@
 ﻿using BookStoreProject.Models.Attributes;
 using BookStoreProject.Models.ORM.Context;
 using BookStoreProject.Models.ORM.Entities;
+using BookStoreProject.Models.Types;
 using BookStoreProject.Models.VM;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace BookStoreProject.Controllers
 {
-    [SiteAuth]
+  [SiteAuth]
     public class SiteBookController : SiteBaseController
     {
 
@@ -51,13 +53,99 @@ namespace BookStoreProject.Controllers
 
             SiteBookVM sitebook = new SiteBookVM();
             sitebook.BookVM = model;
-            sitebook.CategoryVM = model2;
+            sitebook.categories = model2;
 
             return View(sitebook);
         }
 
+        [HttpPost]
+        public IActionResult Search(string keywords,int? catalog,int? category)
+        {
+            if (!String.IsNullOrEmpty(keywords))
+            {
+                List<BookVM> books = _bookcontext.Books.Where(q => q.Name.Contains(keywords) && q.IsDeleted == false).Include(q => q.BookCategories).ThenInclude(BookCategories => BookCategories.Category).Include(q => q.BookPersons).ThenInclude(BookPerson => BookPerson.Person).OrderBy(q => q.Name).Select(q => new BookVM()
+                {
+                    BookID = q.ID,
+                    Name = q.Name,
+                    PublishDate = q.PublishDate,
+                    Publisher = q.Publisher,
+                    Edition = q.Edition,
+                    Imagepath = q.Imagepath,
+                    BookPersons = q.BookPersons.Where(q => q.IsDeleted == false).ToList(),
+                    UserPoints = q.UserPoints.Where(q => q.IsDeleted == false).ToList(),
+                    categories = _bookcontext.Categories.Where(q => q.IsDeleted == false).ToList()
+
+                }).ToList();
+
+               
+
+                List<PersonVM> people = _bookcontext.People.Where(q => q.Name.Contains(keywords) || q.SurName.Contains(keywords) && q.IsDeleted == false).Include(q => q.BookPeople).ThenInclude(q => q.Book).OrderBy(q => q.Name).Select(q => new PersonVM()
+                {
+                    PersonID = q.ID,
+                    Name = q.Name,
+                    SurName = q.SurName,
+                    Biography = q.Biography,
+                    BirthDate = q.BirthDate,
+                    Imagepath = q.Imagepath,
+                    BookPeople = q.BookPeople.Where(q => q.IsDeleted == false).ToList(),
+                    Duties = q.PersonDuties.Where(q => q.IsDeleted == false).Select(q => q.DutyID == Convert.ToInt32(EnumDuty.Writer) ? EnumDuty.Writer.ToString() : EnumDuty.Interpreter.ToString()).ToList(),
+
+                }).ToList();
+
+                
+
+                List<BookCategory> categories = _bookcontext.BookCategories.Where(q => q.Category.CategoryName.Contains(keywords) && q.IsDeleted == false).Include(q => q.Book).ThenInclude(q => q.BookPersons).ThenInclude(q => q.Person).ToList();
+
+                List<CategoryVM> model2 = _bookcontext.Categories.Where(q => q.IsDeleted == false).Select(q => new CategoryVM()
+                {
+
+                    CategoryName = q.CategoryName,
+                    CategoryID = q.ID,
+                    TopCategory = q.TopCategory,
+
+
+
+                }).ToList();
+
+                SiteBookVM model = new SiteBookVM();
+                model.BookVM = books;
+                model.bookcategories = categories;
+                model.PersonVM = people;
+                model.categories = model2;
+
+                return View("Index", new SiteBookVM { BookVM = books, bookcategories = categories , PersonVM = people, categories = model2 });
+            }
         
-       [SiteAuth]
+            else
+            //if (catalog != null || category != null)
+            //{
+            //    List<CategoryVM> categories = _bookcontext.Categories.Where(q => q.ID == catalog || q.TopCategory==catalog || q.ID == category).Include(q => q.BookCategories).ThenInclude(q => q.Book).ThenInclude(q => q.BookPersons).ThenInclude(q => q.Person).Select(q => new CategoryVM()
+            //    {
+
+            //        CategoryName = q.CategoryName,
+            //        CategoryID = q.ID,
+            //        TopCategory = q.TopCategory,
+
+            //        Books = q.BookCategories
+
+
+
+            //    }).ToList();
+                          
+
+            //    SiteBookVM model = new SiteBookVM();
+            //    model.CategoryVM = categories;
+
+                
+            //    return RedirectToAction("Index");
+            //}
+            {
+                return RedirectToAction("NoAccess","SiteError");
+            }
+        }
+
+
+        [SiteAuth]
         public IActionResult BookDetail(int id)
         {
             Book book = _bookcontext.Books.Include(q => q.BookCategories).ThenInclude(BookCategories => BookCategories.Category).Include(q => q.BookPersons).ThenInclude(BookPersons => BookPersons.Person).Include(q=>q.Comments).ThenInclude(Comments=>Comments.User).Include(q=>q.UserPoints).ThenInclude(UserPoints => UserPoints.USer).FirstOrDefault(q => q.ID == id);

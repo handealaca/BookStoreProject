@@ -50,7 +50,7 @@
 
                                 <h3>What are you looking for at the library?</h3>
 
-                                <form action="" method="get">
+                                <form action="/" method="get">
 
                                     <div class="col-md-4 col-sm-6">
                                         <div class="form-group">
@@ -65,7 +65,7 @@
 
                                                 <option>Select Top Category</option>
 
-                                                @foreach (var item in Model.CategoryVM.Where(q => q.TopCategory == 0))
+                                               @foreach (var item in Model.categories.Where(q => q.TopCategory == 0))
                                                 {
 
                                                     <option value="@item.CategoryID">@item.CategoryName</option>
@@ -363,14 +363,14 @@
                             </div>
 
                             <nav class="navigation pagination text-center">
-                                <h2 class="screen-reader-text">Posts navigation</h2>
+                                @*<h2 class="screen-reader-text">Posts navigation</h2>*@
                                 <div class="nav-links">
-                                    <a class="prev page-numbers" href="#."><i class="fa fa-long-arrow-left"></i> Previous</a>
-                                    <a class="page-numbers" href="#.">1</a>
-                                    <span class="page-numbers current">2</span>
-                                    <a class="page-numbers" href="#.">3</a>
-                                    <a class="page-numbers" href="#.">4</a>
-                                    <a class="next page-numbers" href="#.">Next <i class="fa fa-long-arrow-right"></i></a>
+                                    <a class="prev page-numbers" href="#"><i class="fa fa-long-arrow-left"></i> Previous</a>
+                                    <a class="page-numbers current" href="#">1</a>
+                                    <a class="page-numbers"  href="#">2</a>
+                                    <a class="page-numbers" href="#">3</a>
+                                    <a class="page-numbers" href="#">4</a>
+                                    <a class="next page-numbers" href="#">Next <i class="fa fa-long-arrow-right"></i></a>
                                 </div>
                             </nav>
 
@@ -413,6 +413,33 @@
             subcategoryselect.append($('<option></option>').text('Search the SubCategory'));
         }
     });
+
+        $(".page-numbers").click(function () {
+            var $activea = $('.pagination').find("a.current");
+            $activea.removeClass('active');
+            
+            $(this).addClass('current');
+            console.log(this);
+            //$(this).prevAll(".page-numbers").nextAll(".page-numbers").removeClass('current');
+            
+           
+
+
+        })
+
+        
+
+
 })
 </script>
+
+@*<script>
+
+    $(".fa").mouseout(function () {
+        $(this).removeClass('fa-star').addClass('fa-star-o');
+        $(this).prevAll(".fa").removeClass('fa-star').addClass('fa-star-o');
+
+    })
+
+</script>*@
 

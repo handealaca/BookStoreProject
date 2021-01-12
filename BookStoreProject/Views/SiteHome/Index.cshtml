@@ -18,12 +18,17 @@
                     <h2>Book Store</h2>
 
                     <div class="filter-box">
-                        <form action="/Site/SiteHome/" class="banner-filter-box" method="get">
+                        <form action="/SiteBook/Search" class="banner-filter-box" method="post">
                             <div class="form-group">
-                                <label class="sr-only" for="keywords">Search by Keyword</label>
-                                <input class="form-control" placeholder="Search by Keyword" id="keywords" name="keywords" type="text">
+                                @*<form action="/SiteBook/Search" class="banner-filter-box" method="post">*@
+                                    <label class="sr-only" for="keywords">Search by Keyword</label>
+                                    <input class="form-control" placeholder="Search by Keyword" id="keywords" name="keywords" type="text">
+                                    @*<input class="form-control" type="submit" value="Search">*@
+                                @*</form>*@
                             </div>
+
                             <div class="form-group">
+
                                 <select name="catalog" id="catalog" class="form-control">
 
                                     <option>Select Top Category</option>
@@ -35,8 +40,6 @@
                                     }
 
                                 </select>
-                            </div>
-                            <div class="form-group">
                                 <select name="category" id="category" class="form-control">
                                     <option>Select Sub Category</option>
 
@@ -51,10 +54,14 @@
                             <input class="form-control" type="submit" value="Search">
                         </form>
                     </div>
+
+
+
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 <!--End: Slider Section-->
 <!-- Start: Welcome Section -->
@@ -82,9 +89,9 @@
         <div class="center-content">
             <h2 class="section-title">Check Out The New Releases</h2>
             <span class="underline center"></span>
-           
+
         </div>
-     
+
     </div>
     <div id="category-filter">
         <ul class="category-list">
@@ -153,7 +160,7 @@
                         <div class="fact-item icon-magazine">
                             <div class="fact-icon">
                                 <img src="/Site/images/icon-magazine.png" alt="" />
-                                                            </div>
+                            </div>
                             <span>
                                 Writers<strong class="fact-counter">@Model.People.Count()</strong>
                             </span>
@@ -184,7 +191,7 @@
                         )
                     }
                     });
-                
+
             });
         });*@
 
@@ -223,9 +230,9 @@
     var categoryId = $(this).val(); // use $(this)
     console.log(categoryId);
     subcategoryselect.empty(); // clear existing options
- 
+
     //    return; // there is no point making an ajax call so just exit
-  
+
     $.ajax({
         type: 'POST', // or 'GET' depending on how you have modified the method above
         url: "/SiteHome/Getsubcategory", // use @Url.Action() to generate urls

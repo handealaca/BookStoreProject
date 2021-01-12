@@ -313,7 +313,9 @@
 
                                                     @if (@Model.UserPoints.LastOrDefault(q => q.UserID == Convert.ToInt32(TempData["UserID"])) != null)
                                                     {
-                                                        <li><strong>Your Point:</strong>@Model.UserPoints.LastOrDefault(q => q.UserID == Convert.ToInt32(TempData["UserID"])).Point</li>
+                                                        <li>
+                                                            <strong>Your Point:</strong>@Model.UserPoints.LastOrDefault(q => q.UserID == Convert.ToInt32(TempData                               ["UserID"])).Point
+                                                        </li>
                                                     }
 
                                                     else
@@ -322,9 +324,9 @@
 
                                                     }
 
-                                                }
+                                                   }
 
-                                                    </li>
+                                                   
 
 
                                                 </ul>

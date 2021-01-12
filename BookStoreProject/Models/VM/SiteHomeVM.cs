@@ -14,5 +14,7 @@ namespace BookStoreProject.Models.VM
 
         public List<Person> People { get; set; }
         public List<User> Users { get; set; }
+
+       
     }
 }

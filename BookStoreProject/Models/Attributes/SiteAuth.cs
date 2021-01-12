@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BookStoreProject.Models.Attributes
 {
-    public class SiteAuth : Attribute, IAuthorizationFilter
+    public class SiteAuth : AuthorizeAttribute, IAuthorizationFilter
     {
 
         public void OnAuthorization(AuthorizationFilterContext context)
@@ -14,10 +15,7 @@ namespace BookStoreProject.Models.Attributes
             if (context.HttpContext.User.Identity.IsAuthenticated)
             {
 
-               
-
-
-                string siterole = context.HttpContext.User.Claims.ToArray()[3].Value;
+               string siterole = context.HttpContext.User.Claims.ToArray()[3].Value;
 
                 if (siterole == "User")
                 {

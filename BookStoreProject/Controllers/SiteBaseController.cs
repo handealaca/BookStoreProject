@@ -25,9 +25,6 @@ namespace BookStoreProject.Controllers
 
         }
 
-
-
-
         public override void OnActionExecuting(ActionExecutingContext context2)
         {
 

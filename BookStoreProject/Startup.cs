@@ -40,7 +40,7 @@ namespace BookStoreProject
             .AddCookie(options =>
             {
                 options.LoginPath = "/SiteAccount/Index/";
-                options.LoginPath = "/Admin/AdminLogin/Index/";
+                //options.LoginPath = "/Admin/AdminLogin/Index/";
             });
 
             services.AddSingleton<ITempDataProvider, CookieTempDataProvider>();

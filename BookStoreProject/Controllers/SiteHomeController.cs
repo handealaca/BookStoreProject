@@ -37,6 +37,7 @@ namespace BookStoreProject.Controllers
 
             return View(model);
         }
+        
 
         [HttpPost]
         public IActionResult Getsubcategory (int catalog)
