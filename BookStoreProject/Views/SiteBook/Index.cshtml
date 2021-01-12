@@ -61,7 +61,7 @@
 
                                     <div class="col-md-3 col-sm-6">
                                         <div class="form-group">
-                                            <select name="catalog" id="catalog" class="form-control">
+                                            <select name="catalog" id="catalog" class="form-control book-select">
 
                                                 <option>Select Top Category</option>
 
@@ -79,7 +79,7 @@
                                     <div class="col-md-3 col-sm-6">
                                         <div class="form-group">
                                             
-                                            <select name="category" id="category" class="form-control">
+                                            <select name="category" id="category" class="form-control book-select">
                                                 <option>Select Sub Category</option>
 
                                             </select>
@@ -309,28 +309,22 @@
                         </div>
 
                         <div class="col-md-9">
-                            <div class="filter-options margin-list">
+                          
                                 <div class="row">
-                                    <div class="col-md-4 col-sm-4">
-                                        <select name="orderby">
-                                            <option selected="selected">Default sorting</option>
-                                            <option>Sort by popularity</option>
-                                            <option>Sort by rating</option>
-                                            <option>Sort by newness</option>
-                                            <option>Sort by price</option>
-                                        </select>
+                                    <div class="col-md-3 col-sm-6" style="margin-left:20px">
+                                        <div class="form-group">
+                                            <select class="form-control book-select">
+
+                                                <option>Select Top Category</option>
+
+                                                
+
+
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="filter-result">Showing items 1 to 9 of 19 total</div>
-                                    </div>
-                                    @*<div class="col-md-3 col-sm-3 pull-right">
-                                            <div class="filter-toggle">
-                                                <a href="books-media-gird-view-v1.html" class="active"><i class="glyphicon glyphicon-th-large"></i></a>
-                                                <a href="books-media-list-view.html"><i class="glyphicon glyphicon-th-list"></i></a>
-                                            </div>
-                                        </div>*@
                                 </div>
-                            </div>
+                        
                             <div class="booksmedia-fullwidth">
                                 <ul style="display:flex; justify-content:space-around; flex-wrap:wrap">
                                     @foreach (var item in Model.BookVM)
@@ -400,10 +394,8 @@
         success: function (response) {
             console.log(response);
 
-            //subcategoryselect.append($('<option></option>').val('').text('Please select')); // add a default null option
+            subcategoryselect.append($('<option></option>').val(0).text('Please select')); // add a default null option
             $.each(response, function (i, item) {
-                console.log(item.categoryName);
-                console.log(item.id);
                 subcategoryselect.append($('<option></option>').val(item.id).text(item.categoryName));
             });
 

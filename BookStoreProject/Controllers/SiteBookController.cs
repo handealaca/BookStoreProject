@@ -61,6 +61,20 @@ namespace BookStoreProject.Controllers
         [HttpPost]
         public IActionResult Search(string keywords,int? catalog,int? category)
         {
+            //List<Book> data = _bookcontext.Books.ToList();
+            //if (!String.IsNullOrEmpty(keywords))
+            //{
+            //    data = data.Where(q => q.Name.Contains(keywords)).ToList();
+            //}
+            //if (catalog != 0)
+            //{
+            //    data = data.Where()
+            //}
+            //if (true)
+            //{
+            //    data = data; ;
+            //}
+             
             if (!String.IsNullOrEmpty(keywords))
             {
                 List<BookVM> books = _bookcontext.Books.Where(q => q.Name.Contains(keywords) && q.IsDeleted == false).Include(q => q.BookCategories).ThenInclude(BookCategories => BookCategories.Category).Include(q => q.BookPersons).ThenInclude(BookPerson => BookPerson.Person).OrderBy(q => q.Name).Select(q => new BookVM()

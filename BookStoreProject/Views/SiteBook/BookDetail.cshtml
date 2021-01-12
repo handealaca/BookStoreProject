@@ -314,7 +314,7 @@
                                                     @if (@Model.UserPoints.LastOrDefault(q => q.UserID == Convert.ToInt32(TempData["UserID"])) != null)
                                                     {
                                                         <li>
-                                                            <strong>Your Point:</strong>@Model.UserPoints.LastOrDefault(q => q.UserID == Convert.ToInt32(TempData                               ["UserID"])).Point
+                                                            <strong>Your Point:</strong>@Model.UserPoints.LastOrDefault(q => q.UserID == Convert.ToInt32(TempData["UserID"])).Point
                                                         </li>
                                                     }
 
@@ -324,9 +324,9 @@
 
                                                     }
 
-                                                   }
+                                                }
 
-                                                   
+
 
 
                                                 </ul>
@@ -569,12 +569,29 @@
 
     })
 
+        let bookstars = 0;
+        $("#stars > i").each(function(key,item){
+
+            if ($(item).attr("class") == "fa fa-star") {
+                bookstars++;
+            }
+        })
 
 
         $(".fa").mouseleave(function () {
-            //kaç adet dolu yıldız olduğunu bulalım. Daha sonra o yıldız kadar fa class ını ayarlayalım. id si starts olan li nin içerisinde fa-ftart olan kaç eleman var?
-        $(this).removeClass('fa-star').addClass('fa-star-o');
-        $(this).prevAll(".fa").removeClass('fa-star').addClass('fa-star-o');
+            //kaç adet dolu yıldız olduğunu bulalım. Daha sonra o yıldız kadar fa class ını ayarlayalım. id si starts olan li nin içerisinde fa-start olan kaç eleman var?
+
+            $("#stars > i").each(function (key, item) {
+
+                if (key < bookstars) {
+                    console.log($(item));
+                    $(item).attr("class", "fa fa-star");                   
+                }
+
+            })
+
+        //$(this).removeClass('fa-star-o').addClass('fa-star');
+        //$(this).prevAll(".fa").removeClass('fa-star').addClass('fa-star-o');
 
     })
 
