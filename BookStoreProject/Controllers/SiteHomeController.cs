@@ -40,7 +40,7 @@ namespace BookStoreProject.Controllers
         
 
         [HttpPost]
-        public IActionResult Getsubcategory (int catalog)
+        public IActionResult Getsubcategory (int? catalog)
         {
             List<Category> subcategories = _bookcontext.Categories.Where(q => q.IsDeleted == false && q.TopCategory == catalog).ToList();
             return Json(subcategories);

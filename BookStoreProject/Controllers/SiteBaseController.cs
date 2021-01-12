@@ -34,20 +34,6 @@ namespace BookStoreProject.Controllers
             {
                 if (HttpContext.User.Claims.ToArray()[3].Value == "User")
                 {
-                    //if (!_memoryCache2.TryGetValue(CacheKeys.Entry, out cacheEntry))
-                    //{
-                    //    // Key not in cache, so get data.
-                    //    cacheEntry = DateTime.Now;
-
-                    //    // Set cache options.
-                    //    var cacheEntryOptions = new MemoryCacheEntryOptions()
-                    //        // Keep in cache for this time, reset time if accessed.
-                    //        .SetSlidingExpiration(TimeSpan.FromSeconds(3));
-
-                    //    // Save data in cache.
-                    //    _cache.Set(CacheKeys.Entry, cacheEntry, cacheEntryOptions);
-                    //}
-
 
                     TempData["UserEmail"] = HttpContext.User.Claims.ToArray()[0].Value;
 

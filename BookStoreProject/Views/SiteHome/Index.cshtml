@@ -22,16 +22,16 @@
                             <div class="form-group">
                                 @*<form action="/SiteBook/Search" class="banner-filter-box" method="post">*@
                                 <label class="sr-only" for="keywords">Search by Keyword</label>
-                                <input class="form-control" placeholder="Search by Keyword" id="keywords" name="keywords" type="text">
+                                <input class="form-control search" placeholder="Search by Keyword" id="keywords" name="keywords" type="text">
                                 @*<input class="form-control" type="submit" value="Search">*@
                                 @*</form>*@
                             </div>
 
                             <div class="form-group">
 
-                                <select name="catalog" id="catalog" class="form-control">
+                                <select name="catalog" id="catalog" class="form-control home-select">
 
-                                    <option>Select Top Category</option>
+                                    <option value="">Select Top Category</option>
 
                                     @foreach (var item in Model.Topcategories.Where(q => q.TopCategory == 0))
                                     {
@@ -42,13 +42,9 @@
                             </div>
                             <div class="form-group">
 
-                                <select name="category" id="category" class="form-control">
-                                    <option>Select Sub Category</option>
+                                <select name="category" id="category" class="form-control home-select">
+                                    <option value="0">Select Sub Category</option>
 
-                                    @*@foreach (var item in Model.Subcategories)
-                                        {
-                                            <option value="@item.ID">@item.CategoryName</option>
-                                        }*@
 
                                 </select>
                             </div>
@@ -225,38 +221,36 @@
 
 
 <script>
-    var subcategoryselect = $('#category'); // cache it
+    var subcategoryselect = $('#category');
 
 
     $('#catalog').change(function () {
 
-    var categoryId = $(this).val(); // use $(this)
-    console.log(categoryId);
-    subcategoryselect.empty(); // clear existing options
+        subcategoryselect.empty();
+        var categoryId = $(this).val();
 
-    //    return; // there is no point making an ajax call so just exit
+        if (categoryId == null) {
+            subcategoryselect.empty();
+            subcategoryselect.append($('<option></option>').val("").text('Select Sub Category'));
+        }
 
-    $.ajax({
-        type: 'POST', // or 'GET' depending on how you have modified the method above
-        url: "/SiteHome/Getsubcategory", // use @Url.Action() to generate urls
-        data: { catalog: categoryId },
-        success: function (response) {
+        console.log(categoryId);
 
-            if (response.length == 0) {
-                subcategoryselect.css("cursor","not-allowed")
+        $.ajax({
+            type: 'POST',
+            url: "/SiteHome/Getsubcategory",
+            data: { catalog: categoryId },
+            success: function (response) {
+
+                subcategoryselect.append($('<option></option>').val("").text('Select Sub Category'));
+                $.each(response, function (i, item) {
+                    console.log(item.categoryName);
+                    console.log(item.id);
+                    subcategoryselect.append($('<option></option>').val(item.id).text(item.categoryName));
+                });
+
             }
 
-            $.each(response, function (i, item) {
-                console.log(item.categoryName);
-                console.log(item.id);
-                subcategoryselect.append($('<option></option>').val(item.id).text(item.categoryName));
-            });
-
-        },
-        error: function (result) {
-            console.log("FAILED");
-            subcategoryselect.append($('<option></option>').text('Search the SubCategory'));
-        }
-    });
-})
+        });
+    })
 </script>

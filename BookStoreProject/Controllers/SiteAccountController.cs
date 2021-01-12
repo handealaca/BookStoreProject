@@ -81,7 +81,6 @@ namespace BookStoreProject.Controllers
                     ViewBag.error = "Email or Password is wrong!";
                     return View("Index", new UserLoginVM { register = null, Login = null });
 
-                    //return RedirectToAction("Index", "SiteAccount");
                 }
             }
 
@@ -98,9 +97,9 @@ namespace BookStoreProject.Controllers
         {
             await HttpContext.SignOutAsync();
             //FormsAuthentication.LogOut();
-            HttpContext.User =
-                new GenericPrincipal(new GenericIdentity(string.Empty), null);
-
+            //HttpContext.User =
+            //    new GenericPrincipal(new GenericIdentity(string.Empty), null);
+            username = null;
             return RedirectToAction("Index", "SiteAccount");
         }
 
