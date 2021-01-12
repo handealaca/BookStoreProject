@@ -33,7 +33,9 @@ namespace BookStoreProject
             services.AddDbContext<BookContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-       
+            services.AddSingleton<ITempDataProvider, CookieTempDataProvider>();
+
+
             services.AddMemoryCache();
           
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

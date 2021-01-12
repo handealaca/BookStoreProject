@@ -13,10 +13,10 @@ using System.Threading.Tasks;
 
 namespace BookStoreProject.Controllers
 {
-    public class SiteAccountController : Controller
+    public class SiteAccountController : SiteBaseController
     {
         private readonly BookContext _bookcontext;
-        public SiteAccountController(BookContext bookcontext)
+        public SiteAccountController(BookContext bookcontext) : base(bookcontext)
         {
             _bookcontext = bookcontext;
         }
@@ -61,7 +61,7 @@ namespace BookStoreProject.Controllers
                     
                     TempData["UserID"] = user.ID.ToString();
 
-                    TempData["UserName"] = model.Name;
+                    username = model.Name;
 
 
                     var userIdentity = new ClaimsIdentity(claims, "login");

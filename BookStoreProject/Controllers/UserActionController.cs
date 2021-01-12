@@ -46,7 +46,7 @@ namespace BookStoreProject.Controllers
                 user.BirthDate = model.BirthDate;
                 user.Password = model.UserPassword;
 
-                TempData["UserName"] = model.Name;
+                username = model.Name;
 
 
 
