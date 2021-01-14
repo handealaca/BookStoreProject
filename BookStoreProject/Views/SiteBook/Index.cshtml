@@ -132,17 +132,15 @@
                                             </div>
                                         </div>
                                         <div data-accordion>
-                                            <h5 class="widget-sub-title" data-control>Authors</h5>
+                                            <h5 class="widget-sub-title" data-control>Writers</h5>
                                             <div class="widget_categories" data-content>
                                                 <ul>
-                                                    <li><a href="#">Love stories <span>(18)</span></a></li>
-                                                    <li><a href="#">Texas <span>(04)</span></a></li>
-                                                    <li><a href="#">Rich people <span>(03)</span></a></li>
-                                                    <li><a href="#">Humorous stories <span>(02)</span></a></li>
-                                                    <li><a href="#">Widows <span>(02)</span></a></li>
-                                                    <li><a href="#">Women <span>(11)</span></a></li>
-                                                    <li><a href="#">Babysitters <span>(25)</span></a></li>
-                                                    <li><a href="#">Law firms <span>(09)</span></a></li>
+
+                                                    @foreach (var item in Model.BookVM)
+                                                    {
+                                                        <li><a href="#">@item.WriterName<span>(09)</span></a></li>
+                                                    }
+                                               
                                                 </ul>
                                             </div>
                                             <div class="clearfix"></div>
@@ -291,22 +289,7 @@
                                                 </div>
                                                 <div class="clearfix"></div>
                                             </li>
-                                            <li>
-                                                <figure>
-                                                    <img src="images/order-item-03.jpg" alt="product" />
-                                                </figure>
-                                                <a href="#">The Sonic Boom</a>
-                                                <span class="price"><strong>Author:</strong> F. Scott Fitzgerald</span>
-                                                <span><strong>ISBN:</strong> 978158157</span>
-                                                <div class="rating">
-                                                    <span>☆</span>
-                                                    <span>☆</span>
-                                                    <span>☆</span>
-                                                    <span>☆</span>
-                                                    <span>☆</span>
-                                                </div>
-                                                <div class="clearfix"></div>
-                                            </li>
+                                      
                                         </ul>
                                         <div class="clearfix"></div>
                                     </div>*@

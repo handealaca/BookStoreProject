@@ -20,8 +20,8 @@ namespace BookStoreProject.Models.VM
         public string PublishDate { get; set; } 
         public string Edition { get; set; }
         public string WriterName { get; set; }
-        
-        
+        public string Summary { get; set; }
+
         public bool IsDeleted { get; set; }
         public IFormFile Coverimage { set; get; }
         public string Imagepath { get; set; }

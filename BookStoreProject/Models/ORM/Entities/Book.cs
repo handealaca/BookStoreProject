@@ -20,6 +20,7 @@ namespace BookStoreProject.Models.ORM.Entities
         public List<BookGenre> BookGenres { get; set; }
         public int TotalPoint { get; set; }
         public double AvrPoint { get; set; }
+        public string Summary { get; set; }
 
     }
 }

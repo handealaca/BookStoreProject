@@ -207,14 +207,23 @@
                                     </div>
 
                                 </div>
+                                <div class="form-row">
+                                    <div class="form-group col-lg-12">
+                                        @Html.LabelFor(q => q.Summary)
+                                        @Html.TextAreaFor(q => q.Summary, new { @class = "form-control form-control-border border-width-2", @placeholder = "Summary" })
+                                    </div>
 
-                                <!-- /.card-body -->
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+
                                 </div>
 
-                            </div>
-                        </form>
+
+                                    <!-- /.card-body -->
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+
+                                </div>
+</form>
                     </div>
 
 

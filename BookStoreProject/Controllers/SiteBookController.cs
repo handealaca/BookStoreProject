@@ -101,8 +101,9 @@ namespace BookStoreProject.Controllers
                 books = data
                
             };
-            SiteBookVM.Categories = _bookcontext.Categories.Where(q=> q.TopCategory == catalog && q.IsDeleted == false ).ToList();
-            SiteBookVM.topcategories = _bookcontext.Categories.Where(q => q.TopCategory == 0).ToList();
+
+            SiteBookVM.Categories = _bookcontext.Categories.Where(q=> q.TopCategory == catalog && q.IsDeleted == false).ToList();
+            SiteBookVM.topcategories = _bookcontext.Categories.Where(q => q.TopCategory == 0 && q.IsDeleted == false).ToList();
             //SiteBookVM.subcategories = _bookcontext.Categories.Where(q => q.TopCategory == catalog && q.SubCategory == category).ToList();
 
 

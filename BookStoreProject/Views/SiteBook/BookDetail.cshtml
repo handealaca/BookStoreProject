@@ -113,12 +113,14 @@
                                             </div>
                                         </div>
                                         <div data-accordion>
-                                            <h5 class="widget-sub-title" data-control>Authors</h5>
+                                            <h5 class="widget-sub-title" data-control>Writers</h5>
                                             <div class="widget_categories" data-content>
                                                 <ul>
-                                                    <li><a href="#">Love stories <span>(18)</span></a></li>
-                                                    <li><a href="#">Texas <span>(04)</span></a></li>
-                                                    <li><a href="#">Rich people <span>(03)</span></a></li>
+                                                    @foreach (var item in Model.BookPersons)
+                                                    {
+                                                    <li><a href="#">@item.Person.Name @item.Person.SurName </a></li>
+                                                    }
+                                                  
 
                                                 </ul>
                                             </div>
@@ -333,7 +335,11 @@
                                             </header>
                                         </div>
                                     </div>
-                                    <p><strong>Summary:</strong> There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. </p>
+                                <p>
+                                    <strong>Summary:</strong> 
+
+                                    @Model.Summary
+                                </p>
                                     <ul class="detail-page-listing">
 
                                         <li><strong>Name:</strong>@Model.Name</li>
