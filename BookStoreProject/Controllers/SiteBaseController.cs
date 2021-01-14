@@ -39,7 +39,7 @@ namespace BookStoreProject.Controllers
 
                     TempData["UserId"] = HttpContext.User.Claims.ToArray()[2].Value;
 
-                    TempData["UserName"] = username;
+                    TempData["UserName"] = "Welcome "  +  username;
                 }
 
             }

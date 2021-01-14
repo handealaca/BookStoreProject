@@ -12,6 +12,8 @@ namespace BookStoreProject.Models.ORM.Entities
 
         public int? TopCategory { get; set; }
 
+        public int? SubCategory { get; set; }
+
 
 
     }

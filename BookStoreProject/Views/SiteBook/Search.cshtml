@@ -1,4 +1,5 @@
 ﻿
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Site/Shared/_SiteLayout.cshtml";
@@ -64,16 +65,10 @@
 
                                                 <option>Select Top Category</option>
 
-                                                @foreach (var item in Model.topcategories)
+                                                @foreach (var item in Model.Categories)
                                                 {
                                                     <option>@item.CategoryName</option>
                                                 }
-
-                                                @*@foreach (var item in Model.categories.Where(q => q.TopCategory == 0))
-                                                    {
-
-                                                        <option value="@item.CategoryID">@item.CategoryName</option>
-                                                    }*@
 
 
 
@@ -330,42 +325,14 @@
                                 </div>
                             </div>
 
-
-
                             <div class="booksmedia-fullwidth">
                                 <ul style="display:flex; justify-content:space-around; flex-wrap:wrap">
-                                    @*@foreach (var item in Model.books)
+                                    @foreach (var item in Model.books)
                                     {
                                         <li>
                                             <div class="book-list-icon yellow-icon"></div>
                                             <figure>
                                                 <a href="/SiteBook/BookDetail/@item.ID"><img src="/Admin/Coverimg/@item.Imagepath" alt="Book" style="height:450px"></a>
-                                                <figcaption>
-                                                    <header>
-
-                                                        <h4><a href="">@item.Name</a></h4>
-                                                        <p>
-                                                            @foreach (var data in item.BookPersons.Where(q => q.DutyID == 0))
-                                                            {
-                                                                <strong>Writer:</strong>@(data.Person.Name+ " "+data.Person.SurName) <br />
-                                                            }
-                                                        </p>
-
-                                                    </header>
-
-                                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-
-                                                </figcaption>
-                                            </figure>
-                                        </li>
-                                    }*@
-
-                                    @foreach (var item in Model.BookVM)
-                                    {
-                                        <li>
-                                            <div class="book-list-icon yellow-icon"></div>
-                                            <figure>
-                                                <a href="/SiteBook/BookDetail/@item.BookID"><img src="/Admin/Coverimg/@item.Imagepath" alt="Book" style="height:450px"></a>
                                                 <figcaption>
                                                     <header>
 
@@ -459,10 +426,13 @@
 </script>
 
 @*<script>
+
         $(".fa").mouseout(function () {
             $(this).removeClass('fa-star').addClass('fa-star-o');
             $(this).prevAll(".fa").removeClass('fa-star').addClass('fa-star-o');
+
         })
+
     </script>*@
 
 

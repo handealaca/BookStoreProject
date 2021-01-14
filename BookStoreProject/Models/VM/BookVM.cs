@@ -36,5 +36,7 @@ namespace BookStoreProject.Models.VM
 
         public double AvrPoint { get; set; }
 
+        public Book books { get; set; }
+
     }
 }

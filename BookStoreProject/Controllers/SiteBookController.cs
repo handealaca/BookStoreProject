@@ -57,13 +57,18 @@ namespace BookStoreProject.Controllers
             sitebook.BookVM = model;
             sitebook.categories = model2;
 
+
+            sitebook.Categories = _bookcontext.Categories.Where(q => q.IsDeleted == false).ToList();
+            sitebook.topcategories = _bookcontext.Categories.Where(q => q.TopCategory == 0).ToList();
+            sitebook.subcategories = _bookcontext.Categories.Where(q => q.TopCategory != null).ToList();
+
             return View(sitebook);
         }
 
        
-        public async Task<IActionResult> Search(string keywords, int? catalog, int? category)
+        public IActionResult Search(string keywords, int? catalog, int? category)
         {
-             var data = _bookcontext.Books.ToList();
+             var data = _bookcontext.Books.Include(x => x.BookCategories).ThenInclude(BookCategory => BookCategory.Category).Include(x => x.BookPersons).ThenInclude(BookPerson => BookPerson.Person).OrderBy(q => q.Name).Where(x => x.IsDeleted == false).ToList();
             //List<BookPerson> data = _bookcontext.BookPeople.Where(q => q.IsDeleted == false && q.Person.Name == keywords || q.Person.SurName == keywords).Include(q => q.Person).Include(q => q.Book).ThenInclude(q => q.BookCategories).ThenInclude(BookCategories => BookCategories.Category).ToList();
             //List<Person> data1 = _bookcontext.People.ToList();
             //List<Category> data2 = _bookcontext.Categories.ToList();
@@ -71,22 +76,22 @@ namespace BookStoreProject.Controllers
             if (!String.IsNullOrEmpty(keywords))
             {
 
-                data = await _bookcontext.Books.Include(x => x.BookCategories).ThenInclude(BookCategory => BookCategory.Category).Include(x => x.BookPersons).ThenInclude(BookPerson => BookPerson.Person).Where(x => x.Name.ToLower().Contains(keywords.ToLower()) || x.BookPersons.Where(x => x.Person.Name.ToLower().Contains(keywords.ToLower())).Any() || x.BookPersons.Where(x => x.Person.SurName.ToLower().Contains(keywords.ToLower())).Any() && x.IsDeleted == false).Where(Book => Book.IsDeleted == false).OrderBy(q => q.Name).ToListAsync();
+                data = data.Where(x => x.Name.ToLower().Contains(keywords.ToLower()) || x.BookPersons.Where(x => x.Person.Name.ToLower().Contains(keywords.ToLower())).Any() || x.BookPersons.Where(x => x.Person.SurName.ToLower().Contains(keywords.ToLower())).Any() && x.IsDeleted == false).Where(Book => Book.IsDeleted == false).ToList();
 
             }
-            if (catalog != 0)
+            if (catalog != null)
             {
 
-                data = await _bookcontext.Books.Include(x => x.BookPersons).ThenInclude(BookPerson => BookPerson.Person).Include(x => x.BookCategories).ThenInclude(BookCategory => BookCategory.Category).Where(x => x.BookCategories.Where(x => x.Category.TopCategory == catalog || x.CategoryID == catalog).Any())
-                    .Where(Book => Book.IsDeleted == false).OrderBy(q => q.Name).ToListAsync();
+                data = data.Where(x => x.BookCategories.Where(x => x.Category.TopCategory == catalog || x.CategoryID == catalog).Any())
+                    .Where(Book => Book.IsDeleted == false).ToList();
 
 
             }
             if (category != null)
             {
 
-                data = await _bookcontext.Books.Include(x => x.BookPersons).ThenInclude(BookPerson => BookPerson.Person).Include(x => x.BookCategories).ThenInclude(BookCategory => BookCategory.Category).Where(x => x.BookCategories.Where(x => x.CategoryID == category).Any())
-                     .Where(Book => Book.IsDeleted == false).OrderBy(q => q.Name).ToListAsync();
+                data = data.Where(x => x.BookCategories.Where(x => x.CategoryID == category).Any())
+                     .Where(Book => Book.IsDeleted == false).ToList();
 
 
             }
@@ -94,8 +99,14 @@ namespace BookStoreProject.Controllers
 
             {
                 books = data
+               
             };
-            //    return View(SiteBookVM);
+            SiteBookVM.Categories = _bookcontext.Categories.Where(q=> q.TopCategory == catalog && q.IsDeleted == false ).ToList();
+            SiteBookVM.topcategories = _bookcontext.Categories.Where(q => q.TopCategory == 0).ToList();
+            //SiteBookVM.subcategories = _bookcontext.Categories.Where(q => q.TopCategory == catalog && q.SubCategory == category).ToList();
+
+
+
             return View(SiteBookVM);
 
 
