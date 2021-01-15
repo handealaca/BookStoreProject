@@ -60,7 +60,7 @@ namespace BookStoreProject.Controllers
 
             sitebook.Categories = _bookcontext.Categories.Where(q => q.IsDeleted == false).ToList();
             sitebook.topcategories = _bookcontext.Categories.Where(q => q.TopCategory == 0 && q.IsDeleted == false).ToList();
-            sitebook.subcategories = _bookcontext.Categories.Where(q => q.TopCategory != null && q.IsDeleted == false).ToList();
+            sitebook.subcategories = _bookcontext.Categories.Where(q => q.TopCategory != 0 && q.IsDeleted == false).ToList();
 
             return View(sitebook);
         }

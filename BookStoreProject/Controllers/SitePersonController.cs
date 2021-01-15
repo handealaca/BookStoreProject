@@ -34,6 +34,9 @@ namespace BookStoreProject.Controllers
                 Duties = q.PersonDuties.Where(q => q.IsDeleted == false).Select(q => q.DutyID == Convert.ToInt32(EnumDuty.Writer) ? EnumDuty.Writer.ToString() : EnumDuty.Interpreter.ToString()).ToList(),
 
             }).ToList();
+
+            //model.Categories = _bookcontext.Categories.Where(q => q.IsDeleted == false).ToList();
+            //sitebook.topcategories = _bookcontext.Categories.Where(q => q.TopCategory == 0 && q.IsDeleted == false).ToList();
             return View(model);
         }
 

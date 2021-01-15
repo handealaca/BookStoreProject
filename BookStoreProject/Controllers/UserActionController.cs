@@ -42,11 +42,11 @@ namespace BookStoreProject.Controllers
                 User user = _bookcontext.Users.FirstOrDefault(q => q.ID == model.UserID);
                 user.Name = model.Name;
                 user.SurName = model.SurName;
-                user.Email = model.UserEmail;
+                
                 user.BirthDate = model.BirthDate;
                 user.Password = model.UserPassword;
 
-                username = model.Name;
+                
 
 
 

@@ -13,10 +13,10 @@ using System.Threading.Tasks;
 
 namespace BookStoreProject.Controllers
 {
-    public class SiteAccountController : SiteBaseController
+    public class SiteAccountController : Controller
     {
         private readonly BookContext _bookcontext;
-        public SiteAccountController(BookContext bookcontext) : base(bookcontext)
+        public SiteAccountController(BookContext bookcontext)
         {
             _bookcontext = bookcontext;
         }
@@ -61,7 +61,7 @@ namespace BookStoreProject.Controllers
                     
                     TempData["UserID"] = user.ID.ToString();
 
-                    username = model.Name;
+                    //username = model.Name;
 
 
                     var userIdentity = new ClaimsIdentity(claims, "login");
@@ -97,9 +97,9 @@ namespace BookStoreProject.Controllers
         {
             await HttpContext.SignOutAsync();
             //FormsAuthentication.LogOut();
-            //HttpContext.User =
-            //    new GenericPrincipal(new GenericIdentity(string.Empty), null);
-            username = null;
+            HttpContext.User =
+                new GenericPrincipal(new GenericIdentity(string.Empty), null);
+
             return RedirectToAction("Index", "SiteAccount");
         }
 

@@ -15,7 +15,7 @@ namespace BookStoreProject.Controllers
     //[SiteAuth]
     public class SiteBaseController : Controller
     {
-        public static string username = "";
+        //public static string username = "";
         private readonly BookContext _bookcontext;
         //private readonly IMemoryCache _memoryCache2;
 
@@ -39,7 +39,7 @@ namespace BookStoreProject.Controllers
 
                     TempData["UserId"] = HttpContext.User.Claims.ToArray()[2].Value;
 
-                    TempData["UserName"] = "Welcome "  +  username;
+                    TempData["UserName"] = HttpContext.User.Claims.ToArray()[1].Value;
                 }
 
             }

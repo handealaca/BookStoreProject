@@ -122,16 +122,20 @@
                                 <li><a href="/SiteHome/About/">About</a></li>
                             </ul>
                             <!-- Header Topbar -->
-
                             <div class="header-topbar hidden-md">
                                 <div class="topbar-links">
-                                    @if (TempData["UserName"] != null)
+                                    @if (TempData["UserEmail"] != null)
                                     {
+                                        string a = (TempData["UserEmail"]).ToString();
+                                        char[] ch = { '@' };
+                                        int b = a.IndexOfAny(ch);
+                                        string username = a.Substring(0, b);
+
                                         <div>
                                             <a style="padding-right:10px" href="/SiteAccount/Logout"><i class="fa fa-lock"></i>LogOut</a>
                                             <a href="/UserAction/Edit/@TempData["UserID"]"> <i class="fa fa-user"></i>My Account</a>
                                         </div>
-                                        <span class="d-none d-md-inline">@TempData["UserName"]</span>
+                                        <span class="d-none d-md-inline">Welcome @username </span>
                                     }
                                     else
                                     {
