@@ -45,7 +45,7 @@
 
                                 <h3>What are you looking for at the library?</h3>
 
-                                <form action="/SiteBook/Search/" method="get">
+                                <form action="/SiteBook/Search/" method="post">
 
                                     <div class="col-md-4 col-sm-6">
                                         <div class="form-group">
@@ -112,7 +112,7 @@
                                                 <ul>
                                                     @foreach (var item in Model.Categories.Where(q => q.TopCategory == 0))
                                                     {
-                                                        <li><a name="catalog" id="@item.ID "class="widget-sub-category"><strong>@item.CategoryName</strong></a></li>
+                                                        <li><a href="/SiteBook/Listclick/@item.ID" class="widget-sub-category"><strong>@item.CategoryName</strong></a></li>
 
 
                                                         <div class="widget_categories" style="max-height:inherit">
@@ -120,7 +120,7 @@
                                                                 @foreach (var data in Model.Categories.Where(q => q.TopCategory == item.ID))
                                                                 {
 
-                                                                    <li style="list-style-type:disc"><a name="category" id="@data.ID"class="widget-sub-category" style="padding-bottom:15px">@data.CategoryName</a></li>
+                                                                    <li style="list-style-type:disc"><a  href="/SiteBook/Listclick/@data.ID" class="widget-sub-category" style="padding-bottom:15px">@data.CategoryName</a></li>
 
 
                                                                     <div class="widget_categories" style="max-height:inherit">
@@ -128,7 +128,7 @@
                                                                             @foreach (var data1 in Model.Categories.Where(q => q.TopCategory == data.ID))
                                                                             {
 
-                                                                                <li><a name="scategory" id="@data1.ID" style="padding-bottom:15px">@data1.CategoryName</a></li>
+                                                                                <li><a  href="/SiteBook/Listclick/@data1.ID" style="padding-bottom:15px">@data1.CategoryName</a></li>
 
                                                                             }
 
@@ -259,7 +259,7 @@
 </Script>
 
 
-<script>
+@*<script>
 
     $('.widget-sub-category').click(function () {
 
@@ -269,7 +269,7 @@
             console.log(categoryId);
 
             $.ajax({
-                type: 'GET',
+                type: 'POST',
                 url: "/SiteBook/Search",
                 data: { catalog: categoryId },
             });
@@ -282,7 +282,7 @@
             console.log(categoryId);
 
             $.ajax({
-                type: 'GET',
+                type: 'POST',
                 url: "/Sitebook/Search",
                 data: { category: categoryId },
             });
@@ -294,15 +294,19 @@
             console.log(categoryId);
             alert(categoryId);
             $.ajax({
-                type: 'GET',
+                type: 'POST',
                 url: "/SiteBook/Search",
                 data: { scategory: categoryId },
+                success: function () {
+                    alert("Deleted successfully!!!");
+                    window.location.href = "/sitebook/";
+                },
 
             });
         }
 
     })
-</script>
+</script>*@
 
 
 @*<script>

@@ -44,7 +44,7 @@ namespace BookStoreProject.Controllers
             return View(sitebook);
         }
 
-
+        [HttpPost]
         public IActionResult Search(string keywords, int? catalog, int? category, int? scategory)
         {
             List<Category> modelcategory = _bookcontext.Categories.Where(q => q.IsDeleted == false).OrderBy(q=>q.CategoryName).ToList();
@@ -109,6 +109,29 @@ namespace BookStoreProject.Controllers
             return View("Index", new SiteBookVM { books = data, Categories = modelcategory,people=modelpeople});
 
         }
+
+
+        public IActionResult Listclick(int id)
+        {
+            List<Category> modelcategory = _bookcontext.Categories.Where(q => q.IsDeleted == false).OrderBy(q => q.CategoryName).ToList();
+
+            List<Person> modelpeople = _bookcontext.People.Include(q => q.BookPeople.Where(q => q.DutyID == 0)).Where(q => q.IsDeleted == false).OrderBy(q => q.Name).ToList();
+
+            List<Book> data = _bookcontext.Books.Include(x => x.BookCategories).ThenInclude(BookCategory => BookCategory.Category).Include(x => x.BookPersons).ThenInclude(BookPerson => BookPerson.Person).OrderBy(q => q.Name).Where(x => x.IsDeleted == false).ToList();
+
+            data=data.Where(x => x.BookCategories.Where(x => x.Category.TopCategory == id || x.CategoryID == id).Any())
+                    .Where(Book => Book.IsDeleted == false).ToList();
+
+            SiteBookVM sitebook = new SiteBookVM();
+            sitebook.books = data;
+            sitebook.Categories = modelcategory;
+            sitebook.people = modelpeople;
+
+            return View("Index", new SiteBookVM { books = data, Categories = modelcategory, people = modelpeople });
+
+        }
+
+
 
 
         [SiteAuth]
