@@ -7653,8 +7653,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Georgia, Times, serif;
-  text-transform: uppercase;
+  font-family: "Open Sans", Georgia, Times, serif;
+  /*text-transform: uppercase;*/
 }
 h3,
 h4,
@@ -18410,10 +18410,11 @@ a:focus {
   }
 }
 .sidebar h4 {
-  color: #2f2f2f;
-  font-size: 20px;
-  margin: 0 0 34px;
-  position: relative;
+    color: #2f2f2f;
+    font-size: 20px;
+    margin: 0 0 34px;
+    position: relative;
+    text-transform: uppercase
 }
 .sidebar h4 i {
   color: #a1a1a1;
@@ -18431,6 +18432,7 @@ a:focus {
         height: 1px;
         width: 72px;
         background: url('/Site/images/underline.png') center center no-repeat;
+        
     }
 .sidebar .widget-sub-title {
     border-bottom: 1px solid #f4f4f4;
@@ -18444,6 +18446,25 @@ a:focus {
     background-repeat: no-repeat;
     background-position-x: 100%;
     background-position-y: -5px;
+}
+.sidebar .widget-sub-category {
+    border-bottom: 1px solid #f4f4f4;
+    color: #2f2f2f;
+    font-size: 14px;
+    line-height: 16px;
+    padding-bottom: 10px;
+    background: transparent;
+
+}
+
+
+.sidebar .widget-sub-catalog {
+    border-bottom: 1px solid #f4f4f4;
+    color: #2f2f2f;
+    font-size: 14px;
+    line-height: 16px;
+    padding-bottom: 10px;
+    background: transparent;
 }
     /*.sidebar .widget-sub-title::after {
         background: transparent;
@@ -18461,7 +18482,7 @@ a:focus {
   margin-top: 5px;
 }
 .sidebar .open {
-  padding-bottom: 30px;
+  /*padding-bottom: 30px;*/
 }
 /*.sidebar .open > .widget-sub-title::after {
   content: "\f068";
@@ -18507,6 +18528,7 @@ a:focus {
 .sidebar .widget_categories ul li a {
   color: #464646;
   display: block;
+  cursor:pointer;
 }
 .sidebar .widget_categories ul li a span {
   float: right;
