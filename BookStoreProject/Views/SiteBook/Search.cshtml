@@ -65,7 +65,7 @@
 
                                                 <option>Select Top Category</option>
 
-                                                @foreach (var item in Model.Categories)
+                                                @foreach (var item in Model.topcategories)
                                                 {
                                                     <option>@item.CategoryName</option>
                                                 }
@@ -81,6 +81,10 @@
 
                                             <select name="category" id="category" class="form-control book-select">
                                                 <option>Select Sub Category</option>
+                                                @foreach (var item in Model.Categories)
+                                                {
+                                                    <option>@item.CategoryName</option>
+                                                }
 
                                             </select>
                                         </div>

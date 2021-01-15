@@ -16,7 +16,7 @@
 
             <span class="underline center"></span>
 
-            <p class="lead"> Proin ac eros pellentesque dolor pharetra tempo.</p>
+            <p class="lead"> </p>
 
         </div>
 
@@ -64,18 +64,16 @@
 
                                                 <option>Select Top Category</option>
 
-                                                @foreach (var item in Model.topcategories)
-                                                {
-                                                    <option>@item.CategoryName</option>
-                                                }
-
-                                                @*@foreach (var item in Model.categories.Where(q => q.TopCategory == 0))
+                                                @*@foreach (var item in Model.topcategories)
                                                     {
-
-                                                        <option value="@item.CategoryID">@item.CategoryName</option>
+                                                        <option>@item.CategoryName</option>
                                                     }*@
 
+                                                @foreach (var item in Model.categories.Where(q => q.TopCategory == 0))
+                                                {
 
+                                                    <option value="@item.CategoryID">@item.CategoryName</option>
+                                                }
 
                                             </select>
                                         </div>
@@ -120,14 +118,14 @@
                                             <h5 class="widget-sub-title" data-control>Subject</h5>
                                             <div class="widget_categories" data-content>
                                                 <ul>
-                                                    <li><a href="#">Love stories <span>(18)</span></a></li>
-                                                    <li><a href="#">Texas <span>(04)</span></a></li>
-                                                    <li><a href="#">Rich people <span>(03)</span></a></li>
-                                                    <li><a href="#">Humorous stories <span>(02)</span></a></li>
-                                                    <li><a href="#">Widows <span>(02)</span></a></li>
-                                                    <li><a href="#">Women <span>(11)</span></a></li>
-                                                    <li><a href="#">Babysitters <span>(25)</span></a></li>
-                                                    <li><a href="#">Law firms <span>(09)</span></a></li>
+                                                    <li><a href="#">Space <span>(18)</span></a></li>
+                                                    <li><a href="#">Utopia <span>(04)</span></a></li>
+                                                    <li><a href="#">Distopia <span>(03)</span></a></li>
+                                                    <li><a href="#">Wizardy <span>(02)</span></a></li>
+                                                    <li><a href="#">Drama <span>(02)</span></a></li>
+                                                    <li><a href="#">Philosophy <span>(11)</span></a></li>
+                                                    <li><a href="#">Melancholia <span>(25)</span></a></li>
+                                                    <li><a href="#">Absurd <span>(09)</span></a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -140,7 +138,7 @@
                                                     {
                                                         <li><a href="#">@item.WriterName<span>(09)</span></a></li>
                                                     }
-                                               
+
                                                 </ul>
                                             </div>
                                             <div class="clearfix"></div>
@@ -289,7 +287,7 @@
                                                 </div>
                                                 <div class="clearfix"></div>
                                             </li>
-                                      
+
                                         </ul>
                                         <div class="clearfix"></div>
                                     </div>*@
@@ -305,9 +303,6 @@
 
                                             <option>Select Top Category</option>
 
-
-
-
                                         </select>
                                     </div>
                                 </div>
@@ -318,30 +313,30 @@
                             <div class="booksmedia-fullwidth">
                                 <ul style="display:flex; justify-content:space-around; flex-wrap:wrap">
                                     @*@foreach (var item in Model.books)
-                                    {
-                                        <li>
-                                            <div class="book-list-icon yellow-icon"></div>
-                                            <figure>
-                                                <a href="/SiteBook/BookDetail/@item.ID"><img src="/Admin/Coverimg/@item.Imagepath" alt="Book" style="height:450px"></a>
-                                                <figcaption>
-                                                    <header>
+                                        {
+                                            <li>
+                                                <div class="book-list-icon yellow-icon"></div>
+                                                <figure>
+                                                    <a href="/SiteBook/BookDetail/@item.ID"><img src="/Admin/Coverimg/@item.Imagepath" alt="Book" style="height:450px"></a>
+                                                    <figcaption>
+                                                        <header>
 
-                                                        <h4><a href="">@item.Name</a></h4>
-                                                        <p>
-                                                            @foreach (var data in item.BookPersons.Where(q => q.DutyID == 0))
-                                                            {
-                                                                <strong>Writer:</strong>@(data.Person.Name+ " "+data.Person.SurName) <br />
-                                                            }
-                                                        </p>
+                                                            <h4><a href="">@item.Name</a></h4>
+                                                            <p>
+                                                                @foreach (var data in item.BookPersons.Where(q => q.DutyID == 0))
+                                                                {
+                                                                    <strong>Writer:</strong>@(data.Person.Name+ " "+data.Person.SurName) <br />
+                                                                }
+                                                            </p>
 
-                                                    </header>
+                                                        </header>
 
-                                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
+                                                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
 
-                                                </figcaption>
-                                            </figure>
-                                        </li>
-                                    }*@
+                                                    </figcaption>
+                                                </figure>
+                                            </li>
+                                        }*@
 
                                     @foreach (var item in Model.BookVM)
                                     {
@@ -403,24 +398,24 @@
     //if (!categoryId) {
     //    return; // there is no point making an ajax call so just exit
     //}
-    $.ajax({
-        type: 'POST', // or 'GET' depending on how you have modified the method above
-        url: "/SiteHome/Getsubcategory", // use @Url.Action() to generate urls
-        data: { catalog: categoryId },
-        success: function (response) {
-            console.log(response);
+        $.ajax({
+            type: 'POST', // or 'GET' depending on how you have modified the method above
+            url: "/SiteHome/Getsubcategory", // use @Url.Action() to generate urls
+            data: { catalog: categoryId },
+            success: function (response) {
+                console.log(response);
 
-            subcategoryselect.append($('<option></option>').val(0).text('Please select subcategory')); // add a default null option
-            $.each(response, function (i, item) {
-                subcategoryselect.append($('<option></option>').val(item.id).text(item.categoryName));
-            });
+                subcategoryselect.append($('<option></option>').val(0).text('Please select subcategory')); // add a default null option
+                $.each(response, function (i, item) {
+                    subcategoryselect.append($('<option></option>').val(item.id).text(item.categoryName));
+                });
 
-        },
-        error: function (result) {
-            console.log("FAILED");
-            subcategoryselect.append($('<option></option>').text('Search the SubCategory'));
-        }
-    });
+            },
+            error: function (result) {
+                console.log("FAILED");
+                subcategoryselect.append($('<option></option>').text('Search the SubCategory'));
+            }
+        });
 
         $(".page-numbers").click(function () {
             var $activea = $('.pagination').find("a.current");
@@ -431,14 +426,9 @@
             //$(this).prevAll(".page-numbers").nextAll(".page-numbers").removeClass('current');
 
 
-
-
         })
 
-
-
-
-})
+    })
 </script>
 
 @*<script>
