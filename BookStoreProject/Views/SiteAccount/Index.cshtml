@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Site/Shared/_SiteLayout.cshtml";
+    Layout = "~/Views/Site/Shared/_SiteHomeLayout.cshtml";
 }
 
 @model BookStoreProject.Models.VM.UserLoginVM
@@ -13,7 +13,7 @@
     </style>
 
     <!-- Start: Page Banner -->
-    <section class="page-banner services-banner" style="background-image: url(/Site/images/kitaplık.jpg)">
+    <section class="page-banner services-banner" style="background-image: url(/Site/images/register.jpg)">
         <div class="container">
             <div class="banner-header">
                 <h2>Login / Register</h2>
@@ -30,41 +30,43 @@
     </section>
     <!-- End: Page Banner -->
     <!-- Start: Cart Section -->
-    <div id="content" class="site-content">
-        <div id="primary" class="content-area">
-            <main id="main" class="site-main">
-                <div class="signin-main">
-                    <div class="container">
-                        <div class="woocommerce">
-                            <div class="woocommerce-login">
-                                <div class="company-info signin-register">
-                                    <div class="col-md-5 col-md-offset-1 border-dark-left">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="company-detail bg-dark margin-left" style="height:550px">
-                                                    <div class="signin-head">
-                                                        <h2>Login</h2>
-                                                        <span class="underline left"></span>
+    <section class="book-padding">
+        <div id="content" class="site-content">
+            <div id="primary" class="content-area">
+                <main id="main" class="site-main">
+                    <div class="signin-main">
+                        <div class="container">
+                            <div class="woocommerce">
+                                <div class="woocommerce-login">
+                                    <div class="company-info signin-register">
+                                        <div class="col-md-5 col-md-offset-1 border-dark-left">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="company-detail bg-dark margin-left" style="height:550px">
+                                                        <div class="signin-head">
+                                                            <h2>Login</h2>
+                                                            <span class="underline left"></span>
+                                                        </div>
+                                                        <p style="color:#ff7236">@ViewBag.error</p>
+                                                        <form action="/SiteAccount/Login/" method="post">
+                                                            @await Html.PartialAsync("Partial/Login", Model.Login)
+                                                        </form>
                                                     </div>
-                                                    <p style="color:#ff7236">@ViewBag.error</p>
-                                                    <form action="/SiteAccount/Login/" method="post">
-                                                        @await Html.PartialAsync("Partial/Login", Model.Login)
-                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-5 border-dark new-user">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="company-detail bg-light margin-right" style="height:550px">
-                                                    <div class="new-user-head">
-                                                        <h2>Create New Account</h2>
-                                                        <span class="underline left"></span>
+                                        <div class="col-md-5 border-dark new-user">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="company-detail bg-light margin-right" style="height:550px">
+                                                        <div class="new-user-head">
+                                                            <h2>Create New Account</h2>
+                                                            <span class="underline left"></span>
+                                                        </div>
+                                                        <form action="/SiteAccount/Register/" method="post">
+                                                            @await Html.PartialAsync("Partial/Register", Model.register)
+                                                        </form>
                                                     </div>
-                                                    <form action="/SiteAccount/Register/" method="post">
-                                                        @await Html.PartialAsync("Partial/Register", Model.register)
-                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -73,13 +75,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </main>
+                </main>
+            </div>
         </div>
-    </div>
-    <br />
-    <br />
-    <br />
-    <br />
-
+    </section>
+    
+  
     <!-- End: Cart Section -->

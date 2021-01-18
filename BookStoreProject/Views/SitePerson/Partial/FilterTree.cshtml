@@ -1,0 +1,67 @@
+﻿
+@model BookStoreProject.Models.VM.SiteBookVM
+
+<div class="col-md-3">
+    <aside id="secondary" class="sidebar widget-area" data-accordion-group>
+        <div class="widget widget_related_search open" data-accordion>
+            <h4 class="widget-title" data-control>Related Searches</h4>
+            <div data-content>
+
+                <div data-accordion>
+                    <h5 class="widget-sub-title" data-control>Categories</h5>
+                    <div class="widget_categories" data-content>
+                        <ul>
+                            @foreach (var item in Model.Categories.Where(q => q.TopCategory == 0))
+                            {
+                                <li><a href="/SiteBook/Listclick/@item.ID" class="widget-sub-category"><strong>@item.CategoryName</strong></a></li>
+
+
+                                <div class="widget_categories" style="max-height:inherit">
+                                    <ul>
+                                        @foreach (var data in Model.Categories.Where(q => q.TopCategory == item.ID))
+                                        {
+
+                                            <li style="list-style-type:disc"><a href="/SiteBook/Listclick/@data.ID" class="widget-sub-category" style="padding-bottom:15px">@data.CategoryName</a></li>
+
+
+                                            <div class="widget_categories" style="max-height:inherit">
+                                                <ul>
+                                                    @foreach (var data1 in Model.Categories.Where(q => q.TopCategory == data.ID))
+                                                    {
+
+                                                        <li><a href="/SiteBook/Listclick/@data1.ID" style="padding-bottom:15px">@data1.CategoryName</a></li>
+
+                                                    }
+
+                                                </ul>
+                                            </div>
+                                        }
+
+                                    </ul>
+                                </div>
+
+
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+                <div data-accordion style="padding-top:10px">
+                    <h5 class="widget-sub-title" data-control>Writers</h5>
+                    <div class="widget_categories" data-content>
+                        <ul>
+
+                            @foreach (var item in Model.people)
+                            {
+
+                                <li><a href="/SiteBook/WriterListclick/@item.ID">@(item.Name+" "+item.SurName)<span>@item.BookPeople.Where(q => q.IsDeleted == false && q.PersonID == item.ID).Count()</span></a></li>
+                            }
+
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </aside>
+</div>

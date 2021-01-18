@@ -6,7 +6,7 @@
 
 @model BookStoreProject.Models.VM.SiteBookVM
     <!-- Start: Page Banner -->
-<section class="page-banner services-banner" style="background-image: url(/Site/images/kitaplık.jpg)">
+<section class="page-banner services-banner" style="background-image: url(/Site/images/sitebanner.jpg)">
 
     <div class="container">
         <div class="banner-header">
@@ -38,69 +38,15 @@
                 <div class="books-full-width">
                     <div class="container-fluid">
 
-                        <div class="row">
-
-                            <section class="search-filters" style="padding:0 70px 0 70px">
-
-                                <div class="filter-box">
-
-                                    <h3>What are you looking for at the Book Store?</h3>
-
-                                    <form action="/SiteBook/Search/" method="post">
-
-                                        <div class="col-md-4 col-sm-6">
-                                            <div class="form-group">
-                                                <label class="sr-only" for="keywords">Search by Keyword</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3 col-sm-6">
-                                            <div class="form-group">
-                                                <select name="catalog" id="catalog" class="form-control book-select">
-
-                                                    <option>Select Top Category</option>
-
-                                                    @foreach (var item in Model.Categories.Where(q => q.TopCategory == 0))
-                                                    {
-
-                                                        <option value="@item.ID">@item.CategoryName</option>
-                                                    }
-
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3 col-sm-6">
-                                            <div class="form-group">
-
-                                                <select name="category" id="category" class="form-control book-select">
-                                                    <option>Select Sub Category</option>
-
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-2 col-sm-6">
-                                            <div class="form-group">
-                                                <input class="form-control" type="submit" value="Search">
-                                            </div>
-                                        </div>
-
-                                    </form>
-                                </div>
-
-                                <div class="clear"></div>
-
-                            </section>
-
-                        </div>
+                        @await Html.PartialAsync("Partial/Search")
+                        
 
                         <!-- Start: Search Section -->
 
 
                         <div class="row" style="padding: 0 55px 0 55px">
 
-                            <div class="col-md-3">
+                            @*<div class="col-md-3">
                                 <aside id="secondary" class="sidebar widget-area" data-accordion-group>
                                     <div class="widget widget_related_search open" data-accordion>
                                         <h4 class="widget-title" data-control>Related Searches</h4>
@@ -153,7 +99,7 @@
                                                         @foreach (var item in Model.people)
                                                         {
 
-                                                            <li><a>@(item.Name+" "+item.SurName)<span>@item.BookPeople.Where(q => q.IsDeleted == false && q.PersonID == item.ID).Count()</span></a></li>
+                                                            <li><a href="/SiteBook/WriterListclick/@item.ID">@(item.Name+" "+item.SurName)<span>@item.BookPeople.Where(q => q.IsDeleted == false && q.PersonID == item.ID).Count()</span></a></li>
                                                         }
 
                                                     </ul>
@@ -163,7 +109,7 @@
                                         </div>
                                     </div>
                                 </aside>
-                            </div>
+                            </div>*@
 
                             <div class="col-md-9">
 
@@ -183,9 +129,25 @@
 
                                                             <h4><a href="">@item.Name</a></h4>
                                                             <p>
+                                                                <strong>Author:</strong>
                                                                 @foreach (var data in item.BookPersons.Where(q => q.DutyID == 0))
                                                                 {
-                                                                    <strong>Writer:</strong>@(data.Person.Name+ " "+data.Person.SurName) <br />
+
+                                                                    if (item.BookPersons.Where(q => q.DutyID == 0).LastOrDefault() == data)
+                                                                    {
+                                                                        <span>
+                                                                            @(data.Person.Name + " " + data.Person.SurName)
+                                                                        </span>
+                                                                    }
+
+                                                                    else
+                                                                    {
+                                                                        <span>
+                                                                            @(data.Person.Name + " " + data.Person.SurName + ",")
+                                                                        </span>
+
+                                                                    }
+
                                                                 }
                                                             </p>
 
@@ -260,6 +222,6 @@
         });
     })
 
-</Script>
+</script>
 
 

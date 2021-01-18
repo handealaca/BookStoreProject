@@ -5,9 +5,9 @@
 }
 
 
-@model List<BookStoreProject.Models.VM.PersonVM>
+@model BookStoreProject.Models.VM.SiteBookVM
     <!-- Start: Page Banner -->
-<section class="page-banner services-banner" style="background-image: url(/Site/images/kitaplık.jpg)">
+<section class="page-banner services-banner" style="background-image: url(/Site/images/writers.jpg)">
     <div class="container">
 
         <div class="banner-header">
@@ -22,7 +22,7 @@
             <ul>
                 <li><a href="/SiteHome/"> Home </a></li>
 
-                <li> Writers/Interpreters </li>
+                <li>Writers/Interpreters</li>
 
             </ul>
 
@@ -33,178 +33,126 @@
 </section>
 
 <!--End: Page Banner -->
-<div id="content" class="site-content">
-    <div id="primary" class="content-area">
-        <main id="main" class="site-main">
-            <div class="books-full-width">
+<section class="book-padding">
+    <div id="content" class="site-content">
+        <div id="primary" class="content-area">
+            <main id="main" class="site-main">
+                <div class="books-full-width">
 
-                <div class="container-fluid">
+                    <div class="container-fluid">
 
-                    <!-- Start: Search Section -->
-                    <div class="row">
+                        <!-- Start: Search Section -->
+                        @await Html.PartialAsync("Partial/Search")
 
-                        <section class="search-filters" style="padding:0 70px 0 70px">
 
-                            <div class="filter-box">
 
-                                <h3>What are you looking for at the library?</h3>
+                        <div class="row" style="padding: 0 55px 0 55px">
 
-                                <form action="" method="get">
+                            @await Html.PartialAsync("Partial/FilterTree")
 
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="form-group">
-                                            <label class="sr-only" for="keywords">Search by Keyword</label>
-                                            <input class="form-control" placeholder="Search by Keyword" id="keywords" name="keywords" type="text">
-                                        </div>
-                                    </div>
 
-                                    <div class="col-md-3 col-sm-6">
-                                        <div class="form-group">
-                                            <select name="catalog" id="catalog" class="form-control" placeholder="Select Category">
-                                                @*<option>Search the Catalog</option>*@
-                                                @*@foreach (var item in Model.Topcategories.Where(q => q.TopCategory == 0))
-                                    {
-                                        <option value="@item.ID">@item.CategoryName</option>
+                            <div class="col-md-9">
 
-                                    }*@
-                                            </select>
-                                        </div>
-                                    </div>
+                                <div class="booksmedia-fullwidth">
+                                    <ul style="display:flex; justify-content:space-between; flex-wrap:wrap">
+                                        @foreach (var item in Model.PeopleVM)
+                                        {
+                                            <li>
+                                                <div class="book-list-icon light-green-icon"></div>
+                                                <figure>
+                                                    <a href="/SitePerson/PersonDetail/@item.PersonID"><img src="/Admin/writerimg/@item.Imagepath" alt="Book" style="height:300px"></a>
 
-                                    <div class="col-md-3 col-sm-6">
-                                        <div class="form-group">
-                                            <select name="category" id="category" class="form-control">
+                                                    <figcaption class="">
+                                                        <header>
 
-                                                @*@foreach (var item in Model.Topcategories.Where(q=>q.ID==))
-                                    {
-                                        <option>All Categories</option>
-                                    }*@
-                                            </select>
-                                        </div>
-                                    </div>
+                                                            <h4><a href="">@item.Name @item.SurName</a></h4>
+                                                            <p>
+                                                                <strong>Duties:</strong>
 
-                                    <div class="col-md-2 col-sm-6">
-                                        <div class="form-group">
-                                            <input class="form-control" type="submit" value="Search">
-                                        </div>
-                                    </div>
+                                                                @foreach (var data in item.Duties)
+                                                                {
+                                                                    if (item.Duties.LastOrDefault() == data)
+                                                                    {
+                                                                        <span>@data</span>
+                                                                    }
 
-                                </form>
-                            </div>
+                                                                    else
+                                                                    {
+                                                                        <span>@data,</span>
+                                                                    }
+                                                                }
+                                                            </p>
 
-                            <div class="clear"></div>
+                                                        </header>
 
-                        </section>
+                                                        <p>@item.Biography</p>
 
-                    </div>
+                                                    </figcaption>
+                                                </figure>
+                                            </li>
+                                        }
 
-                    <div class="row" style="padding: 0 55px 100px 55px;margin: 0 -15px 0 -15px;">
-
-                        <div class="col-md-12">
-                            <div class="filter-options margin-list">
-                                <div class="row">
-                                    <div class="col-md-4 col-sm-4">
-                                        <select name="orderby">
-                                            <option selected="selected">Default sorting</option>
-                                            <option>Sort by popularity</option>
-                                            <option>Sort by rating</option>
-                                            <option>Sort by newness</option>
-                                            <option>Sort by price</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4 col-sm-4">
-                                        <div class="filter-result">Showing items 1 to 9 of 19 total</div>
-                                    </div>
-                                    @*<div class="col-md-3 col-sm-3 pull-right">
-                            <div class="filter-toggle">
-                                <a href="books-media-gird-view-v1.html" class="active"><i class="glyphicon glyphicon-th-large"></i></a>
-                                <a href="books-media-list-view.html"><i class="glyphicon glyphicon-th-list"></i></a>
-                            </div>
-                        </div>*@
+                                    </ul>
                                 </div>
+                                <nav class="navigation pagination text-center">
+                                    <h2 class="screen-reader-text">Posts navigation</h2>
+                                    <div class="nav-links">
+                                        <a class="prev page-numbers" href="#."><i class="fa fa-long-arrow-left"></i> Previous</a>
+                                        <a class="page-numbers" href="#.">1</a>
+                                        <span class="page-numbers current">2</span>
+                                        <a class="page-numbers" href="#.">3</a>
+                                        <a class="page-numbers" href="#.">4</a>
+                                        <a class="next page-numbers" href="#.">Next <i class="fa fa-long-arrow-right"></i></a>
+                                    </div>
+                                </nav>
                             </div>
-                            <div class="booksmedia-fullwidth">
-                                <ul style="display:flex; justify-content:space-between; flex-wrap:wrap">
-                                    @foreach (var item in Model)
-                                    {
-                                        <li @*style="width:250px;height:200px"*@>
-                                            <div class="book-list-icon light-green-icon"></div>
-                                            <figure @*style="height:450px"*@>
-                                                <a href="/SitePerson/PersonDetail/@item.PersonID"><img src="/Admin/writerimg/@item.Imagepath" alt="Book" style="height:300px;width:250px"></a>
-                                                <figcaption class="">
-                                                    <header>
 
-                                                        <h4><a href="">@item.Name @item.SurName</a></h4>
-                                                        <p>
-                                                            <strong>Duties:</strong>
-                                                            @foreach (var data in item.Duties)
-                                                            {
-                                                                @data<br />
-                                                            }
-                                                        </p>
-
-                                                    </header>
-
-                                                    <p>@item.Biography</p>
-
-                                                </figcaption>
-                                            </figure>
-                                        </li>
-                                    }
-
-                                </ul>
-                            </div>
-                            <nav class="navigation pagination text-center">
-                                <h2 class="screen-reader-text">Posts navigation</h2>
-                                <div class="nav-links">
-                                    <a class="prev page-numbers" href="#."><i class="fa fa-long-arrow-left"></i> Previous</a>
-                                    <a class="page-numbers" href="#.">1</a>
-                                    <span class="page-numbers current">2</span>
-                                    <a class="page-numbers" href="#.">3</a>
-                                    <a class="page-numbers" href="#.">4</a>
-                                    <a class="next page-numbers" href="#.">Next <i class="fa fa-long-arrow-right"></i></a>
-                                </div>
-                            </nav>
                         </div>
 
+                        <!-- End: Search Section -->
                     </div>
-
-
-                    <!-- End: Search Section -->
-
                 </div>
-            </div>
-        </main>
+            </main>
+        </div>
     </div>
-</div>
+</section>
+
+
 <script>
 
-    $(".rating span").click(function () {
-        var id = $(this).attr('id');
-        //bu rating ajax ile action a gidecek ve oradan kitabın rate tablosuna kaydolacak
+    var subcategoryselect = $('#category');
 
 
-    })
+    $('#catalog').change(function () {
 
-    $(document).on("click", ".commentdelete", function () {
-        let id = $(this).attr("id");
+        subcategoryselect.empty();
+        var categoryId = $(this).val();
+
+        if (categoryId == null) {
+            subcategoryselect.empty();
+            subcategoryselect.append($('<option></option>').val("").text('Select Sub Category'));
+        }
+
+        console.log(categoryId);
+
         $.ajax({
-            url: "/SiteBook/DeleteComment/",
-            type: "POST",
-            data: { id: id},
-            success: function (msg) {
-                console.log(msg);
-                //$("#" + id).fadeOut();
-                window.location.href = "/SiteBook/BookDetail/"
-                alert("Deleted successfully!!!");
-            },
-            error: function (err) {
-                alert("Failed!");
+            type: 'POST',
+            url: "/SiteHome/Getsubcategory",
+            data: { catalog: categoryId },
+            success: function (response) {
+
+                subcategoryselect.append($('<option></option>').val("").text('Select Sub Category'));
+                $.each(response, function (i, item) {
+                    console.log(item.categoryName);
+                    console.log(item.id);
+                    subcategoryselect.append($('<option></option>').val(item.id).text(item.categoryName));
+                });
+
             }
-        })
+
+        });
     })
 
 </script>
-
 
 

@@ -17,7 +17,8 @@ namespace BookStoreProject.Models.VM
         public List<Category> subcategories { get; set; }
         public Comment Comment { get; set; }
         public Book Bookdetail { get; set; }
-
+        public Person PersonDetail { get; set; }
+        public List<PersonVM> PeopleVM { get; set; }
 
     }
 }

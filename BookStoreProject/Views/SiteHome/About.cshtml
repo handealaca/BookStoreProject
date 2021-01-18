@@ -1,14 +1,13 @@
 ﻿
 @{
     ViewData["Title"] = "About";
-    Layout = "~/Views/Site/Shared/_SiteLayout.cshtml";
+    Layout = "~/Views/Site/Shared/_SiteHomeLayout.cshtml";
 }
-
 <!-- Start: Page Banner -->
-<section class="page-banner services-banner">
+<section class="page-banner services-banner" style="background-image: url(/Site/images/about.jpg)">
     <div class="container">
         <div class="banner-header">
-            <h2>Who We Are</h2>
+            <h2>Who We Are?</h2>
             <span class="underline center"></span>
             <p class="lead">This is what the purpose of this website</p>
         </div>
@@ -22,117 +21,116 @@
 </section>
 <!-- End: Page Banner -->
 <!-- Start: Services Section -->
-<div id="content" class="site-content">
-    <div id="primary" class="content-area">
-        <main id="main" class="site-main">
-            <div class="services-main">
-                <div class="services-pg">
+<section class="book-padding">
+    <div id="content" class="site-content">
+        <div id="primary" class="content-area">
+            <main id="main" class="site-main">
+                <div class="services-main">
+                    <div class="services-pg">
 
-                    <section class="who-we-are" style="margin: 70px 0 70px 0">
-                        <div class="company-info">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-sm-8 border">
-                                        <div class="row">
-                                            <div class="col-sm-11">
-                                                <div class="company-detail">
-                                                    <h3 class="section-title">Project Information</h3>
-                                                    <span class="underline left"></span>
-                                                    <p>
-                                                        Are you a bookworm like us? The two of us here wanted to make a website showing our favorite books and writers that we already read.</br>
-                                                        .Net Core with MVC is used making this project. Since there are lots of related datatables, EF Core was chosen technology. ORM and VM are used in <strong>Model</strong> file. Also for splitting admin and user attributes are put for filtered authentication.  In our <strong>View</strong> side object or object lists sent as a model with mostly VM. Foreach loops are most used and for the forms input tag helpers are used such as <mark>Html.TextBoxFor</mark>...In addition to this javascript added in script section for some functions such as dropdown lists,point stars...For CRUD operations mostly IActionResult interface and Include methods are used in <strong>Controller</strong> side.For the queries LINQ method syntax is preferred.
-                                                       
+                        <section class="who-we-are" style="margin: 70px 0 70px 0">
+                            <div class="company-info">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-8 border">
+                                            <div class="row">
+                                                <div class="col-sm-11">
+                                                    <div class="company-detail">
+                                                        <h3 class="section-title">Project Information</h3>
+                                                        <span class="underline left"></span>
+                                                        <p>
+                                                            Are you a bookworm like us? The two of us here wanted to make a website showing our favorite books and writers that we already read.</br>
+                                                            .Net Core with MVC is used making this project. Since there are lots of related datatables, EF Core was chosen technology. ORM and VM are used in <strong>Model</strong> file. Also for splitting admin and user attributes are put for filtered authentication.  In our <strong>View</strong> side object or object lists sent as a model with mostly VM. Foreach loops are most used and for the forms input tag helpers are used such as <mark>Html.TextBoxFor</mark>...In addition to this javascript added in script section for some functions such as dropdown lists,point stars...For CRUD operations mostly IActionResult interface and Include methods are used in <strong>Controller</strong> side.For the queries LINQ method syntax is preferred.
 
-                                                    </p>
 
+                                                        </p>
+
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="company-image"></div>
                             </div>
-                            <div class="company-image"></div>
-                        </div>
-                    </section>
+                        </section>
 
-                    <!-- Start: Our Partners Section -->
-                    <section class="community-testimonial">
-                        <div class="container">
-                            <div class="text-center">
-                                <h2 class="section-title">Our Community</h2>
-                                <span class="underline center"></span>
-                                <p class="lead">Editors</p>
-                            </div>
-                            <div class="owl-carousel">
-                                <div class="single-testimonial-box">
-                                    <div class="top-portion">
-                                        <img src="/Site/images/ece_github.jpg" alt="Testimonial Image" style="width:200px" />
-                                        <div class="user-comment">
-                                            <div class="arrow-left"></div>
-                                            <blockquote cite="#">
-                                                <p><strong>Özge Ece ERDEN</strong></p>
-                                                <p>Software Developer</p>
-                                            </blockquote>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="bottom-portion" style="height:50px">
-                                        @*<a href="#" class="author">
-                                                Adrey Pachai <small> (Student )</small>
-                                            </a>*@
-                                        <div class="social-share-links">
-                                            <ul>
-                                                <li><a href="https://www.linkedin.com/in/%C3%B6zge-ece-erden-59555a46/"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a></li>
-                                                <li><a href="https://github.com/eceerden"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a></li>
-
-                                            </ul>
-                                        </div>
-
-                                    </div>
-
+                        <!-- Start: Our Partners Section -->
+                        <section class="community-testimonial">
+                            <div class="container">
+                                <div class="text-center">
+                                    <h2 class="section-title">Our Community</h2>
+                                    <span class="underline center"></span>
+                                    <p class="lead">Editors</p>
                                 </div>
-
-                                <div class="single-testimonial-box">
-                                    <div class="top-portion">
-                                        <img src="/Site/images/hande_github.jpg" alt="Testimonial Image" style="width:200px" />
-                                        <div class="user-comment">
-                                            <div class="arrow-left"></div>
-                                            <blockquote cite="#">
-                                                <p><strong>Hande ALACA</strong></p>
-                                                <p>Software Developer</p>
-                                            </blockquote>
+                                <div class="owl-carousel">
+                                    <div class="single-testimonial-box">
+                                        <div class="top-portion">
+                                            <img src="/Site/images/ece_github.jpg" alt="Testimonial Image" style="width:200px" />
+                                            <div class="user-comment">
+                                                <div class="arrow-left"></div>
+                                                <blockquote cite="#">
+                                                    <p><strong>Özge Ece ERDEN</strong></p>
+                                                    <p>Software Developer</p>
+                                                </blockquote>
+                                            </div>
+                                            <div class="clear"></div>
                                         </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="bottom-portion" style="height:50px">
-                                        @*<a href="#" class="author">
-                                                Adrey Pachai <small> (Student )</small>
-                                            </a>*@
-                                        <div class="social-share-links">
-                                            <ul>
-                                                <li><a href="https://www.linkedin.com/in/hande-a-b651a75a/"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a></li>
-                                                <li><a href="https://github.com/handealaca"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a></li>
+                                        <div class="bottom-portion" style="height:50px">
+                                            @*<a href="#" class="author">
+                                                    Adrey Pachai <small> (Student )</small>
+                                                </a>*@
+                                            <div class="social-share-links">
+                                                <ul>
+                                                    <li><a href="https://www.linkedin.com/in/%C3%B6zge-ece-erden-59555a46/"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a></li>
+                                                    <li><a href="https://github.com/eceerden"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a></li>
 
-                                            </ul>
+                                                </ul>
+                                            </div>
+
                                         </div>
 
                                     </div>
 
+                                    <div class="single-testimonial-box">
+                                        <div class="top-portion">
+                                            <img src="/Site/images/hande_github.jpg" alt="Testimonial Image" style="width:200px" />
+                                            <div class="user-comment">
+                                                <div class="arrow-left"></div>
+                                                <blockquote cite="#">
+                                                    <p><strong>Hande ALACA</strong></p>
+                                                    <p>Software Developer</p>
+                                                </blockquote>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <div class="bottom-portion" style="height:50px">
+                                            @*<a href="#" class="author">
+                                                    Adrey Pachai <small> (Student )</small>
+                                                </a>*@
+                                            <div class="social-share-links">
+                                                <ul>
+                                                    <li><a href="https://www.linkedin.com/in/hande-a-b651a75a/"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a></li>
+                                                    <li><a href="https://github.com/handealaca"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a></li>
+
+                                                </ul>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
-                    <!-- End: Our Partners Section -->
+                        </section>
+                        <!-- End: Our Partners Section -->
 
+                    </div>
                 </div>
-            </div>
-        </main>
+            </main>
+        </div>
     </div>
-</div>
+</section>
 
-<br />
-<br />
-<br />
-<br />
+
 
 <!-- End: Services Section -->

@@ -20,9 +20,10 @@ namespace BookStoreProject.Controllers
         {
             _bookcontext = bookcontext;
         }
+
         public IActionResult Index()
         {
-            List<PersonVM> model = _bookcontext.People.Include(q => q.BookPeople).ThenInclude(BookPeople => BookPeople.Book).Where(q => q.IsDeleted == false).OrderBy(q => q.Name).Select(q => new PersonVM()
+            List<PersonVM> people = _bookcontext.People.Include(q => q.BookPeople).ThenInclude(BookPeople => BookPeople.Book).Where(q => q.IsDeleted == false).OrderBy(q => q.Name).Select(q => new PersonVM()
             {
                 PersonID = q.ID,
                 Name = q.Name,
@@ -35,29 +36,34 @@ namespace BookStoreProject.Controllers
 
             }).ToList();
 
-            //model.Categories = _bookcontext.Categories.Where(q => q.IsDeleted == false).ToList();
-            //sitebook.topcategories = _bookcontext.Categories.Where(q => q.TopCategory == 0 && q.IsDeleted == false).ToList();
-            return View(model);
+            List<Category> modelcategory = _bookcontext.Categories.Where(q => q.IsDeleted == false).OrderBy(q => q.CategoryName).ToList();
+
+            List<Person> modelpeople = _bookcontext.People.Include(q => q.BookPeople.Where(q => q.DutyID == 0)).Where(q => q.IsDeleted == false).OrderBy(q => q.Name).ToList();
+
+            SiteBookVM sitebook = new SiteBookVM();
+            sitebook.Categories = modelcategory;
+            sitebook.people = modelpeople;
+            sitebook.PeopleVM = people;
+
+            return View(sitebook);
         }
 
         public IActionResult PersonDetail(int id)
         {
             Person person = _bookcontext.People.Include(q => q.BookPeople).ThenInclude(BookPeople => BookPeople.Book).ThenInclude(BookPeople => BookPeople.BookPersons).Include(q => q.PersonDuties).FirstOrDefault(q => q.ID == id);
 
-            PersonVM model = new PersonVM();
-            model.Name = person.Name;
-            model.SurName = person.SurName;
-            model.BirthDate = person.BirthDate;
-            model.Biography = person.Biography;
-            model.Duties = person.PersonDuties.Where(q => q.IsDeleted == false).Select(q => q.DutyID == Convert.ToInt32(EnumDuty.Writer) ? EnumDuty.Writer.ToString() : EnumDuty.Interpreter.ToString()).ToList();
-            model.Imagepath = person.Imagepath;
-            model.BookPeople = person.BookPeople;
-            
-            
+            List<Category> modelcategory = _bookcontext.Categories.Where(q => q.IsDeleted == false).OrderBy(q => q.CategoryName).ToList();
 
-           
+            List<Person> modelpeople = _bookcontext.People.Include(q => q.BookPeople.Where(q => q.DutyID == 0)).Where(q => q.IsDeleted == false).OrderBy(q => q.Name).ToList();
 
-            return View(model);
+
+
+            SiteBookVM sitebook = new SiteBookVM();
+            sitebook.Categories = modelcategory;
+            sitebook.people = modelpeople;
+            sitebook.PersonDetail = person;
+
+            return View(sitebook);
         }
     }
 }

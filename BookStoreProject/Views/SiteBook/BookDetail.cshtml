@@ -31,65 +31,9 @@
                     <div class="container-fluid">
                         <!-- Start: Search Section -->
 
-                        <div class="row">
-
-                            <section class="search-filters" style="padding:0 70px 0 70px">
-
-                                <div class="filter-box">
-
-                                    <h3>What are you looking for at the library?</h3>
-
-                                    <form action="" method="get">
-
-                                        <div class="col-md-4 col-sm-6">
-                                            <div class="form-group">
-                                                <label class="sr-only" for="keywords">Search by Keyword</label>
-                                                <input class="form-control" placeholder="Search by Keyword" id="keywords" name="keywords" type="text">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3 col-sm-6">
-                                            <div class="form-group">
-                                                <select name="catalog" id="catalog" class="form-control book-select">
-
-                                                    <option>Select Top Category</option>
-
-                                                    @foreach (var item in Model.Categories.Where(q => q.TopCategory == 0))
-                                                    {
-
-                                                        <option value="@item.ID">@item.CategoryName</option>
-                                                    }
-
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3 col-sm-6">
-                                            <div class="form-group">
-                                                <select name="category" id="category" class="form-control book-select">
-                                                    <option>Select Sub Category</option>
-
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-2 col-sm-6">
-                                            <div class="form-group">
-                                                <input class="form-control" type="submit" value="Search">
-                                            </div>
-                                        </div>
-
-                                    </form>
-                                </div>
-
-                                <div class="clear"></div>
-
-                            </section>
-
-                        </div>
+                        @await Html.PartialAsync("Partial/Search")
 
 
-                        <!-- End: Search Section -->
                         <div class="row" style="padding: 0 55px 0 55px">
 
                             <div class="col-md-3">
@@ -173,9 +117,25 @@
                                                 <h2 class="entry-title">@Model.Bookdetail.Name</h2>
                                                 <ul>
                                                     <li>
+                                                        <strong>Author:</strong>
                                                         @foreach (var item in Model.Bookdetail.BookPersons.Where(q => q.DutyID == 0))
                                                         {
-                                                            <strong>Author:</strong><span> @(item.Person.Name + " " + item.Person.SurName)</span>
+
+                                                            if (Model.Bookdetail.BookPersons.Where(q => q.DutyID == 0).LastOrDefault() == item)
+                                                            {
+                                                                <span>
+                                                                    @(item.Person.Name + " " + item.Person.SurName)
+                                                                </span>
+                                                            }
+
+                                                            else
+                                                            {
+                                                                <span>
+                                                                    @(item.Person.Name + " " + item.Person.SurName + ",")
+                                                                </span>
+
+                                                            }
+
                                                         }
                                                     </li>
                                                     <li>
@@ -260,14 +220,33 @@
                                                 <strong>Top Category :</strong>
                                                 @foreach (var item in Model.Bookdetail.BookCategories.Where(q => q.Category.TopCategory == 0))
                                                 {
-                                                    @item.Category.CategoryName 
+
+                                                    if (Model.Bookdetail.BookCategories.Where(q => q.Category.TopCategory == 0).LastOrDefault() == item)
+                                                    {
+                                                        @item.Category.CategoryName
+
+                                                    }
+
+                                                    else
+                                                    {
+                                                        @(item.Category.CategoryName + ",");
+                                                    }
                                                 }
                                             </li>
                                             <li>
                                                 <strong>Sub Category :</strong>
                                                 @foreach (var item in Model.Bookdetail.BookCategories.Where(q => q.Category.TopCategory != 0))
                                                 {
-                                                    @item.Category.CategoryName 
+                                                    if (Model.Bookdetail.BookCategories.Where(q => q.Category.TopCategory != 0).LastOrDefault() == item)
+                                                    {
+                                                        @item.Category.CategoryName
+
+                                                    }
+
+                                                    else
+                                                    {
+                                                        @(item.Category.CategoryName + ",");
+                                                    }
 
                                                 }
                                             </li>
@@ -366,35 +345,35 @@
 
 
                                                             @*<ol class="children">
-                                                                    <li class="comment odd alt depth-2">
-                                                                        <div class="comment-body">
-                                                                            <div class="comment-author vcard">
-                                                                                <img class="avatar photo" src="images/blog/peter.jpg" alt="Comment Avatar">
-                                                                                <b class="fn">
-                                                                                    <a class="url" rel="external nofollow" href="#">Peter</a>
-                                                                                </b>
-                                                                            </div>
-                                                                            <footer class="comment-meta">
-                                                                                <div class="left-arrow"></div>
-                                                                                <div class="reply">
-                                                                                    <a href="#" class="comment-reply-link">
-                                                                                        <i class="fa fa-reply"></i> Reply
-                                                                                    </a>
-                                                                                </div>
-                                                                                <div class="comment-metadata">
-                                                                                    <a href="#">
-                                                                                        <time datetime="2016-01-17">
-                                                                                            <b>Mar 17, 2016 / </b>  45 Minutes Ago
-                                                                                        </time>
-                                                                                    </a>
-                                                                                </div>
-                                                                                <div class="comment-content">
-                                                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                                                                </div>
-                                                                            </footer>
-                                                                        </div>
-                                                                    </li>
-                                                                </ol>*@
+                                                <li class="comment odd alt depth-2">
+                                                    <div class="comment-body">
+                                                        <div class="comment-author vcard">
+                                                            <img class="avatar photo" src="images/blog/peter.jpg" alt="Comment Avatar">
+                                                            <b class="fn">
+                                                                <a class="url" rel="external nofollow" href="#">Peter</a>
+                                                            </b>
+                                                        </div>
+                                                        <footer class="comment-meta">
+                                                            <div class="left-arrow"></div>
+                                                            <div class="reply">
+                                                                <a href="#" class="comment-reply-link">
+                                                                    <i class="fa fa-reply"></i> Reply
+                                                                </a>
+                                                            </div>
+                                                            <div class="comment-metadata">
+                                                                <a href="#">
+                                                                    <time datetime="2016-01-17">
+                                                                        <b>Mar 17, 2016 / </b>  45 Minutes Ago
+                                                                    </time>
+                                                                </a>
+                                                            </div>
+                                                            <div class="comment-content">
+                                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                                            </div>
+                                                        </footer>
+                                                    </div>
+                                                </li>
+                                            </ol>*@
                                                         </li>
                                                     </ol>
                                                 </div>
@@ -412,9 +391,7 @@
                                                             <div class="row">
 
                                                                 <p class="comment-form-subject input-required">
-                                                                    @*<label>
-                            <span class="first-letter">Header</span>
-                        </label>*@
+                                                                  
                                                                     @Html.TextBoxFor(q => q.Comment.Header, new { @placeholder = "Header" })
                                                                 </p>
 

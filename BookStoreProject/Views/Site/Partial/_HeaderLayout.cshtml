@@ -1,0 +1,87 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <nav class="navbar navbar-default">
+            <div class="menu-wrap">
+                <div class="navbar-header">
+                    <div class="navbar-brand">
+                        <h1>
+                            <a href="/SiteHome/">
+                                <img style="width:130px;height:50px" src="/Site/images/bookstorelogobookwhite.png" alt="Book Store" />
+                            </a>
+                        </h1>
+                    </div>
+                </div>
+                <!-- Navigation -->
+                <div class="navbar-collapse hidden-sm hidden-xs">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown active">
+                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="/SiteHome/">Home</a>
+
+                        </li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="/SiteBook/">Books</a>
+
+                        </li>
+
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle disabled" href="/SitePerson">Writers/Interpreters</a>
+
+                        </li>
+
+
+
+                        <li><a href="/SiteHome/About/">About</a></li>
+                    </ul>
+                    <!-- Header Topbar -->
+
+                    <div class="header-topbar hidden-md">
+                        <div class="topbar-links">
+                            @if (TempData["UserName"] != null)
+                            {
+                                <div>
+                                    <a style="padding-right:10px" href="/SiteAccount/Logout"><i class="fa fa-lock"></i>LogOut</a>
+                                    <a href="/UserAction/Edit/@TempData["UserID"]"> <i class="fa fa-user"></i>My Account</a>
+                                </div>
+                                <span class="d-none d-md-inline">Welcome @TempData["UserName"]</span>
+                            }
+                            else
+                            {
+                                <a href="/SiteAccount/"><i class="fa fa-lock"></i>Login / Register</a>
+                            }
+
+                        </div>
+                    </div>
+                    <!-- Header Topbar -->
+                </div>
+
+            </div>
+            <div class="mobile-menu hidden-md hidden-lg">
+                <a href="#mobile-menu"><i class="fa fa-navicon"></i></a>
+                <div id="mobile-menu">
+                    <ul>
+                        <li class="mobile-title">
+                            <h4>Navigation</h4>
+                            <a href="#" class="close"></a>
+                        </li>
+                        <li>
+                            <a href="/SiteHome/">Home</a>
+
+                        </li>
+                        <li>
+                            <a href="/SiteHome/Books/">Books</a>
+
+                        </li>
+
+
+                        <li>
+                            <a href="/SitePerson/">Writers/Interpreters</a>
+
+                        </li>
+
+                        <li><a href="/SiteHome/About">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>

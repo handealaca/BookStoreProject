@@ -13644,6 +13644,7 @@ a:focus {
 }
 .page-banner.services-banner {
     background-image: url(/Site/images/kitaplık.jpg);
+    /*background-position:center;*/
 }
 .page-banner.signin-banner {
     background-image: url(/Site/images/page-banners/signin-banner.jpg);

@@ -55,9 +55,7 @@ namespace BookStoreProject.Controllers
 
             var data = _bookcontext.Books.Include(x => x.BookCategories).ThenInclude(BookCategory => BookCategory.Category).Include(x => x.BookPersons).ThenInclude(BookPerson => BookPerson.Person).OrderBy(q => q.Name).Where(x => x.IsDeleted == false).ToList();
 
-            //List<BookPerson> data = _bookcontext.BookPeople.Where(q => q.IsDeleted == false && q.Person.Name == keywords || q.Person.SurName == keywords).Include(q => q.Person).Include(q => q.Book).ThenInclude(q => q.BookCategories).ThenInclude(BookCategories => BookCategories.Category).ToList();
-            //List<Person> data1 = _bookcontext.People.ToList();
-            //List<Category> data2 = _bookcontext.Categories.ToList();
+         
 
             if (!String.IsNullOrEmpty(keywords))
             {
@@ -100,11 +98,6 @@ namespace BookStoreProject.Controllers
             sitebook.people = modelpeople;
 
 
-            //SiteBookVM.topcategories = _bookcontext.Categories.Where(q => q.TopCategory == 0 && q.IsDeleted == false).ToList();
-            //SiteBookVM.Categories = _bookcontext.Categories.Where(q => q.TopCategory == catalog && q.IsDeleted == false).ToList();
-
-            //SiteBookVM.subcategories = _bookcontext.Categories.Where(q => q.TopCategory == catalog && q.SubCategory == category).ToList();
-
 
             return View("Index", new SiteBookVM { books = data, Categories = modelcategory,people=modelpeople});
 
@@ -122,6 +115,7 @@ namespace BookStoreProject.Controllers
             data=data.Where(x => x.BookCategories.Where(x => x.Category.TopCategory == id || x.CategoryID == id).Any())
                     .Where(Book => Book.IsDeleted == false).ToList();
 
+
             SiteBookVM sitebook = new SiteBookVM();
             sitebook.books = data;
             sitebook.Categories = modelcategory;
@@ -131,7 +125,26 @@ namespace BookStoreProject.Controllers
 
         }
 
+        public IActionResult WriterListclick(int id)
+        {
+            List<Category> modelcategory = _bookcontext.Categories.Where(q => q.IsDeleted == false).OrderBy(q => q.CategoryName).ToList();
 
+            List<Person> modelpeople = _bookcontext.People.Include(q => q.BookPeople.Where(q => q.DutyID == 0)).Where(q => q.IsDeleted == false).OrderBy(q => q.Name).ToList();
+
+            List<Book> data = _bookcontext.Books.Include(x => x.BookCategories).ThenInclude(BookCategory => BookCategory.Category).Include(x => x.BookPersons).ThenInclude(BookPerson => BookPerson.Person).OrderBy(q => q.Name).Where(x => x.IsDeleted == false).ToList();
+
+            data = data.Where(x => x.BookPersons.Where(x => x.PersonID == id).Any())
+                    .Where(Book => Book.IsDeleted == false).ToList();
+
+
+            SiteBookVM sitebook = new SiteBookVM();
+            sitebook.books = data;
+            sitebook.Categories = modelcategory;
+            sitebook.people = modelpeople;
+
+            return View("Index", new SiteBookVM { books = data, Categories = modelcategory, people = modelpeople });
+
+        }
 
 
         [SiteAuth]
@@ -143,26 +156,7 @@ namespace BookStoreProject.Controllers
 
             List<Person> modelpeople = _bookcontext.People.Include(q => q.BookPeople.Where(q => q.DutyID == 0)).Where(q => q.IsDeleted == false).OrderBy(q => q.Name).ToList();
 
-            //BookVM model = new BookVM();
-            //model.BookID = book.ID;
-            //model.Name = book.Name;
-            //model.PublishDate = book.PublishDate;
-            //model.Publisher = book.Publisher;
-            //model.Edition = book.Edition;
-            //model.Imagepath = book.Imagepath;
-            //model.UserPoints = book.UserPoints;
-            //model.AvrPoint = book.AvrPoint;
-
-            //model.BookCategories = book.BookCategories.Where(q => q.IsDeleted == false).ToList();
-
-            ////string []joined = string.Join(",", book.BookCategories.Where(q => q.IsDeleted == false).ToList()).ToArray();
-            ////model.BookCategories = joined;
-
-
-            //model.BookPersons = book.BookPersons.Where(q => q.IsDeleted == false).ToList();
-            //model.Comments = book.Comments.Where(q => q.IsDeleted == false && q.BookID == id).ToList();
-            //model.UserPoints = book.UserPoints.Where(q => q.IsDeleted == false).ToList();
-
+            
 
             SiteBookVM sitebook = new SiteBookVM();
             sitebook.Bookdetail = modelbook;

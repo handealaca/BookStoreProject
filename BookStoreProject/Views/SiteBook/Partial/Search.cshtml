@@ -1,0 +1,60 @@
+﻿
+@model BookStoreProject.Models.VM.SiteBookVM
+
+<div class="row">
+
+    <section class="search-filters" style="padding:0 70px 0 70px">
+
+        <div class="filter-box">
+
+            <h3>What are you looking for at the Book Store?</h3>
+
+            <form action="/SiteBook/Search/" method="post">
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                        <label class="sr-only" for="keywords">Search by Keyword</label>
+                        <input class="form-control" placeholder="Search by Keyword" id="keywords" name="keywords">
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="form-group">
+                        <select name="catalog" id="catalog" class="form-control book-select">
+
+                            <option>Select Top Category</option>
+
+                            @foreach (var item in Model.Categories.Where(q => q.TopCategory == 0))
+                            {
+
+                                <option value="@item.ID">@item.CategoryName</option>
+                            }
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="form-group">
+
+                        <select name="category" id="category" class="form-control book-select">
+                            <option>Select Sub Category</option>
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-2 col-sm-6">
+                    <div class="form-group">
+                        <input class="form-control" type="submit" value="Search">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="clear"></div>
+
+    </section>
+
+</div>
