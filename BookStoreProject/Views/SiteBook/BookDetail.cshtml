@@ -152,7 +152,6 @@
 
                                             <li><strong>Name:</strong> @Model.Bookdetail.Name</li>
                                             <li><strong>PublishDate:</strong> @Model.Bookdetail.PublishDate</li>
-                                            <li><strong>Length:</strong> 518 pages.</li>
                                             <li>
                                                 <strong>Top Category :</strong>
                                                 @foreach (var item in Model.Bookdetail.BookCategories.Where(q => q.Category.TopCategory == 0))
@@ -220,13 +219,8 @@
                                                                     </div>
                                                                     <footer class="comment-meta">
                                                                         <div class="left-arrow"></div>
-                                                                        <div class="reply">
-                                                                            <a href="#" class="comment-reply-link">
-                                                                                <i class="fa fa-reply"></i> Reply
-                                                                            </a>
-                                                                        </div>
 
-                                                                        <div class="reply" style="margin-right:5px">
+                                                                        <div class="reply">
                                                                             @if (Convert.ToInt32(TempData["UserID"]) == item.User.ID)
                                                                             {
                                                                                 <a href="/SiteBook/EditComment/@item.ID" class="comment-reply-link">

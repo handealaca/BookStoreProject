@@ -84,7 +84,11 @@
 
                                                         </header>
 
-                                                        <p>@item.Biography</p>
+                                                        @if (item.Biography != null)
+                                                        {
+                                                            <p>@item.Biography</p>
+
+                                                        }
 
                                                     </figcaption>
                                                 </figure>

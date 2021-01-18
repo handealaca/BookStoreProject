@@ -88,6 +88,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
                 book.PublishDate = model.PublishDate;
                 book.Imagepath = model.Imagepath;
                 book.Edition = model.Edition;
+                book.Summary = model.Summary;
 
                 _bookcontext.Books.Add(book);
                 _bookcontext.SaveChanges();
@@ -155,6 +156,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
             model.BookPersons = book.BookPersons.Where(q => q.IsDeleted == false).ToList();
             model.people = _bookcontext.People.Where(q => q.IsDeleted == false).ToList();
             model.Imagepath = book.Imagepath;
+            model.Summary = book.Summary;
 
             return View(model);
         }
@@ -170,7 +172,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
             book.Publisher = model.Publisher;
             book.PublishDate = model.PublishDate;
             book.Edition = model.Edition;
-
+            book.Summary = model.Summary;
 
             if (model.Coverimage != null)
             {

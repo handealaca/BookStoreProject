@@ -106,7 +106,11 @@
 
                                                             </header>
 
-                                                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
+                                                            @if (item.Book.Summary != null)
+                                                            {
+                                                                <p>@item.Book.Summary.Substring(0, 100)...</p>
+
+                                                            }
 
                                                         </figcaption>
                                                     </figure>
