@@ -137,78 +137,91 @@ namespace BookStoreProject.Controllers
         [SiteAuth]
         public IActionResult BookDetail(int id)
         {
-            Book book = _bookcontext.Books.Include(q => q.BookCategories).ThenInclude(BookCategories => BookCategories.Category).Include(q => q.BookPersons).ThenInclude(BookPersons => BookPersons.Person).Include(q => q.Comments).ThenInclude(Comments => Comments.User).Include(q => q.UserPoints).ThenInclude(UserPoints => UserPoints.USer).FirstOrDefault(q => q.ID == id);
+            List<Category> modelcategory = _bookcontext.Categories.Where(q => q.IsDeleted == false).OrderBy(q => q.CategoryName).ToList();
 
-            BookVM model = new BookVM();
-            model.BookID = book.ID;
-            model.Name = book.Name;
-            model.PublishDate = book.PublishDate;
-            model.Publisher = book.Publisher;
-            model.Edition = book.Edition;
-            model.Imagepath = book.Imagepath;
-            model.UserPoints = book.UserPoints;
-            model.AvrPoint = book.AvrPoint;
+            Book modelbook = _bookcontext.Books.Include(q => q.BookCategories).ThenInclude(BookCategories => BookCategories.Category).Include(q => q.BookPersons.Where(q => q.IsDeleted == false)).ThenInclude(BookPersons => BookPersons.Person).Include(q => q.Comments.Where(q => q.IsDeleted == false && q.BookID == id)).ThenInclude(Comments => Comments.User).Include(q => q.UserPoints.Where(q => q.IsDeleted == false)).ThenInclude(UserPoints => UserPoints.USer).FirstOrDefault(q => q.ID == id);
 
-            model.BookCategories = book.BookCategories.Where(q => q.IsDeleted == false).ToList();
+            List<Person> modelpeople = _bookcontext.People.Include(q => q.BookPeople.Where(q => q.DutyID == 0)).Where(q => q.IsDeleted == false).OrderBy(q => q.Name).ToList();
 
-            //string []joined = string.Join(",", book.BookCategories.Where(q => q.IsDeleted == false).ToList()).ToArray();
-            //model.BookCategories = joined;
+            //BookVM model = new BookVM();
+            //model.BookID = book.ID;
+            //model.Name = book.Name;
+            //model.PublishDate = book.PublishDate;
+            //model.Publisher = book.Publisher;
+            //model.Edition = book.Edition;
+            //model.Imagepath = book.Imagepath;
+            //model.UserPoints = book.UserPoints;
+            //model.AvrPoint = book.AvrPoint;
+
+            //model.BookCategories = book.BookCategories.Where(q => q.IsDeleted == false).ToList();
+
+            ////string []joined = string.Join(",", book.BookCategories.Where(q => q.IsDeleted == false).ToList()).ToArray();
+            ////model.BookCategories = joined;
 
 
-            model.BookPersons = book.BookPersons.Where(q => q.IsDeleted == false).ToList();
-            model.Comments = book.Comments.Where(q => q.IsDeleted == false && q.BookID == id).ToList();
-            model.UserPoints = book.UserPoints.Where(q => q.IsDeleted == false).ToList();
+            //model.BookPersons = book.BookPersons.Where(q => q.IsDeleted == false).ToList();
+            //model.Comments = book.Comments.Where(q => q.IsDeleted == false && q.BookID == id).ToList();
+            //model.UserPoints = book.UserPoints.Where(q => q.IsDeleted == false).ToList();
 
-            return View(model);
+
+            SiteBookVM sitebook = new SiteBookVM();
+            sitebook.Bookdetail = modelbook;
+            sitebook.Categories = modelcategory;
+            sitebook.people = modelpeople;
+            return View(sitebook);
         }
 
 
         [HttpPost]
-        public IActionResult AddComment(CommentVM model)
+        public IActionResult AddComment(SiteBookVM model)
         {
 
             Comment comment = new Comment();
             comment.UserID = Convert.ToInt32(TempData["UserID"]);
-            comment.Header = model.Header;
-            comment.Content = model.Content;
-            comment.BookID = model.BookID;
+            comment.Header = model.Comment.Header;
+            comment.Content = model.Comment.Content;
+            comment.BookID = model.Bookdetail.ID;
 
 
             _bookcontext.Comments.Add(comment);
             _bookcontext.SaveChanges();
+           
 
-            return RedirectToAction("BookDetail", "SiteBook", new { id = model.BookID });
+            return RedirectToAction("BookDetail", "SiteBook", new { id = model.Bookdetail.ID });
         }
 
 
         public IActionResult EditComment(int id)
         {
-            Comment comment = _bookcontext.Comments.FirstOrDefault(q => q.ID == id);
+            Comment modelcomment = _bookcontext.Comments.FirstOrDefault(q => q.ID == id);
 
-            CommentVM model = new CommentVM();
-            model.Header = comment.Header;
-            model.Content = comment.Content;
-            model.BookID = comment.BookID;
-            model.CommentID = comment.ID;
-            //return View("BookDetail", model);
+            List<Category> modelcategory = _bookcontext.Categories.Where(q => q.IsDeleted == false).OrderBy(q => q.CategoryName).ToList();
 
-            return View(model);
+            Book modelbook = _bookcontext.Books.Include(q => q.BookCategories).ThenInclude(BookCategories => BookCategories.Category).Include(q => q.BookPersons.Where(q => q.IsDeleted == false)).ThenInclude(BookPersons => BookPersons.Person).Include(q => q.Comments.Where(q => q.IsDeleted == false && q.BookID == modelcomment.BookID)).ThenInclude(Comments => Comments.User).Include(q => q.UserPoints.Where(q => q.IsDeleted == false)).ThenInclude(UserPoints => UserPoints.USer).FirstOrDefault(q => q.ID == modelcomment.BookID);
+
+            List<Person> modelpeople = _bookcontext.People.Include(q => q.BookPeople.Where(q => q.DutyID == 0)).Where(q => q.IsDeleted == false).OrderBy(q => q.Name).ToList();
+
+            SiteBookVM sitebook = new SiteBookVM();
+            sitebook.Bookdetail = modelbook;
+            sitebook.Categories = modelcategory;
+            sitebook.people = modelpeople;
+            sitebook.Comment = modelcomment;
+
+            return View("BookDetail", new SiteBookVM { Bookdetail = modelbook, Categories = modelcategory, people = modelpeople, Comment=modelcomment });
         }
 
 
         [HttpPost]
-        public IActionResult EditComment(CommentVM model)
+        public IActionResult EditComment(SiteBookVM model)
         {
-            Comment comment = _bookcontext.Comments.FirstOrDefault(q => q.ID == model.CommentID);
-            comment.Header = model.Header;
-            comment.Content = model.Content;
-            comment.BookID = model.BookID;
-            comment.UserID = Convert.ToInt32(TempData["UserID"]);
+            Comment comment = _bookcontext.Comments.FirstOrDefault(q => q.ID == model.Comment.ID);
+            comment.Header = model.Comment.Header;
+            comment.Content = model.Comment.Content;
             comment.UpdateDate = DateTime.Now;
 
             _bookcontext.SaveChanges();
 
-            return RedirectToAction("BookDetail", "SiteBook", new { id = model.BookID });
+            return RedirectToAction("BookDetail", "SiteBook", new { id = comment.BookID });
 
         }
 

@@ -7857,7 +7857,7 @@ textarea {
   -moz-appearance: none;
   appearance: none;
   color: #707070;
-  /*border: 3px solid #f4f4f4;*/
+  border: 3px solid #f4f4f4;
   border-radius: 3px;
   outline: none;
 }
@@ -16557,19 +16557,20 @@ a:focus {
   color: #282828;
 }
 .single-book-box .post-detail {
-  background-color: #fff;
-  display: inline-block;
-  position: absolute;
-  right: -10px;
-  width: 567px;
-  padding: 49px 30px;
-  top: 50%;
-  transform: translateY(-50%);
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  -webkit-transition: all 0.3s ease-in-out;
+    background-color: #fff;
+    display: inline-block;
+    position: absolute;
+    right: -10px;
+    width: 567px;
+    padding: 49px 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.07);
 }
 @media (min-width: 768px) and (max-width: 1080px) {
   .single-book-box .post-detail {
@@ -17174,7 +17175,7 @@ a:focus {
 .booksmedia-detail-box p {
   color: #2f2f2f;
   font-size: 16px;
-  line-height: 30px;
+  /*line-height: 30px;*/
 }
 .booksmedia-detail-box .single-book-box .books-social-sharing,
 .booksmedia-detail-box .single-book-box .optional-links {
@@ -19295,3 +19296,10 @@ a:focus {
 }
 
 
+.book-padding  {
+    padding: 0 0 100px;
+}
+
+.carousel-caption h2{
+    text-transform:uppercase;
+}

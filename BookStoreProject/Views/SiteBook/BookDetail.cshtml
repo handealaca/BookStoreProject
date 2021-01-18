@@ -4,7 +4,7 @@
     Layout = "~/Views/Site/Shared/_SiteLayout.cshtml";
 }
 
-@model BookStoreProject.Models.VM.BookVM
+@model BookStoreProject.Models.VM.SiteBookVM
 <!-- Start: Page Banner -->
 <section class="page-banner services-banner" style="background-image: url(/Site/images/kitaplık.jpg)">
     <div class="container">
@@ -23,516 +23,498 @@
 </section>
 <!-- End: Page Banner -->
 <!-- Start: Products Section -->
-<div id="content" class="site-content">
-    <div id="primary" class="content-area">
-        <main id="main" class="site-main">
-            <div class="booksmedia-detail-main">
-                <div class="container-fluid">
-                    <!-- Start: Search Section -->
+<section class="book-padding">
+    <div id="content" class="site-content">
+        <div id="primary" class="content-area">
+            <main id="main" class="site-main">
+                <div class="booksmedia-detail-main">
+                    <div class="container-fluid">
+                        <!-- Start: Search Section -->
 
-                    <div class="row">
+                        <div class="row">
 
-                        <section class="search-filters" style="padding:0 70px 0 70px">
+                            <section class="search-filters" style="padding:0 70px 0 70px">
 
-                            <div class="filter-box">
+                                <div class="filter-box">
 
-                                <h3>What are you looking for at the library?</h3>
+                                    <h3>What are you looking for at the library?</h3>
 
-                                <form action="" method="get">
+                                    <form action="" method="get">
 
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="form-group">
-                                            <label class="sr-only" for="keywords">Search by Keyword</label>
-                                            <input class="form-control" placeholder="Search by Keyword" id="keywords" name="keywords" type="text">
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="keywords">Search by Keyword</label>
+                                                <input class="form-control" placeholder="Search by Keyword" id="keywords" name="keywords" type="text">
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="col-md-3 col-sm-6">
-                                        <div class="form-group">
-                                            <select name="catalog" id="catalog" class="form-control" placeholder="Select Category">
-                                                @*<option>Search the Catalog</option>*@
-                                                @*@foreach (var item in Model.Topcategories.Where(q => q.TopCategory == 0))
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <select name="catalog" id="catalog" class="form-control book-select">
+
+                                                    <option>Select Top Category</option>
+
+                                                    @foreach (var item in Model.Categories.Where(q => q.TopCategory == 0))
                                                     {
+
                                                         <option value="@item.ID">@item.CategoryName</option>
-
-                                                    }*@
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-3 col-sm-6">
-                                        <div class="form-group">
-                                            <select name="category" id="category" class="form-control">
-
-                                                @*@foreach (var item in Model.Topcategories.Where(q=>q.ID==))
-                                                    {
-                                                        <option>All Categories</option>
-                                                    }*@
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-2 col-sm-6">
-                                        <div class="form-group">
-                                            <input class="form-control" type="submit" value="Search">
-                                        </div>
-                                    </div>
-
-                                </form>
-                            </div>
-
-                            <div class="clear"></div>
-
-                        </section>
-
-                    </div>
-
-
-                    <!-- End: Search Section -->
-                    <div class="row" style="padding: 0 55px 100px 55px;margin: 0 -15px 0 -15px;">
-
-                        <div class="col-md-3">
-
-                            <aside id="secondary" class="sidebar widget-area" data-accordion-group>
-                                <div class="widget widget_related_search open" data-accordion>
-                                    <h4 class="widget-title" data-control>Related Searches</h4>
-                                    <div data-content>
-                                        <div data-accordion>
-                                            <h5 class="widget-sub-title" data-control>Subject</h5>
-                                            <div class="widget_categories" data-content>
-                                                <ul>
-                                                    <li><a href="#">Love stories <span>(18)</span></a></li>
-                                                    <li><a href="#">Texas <span>(04)</span></a></li>
-                                                    <li><a href="#">Rich people <span>(03)</span></a></li>
-                                                    <li><a href="#">Humorous stories <span>(02)</span></a></li>
-                                                    <li><a href="#">Widows <span>(02)</span></a></li>
-                                                    <li><a href="#">Women <span>(11)</span></a></li>
-                                                    <li><a href="#">Babysitters <span>(25)</span></a></li>
-                                                    <li><a href="#">Law firms <span>(09)</span></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div data-accordion>
-                                            <h5 class="widget-sub-title" data-control>Writers</h5>
-                                            <div class="widget_categories" data-content>
-                                                <ul>
-                                                    @foreach (var item in Model.BookPersons)
-                                                    {
-                                                    <li><a href="#">@item.Person.Name @item.Person.SurName </a></li>
                                                     }
-                                                  
 
-                                                </ul>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div data-accordion>
-                                            <h5 class="widget-sub-title" data-control>Series</h5>
-                                            <div class="widget_categories" data-content>
-                                                <ul>
-                                                    <li><a href="#">Love stories <span>(18)</span></a></li>
-                                                    <li><a href="#">Texas <span>(04)</span></a></li>
-                                                    <li><a href="#">Rich people <span>(03)</span></a></li>
-                                                    <li><a href="#">Humorous stories <span>(02)</span></a></li>
-                                                    <li><a href="#">Widows <span>(02)</span></a></li>
-                                                    <li><a href="#">Women <span>(11)</span></a></li>
-                                                    <li><a href="#">Babysitters <span>(25)</span></a></li>
-                                                    <li><a href="#">Law firms <span>(09)</span></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                        <div data-accordion>
-                                            <h5 class="widget-sub-title" data-control>Other Searches</h5>
-                                            <div class="widget_categories" data-content>
-                                                <ul>
-                                                    <li><a href="#">Love stories <span>(18)</span></a></li>
-                                                    <li><a href="#">Texas <span>(04)</span></a></li>
-                                                    <li><a href="#">Rich people <span>(03)</span></a></li>
-                                                    <li><a href="#">Humorous stories <span>(02)</span></a></li>
-                                                    <li><a href="#">Widows <span>(02)</span></a></li>
-                                                    <li><a href="#">Women <span>(11)</span></a></li>
-                                                    <li><a href="#">Babysitters <span>(25)</span></a></li>
-                                                    <li><a href="#">Law firms <span>(09)</span></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="widget widget_narrow_search" data-accordion>
-                                    <h4 class="widget-title" data-control>Narrow your search</h4>
-                                    <div data-content>
-                                        <div data-accordion>
-                                            <h5 class="widget-sub-title" data-control>Type of Material</h5>
-                                            <div class="widget_material" data-content>
-                                                <form action="#">
-                                                    <label><input type="checkbox" name="material" value="books"> Books</label>
-                                                    <label><input type="checkbox" name="material" value="electronic" checked> Electronic Resources</label>
-                                                    <label><input type="checkbox" name="material" value="ebooks"> ebooks</label>
-                                                    <label><input type="checkbox" name="material" value="soundrecording" checked> Sound Recording</label>
-                                                    <label><input type="checkbox" name="material" value="largeprint"> Large Print</label>
-                                                    <label><input type="checkbox" name="material" value="audioebooks" checked> Audio eBooks</label>
-                                                </form>
+                                                </select>
                                             </div>
                                         </div>
-                                        <div data-accordion>
-                                            <h5 class="widget-sub-title" data-control>Publishing Date </h5>
-                                            <div class="widget widget_material" data-content>
-                                                <form action="#">
-                                                    <label><input type="checkbox" name="material" value="books"> Books</label>
-                                                    <label><input type="checkbox" name="material" value="electronic" checked> Electronic Resources</label>
-                                                    <label><input type="checkbox" name="material" value="ebooks"> ebooks</label>
-                                                    <label><input type="checkbox" name="material" value="soundrecording" checked> Sound Recording</label>
-                                                    <label><input type="checkbox" name="material" value="largeprint"> Large Print</label>
-                                                    <label><input type="checkbox" name="material" value="audioebooks" checked> Audio eBooks</label>
-                                                </form>
-                                                <div class="clearfix"></div>
+
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <select name="category" id="category" class="form-control book-select">
+                                                    <option>Select Sub Category</option>
+
+                                                </select>
                                             </div>
-                                            <div class="clearfix"></div>
                                         </div>
-                                        <div data-accordion>
-                                            <h5 class="widget-sub-title" data-control>Popularity </h5>
-                                            <div class="widget widget_material" data-content>
-                                                <form action="#">
-                                                    <label><input type="checkbox" name="material" value="books"> Books</label>
-                                                    <label><input type="checkbox" name="material" value="electronic" checked> Electronic Resources</label>
-                                                    <label><input type="checkbox" name="material" value="ebooks"> ebooks</label>
-                                                    <label><input type="checkbox" name="material" value="soundrecording" checked> Sound Recording</label>
-                                                    <label><input type="checkbox" name="material" value="largeprint"> Large Print</label>
-                                                    <label><input type="checkbox" name="material" value="audioebooks" checked> Audio eBooks</label>
-                                                </form>
+
+                                        <div class="col-md-2 col-sm-6">
+                                            <div class="form-group">
+                                                <input class="form-control" type="submit" value="Search">
                                             </div>
-                                            <div class="clearfix"></div>
                                         </div>
-                                        <div data-accordion>
-                                            <h5 class="widget-sub-title" data-control>Language </h5>
-                                            <div class="widget widget_material" data-content>
-                                                <form action="#">
-                                                    <label><input type="checkbox" name="material" value="books"> Books</label>
-                                                    <label><input type="checkbox" name="material" value="electronic" checked> Electronic Resources</label>
-                                                    <label><input type="checkbox" name="material" value="ebooks"> ebooks</label>
-                                                    <label><input type="checkbox" name="material" value="soundrecording" checked> Sound Recording</label>
-                                                    <label><input type="checkbox" name="material" value="largeprint"> Large Print</label>
-                                                    <label><input type="checkbox" name="material" value="audioebooks" checked> Audio eBooks</label>
-                                                </form>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="widget widget_recent_releases">
-                                    <h4 class="widget-title">New Releases</h4>
-                                    <ul>
-                                        <li><a href="#">Books</a></li>
-                                        <li><a href="#">eBooks</a></li>
-                                        <li><a href="#">DVDS</a></li>
-                                        <li><a href="#">Magazines</a></li>
-                                        <li><a href="#">Audio</a></li>
-                                        <li><a href="#">eAudio</a></li>
-                                    </ul>
-                                    <div class="clearfix"></div>
+
+                                    </form>
                                 </div>
 
-                            </aside>
+                                <div class="clear"></div>
+
+                            </section>
+
                         </div>
 
 
-                        <div class="col-md-9">
-                            <div class="booksmedia-detail-box">
-                                <div class="single-book-box">
-                                    <div class="post-thumbnail">
-                                        <div class="book-list-icon yellow-icon"></div>
+                        <!-- End: Search Section -->
+                        <div class="row" style="padding: 0 55px 0 55px">
 
-                                        <img alt="Book" src="/Admin/Coverimg/@Model.Imagepath" style="height:550px;width:400px" />
+                            <div class="col-md-3">
+                                <aside id="secondary" class="sidebar widget-area" data-accordion-group>
+                                    <div class="widget widget_related_search open" data-accordion>
+                                        <h4 class="widget-title" data-control>Related Searches</h4>
+                                        <div data-content>
+
+                                            <div data-accordion>
+                                                <h5 class="widget-sub-title" data-control>Categories</h5>
+                                                <div class="widget_categories" data-content>
+                                                    <ul>
+                                                        @foreach (var item in Model.Categories.Where(q => q.TopCategory == 0))
+                                                        {
+                                                            <li><a href="/SiteBook/Listclick/@item.ID" class="widget-sub-category"><strong>@item.CategoryName</strong></a></li>
+
+
+                                                            <div class="widget_categories" style="max-height:inherit">
+                                                                <ul>
+                                                                    @foreach (var data in Model.Categories.Where(q => q.TopCategory == item.ID))
+                                                                    {
+
+                                                                        <li style="list-style-type:disc"><a href="/SiteBook/Listclick/@data.ID" class="widget-sub-category" style="padding-bottom:15px">@data.CategoryName</a></li>
+
+
+                                                                        <div class="widget_categories" style="max-height:inherit">
+                                                                            <ul>
+                                                                                @foreach (var data1 in Model.Categories.Where(q => q.TopCategory == data.ID))
+                                                                                {
+
+                                                                                    <li><a href="/SiteBook/Listclick/@data1.ID" style="padding-bottom:15px">@data1.CategoryName</a></li>
+
+                                                                                }
+
+                                                                            </ul>
+                                                                        </div>
+                                                                    }
+
+                                                                </ul>
+                                                            </div>
+
+
+                                                        }
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div data-accordion style="padding-top:10px">
+                                                <h5 class="widget-sub-title" data-control>Writers</h5>
+                                                <div class="widget_categories" data-content>
+                                                    <ul>
+
+                                                        @foreach (var item in Model.people)
+                                                        {
+
+                                                            <li><a>@(item.Name+" "+item.SurName)<span>@item.BookPeople.Where(q => q.IsDeleted == false && q.PersonID == item.ID).Count()</span></a></li>
+                                                        }
+
+                                                    </ul>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="post-detail">
+                                </aside>
+                            </div>
 
 
-                                        <header class="entry-header">
-                                            <h2 class="entry-title">@Model.Name</h2>
-                                            <ul>
-                                                <li>
-                                                    @foreach (var item in Model.BookPersons.Where(q => q.DutyID == 0))
-                                                    {
-                                                        <strong>Author:</strong><span>@(item.Person.Name + " " + item.Person.SurName)</span>
-                                                    }
-                                                </li>
-                                                <li>
-                                                    @foreach (var item in Model.BookPersons.Where(q => q.DutyID == 1))
-                                                    {
-                                                        <strong>Interpreter:</strong><span>@(item.Person.Name + " " + item.Person.SurName) </span>
-                                                    }
-                                                </li>
-                                                <li><strong>Publisher:</strong>@Model.Publisher</li>
+                            <div class="col-md-9">
+                                <div class="booksmedia-detail-box">
+                                    <div class="single-book-box">
+                                        <div class="post-thumbnail">
+                                            <div class="book-list-icon yellow-icon"></div>
+
+                                            <img alt="Book" src="/Admin/Coverimg/@Model.Bookdetail.Imagepath" style="height:550px;width:400px" />
+                                        </div>
+                                        <div class="post-detail">
 
 
-
-                                                <li><strong>Edition:</strong>@Model.Edition</li>
-
-                                                <li id="stars">
-
-                                                    <strong>Rating:</strong>
-
-
-                                                    @if (Model.AvrPoint == 0)
-                                                    {
-                                                        <i class="fa fa-star-o" id="@Model.BookID" value="1"></i>
-                                                        <i class="fa fa-star-o" id="@Model.BookID" value="2"></i>
-                                                        <i class="fa fa-star-o" id="@Model.BookID" value="3"></i>
-                                                        <i class="fa fa-star-o" id="@Model.BookID" value="4"></i>
-                                                        <i class="fa fa-star-o" id="@Model.BookID" value="5"></i>
-
-                                                    <li><strong>Your Point:</strong>-</li>
-
-                                                }
-
-                                                else
-                                                {
-
-                                                    @for (int i = 1; i <= 5; i++)
-                                                    {
-                                                        if (i <= Model.AvrPoint)
+                                            <header class="entry-header">
+                                                <h2 class="entry-title">@Model.Bookdetail.Name</h2>
+                                                <ul>
+                                                    <li>
+                                                        @foreach (var item in Model.Bookdetail.BookPersons.Where(q => q.DutyID == 0))
                                                         {
-                                                            <i class="fa fa-star" id="@Model.BookID" value="@i"></i>
-
+                                                            <strong>Author:</strong><span> @(item.Person.Name + " " + item.Person.SurName)</span>
                                                         }
-
-                                                        else
+                                                    </li>
+                                                    <li>
+                                                        @foreach (var item in Model.Bookdetail.BookPersons.Where(q => q.DutyID == 1))
                                                         {
-                                                            <i class="fa fa-star-o" id="@Model.BookID" value="@i"></i>
-
+                                                            <strong>Interpreter:</strong><span> @(item.Person.Name + " " + item.Person.SurName) </span>
                                                         }
-                                                    }
-                                                    <span style="color: #ff7236;">
-                                                        @Model.AvrPoint/5 -
-                                                        <strong style="color: #ff7236;">
-                                                            @Model.UserPoints.GroupBy(q => q.UserID).Count()
-                                                        </strong> People
-                                                    </span>
+                                                    </li>
+                                                    <li><strong>Publisher:</strong> @Model.Bookdetail.Publisher</li>
 
-                                                    @if (@Model.UserPoints.LastOrDefault(q => q.UserID == Convert.ToInt32(TempData["UserID"])) != null)
-                                                    {
-                                                        <li>
-                                                            <strong>Your Point:</strong>@Model.UserPoints.LastOrDefault(q => q.UserID == Convert.ToInt32(TempData["UserID"])).Point
-                                                        </li>
-                                                    }
 
-                                                    else
-                                                    {
+
+                                                    <li><strong>Edition:</strong> @Model.Bookdetail.Edition</li>
+
+                                                    <li id="stars">
+
+                                                        <strong>Rating:</strong>
+
+
+                                                        @if (Model.Bookdetail.AvrPoint == 0)
+                                                        {
+                                                            <i class="fa fa-star-o" id="@Model.Bookdetail.ID" value="1"></i>
+                                                            <i class="fa fa-star-o" id="@Model.Bookdetail.ID" value="2"></i>
+                                                            <i class="fa fa-star-o" id="@Model.Bookdetail.ID" value="3"></i>
+                                                            <i class="fa fa-star-o" id="@Model.Bookdetail.ID" value="4"></i>
+                                                            <i class="fa fa-star-o" id="@Model.Bookdetail.ID" value="5"></i>
+
                                                         <li><strong>Your Point:</strong>-</li>
 
                                                     }
 
-                                                }
+                                                    else
+                                                    {
 
+                                                        @for (int i = 1; i <= 5; i++)
+                                                        {
+                                                            if (i <= Model.Bookdetail.AvrPoint)
+                                                            {
+                                                                <i class="fa fa-star" id="@Model.Bookdetail.ID" value="@i"></i>
 
+                                                            }
 
+                                                            else
+                                                            {
+                                                                <i class="fa fa-star-o" id="@Model.Bookdetail.ID" value="@i"></i>
 
-                                                </ul>
-                                            </header>
+                                                            }
+                                                        }
+                                                        <span style="color: #ff7236;">
+                                                            @Model.Bookdetail.AvrPoint/5 -
+                                                            <strong style="color: #ff7236;">
+                                                                @Model.Bookdetail.UserPoints.GroupBy(q => q.UserID).Count()
+                                                            </strong> People
+                                                        </span>
+
+                                                        @if (@Model.Bookdetail.UserPoints.LastOrDefault(q => q.UserID == Convert.ToInt32(TempData["UserID"])) != null)
+                                                        {
+                                                            <li>
+                                                                <strong>Your Point:</strong>@Model.Bookdetail.UserPoints.LastOrDefault(q => q.UserID == Convert.ToInt32(TempData["UserID"])).Point
+                                                            </li>
+                                                        }
+
+                                                        else
+                                                        {
+                                                            <li><strong>Your Point:</strong>-</li>
+
+                                                        }
+
+                                                    }
+
+                                                    </ul>
+                                                </header>
+                                            </div>
                                         </div>
-                                    </div>
-                                <p>
-                                    <strong>Summary:</strong> 
+                                        <p><strong>Summary:</strong> @Model.Bookdetail.Summary</p>
+                                        <ul class="detail-page-listing">
 
-                                    @Model.Summary
-                                </p>
-                                    <ul class="detail-page-listing">
+                                            <li><strong>Name:</strong> @Model.Bookdetail.Name</li>
+                                            <li><strong>PublishDate:</strong> @Model.Bookdetail.PublishDate</li>
+                                            <li><strong>Length:</strong> 518 pages.</li>
+                                            <li>
+                                                <strong>Top Category :</strong>
+                                                @foreach (var item in Model.Bookdetail.BookCategories.Where(q => q.Category.TopCategory == 0))
+                                                {
+                                                    @item.Category.CategoryName 
+                                                }
+                                            </li>
+                                            <li>
+                                                <strong>Sub Category :</strong>
+                                                @foreach (var item in Model.Bookdetail.BookCategories.Where(q => q.Category.TopCategory != 0))
+                                                {
+                                                    @item.Category.CategoryName 
 
-                                        <li><strong>Name:</strong>@Model.Name</li>
-                                        <li><strong>PublishDate:</strong>@Model.PublishDate</li>
-                                        <li><strong>Length:</strong> 518 pages.</li>
-                                        <li>
-                                            <strong>Top Category :</strong>
-                                            @foreach (var item in Model.BookCategories.Where(q => q.Category.TopCategory == 0))
-                                            {
-                                                @item.Category.CategoryName
-                                            }
-                                        </li>
-                                        <li>
-                                            <strong>Sub Category :</strong>
-                                            @foreach (var item in Model.BookCategories.Where(q => q.Category.TopCategory != 0))
-                                            {
-                                                @item.Category.CategoryName
+                                                }
+                                            </li>
 
-                                            }
-                                        </li>
-
-
-                                    </ul>
-                                    <div class="table-tabs" id="responsiveTabs">
-                                        <ul class="nav nav-tabs" style="margin-bottom:-50px">
-
-                                            <li><b class="arrow-up"></b><a data-toggle="tab" href="#sectionB">User Comments (@Model.Comments.Count())</a></li>
 
                                         </ul>
+                                        <div class="table-tabs" id="responsiveTabs">
+                                            <ul class="nav nav-tabs" style="margin-bottom:-50px">
 
-                                        <div class="comments-area" id="comments">
-                                            <div class="comment-bg">
-                                                <ol class="comment-list">
-                                                    <li class="comment even thread-even depth-1 parent">
+                                                <li><b class="arrow-up"></b><a data-toggle="tab" href="#sectionB">User Comments (@Model.Bookdetail.Comments.Count())</a></li>
 
-                                                        @if (Model.Comments.Count == 0)
-                                                        {
-                                                            <span>No comments yet!</span>
-                                                        }
+                                            </ul>
 
-                                                        @foreach (var item in Model.Comments)
-                                                        {
-                                                            TimeSpan ts = DateTime.Now - item.AddDate;
+                                            <div class="comments-area" id="comments">
+                                                <div class="comment-bg">
+                                                    <ol class="comment-list">
+                                                        <li class="comment even thread-even depth-1 parent">
 
-                                                            <div class="comment-body">
-                                                                <div class="comment-author vcard">
-                                                                    <img class="avatar avatar-32 photo avatar-default" src="/Site/images/userprofilepic.jpg" alt="Comment Author">
-                                                                    <b class="fn">
-                                                                        <a class="url" rel="external nofollow" href="#">@item.User.Name @item.User.SurName</a>
-                                                                    </b>
-                                                                </div>
-                                                                <footer class="comment-meta">
-                                                                    <div class="left-arrow"></div>
-                                                                    <div class="reply">
-                                                                        <a href="#" class="comment-reply-link">
-                                                                            <i class="fa fa-reply"></i> Reply
-                                                                        </a>
+                                                            @if (Model.Bookdetail.Comments.Count == 0)
+                                                            {
+                                                                <span>No comments yet!</span>
+                                                            }
+
+                                                            @foreach (var item in Model.Bookdetail.Comments)
+                                                            {
+                                                                TimeSpan ts = DateTime.Now - item.AddDate;
+
+                                                                <div class="comment-body">
+                                                                    <div class="comment-author vcard">
+                                                                        <img class="avatar avatar-32 photo avatar-default" src="/Site/images/userprofilepic.jpg" alt="Comment Author">
+                                                                        <b class="fn">
+                                                                            <a class="url" rel="external nofollow" href="#">@item.User.Name @item.User.SurName</a>
+                                                                        </b>
                                                                     </div>
-
-                                                                    <div class="reply" style="margin-right:5px">
-                                                                        @if (Convert.ToInt32(TempData["UserID"]) == item.User.ID)
-                                                                        {
-                                                                            <a href="/SiteBook/EditComment/@item.ID" class="comment-reply-link">
-                                                                                <i class="fa fa-edit"></i> Edit
+                                                                    <footer class="comment-meta">
+                                                                        <div class="left-arrow"></div>
+                                                                        <div class="reply">
+                                                                            <a href="#" class="comment-reply-link">
+                                                                                <i class="fa fa-reply"></i> Reply
                                                                             </a>
+                                                                        </div>
 
-                                                                        }
-
-                                                                    </div>
-                                                                    <div class="reply" style="margin-right:5px">
-                                                                        @if (Convert.ToInt32(TempData["UserID"]) == item.User.ID)
-                                                                        {
-
-
-
-                                                                            <a id="@item.ID" class="comment-reply-link commentdelete">
-                                                                                <i class="fa fa-trash"></i> Delete
-                                                                            </a>
-                                                                        }
-
-                                                                    </div>
-                                                                    <div class="comment-metadata">
-
-                                                                        <time datetime="2016-01-17">
-
-                                                                            <b>@item.AddDate.ToString("dd.MM.yyyy")/ </b>
-                                                                            @if (ts.Hours > 24)
+                                                                        <div class="reply" style="margin-right:5px">
+                                                                            @if (Convert.ToInt32(TempData["UserID"]) == item.User.ID)
                                                                             {
-                                                                                <span>
-                                                                                    @ts.Days.ToString() Days Ago
-                                                                                </span>
+                                                                                <a href="/SiteBook/EditComment/@item.ID" class="comment-reply-link">
+                                                                                    <i class="fa fa-edit"></i> Edit
+                                                                                </a>
+
                                                                             }
 
-                                                                            <span>
-                                                                                @ts.Hours.ToString() Hours @ts.Minutes.ToString()  Minutes Ago
-                                                                            </span>
-
-
-                                                                        </time>
-
-                                                                    </div>
-                                                                    <div class="comment-content">
-                                                                        <h5>@item.Header</h5>
-                                                                        <p>
-                                                                            @item.Content
-                                                                        </p>
-                                                                    </div>
-                                                                </footer>
-                                                            </div>
-
-                                                        }
-
-
-
-                                                        @*<ol class="children">
-                                                                <li class="comment odd alt depth-2">
-                                                                    <div class="comment-body">
-                                                                        <div class="comment-author vcard">
-                                                                            <img class="avatar photo" src="images/blog/peter.jpg" alt="Comment Avatar">
-                                                                            <b class="fn">
-                                                                                <a class="url" rel="external nofollow" href="#">Peter</a>
-                                                                            </b>
                                                                         </div>
-                                                                        <footer class="comment-meta">
-                                                                            <div class="left-arrow"></div>
-                                                                            <div class="reply">
-                                                                                <a href="#" class="comment-reply-link">
-                                                                                    <i class="fa fa-reply"></i> Reply
+                                                                        <div class="reply" style="margin-right:5px">
+                                                                            @if (Convert.ToInt32(TempData["UserID"]) == item.User.ID)
+                                                                            {
+
+
+
+                                                                                <a id="@item.ID" class="comment-reply-link commentdelete" style="cursor:pointer">
+                                                                                    <i class="fa fa-trash"></i> Delete
                                                                                 </a>
+                                                                            }
+
+                                                                        </div>
+                                                                        <div class="comment-metadata">
+
+                                                                            <time datetime="2016-01-17">
+
+                                                                                <b>@item.AddDate.ToString("dd.MM.yyyy")/ </b>
+                                                                                @if (ts.Hours > 24)
+                                                                                {
+                                                                                    <span>
+                                                                                        @ts.Days.ToString() Days Ago
+                                                                                    </span>
+                                                                                }
+
+                                                                                <span>
+                                                                                    @ts.Hours.ToString() Hours @ts.Minutes.ToString()  Minutes Ago
+                                                                                </span>
+
+
+                                                                            </time>
+
+                                                                        </div>
+                                                                        <div class="comment-content">
+                                                                            <h5>@item.Header</h5>
+                                                                            <p>
+                                                                                @item.Content
+                                                                            </p>
+                                                                        </div>
+                                                                    </footer>
+                                                                </div>
+
+                                                            }
+
+
+
+                                                            @*<ol class="children">
+                                                                    <li class="comment odd alt depth-2">
+                                                                        <div class="comment-body">
+                                                                            <div class="comment-author vcard">
+                                                                                <img class="avatar photo" src="images/blog/peter.jpg" alt="Comment Avatar">
+                                                                                <b class="fn">
+                                                                                    <a class="url" rel="external nofollow" href="#">Peter</a>
+                                                                                </b>
                                                                             </div>
-                                                                            <div class="comment-metadata">
-                                                                                <a href="#">
-                                                                                    <time datetime="2016-01-17">
-                                                                                        <b>Mar 17, 2016 / </b>  45 Minutes Ago
-                                                                                    </time>
-                                                                                </a>
-                                                                            </div>
-                                                                            <div class="comment-content">
-                                                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                                                            </div>
-                                                                        </footer>
-                                                                    </div>
-                                                                </li>
-                                                            </ol>*@
-                                                    </li>
-                                                </ol>
+                                                                            <footer class="comment-meta">
+                                                                                <div class="left-arrow"></div>
+                                                                                <div class="reply">
+                                                                                    <a href="#" class="comment-reply-link">
+                                                                                        <i class="fa fa-reply"></i> Reply
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="comment-metadata">
+                                                                                    <a href="#">
+                                                                                        <time datetime="2016-01-17">
+                                                                                            <b>Mar 17, 2016 / </b>  45 Minutes Ago
+                                                                                        </time>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="comment-content">
+                                                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                                                                </div>
+                                                                            </footer>
+                                                                        </div>
+                                                                    </li>
+                                                                </ol>*@
+                                                        </li>
+                                                    </ol>
+                                                </div>
+
+
+
+
+                                                <div class="comment-respond" id="respond">
+                                                    <h4 class="comment-reply-title" id="reply-title">Write your comment:</h4>
+                                                    <span class="underline left"></span>
+
+                                                    @if (Model.Comment != null)
+                                                    {
+                                                        <form class="comment-form" id="commentform" method="post" action="/SiteBook/EditComment/">
+                                                            <div class="row">
+
+                                                                <p class="comment-form-subject input-required">
+                                                                    @*<label>
+                            <span class="first-letter">Header</span>
+                        </label>*@
+                                                                    @Html.TextBoxFor(q => q.Comment.Header, new { @placeholder = "Header" })
+                                                                </p>
+
+                                                                <p class="comment-form-comment">
+                                                                    @Html.TextAreaFor(q => q.Comment.Content, new { @placeholder = "Write Comment" })
+                                                                </p>
+
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                            <p class="form-submit">
+                                                                @Html.HiddenFor(q => q.Comment.ID)
+                                                                <input value="submit" class="submit" id="submit" name="bookid" type="submit">
+                                                            </p>
+
+                                                        </form>
+                                                    }
+                                                    else
+                                                    {
+                                                        <form class="comment-form" id="commentform" method="post" action="/SiteBook/AddComment/">
+                                                            <div class="row">
+
+                                                                <p class="comment-form-subject input-required">
+                                                                    <label>
+                                                                        <span class="first-letter">Header</span>
+                                                                    </label>
+                                                                    @Html.TextBoxFor(q => q.Comment.Header)
+                                                                </p>
+
+                                                                <p class="comment-form-comment">
+                                                                    @Html.TextAreaFor(q => q.Comment.Content, new { @placeholder = "Write Comment" })
+                                                                </p>
+
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                            <p class="form-submit">
+                                                                @Html.HiddenFor(q => q.Bookdetail.ID)
+                                                                <input value="submit" class="submit" id="submit" name="bookid" type="submit">
+                                                            </p>
+
+                                                        </form>
+                                                    }
+
+                                                </div>
                                             </div>
 
-
-
-
-                                            <div class="comment-respond" id="respond">
-                                                <h4 class="comment-reply-title" id="reply-title">Write your comment:</h4>
-                                                <span class="underline left"></span>
-                                                <form class="comment-form" id="commentform" method="post" action="/SiteBook/AddComment/">
-                                                    <div class="row">
-
-                                                        <p class="comment-form-subject input-required">
-                                                            <label>
-                                                                <span class="first-letter">Header</span>
-                                                            </label>
-                                                            <input name="Header" id="subject" type="text">
-                                                        </p>
-                                                        <p class="comment-form-comment">
-                                                            <textarea name="Content" id="comment" placeholder="Write Comment"></textarea>
-                                                        </p>
-                                                    </div>
-                                                    <div class="clearfix"></div>
-                                                    <p class="form-submit">
-                                                        @Html.HiddenFor(q => q.BookID)
-                                                        <input value="submit" class="submit" id="submit" name="bookid" type="submit">
-                                                    </p>
-
-                                                </form>
-                                            </div>
                                         </div>
 
+
+
                                     </div>
-
-
-
                                 </div>
-                            </div>
 
+                            </div>
                         </div>
                     </div>
-                </div>
-            </main>
+                </main>
+            </div>
         </div>
-    </div>
+    </section>
     <!-- End: Products Section -->
 
     <script>
+
+
+        var subcategoryselect = $('#category');
+
+
+        $('#catalog').change(function () {
+
+            subcategoryselect.empty();
+            var categoryId = $(this).val();
+
+            if (categoryId == null) {
+                subcategoryselect.empty();
+                subcategoryselect.append($('<option></option>').val("").text('Select Sub Category'));
+            }
+
+            console.log(categoryId);
+
+            $.ajax({
+                type: 'POST',
+                url: "/SiteHome/Getsubcategory",
+                data: { catalog: categoryId },
+                success: function (response) {
+
+                    subcategoryselect.append($('<option></option>').val("").text('Select Sub Category'));
+                    $.each(response, function (i, item) {
+                        console.log(item.categoryName);
+                        console.log(item.id);
+                        subcategoryselect.append($('<option></option>').val(item.id).text(item.categoryName));
+                    });
+
+                }
+
+            });
+        })
+
+
+
+
 
 
     $(".fa").click(function () {
@@ -559,7 +541,7 @@
                 //    }
                 //}
 
-                var modelbook = @Model.BookID;
+                var modelbook = @Model.Bookdetail.ID;
                 window.location.href = "/sitebook/bookdetail/" + modelbook;
 
             },
@@ -591,7 +573,7 @@
 
                 if (key < bookstars) {
                     console.log($(item));
-                    $(item).attr("class", "fa fa-star");                   
+                    $(item).attr("class", "fa fa-star");
                 }
 
             })
@@ -600,9 +582,6 @@
         //$(this).prevAll(".fa").removeClass('fa-star').addClass('fa-star-o');
 
     })
-
-
-
 
 
 
@@ -616,7 +595,7 @@
                 success: function (msg) {
                     console.log(msg);
                     //$("#" + id).fadeOut();
-                    var modelbook = @Model.BookID;
+                    var modelbook = @Model.Bookdetail.ID;
                     window.location.href = "/SiteBook/BookDetail/" + modelbook;
                         alert("Deleted successfully!!!");
                 },
@@ -625,9 +604,6 @@
                 }
             })
         })
-
-
-
 
 
     </script>

@@ -31,193 +31,197 @@
 </section>
 
 <!--End: Page Banner -->
-<div id="content" class="site-content">
-    <div id="primary" class="content-area">
-        <main id="main" class="site-main">
-            <div class="books-full-width">
-                <div class="container-fluid">
+<section class="book-padding">
+    <div id="content" class="site-content">
+        <div id="primary" class="content-area">
+            <main id="main" class="site-main">
+                <div class="books-full-width">
+                    <div class="container-fluid">
 
-                    <div class="row">
+                        <div class="row">
 
-                        <section class="search-filters" style="padding:0 70px 0 70px">
+                            <section class="search-filters" style="padding:0 70px 0 70px">
 
-                            <div class="filter-box">
+                                <div class="filter-box">
 
-                                <h3>What are you looking for at the library?</h3>
+                                    <h3>What are you looking for at the Book Store?</h3>
 
-                                <form action="/SiteBook/Search/" method="post">
+                                    <form action="/SiteBook/Search/" method="post">
 
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="form-group">
-                                            <label class="sr-only" for="keywords">Search by Keyword</label>
-                                            <input class="form-control" placeholder="Search by Keyword" id="keywords" name="keywords" type="text">
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="keywords">Search by Keyword</label>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="col-md-3 col-sm-6">
-                                        <div class="form-group">
-                                            <select name="catalog" id="catalog" class="form-control book-select">
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
+                                                <select name="catalog" id="catalog" class="form-control book-select">
 
-                                                <option>Select Top Category</option>
+                                                    <option>Select Top Category</option>
 
-                                                @foreach (var item in Model.Categories.Where(q => q.TopCategory == 0))
-                                                {
-
-                                                    <option value="@item.ID">@item.CategoryName</option>
-                                                }
-
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-3 col-sm-6">
-                                        <div class="form-group">
-
-                                            <select name="category" id="category" class="form-control book-select">
-                                                <option>Select Sub Category</option>
-
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-2 col-sm-6">
-                                        <div class="form-group">
-                                            <input class="form-control" type="submit" value="Search">
-                                        </div>
-                                    </div>
-
-                                </form>
-                            </div>
-
-                            <div class="clear"></div>
-
-                        </section>
-
-                    </div>
-
-                    <!-- Start: Search Section -->
-
-
-                    <div class="row" style="padding: 0 55px 100px 55px;margin: 0 -15px 0 -15px;">
-
-                        <div class="col-md-3">
-                            <aside id="secondary" class="sidebar widget-area" data-accordion-group>
-                                <div class="widget widget_related_search open" data-accordion>
-                                    <h4 class="widget-title" data-control>Related Searches</h4>
-                                    <div data-content>
-
-                                        <div data-accordion>
-                                            <h5 class="widget-sub-title" data-control>Categories</h5>
-                                            <div class="widget_categories" data-content>
-                                                <ul>
                                                     @foreach (var item in Model.Categories.Where(q => q.TopCategory == 0))
                                                     {
-                                                        <li><a href="/SiteBook/Listclick/@item.ID" class="widget-sub-category"><strong>@item.CategoryName</strong></a></li>
 
-
-                                                        <div class="widget_categories" style="max-height:inherit">
-                                                            <ul>
-                                                                @foreach (var data in Model.Categories.Where(q => q.TopCategory == item.ID))
-                                                                {
-
-                                                                    <li style="list-style-type:disc"><a  href="/SiteBook/Listclick/@data.ID" class="widget-sub-category" style="padding-bottom:15px">@data.CategoryName</a></li>
-
-
-                                                                    <div class="widget_categories" style="max-height:inherit">
-                                                                        <ul>
-                                                                            @foreach (var data1 in Model.Categories.Where(q => q.TopCategory == data.ID))
-                                                                            {
-
-                                                                                <li><a  href="/SiteBook/Listclick/@data1.ID" style="padding-bottom:15px">@data1.CategoryName</a></li>
-
-                                                                            }
-
-                                                                        </ul>
-                                                                    </div>
-                                                                }
-
-                                                            </ul>
-                                                        </div>
-
-
+                                                        <option value="@item.ID">@item.CategoryName</option>
                                                     }
 
-                                                </ul>
+                                                </select>
                                             </div>
                                         </div>
-                                        <div data-accordion>
-                                            <h5 class="widget-sub-title" data-control>Writers</h5>
-                                            <div class="widget_categories" data-content>
-                                                <ul>
 
-                                                    @foreach (var item in Model.people)
-                                                    {
+                                        <div class="col-md-3 col-sm-6">
+                                            <div class="form-group">
 
-                                                        <li><a>@(item.Name+" "+item.SurName)<span>@item.BookPeople.Where(q=>q.IsDeleted==false&&q.PersonID==item.ID).Count()</span></a></li>
-                                                    }
+                                                <select name="category" id="category" class="form-control book-select">
+                                                    <option>Select Sub Category</option>
 
-                                                </ul>
+                                                </select>
                                             </div>
-                                            <div class="clearfix"></div>
                                         </div>
-                            </aside>
+
+                                        <div class="col-md-2 col-sm-6">
+                                            <div class="form-group">
+                                                <input class="form-control" type="submit" value="Search">
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+
+                                <div class="clear"></div>
+
+                            </section>
+
                         </div>
 
-                        <div class="col-md-9">
+                        <!-- Start: Search Section -->
 
 
-                            <div class="booksmedia-fullwidth">
-                                <ul style="display:flex; justify-content:space-around; flex-wrap:wrap">
-                           
+                        <div class="row" style="padding: 0 55px 0 55px">
 
-                                    @foreach (var item in Model.books)
-                                    {
-                                        <li>
-                                            <div class="book-list-icon yellow-icon"></div>
-                                            <figure>
-                                                <a href="/SiteBook/BookDetail/@item.ID"><img src="/Admin/Coverimg/@item.Imagepath" alt="Book" style="height:450px"></a>
-                                                <figcaption>
-                                                    <header>
+                            <div class="col-md-3">
+                                <aside id="secondary" class="sidebar widget-area" data-accordion-group>
+                                    <div class="widget widget_related_search open" data-accordion>
+                                        <h4 class="widget-title" data-control>Related Searches</h4>
+                                        <div data-content>
 
-                                                        <h4><a href="">@item.Name</a></h4>
-                                                        <p>
-                                                            @foreach (var data in item.BookPersons.Where(q => q.DutyID == 0))
-                                                            {
-                                                                <strong>Writer:</strong>@(data.Person.Name+ " "+data.Person.SurName) <br />
-                                                            }
-                                                        </p>
+                                            <div data-accordion>
+                                                <h5 class="widget-sub-title" data-control>Categories</h5>
+                                                <div class="widget_categories" data-content>
+                                                    <ul>
+                                                        @foreach (var item in Model.Categories.Where(q => q.TopCategory == 0))
+                                                        {
+                                                            <li><a href="/SiteBook/Listclick/@item.ID" class="widget-sub-category"><strong>@item.CategoryName</strong></a></li>
 
-                                                    </header>
 
-                                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
+                                                            <div class="widget_categories" style="max-height:inherit">
+                                                                <ul>
+                                                                    @foreach (var data in Model.Categories.Where(q => q.TopCategory == item.ID))
+                                                                    {
 
-                                                </figcaption>
-                                            </figure>
-                                        </li>
-                                    }
+                                                                        <li style="list-style-type:disc"><a href="/SiteBook/Listclick/@data.ID" class="widget-sub-category" style="padding-bottom:15px">@data.CategoryName</a></li>
 
-                                </ul>
+
+                                                                        <div class="widget_categories" style="max-height:inherit">
+                                                                            <ul>
+                                                                                @foreach (var data1 in Model.Categories.Where(q => q.TopCategory == data.ID))
+                                                                                {
+
+                                                                                    <li><a href="/SiteBook/Listclick/@data1.ID" style="padding-bottom:15px">@data1.CategoryName</a></li>
+
+                                                                                }
+
+                                                                            </ul>
+                                                                        </div>
+                                                                    }
+
+                                                                </ul>
+                                                            </div>
+
+
+                                                        }
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div data-accordion style="padding-top:10px">
+                                                <h5 class="widget-sub-title" data-control>Writers</h5>
+                                                <div class="widget_categories" data-content>
+                                                    <ul>
+
+                                                        @foreach (var item in Model.people)
+                                                        {
+
+                                                            <li><a>@(item.Name+" "+item.SurName)<span>@item.BookPeople.Where(q => q.IsDeleted == false && q.PersonID == item.ID).Count()</span></a></li>
+                                                        }
+
+                                                    </ul>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </aside>
                             </div>
 
-                            <nav class="navigation pagination text-center">
-                                @*<h2 class="screen-reader-text">Posts navigation</h2>*@
-                                <div class="nav-links">
-                                    <a class="prev page-numbers" href="#"><i class="fa fa-long-arrow-left"></i> Previous</a>
-                                    <a class="page-numbers current" href="#">1</a>
-                                    <a class="page-numbers" href="#">2</a>
-                                    <a class="page-numbers" href="#">3</a>
-                                    <a class="page-numbers" href="#">4</a>
-                                    <a class="next page-numbers" href="#">Next <i class="fa fa-long-arrow-right"></i></a>
-                                </div>
-                            </nav>
+                            <div class="col-md-9">
 
+
+                                <div class="booksmedia-fullwidth">
+                                    <ul style="display:flex; justify-content:space-between; flex-wrap:wrap">
+
+
+                                        @foreach (var item in Model.books)
+                                        {
+                                            <li>
+                                                <div class="book-list-icon yellow-icon"></div>
+                                                <figure>
+                                                    <a href="/SiteBook/BookDetail/@item.ID"><img src="/Admin/Coverimg/@item.Imagepath" alt="Book" style="height:450px"></a>
+                                                    <figcaption>
+                                                        <header>
+
+                                                            <h4><a href="">@item.Name</a></h4>
+                                                            <p>
+                                                                @foreach (var data in item.BookPersons.Where(q => q.DutyID == 0))
+                                                                {
+                                                                    <strong>Writer:</strong>@(data.Person.Name+ " "+data.Person.SurName) <br />
+                                                                }
+                                                            </p>
+
+                                                        </header>
+
+                                                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
+
+                                                    </figcaption>
+                                                </figure>
+                                            </li>
+                                        }
+
+                                    </ul>
+                                </div>
+
+                                <nav class="navigation pagination text-center">
+                                    @*<h2 class="screen-reader-text">Posts navigation</h2>*@
+                                    <div class="nav-links">
+                                        <a class="prev page-numbers" href="#"><i class="fa fa-long-arrow-left"></i> Previous</a>
+                                        <a class="page-numbers current" href="#">1</a>
+                                        <a class="page-numbers" href="#">2</a>
+                                        <a class="page-numbers" href="#">3</a>
+                                        <a class="page-numbers" href="#">4</a>
+                                        <a class="next page-numbers" href="#">Next <i class="fa fa-long-arrow-right"></i></a>
+                                    </div>
+                                </nav>
+
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </main>
+            </main>
+        </div>
     </div>
-</div>
+</section>
+
 
 
 
@@ -257,64 +261,5 @@
     })
 
 </Script>
-
-
-@*<script>
-
-    $('.widget-sub-category').click(function () {
-
-        if ($(this).attr('name') == "catalog") {
-            var categoryId = $(this).attr('id');
-
-            console.log(categoryId);
-
-            $.ajax({
-                type: 'POST',
-                url: "/SiteBook/Search",
-                data: { catalog: categoryId },
-            });
-        }
-
-
-        if ($(this).attr('name') == "category") {
-            var categoryId = $(this).attr('id');
-
-            console.log(categoryId);
-
-            $.ajax({
-                type: 'POST',
-                url: "/Sitebook/Search",
-                data: { category: categoryId },
-            });
-        }
-
-        if ($(this).attr('name') == "scategory") {
-            var categoryId = $(this).attr('id');
-
-            console.log(categoryId);
-            alert(categoryId);
-            $.ajax({
-                type: 'POST',
-                url: "/SiteBook/Search",
-                data: { scategory: categoryId },
-                success: function () {
-                    alert("Deleted successfully!!!");
-                    window.location.href = "/sitebook/";
-                },
-
-            });
-        }
-
-    })
-</script>*@
-
-
-@*<script>
-        $(".fa").mouseout(function () {
-            $(this).removeClass('fa-star').addClass('fa-star-o');
-            $(this).prevAll(".fa").removeClass('fa-star').addClass('fa-star-o');
-        })
-    </script>*@
-
 
 

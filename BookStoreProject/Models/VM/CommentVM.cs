@@ -15,7 +15,6 @@ namespace BookStoreProject.Models.VM
         public string UserName { get; set; }
         public string BookName { get; set; }
         public int BookID { get; set; }
-
         public string Header { get; set; }
 
     }
