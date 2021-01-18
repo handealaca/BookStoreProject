@@ -5,7 +5,7 @@
 }
 
 
-@model BookStoreProject.Models.VM.PersonVM
+@model BookStoreProject.Models.VM.SiteBookVM
 <!-- Start: Page Banner -->
 <section class="page-banner services-banner" style="background-image: url(/Site/images/writers.jpg)">
     <div class="container">
@@ -34,90 +34,45 @@
 
                         <!-- Start: Search Section -->
 
-                        <div class="row">
-
-                            <section class="search-filters" style="padding:0 70px 0 70px">
-
-                                <div class="filter-box">
-
-                                    <h3>What are you looking for at the Book Store?</h3>
-
-                                    <form action="/SiteBook/Search/" method="post">
-
-                                        <div class="col-md-4 col-sm-6">
-                                            <div class="form-group">
-                                                <label class="sr-only" for="keywords">Search by Keyword</label>
-                                                <input class="form-control" placeholder="Search by Keyword" id="keywords" name="keywords">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3 col-sm-6">
-                                            <div class="form-group">
-                                                <select name="catalog" id="catalog" class="form-control book-select">
-
-                                                    <option>Select Top Category</option>
-
-                                                    @*@foreach (var item in Model.Categories.Where(q => q.TopCategory == 0))
-                                                    {
-
-                                                        <option value="@item.ID">@item.CategoryName</option>
-                                                    }*@
-
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-3 col-sm-6">
-                                            <div class="form-group">
-                                                <select name="category" id="category" class="form-control book-select">
-                                                    <option>Select Sub Category</option>
-
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-2 col-sm-6">
-                                            <div class="form-group">
-                                                <input class="form-control" type="submit" value="Search">
-                                            </div>
-                                        </div>
-
-                                    </form>
-                                </div>
-
-                                <div class="clear"></div>
-
-                            </section>
-
-                        </div>
+                        @await Html.PartialAsync("Partial/Search")
 
                         <!-- End: Search Section -->
                         <div class="row" style="padding: 0 55px 0 55px">
 
-                            <div class="col-md-12">
+                            @await Html.PartialAsync("Partial/FilterTree")
+
+                            <div class="col-md-9">
                                 <div class="booksmedia-detail-box">
                                     <div class="single-book-box">
                                         <div class="post-thumbnail">
                                             <div class="book-list-icon yellow-icon"></div>
 
-                                            <img alt="Person" src="/Admin/writerimg/@Model.Imagepath" />
+                                            <img alt="Person" src="/Admin/writerimg/@Model.PersonDetail.Imagepath" style="height:450px;width:400px" />
                                         </div>
                                         <div class="post-detail">
 
                                             <header class="entry-header">
-                                                <h2 class="entry-title">@Model.Name @Model.SurName</h2>
+                                                <h2 class="entry-title">@Model.PersonDetail.Name @Model.PersonDetail.SurName</h2>
                                                 <ul>
                                                     <li>
                                                         <strong>Duties:</strong>
-                                                        @foreach (var item in Model.Duties)
+                                                        @foreach (var item in Model.PersonDetail.Duties)
                                                         {
-                                                            <span>@item</span>
+                                                            if (Model.PersonDetail.Duties.LastOrDefault() == item)
+                                                            {
+                                                                <span>@item</span>
+                                                            }
+
+                                                            else
+                                                            {
+                                                                <span>@item,</span>
+                                                            }
                                                         }
                                                     </li>
 
                                                     <li>
 
-                                                        <strong>Birth Date:</strong><span>@Model.BirthDate?.ToString("dd.MM.yyyy")</span>
+                                                        <strong>Birth Date:</strong><span>@Model.PersonDetail.BirthDate?.ToString("dd.MM.yyyy")</span>
 
                                                     </li>
 
@@ -126,13 +81,13 @@
 
                                         </div>
                                     </div>
-                                    <p><strong>Biography:</strong> @Model.Biography </p>
+                                    <p><strong>Biography:</strong> @Model.PersonDetail.Biography </p>
 
                                     <p><strong>Other Books:</strong></p>
 
                                     <div class="booksmedia-fullwidth">
-                                        <ul style="display:flex; justify-content:space-around; flex-wrap:wrap">
-                                            @foreach (var item in Model.BookPeople)
+                                        <ul style="display:flex; justify-content:space-between; flex-wrap:wrap">
+                                            @foreach (var item in Model.PersonDetail.BookPeople)
                                             {
                                                 <li>
                                                     <div class="book-list-icon yellow-icon"></div>
@@ -157,57 +112,7 @@
                                                     </figure>
                                                 </li>
                                             }
-                                            @foreach (var item in Model.BookPeople)
-                                            {
-                                                <li>
-                                                    <div class="book-list-icon yellow-icon"></div>
-                                                    <figure>
-                                                        <a href="/SiteBook/BookDetail/@item.BookID"><img src="/Admin/Coverimg/@item.Book.Imagepath" alt="Book" style="height:450px"></a>
-                                                        <figcaption>
-                                                            <header>
-
-                                                                <h4><a href="">@item.Book.Name</a></h4>
-                                                                <p>
-                                                                    @foreach (var data in item.Book.BookPersons.Where(q => q.DutyID == 0))
-                                                                    {
-                                                                        <strong>Writer:</strong>@(data.Person.Name+ " "+data.Person.SurName) <br />
-                                                                    }
-                                                                </p>
-
-                                                            </header>
-
-                                                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-
-                                                        </figcaption>
-                                                    </figure>
-                                                </li>
-                                            }
-                                            @foreach (var item in Model.BookPeople)
-                                            {
-                                                <li>
-                                                    <div class="book-list-icon yellow-icon"></div>
-                                                    <figure>
-                                                        <a href="/SiteBook/BookDetail/@item.BookID"><img src="/Admin/Coverimg/@item.Book.Imagepath" alt="Book" style="height:450px"></a>
-                                                        <figcaption>
-                                                            <header>
-
-                                                                <h4><a href="">@item.Book.Name</a></h4>
-                                                                <p>
-                                                                    @foreach (var data in item.Book.BookPersons.Where(q => q.DutyID == 0))
-                                                                    {
-                                                                        <strong>Writer:</strong>@(data.Person.Name+ " "+data.Person.SurName) <br/>
-                                                                    }
-                                                                </p>
-
-                                                            </header>
-
-                                                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Pellentesque dolor turpis, pulvinar varius.</p>
-
-                                                        </figcaption>
-                                                    </figure>
-                                                </li>
-                                            }
-
+                                       
 
                                         </ul>
                                     </div>
@@ -224,4 +129,39 @@
     </div>
 </section>
 
-<!-- End: Products Section -->
+<script>
+
+    var subcategoryselect = $('#category');
+
+
+    $('#catalog').change(function () {
+
+        subcategoryselect.empty();
+        var categoryId = $(this).val();
+
+        if (categoryId == null) {
+            subcategoryselect.empty();
+            subcategoryselect.append($('<option></option>').val("").text('Select Sub Category'));
+        }
+
+        console.log(categoryId);
+
+        $.ajax({
+            type: 'POST',
+            url: "/SiteHome/Getsubcategory",
+            data: { catalog: categoryId },
+            success: function (response) {
+
+                subcategoryselect.append($('<option></option>').val("").text('Select Sub Category'));
+                $.each(response, function (i, item) {
+                    console.log(item.categoryName);
+                    console.log(item.id);
+                    subcategoryselect.append($('<option></option>').val(item.id).text(item.categoryName));
+                });
+
+            }
+
+        });
+    })
+
+</script>

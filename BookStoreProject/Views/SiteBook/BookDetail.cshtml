@@ -36,70 +36,7 @@
 
                         <div class="row" style="padding: 0 55px 0 55px">
 
-                            <div class="col-md-3">
-                                <aside id="secondary" class="sidebar widget-area" data-accordion-group>
-                                    <div class="widget widget_related_search open" data-accordion>
-                                        <h4 class="widget-title" data-control>Related Searches</h4>
-                                        <div data-content>
-
-                                            <div data-accordion>
-                                                <h5 class="widget-sub-title" data-control>Categories</h5>
-                                                <div class="widget_categories" data-content>
-                                                    <ul>
-                                                        @foreach (var item in Model.Categories.Where(q => q.TopCategory == 0))
-                                                        {
-                                                            <li><a href="/SiteBook/Listclick/@item.ID" class="widget-sub-category"><strong>@item.CategoryName</strong></a></li>
-
-
-                                                            <div class="widget_categories" style="max-height:inherit">
-                                                                <ul>
-                                                                    @foreach (var data in Model.Categories.Where(q => q.TopCategory == item.ID))
-                                                                    {
-
-                                                                        <li style="list-style-type:disc"><a href="/SiteBook/Listclick/@data.ID" class="widget-sub-category" style="padding-bottom:15px">@data.CategoryName</a></li>
-
-
-                                                                        <div class="widget_categories" style="max-height:inherit">
-                                                                            <ul>
-                                                                                @foreach (var data1 in Model.Categories.Where(q => q.TopCategory == data.ID))
-                                                                                {
-
-                                                                                    <li><a href="/SiteBook/Listclick/@data1.ID" style="padding-bottom:15px">@data1.CategoryName</a></li>
-
-                                                                                }
-
-                                                                            </ul>
-                                                                        </div>
-                                                                    }
-
-                                                                </ul>
-                                                            </div>
-
-
-                                                        }
-
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div data-accordion style="padding-top:10px">
-                                                <h5 class="widget-sub-title" data-control>Writers</h5>
-                                                <div class="widget_categories" data-content>
-                                                    <ul>
-
-                                                        @foreach (var item in Model.people)
-                                                        {
-
-                                                            <li><a>@(item.Name+" "+item.SurName)<span>@item.BookPeople.Where(q => q.IsDeleted == false && q.PersonID == item.ID).Count()</span></a></li>
-                                                        }
-
-                                                    </ul>
-                                                </div>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </aside>
-                            </div>
+                            @await Html.PartialAsync("Partial/FilterTree")
 
 
                             <div class="col-md-9">
@@ -345,35 +282,35 @@
 
 
                                                             @*<ol class="children">
-                                                <li class="comment odd alt depth-2">
-                                                    <div class="comment-body">
-                                                        <div class="comment-author vcard">
-                                                            <img class="avatar photo" src="images/blog/peter.jpg" alt="Comment Avatar">
-                                                            <b class="fn">
-                                                                <a class="url" rel="external nofollow" href="#">Peter</a>
-                                                            </b>
-                                                        </div>
-                                                        <footer class="comment-meta">
-                                                            <div class="left-arrow"></div>
-                                                            <div class="reply">
-                                                                <a href="#" class="comment-reply-link">
-                                                                    <i class="fa fa-reply"></i> Reply
-                                                                </a>
-                                                            </div>
-                                                            <div class="comment-metadata">
-                                                                <a href="#">
-                                                                    <time datetime="2016-01-17">
-                                                                        <b>Mar 17, 2016 / </b>  45 Minutes Ago
-                                                                    </time>
-                                                                </a>
-                                                            </div>
-                                                            <div class="comment-content">
-                                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                                            </div>
-                                                        </footer>
+                                            <li class="comment odd alt depth-2">
+                                                <div class="comment-body">
+                                                    <div class="comment-author vcard">
+                                                        <img class="avatar photo" src="images/blog/peter.jpg" alt="Comment Avatar">
+                                                        <b class="fn">
+                                                            <a class="url" rel="external nofollow" href="#">Peter</a>
+                                                        </b>
                                                     </div>
-                                                </li>
-                                            </ol>*@
+                                                    <footer class="comment-meta">
+                                                        <div class="left-arrow"></div>
+                                                        <div class="reply">
+                                                            <a href="#" class="comment-reply-link">
+                                                                <i class="fa fa-reply"></i> Reply
+                                                            </a>
+                                                        </div>
+                                                        <div class="comment-metadata">
+                                                            <a href="#">
+                                                                <time datetime="2016-01-17">
+                                                                    <b>Mar 17, 2016 / </b>  45 Minutes Ago
+                                                                </time>
+                                                            </a>
+                                                        </div>
+                                                        <div class="comment-content">
+                                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                                        </div>
+                                                    </footer>
+                                                </div>
+                                            </li>
+                                        </ol>*@
                                                         </li>
                                                     </ol>
                                                 </div>
@@ -391,7 +328,7 @@
                                                             <div class="row">
 
                                                                 <p class="comment-form-subject input-required">
-                                                                  
+
                                                                     @Html.TextBoxFor(q => q.Comment.Header, new { @placeholder = "Header" })
                                                                 </p>
 
@@ -506,17 +443,6 @@
             data: { bookid: bookid, point: point },
             success: function (average) {
                 console.log(average);
-                //for (var i = 5; i >= 1; i--) {
-
-                //    if (i <= average) {
-                //        $(this).removeClass('fa-star-o').addClass('fa-star');
-                //    }
-
-                //    else {
-                //        $(this).nextAll(".fa").removeClass('fa-star-o').addClass('fa-star');
-
-                //    }
-                //}
 
                 var modelbook = @Model.Bookdetail.ID;
                 window.location.href = "/sitebook/bookdetail/" + modelbook;
@@ -534,33 +460,14 @@
 
     })
 
-        let bookstars = 0;
-        $("#stars > i").each(function(key,item){
+       
 
-            if ($(item).attr("class") == "fa fa-star") {
-                bookstars++;
-            }
-        })
-
-
-        $(".fa").mouseleave(function () {
-            //kaç adet dolu yıldız olduğunu bulalım. Daha sonra o yıldız kadar fa class ını ayarlayalım. id si starts olan li nin içerisinde fa-start olan kaç eleman var?
-
-            $("#stars > i").each(function (key, item) {
-
-                if (key < bookstars) {
-                    console.log($(item));
-                    $(item).attr("class", "fa fa-star");
-                }
-
-            })
-
-        //$(this).removeClass('fa-star-o').addClass('fa-star');
-        //$(this).prevAll(".fa").removeClass('fa-star').addClass('fa-star-o');
+        $(".fa").mouseout(function () {
+         
+        $(this).removeClass('fa-star').addClass('fa-star-o');
+        $(this).prevAll(".fa").removeClass('fa-star').addClass('fa-star-o');
 
     })
-
-
 
 
         $(document).on("click", ".commentdelete", function () {
