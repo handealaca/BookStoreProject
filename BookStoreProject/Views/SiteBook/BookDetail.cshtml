@@ -276,35 +276,35 @@
 
 
                                                             @*<ol class="children">
-                                            <li class="comment odd alt depth-2">
-                                                <div class="comment-body">
-                                                    <div class="comment-author vcard">
-                                                        <img class="avatar photo" src="images/blog/peter.jpg" alt="Comment Avatar">
-                                                        <b class="fn">
-                                                            <a class="url" rel="external nofollow" href="#">Peter</a>
-                                                        </b>
-                                                    </div>
-                                                    <footer class="comment-meta">
-                                                        <div class="left-arrow"></div>
-                                                        <div class="reply">
-                                                            <a href="#" class="comment-reply-link">
-                                                                <i class="fa fa-reply"></i> Reply
-                                                            </a>
-                                                        </div>
-                                                        <div class="comment-metadata">
-                                                            <a href="#">
-                                                                <time datetime="2016-01-17">
-                                                                    <b>Mar 17, 2016 / </b>  45 Minutes Ago
-                                                                </time>
-                                                            </a>
-                                                        </div>
-                                                        <div class="comment-content">
-                                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                                                        </div>
-                                                    </footer>
-                                                </div>
-                                            </li>
-                                        </ol>*@
+                                                                    <li class="comment odd alt depth-2">
+                                                                        <div class="comment-body">
+                                                                            <div class="comment-author vcard">
+                                                                                <img class="avatar photo" src="images/blog/peter.jpg" alt="Comment Avatar">
+                                                                                <b class="fn">
+                                                                                    <a class="url" rel="external nofollow" href="#">Peter</a>
+                                                                                </b>
+                                                                            </div>
+                                                                            <footer class="comment-meta">
+                                                                                <div class="left-arrow"></div>
+                                                                                <div class="reply">
+                                                                                    <a href="#" class="comment-reply-link">
+                                                                                        <i class="fa fa-reply"></i> Reply
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="comment-metadata">
+                                                                                    <a href="#">
+                                                                                        <time datetime="2016-01-17">
+                                                                                            <b>Mar 17, 2016 / </b>  45 Minutes Ago
+                                                                                        </time>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="comment-content">
+                                                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                                                                </div>
+                                                                            </footer>
+                                                                        </div>
+                                                                    </li>
+                                                                </ol>*@
                                                         </li>
                                                     </ol>
                                                 </div>
@@ -384,7 +384,7 @@
     </section>
     <!-- End: Products Section -->
 
-    <script>
+<script>
 
 
         var subcategoryselect = $('#category');
@@ -450,18 +450,33 @@
 
             $(".fa").mouseover(function () {
         $(this).removeClass('fa-star-o').addClass('fa-star');
-        $(this).prevAll(".fa").removeClass('fa-star-o').addClass('fa-star');
+                $(this).prevAll(".fa").removeClass('fa-star-o').addClass('fa-star');
+                $(this).nextAll(".fa").removeClass('fa-star').addClass('fa-star-o');
+
 
     })
 
-       
+
 
         $(".fa").mouseout(function () {
-         
-        $(this).removeClass('fa-star').addClass('fa-star-o');
-        $(this).prevAll(".fa").removeClass('fa-star').addClass('fa-star-o');
+
+            $(this).removeClass('fa-star').addClass('fa-star-o');
+            $(this).prevAll(".fa").removeClass('fa-star').addClass('fa-star-o');
+
+            var stars = $("#stars").children();
+            var id =@Model.Bookdetail.ID;
+            var average = @Model.Bookdetail.AvrPoint;
+
+            for (var i = 1; i <= 5; i++) {
+                if (i <= average) {
+                 
+                    stars[i].attributes[0].value = "fa fa-star";
+                }
+              
+            }
 
     })
+
 
 
         $(document).on("click", ".commentdelete", function () {
@@ -484,4 +499,4 @@
         })
 
 
-    </script>
+</script>
