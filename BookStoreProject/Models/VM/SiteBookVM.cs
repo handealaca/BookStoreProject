@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace BookStoreProject.Models.VM
 {
@@ -10,7 +11,9 @@ namespace BookStoreProject.Models.VM
     {
       
         public List<BookCategory> bookcategories { get; set; }
-        public List<Book>  books { get; set; }
+        public List<Book> books { get; set; }
+        //public PagedList<Book> books { get; set; }
+
         public List<Person> people { get; set; }
         public List<Category> Categories { get; set; }
 

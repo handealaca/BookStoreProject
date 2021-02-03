@@ -4,6 +4,9 @@
     Layout = "~/Views/Site/Shared/_SiteLayout.cshtml";
 }
 
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+
 @model BookStoreProject.Models.VM.SiteBookVM
     <!-- Start: Page Banner -->
 <section class="page-banner services-banner" style="background-image: url(/Site/images/sitebanner.jpg)">
@@ -39,7 +42,7 @@
                     <div class="container-fluid">
 
                         @await Html.PartialAsync("Partial/Search")
-                        
+
 
                         <!-- Start: Search Section -->
 
@@ -58,61 +61,67 @@
 
                                         @foreach (var item in Model.books)
                                         {
-                                            <li>
-                                                <div class="book-list-icon yellow-icon"></div>
-                                                <figure>
-                                                    <a href="/SiteBook/BookDetail/@item.ID"><img src="/Admin/Coverimg/@item.Imagepath" alt="Book" style="height:450px"></a>
-                                                    <figcaption>
-                                                        <header>
+                                        <li>
+                                            <div class="book-list-icon yellow-icon"></div>
+                                            <figure>
+                                                <a href="/SiteBook/BookDetail/@item.ID"><img src="/Admin/Coverimg/@item.Imagepath" alt="Book" style="height:450px"></a>
+                                                <figcaption>
+                                                    <header>
 
-                                                            <h4><a href="">@item.Name</a></h4>
-                                                            <p>
-                                                                <strong>Author:</strong>
-                                                                @foreach (var data in item.BookPersons.Where(q => q.DutyID == 0))
+                                                        <h4><a href="">@item.Name</a></h4>
+                                                        <p>
+                                                            <strong>Author:</strong>
+                                                            @foreach (var data in item.BookPersons.Where(q => q.DutyID == 0))
+                                                            {
+
+                                                                if (item.BookPersons.Where(q => q.DutyID == 0).LastOrDefault() == data)
                                                                 {
+                                                                    <span>
+                                                                        @(data.Person.Name + " " + data.Person.SurName)
+                                                                    </span>
+                                                                }
 
-                                                                    if (item.BookPersons.Where(q => q.DutyID == 0).LastOrDefault() == data)
-                                                                    {
-                                                                        <span>
-                                                                            @(data.Person.Name + " " + data.Person.SurName)
-                                                                        </span>
-                                                                    }
-
-                                                                    else
-                                                                    {
-                                                                        <span>
-                                                                            @(data.Person.Name + " " + data.Person.SurName + ",")
-                                                                        </span>
-
-                                                                    }
+                                                                else
+                                                                {
+                                                                    <span>
+                                                                        @(data.Person.Name + " " + data.Person.SurName + ",")
+                                                                    </span>
 
                                                                 }
-                                                            </p>
 
-                                                        </header>
-                                                        @if (item.Summary != null)
-                                                        {
-                                                            <p>@item.Summary.Substring(0,100)...</p>
+                                                            }
+                                                        </p>
 
-                                                        }
+                                                    </header>
+                                                    @if (item.Summary != null)
+                                                    {
+                                                        <p>@item.Summary.Substring(0, 100)...</p>
 
-                                                    </figcaption>
-                                                </figure>
-                                            </li>
+                                                    }
+
+                                                </figcaption>
+                                            </figure>
+                                         
+                                        </li>
                                         }
 
                                     </ul>
                                 </div>
-
+                              
                                 <nav class="navigation pagination text-center">
                                     @*<h2 class="screen-reader-text">Posts navigation</h2>*@
                                     <div class="nav-links">
-                                        <a class="prev page-numbers" href="#"><i class="fa fa-long-arrow-left"></i> Previous</a>
+                                        
+                                        @{ IPagedList list =Model.books.ToPagedList();} 
+
+                                        @Html.PagedListPager((IPagedList)list, page => Url.Action("Index", "SiteBook", new { page = page }))
+
+                                        @*<a class="prev page-numbers" href="#"><i class="fa fa-long-arrow-left"></i> Previous</a>
                                         <a class="page-numbers current" href="#">1</a>
                                         <a class="page-numbers" href="#">2</a>
                                         <a class="page-numbers" href="#">3</a>
                                         <a class="page-numbers" href="#">4</a>
-                                        <a class="next page-numbers" href="#">Next <i class="fa fa-long-arrow-right"></i></a>
+                                        <a class="next page-numbers" href="#">Next <i class="fa fa-long-arrow-right"></i></a>*@
                                     </div>
                                 </nav>
 
