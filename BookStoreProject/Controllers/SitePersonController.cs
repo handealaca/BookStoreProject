@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace BookStoreProject.Controllers
 {
@@ -21,8 +22,10 @@ namespace BookStoreProject.Controllers
             _bookcontext = bookcontext;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
+            var pagenumber = page ?? 1;
+
             List<PersonVM> people = _bookcontext.People.Include(q => q.BookPeople).ThenInclude(BookPeople => BookPeople.Book).Where(q => q.IsDeleted == false).OrderBy(q => q.Name).Select(q => new PersonVM()
             {
                 PersonID = q.ID,
@@ -43,7 +46,7 @@ namespace BookStoreProject.Controllers
             SiteBookVM sitebook = new SiteBookVM();
             sitebook.Categories = modelcategory;
             sitebook.people = modelpeople;
-            sitebook.PeopleVM = people;
+            sitebook.PeopleVM = people.ToPagedList(pagenumber, 9);
 
             return View(sitebook);
         }

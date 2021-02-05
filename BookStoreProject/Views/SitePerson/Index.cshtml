@@ -4,6 +4,9 @@
     Layout = "~/Views/Site/Shared/_SiteLayout.cshtml";
 }
 
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Mvc.Core.Common;
 
 @model BookStoreProject.Models.VM.SiteBookVM
     <!-- Start: Page Banner -->
@@ -16,7 +19,7 @@
 
             <span class="underline center"></span>
 
-            <p class="lead"> Proin ac eros pellentesque dolor pharetra tempo.</p>
+            <p class="lead"></p>
         </div>
         <div class="breadcrumb">
             <ul>
@@ -50,8 +53,13 @@
 
                             @await Html.PartialAsync("Partial/FilterTree")
 
+                            <div class="paginationnew col-md-4" style="margin-bottom:20px">
+                                <h4 class="filter-result">Showing items @Model.PeopleVM.FirstItemOnPage to @Model.PeopleVM.LastItemOnPage of @Model.PeopleVM.TotalItemCount total</h4>
+                            </div>
 
                             <div class="col-md-9">
+
+
 
                                 <div class="booksmedia-fullwidth">
                                     <ul style="display:flex; justify-content:space-between; flex-wrap:wrap">
@@ -97,15 +105,15 @@
 
                                     </ul>
                                 </div>
-                                <nav class="navigation pagination text-center">
-                                    <h2 class="screen-reader-text">Posts navigation</h2>
+
+                                <nav class="navigation pagination text-center" style="display:flex; justify-content:center">
                                     <div class="nav-links">
-                                        <a class="prev page-numbers" href="#."><i class="fa fa-long-arrow-left"></i> Previous</a>
-                                        <a class="page-numbers" href="#.">1</a>
-                                        <span class="page-numbers current">2</span>
-                                        <a class="page-numbers" href="#.">3</a>
-                                        <a class="page-numbers" href="#.">4</a>
-                                        <a class="next page-numbers" href="#.">Next <i class="fa fa-long-arrow-right"></i></a>
+
+
+                                        @Html.PagedListPager((IPagedList)Model.PeopleVM, page => Url.Action("Index", "SitePerson", new { page = page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+
+
+
                                     </div>
                                 </nav>
                             </div>

@@ -19304,3 +19304,15 @@ a:focus {
 .carousel-caption h2{
     text-transform:uppercase;
 }
+
+.paginationnew {
+    color: #2f2f2f;
+    font-size: 20px;
+    margin: 0 0 34px;
+    position: relative;
+    line-height: 1.1;
+    background: url(/Site/images/underline.png) left 5px bottom -5px no-repeat;
+
+}
+
+

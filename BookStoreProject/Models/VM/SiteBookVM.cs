@@ -11,8 +11,8 @@ namespace BookStoreProject.Models.VM
     {
       
         public List<BookCategory> bookcategories { get; set; }
-        public List<Book> books { get; set; }
-        //public PagedList<Book> books { get; set; }
+        //public List<Book> books { get; set; }
+        public IPagedList<Book> books { get; set; }
 
         public List<Person> people { get; set; }
         public List<Category> Categories { get; set; }
@@ -21,7 +21,7 @@ namespace BookStoreProject.Models.VM
         public Comment Comment { get; set; }
         public Book Bookdetail { get; set; }
         public PersonVM PersonDetail { get; set; }
-        public List<PersonVM> PeopleVM { get; set; }
+        public IPagedList<PersonVM> PeopleVM { get; set; }
 
     }
 }
