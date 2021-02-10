@@ -65,15 +65,15 @@ namespace BookStoreProject.Areas.Admin.Controllers
                 _bookcontext.Categories.Add(category);
                 _bookcontext.SaveChanges();
 
-                int CategoryID = category.ID;
+                //int CategoryID = category.ID;
 
 
-                Category category1 = new Category();
-                category1.TopCategory = CategoryID;
-                category1.CategoryName = model.subcategoryname;
+                //Category category1 = new Category();
+                //category1.TopCategory = CategoryID;
+                //category1.CategoryName = model.subcategoryname;
 
-                _bookcontext.Categories.Add(category1);
-                _bookcontext.SaveChanges();
+                //_bookcontext.Categories.Add(category1);
+                //_bookcontext.SaveChanges();
             }
 
             else
@@ -86,7 +86,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
                 _bookcontext.SaveChanges();
             }
 
-            return RedirectToAction("Index", "Category");
+            return Redirect("/Admin/Category/");
 
 
 
@@ -127,7 +127,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
 
             _bookcontext.SaveChanges();
 
-            return RedirectToAction("Index", "Category");
+            return Redirect("/Admin/Category/");
         }
 
 
@@ -140,7 +140,7 @@ namespace BookStoreProject.Areas.Admin.Controllers
             category.IsDeleted = true;
             _bookcontext.SaveChanges();
 
-            return RedirectToAction("Index");
+            return Redirect("/Admin/Category/");
 
         }
 

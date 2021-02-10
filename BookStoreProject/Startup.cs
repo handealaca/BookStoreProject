@@ -31,10 +31,11 @@ namespace BookStoreProject
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddDbContext<BookContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+
 
             services.AddSingleton<ITempDataProvider, CookieTempDataProvider>();
-
 
             services.AddMemoryCache();
           
@@ -61,10 +62,10 @@ namespace BookStoreProject
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
+           // if (env.IsDevelopment())
+           // {
                 app.UseDeveloperExceptionPage();
-            }
+           // }
 
             app.UseCookiePolicy();
             app.UseSession();
